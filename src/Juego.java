@@ -24,13 +24,13 @@ public class Juego {
 		this.setIdMontador(pidMontador);
 		consecutivo++;
 		this.setSwitCh(1);
-		this.setListaMuebles();
+		listaMuebles=new ArrayList<Mueble>();
 	}
 	
 	public ArrayList<Mueble> getListaMuebles() {
 		return listaMuebles;
 	}
-	public void setListaMuebles()throws Exception {
+	public void setListaMuebles(int id1)throws Exception {
 		
 		listaMuebles.add((new MultiMueble()).buscarid(id1));
 	

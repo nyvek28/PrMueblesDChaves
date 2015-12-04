@@ -59,10 +59,21 @@ public class Gestor {
 		Juego juego=Empresa.consultarJuego(idJuego);
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		datosJuego.put("ID", String.valueOf(juego.getId()));
-		datosJuego.put("IDMontador", String.valueOf(juego.getIdMontador()));
+		datosJuego.put("Montador", String.valueOf(juego.getIdMontador()));
 		
 		
 		
 		return datosJuego;
+	}
+	public TreeMap<String, String> registrarJuego(int idMontador, int id)throws Exception{
+		Juego j=Empresa.crearJuego(idMontador, id);
+		
+		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
+		datosJuego.put("ID", String.valueOf(j.getId()));
+		datosJuego.put("Montador", String.valueOf(j.getIdMontador()));
+		
+		
+		return datosJuego;
+		
 	}
 }

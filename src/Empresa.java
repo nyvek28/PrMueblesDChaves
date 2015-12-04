@@ -31,5 +31,12 @@ public class Empresa {
 		juego=(new MultiJuego()).buscarid(idJuego);
 		return juego;
 	
-	
+	}
+	//Daniel Chaves
+	public static Juego crearJuego(int idMontador,int id){
+		Montador m=(new MultiMontador().buscar(idMontador));
+		Juego juego=m.crearJuego(id);
+		return juego;
+		
+	}
 }
