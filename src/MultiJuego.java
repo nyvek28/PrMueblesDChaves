@@ -14,15 +14,15 @@ import java.util.ArrayList;
 >>>>>>> Stashed changes
 public class MultiJuego {
 	
-	public Juego crear(int pid, int pidMontador, int idMueble1, int idMueble2, int idMueble3, int idMueble4)throws Exception{
+	public Juego crear(int pid, int pidMontador)throws Exception{
 		
 		Juego juego=null;
 		String sql;
 		sql="INSERT INTO TLibro "+
-		"VALUES ('"+pid+"','"+pidMontador+"', '"+idMueble1+"','"+idMueble2+"','"+idMueble3+"','"+idMueble4+"');";
+		"VALUES ('"+pid+"','"+pidMontador+"', );";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
-			juego = new Juego(pid,pidMontador,idMueble1);
+			juego = new Juego(pid,pidMontador);
 		}
 		catch (Exception e) {
 			throw new Exception (".");
@@ -42,8 +42,7 @@ public class MultiJuego {
 		if (rs.next()){
 			juego = new Juego(
 				rs.getInt("id"),
-				rs.getInt("idMontador"),
-				rs.getInt("idMueble1"));
+				rs.getInt("idMontador"));
 		} else {
 			juego = null;
 		}

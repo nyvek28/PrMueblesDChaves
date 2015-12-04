@@ -49,6 +49,30 @@ public class MultiMueble {
 		rs.close();
 		return mueble; 
 	}
+public  Mueble buscaridJ(int pid) throws java.sql.SQLException,Exception{
+		
+		Mueble mueble;
+		java.sql.ResultSet rs;
+		String sql;
+		sql = "SELECT id,idMontador,idMueble1,idMueble2,idMueble3,idMueble4 "+
+		"FROM TMueble "+
+		"WHERE IdJuego = '"+pid+"'";
+		rs = Conector.getConector().ejecutarSQL(sql,true);
+		if (rs.next()){
+			mueble = new Mueble(
+				rs.getInt("id"),
+				rs.getInt("linea"),
+				rs.getString("color"),
+				rs.getDouble("ancho"),
+				rs.getDouble("alto"),
+				rs.getDouble("largo"),
+				rs.getString("categoria"));
+		} else {
+			mueble = null;
+		}
+		rs.close();
+		return mueble; 
+	}
 	
 	
 }
