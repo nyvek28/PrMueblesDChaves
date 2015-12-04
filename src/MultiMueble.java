@@ -1,3 +1,7 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /*
  * author: Daniel Chaves
  * Descripcion: crea un objeto mueble y lo guarda en base de datos
@@ -7,7 +11,7 @@
  */
 
 
-
+import java.util.*;
 
 public class MultiMueble {
 		
@@ -73,6 +77,27 @@ public  Mueble buscaridJ(int pid) throws java.sql.SQLException,Exception{
 		rs.close();
 		return mueble; 
 	}
+public ArrayList<Mueble> buscarM(int idJuego) throws SQLException, Exception{
+	
+	ResultSet rs;
+	String sql;
+	ArrayList<Mueble> muebles = new ArrayList<Mueble>();
+	
+	sql = "SELECT * "
+		+ "FROM TbJuego "
+		+ "WHERE idJuego = "+idJuego;
+	rs = Conector.getConector().ejecutarSQL(sql, true);
+	while(rs.next()){
+		muebles.add(this.buscarid(rs.getInt("id")));
+	}
+	if(muebles.size() < 1){
+		muebles = null;
+	}
+	
+	return muebles;
+	
+	
+}
 	
 	
 }
