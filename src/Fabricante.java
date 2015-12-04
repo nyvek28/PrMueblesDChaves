@@ -43,6 +43,11 @@ public class Fabricante extends Persona {
 		this.setMuebles(null);
 		
 	}
+	public Mueble fabricarMueble(int pid,int plinea, String pcolor, double ancho, double alto, double largo, String pcategoria)throws Exception{
+		Mueble mueble;
+		mueble=(new MultiMueble()).crear(pid, plinea, pcolor, ancho, alto, largo, pcategoria);
+		return mueble;
+	}
 	
 	public int getLinea() {
 		return linea;

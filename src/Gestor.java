@@ -29,5 +29,21 @@ public class Gestor {
 		return datosFabricante;
 		
 	}
+	public TreeMap<String, String> registrarMueble(int idFabricante,int pid,int plinea, String pcolor, double ancho, double alto, double largo, String pcategoria)throws Exception{
+		Fabricante f;
+		f=(new MultiFabricante()).buscar(idFabricante);
+		Mueble mueble=f.fabricarMueble(pid, plinea, pcolor, ancho, alto, largo, pcategoria);
+		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
+		datosMueble.put("ID", String.valueOf(mueble.getId()));
+		datosMueble.put("Linea", String.valueOf(mueble.getLinea()));
+		datosMueble.put("Color", String.valueOf(mueble.getColor()));
+		datosMueble.put("Dimensiones", String.valueOf(mueble.getDimensiones()));
+		datosMueble.put("Categoria", String.valueOf(mueble.getCategoria()));
+		return datosMueble;
+		
+		
+		
+		
+	}
 	
 }
