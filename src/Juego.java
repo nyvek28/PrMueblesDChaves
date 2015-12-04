@@ -19,26 +19,21 @@ public class Juego {
 	private static int consecutivo=0;
 	private int switCh;
 	
-	public Juego(int pid, int pidMontador, int idMueble1, int idMueble2, int idMueble3, int idMueble4)throws Exception{
+	public Juego(int pid, int pidMontador, int idMueble1)throws Exception{
 		this.setId(pid);
 		this.setIdMontador(pidMontador);
 		consecutivo++;
 		this.setSwitCh(1);
-		this.setListaMuebles(idMueble1, idMueble2, idMueble3, idMueble4);
+		this.setListaMuebles(idMueble1);
 	}
 	
 	public ArrayList<Mueble> getListaMuebles() {
 		return listaMuebles;
 	}
-	public void setListaMuebles(int id1, int id2, int id3, int id4)throws Exception {
+	public void setListaMuebles(int id1)throws Exception {
 		
 		listaMuebles.add((new MultiMueble()).buscarid(id1));
-		listaMuebles.add((new MultiMueble()).buscarid(id2));
-		listaMuebles.add((new MultiMueble()).buscarid(id3));
-		listaMuebles.add((new MultiMueble()).buscarid(id4));
-		
-		
-		
+	
 	}
 	
 	

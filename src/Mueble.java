@@ -10,13 +10,14 @@
 
 public class Mueble {
 
-	public int id;
+	private int id;
 	
-	public int linea;
-	public String color;
-	public double[] dimensiones;
-	public String categoria;
-	public int switCh;
+	private int linea;
+	private String color;
+	private double[] dimensiones;
+	private String categoria;
+	private int switCh;
+	private int idJuego;
 	
 	public Mueble(int pid,int plinea, String pcolor, double ancho, double alto, double largo, String pcategoria){
 		this.setId(pid);

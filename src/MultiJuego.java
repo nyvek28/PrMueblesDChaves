@@ -1,4 +1,10 @@
-
+/*
+ * author: Daniel Chaves
+ * Descripcion: crea un objeto Juego y sus accesores
+ * Version 1.0
+ * Fecha: Dic 4, 2015
+	Ediciones:
+ */
 public class MultiJuego {
 	
 	public Juego crear(int pid, int pidMontador, int idMueble1, int idMueble2, int idMueble3, int idMueble4)throws Exception{
@@ -9,7 +15,7 @@ public class MultiJuego {
 		"VALUES ('"+pid+"','"+pidMontador+"', '"+idMueble1+"','"+idMueble2+"','"+idMueble3+"','"+idMueble4+"');";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
-			juego = new Juego(pid,pidMontador,idMueble1, idMueble2, idMueble3, idMueble4);
+			juego = new Juego(pid,pidMontador,idMueble1);
 		}
 		catch (Exception e) {
 			throw new Exception (".");
@@ -30,10 +36,7 @@ public class MultiJuego {
 			juego = new Juego(
 				rs.getInt("id"),
 				rs.getInt("idMontador"),
-				rs.getInt("idMueble1"),
-				rs.getInt("idMueble2"),
-				rs.getInt("idMueble3"),
-				rs.getInt("idMueble4"));
+				rs.getInt("idMueble1"));
 		} else {
 			juego = null;
 		}
