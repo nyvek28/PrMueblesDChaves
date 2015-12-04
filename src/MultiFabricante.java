@@ -3,6 +3,15 @@ import java.sql.SQLException;
 
 public class MultiFabricante {
 
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que crea un objeto fabricante y lo guarda el base de datos
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
 	public Fabricante crear(int pId, String pNombre, String pApellido, int pTelefono, String pDireccion,
 			int linea, int annos){
 		
@@ -32,6 +41,16 @@ public class MultiFabricante {
 		
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que busca la informacion de un objeto fabricante mediante su id y lo 
+	crea basado en esa info
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
 	public Fabricante buscar(int id) throws SQLException, Exception{
 		
 		Fabricante f;
@@ -61,6 +80,15 @@ public class MultiFabricante {
 		
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que actualiza un objeto Fabricante que se le envie
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
 	public Fabricante modificar(Fabricante f){
 		
 		String sql;
@@ -86,6 +114,15 @@ public class MultiFabricante {
 		
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que elimina a un objeto Fabricante logicamente de la base de datos
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
 	public Fabricante eliminar(Fabricante f){
 		
 		if(f.getSwitCh() != 0){
@@ -99,6 +136,16 @@ public class MultiFabricante {
 		
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que busca un objeto Fabricante y luego lo elimina logicamente de la base de 
+	datos
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
 	public Fabricante eliminar(int id) throws SQLException, Exception{
 		
 		Fabricante f;
