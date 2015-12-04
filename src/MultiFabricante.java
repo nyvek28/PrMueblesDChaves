@@ -12,7 +12,7 @@ public class MultiFabricante {
 	Ediciones:
 
 	*/
-	public Fabricante crear(int pId, String pNombre, String pApellido, int pTelefono, String pDireccion,
+	public Fabricante crear(String pNombre, String pApellido, int pTelefono, String pDireccion,
 			int linea, int annos){
 		
 		Fabricante f;
