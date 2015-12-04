@@ -55,5 +55,14 @@ public class Gestor {
 		return datosMueble;
 		
 	}
-	
+	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
+		Juego juego=Empresa.consultarJuego(idJuego);
+		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
+		datosJuego.put("ID", String.valueOf(juego.getId()));
+		datosJuego.put("IDMontador", String.valueOf(juego.getIdMontador()));
+		
+		
+		
+		return datosJuego;
+	}
 }

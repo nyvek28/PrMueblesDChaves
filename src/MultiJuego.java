@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
->>>>>>> Stashed changes
+
 public class MultiJuego {
 	
 	public Juego crear(int pid, int pidMontador)throws Exception{
@@ -59,7 +59,7 @@ public class MultiJuego {
 	Ediciones:
 
 	*/
-	public ArrayList<Juego> buscarM(int idMontador) throws SQLException, Exception{
+	public ArrayList<Juego> buscarM(int idJuego) throws SQLException, Exception{
 		
 		ResultSet rs;
 		String sql;
@@ -67,7 +67,7 @@ public class MultiJuego {
 		
 		sql = "SELECT * "
 			+ "FROM TbJuego "
-			+ "WHERE idMontador = "+idMontador;
+			+ "WHERE idJuego = "+idJuego;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			juegos.add(this.buscarid(rs.getInt("id")));

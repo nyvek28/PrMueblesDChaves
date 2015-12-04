@@ -26,5 +26,10 @@ public class Empresa {
 		return mueble;
 		
 	}
+	public static Juego consultarJuego(int idJuego)throws Exception{
+		Juego juego;
+		juego=(new MultiJuego()).buscarid(idJuego);
+		return juego;
+	
 	
 }
