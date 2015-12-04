@@ -1,3 +1,13 @@
+/*
+ * author: Daniel Chaves
+ * Descripcion: crea un objeto mueble y lo guarda en base de datos
+ * Version 1.0
+ * Fecha: Dic 4, 2015
+	Ediciones:
+ */
+
+
+
 
 public class MultiMueble {
 		

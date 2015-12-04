@@ -1,4 +1,13 @@
 
+/*
+ * author: Daniel Chaves
+ * Descripcion: Clase mueble y sus accesores
+ * Version 1.0
+ * Fecha: Dic 4, 2015
+	Ediciones:
+ */
+
+
 public class Mueble {
 
 	public int id;
@@ -16,6 +25,7 @@ public class Mueble {
 		this.setDimensiones(ancho, alto, largo);
 		this.setCategoria(pcategoria);
 	}
+	
 	
 	
 	public int getId() {
