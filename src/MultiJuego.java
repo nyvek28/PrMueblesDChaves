@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /*
  * author: Daniel Chaves
  * Descripcion: crea un objeto Juego y sus accesores
@@ -5,6 +6,12 @@
  * Fecha: Dic 4, 2015
 	Ediciones:
  */
+=======
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+>>>>>>> Stashed changes
 public class MultiJuego {
 	
 	public Juego crear(int pid, int pidMontador, int idMueble1, int idMueble2, int idMueble3, int idMueble4)throws Exception{
@@ -42,6 +49,37 @@ public class MultiJuego {
 		}
 		rs.close();
 		return juego; 
+	}
+	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar ls juegos de un montador
+	Version: v.1.0
+	Fecha: Dic 4, 2015
+	Ediciones:
+
+	*/
+	public ArrayList<Juego> buscarM(int idMontador) throws SQLException, Exception{
+		
+		ResultSet rs;
+		String sql;
+		ArrayList<Juego> juegos = new ArrayList<Juego>();
+		
+		sql = "SELECT * "
+			+ "FROM TbJuego "
+			+ "WHERE idMontador = "+idMontador;
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			juegos.add(this.buscarid(rs.getInt("id")));
+		}
+		if(juegos.size() < 1){
+			juegos = null;
+		}
+		
+		return juegos;
+		
+		
 	}
 
 
