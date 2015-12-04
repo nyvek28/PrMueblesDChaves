@@ -4,7 +4,6 @@ public class Fabricante extends Persona {
 
 	private int linea;
 	private int annosExp;
-	private int id;
 	private static int consecutivo = 0;
 	private ArrayList<Mueble> muebles;
 	
@@ -17,13 +16,12 @@ public class Fabricante extends Persona {
 	Ediciones:
 
 	*/
-	public Fabricante(int pId, String pNombre, String pApellido, int pTelefono, String pDireccion,
+	public Fabricante(String pNombre, String pApellido, int pTelefono, String pDireccion,
 			int linea, int annos){
 		
-		super(pId,pNombre,pApellido,pTelefono,pDireccion);
+		super((Fabricante.getConsecutivo()+1),pNombre,pApellido,pTelefono,pDireccion);
 		this.setLinea(linea);
 		this.setAnnosExp(annos);
-		this.setId(Fabricante.getConsecutivo()+1);
 		this.setMuebles(null);
 		
 	}
@@ -37,12 +35,11 @@ public class Fabricante extends Persona {
 
 	*/
 	public Fabricante(int pId, String pNombre, String pApellido, int pTelefono, String pDireccion,
-			int switCh, int linea, int annos, int id){
+			int switCh, int linea, int annos){
 		
 		super(pId,pNombre,pApellido,pTelefono,pDireccion,switCh);
 		this.setLinea(linea);
 		this.setAnnosExp(annos);
-		this.setId(id);
 		this.setMuebles(null);
 		
 	}
@@ -59,14 +56,6 @@ public class Fabricante extends Persona {
 	public void setAnnosExp(int annosExp) {
 		this.annosExp = annosExp;
 	}
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public static int getConsecutivo() {
 		return consecutivo;
 	}
