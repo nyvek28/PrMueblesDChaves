@@ -20,5 +20,11 @@ public class Empresa {
 		return f;
 		
 	}
+	public static Mueble consultarMueble(int idMueble)throws Exception{
+		Mueble mueble;
+		mueble=(new MultiMueble()).buscarid(idMueble);
+		return mueble;
+		
+	}
 	
 }

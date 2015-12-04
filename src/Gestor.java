@@ -39,10 +39,20 @@ public class Gestor {
 		datosMueble.put("Color", String.valueOf(mueble.getColor()));
 		datosMueble.put("Dimensiones", String.valueOf(mueble.getDimensiones()));
 		datosMueble.put("Categoria", String.valueOf(mueble.getCategoria()));
+		
 		return datosMueble;
 		
+	}
+	public TreeMap<String, String> consultarMueble(int idMueble)throws Exception{
+		Mueble mueble=Empresa.consultarMueble(idMueble);
+		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
+		datosMueble.put("ID", String.valueOf(mueble.getId()));
+		datosMueble.put("Linea", String.valueOf(mueble.getLinea()));
+		datosMueble.put("Color", String.valueOf(mueble.getColor()));
+		datosMueble.put("Dimensiones", String.valueOf(mueble.getDimensiones()));
+		datosMueble.put("Categoria", String.valueOf(mueble.getCategoria()));
 		
-		
+		return datosMueble;
 		
 	}
 	
