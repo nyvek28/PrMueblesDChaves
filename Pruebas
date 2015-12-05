@@ -8,9 +8,11 @@ Autor:
 Fecha:
 Caso de uso:
 Nombre de la prueba:
+Resultado:
 Código:
 
 ====================================================
+
 
 Aquí empiezan las pruebas:
 
@@ -20,8 +22,9 @@ Autor: Kevyn Quiros
 Fecha: Dic 5, 2015
 Caso de uso: Registrar Fabricante (CU1)
 Nombre de la prueba: Registro de un Fabricante
+Resultado: Exitoso
 Código:
-	v = g.RegistrarFabricante("Emilio", "Garro", 666, "Los yoses", 2, 20);
+	v = g.RegistrarFabricante("Emilio", "Garro", 2345, "Los yoses", 2, 20);
 
 	System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
 						+"Identificacion: "+v.get("id")+"\n"
