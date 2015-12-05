@@ -8,9 +8,8 @@ public class Main {
 		Gestor g = new Gestor();
 		TreeMap v = new TreeMap();
 		ArrayList a = new ArrayList();
+		String msj;
 		g.inicializarPrograma();
-		
-		
 		
 	}
 
