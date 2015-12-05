@@ -164,6 +164,14 @@ public class MultiFabricante {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para listar todos los fabricantes en la base de datos
+	Version: v.1.0
+	Fecha: Dic 4, 2015
+	Ediciones:
+
+	*/
 	public ArrayList<Fabricante> listar() throws Exception{
 		
 		Fabricante f;

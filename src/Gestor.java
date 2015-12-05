@@ -3,7 +3,14 @@ import java.util.TreeMap;
 
 public class Gestor {
 
-	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que inicializa los contadores de las clases
+	Version: v.1.0
+	Fecha: Dic 4, 2015
+	Ediciones:
+
+	*/
 	public void inicializarPrograma() throws Exception{
 		
 		ArrayList<Fabricante> fabricantes;

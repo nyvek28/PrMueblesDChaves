@@ -23,7 +23,7 @@ public class Fabricante extends Persona {
 		this.setLinea(linea);
 		this.setAnnosExp(annos);
 		this.setMuebles(null);
-		this.setConsecutivo(getConsecutivo()+1);
+		Fabricante.setConsecutivo(getConsecutivo()+1);
 		
 	}
 	
