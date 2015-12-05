@@ -77,28 +77,28 @@ public class MultiMueble {
 		rs.close();
 		return mueble; 
 	}
-	public ArrayList<Mueble> buscarM(int idJuego) throws SQLException, Exception{
 	
-	ResultSet rs;
-	String sql;
-	ArrayList<Mueble> muebles = new ArrayList<Mueble>();
 	
-	sql = "SELECT * "
-		+ "FROM TbJuego "
-		+ "WHERE idJuego = "+idJuego;
-	rs = Conector.getConector().ejecutarSQL(sql, true);
-	while(rs.next()){
-		muebles.add(this.buscarid(rs.getInt("id")));
+	public ArrayList<Mueble> buscarF(int idFabricante) throws SQLException, Exception{
+		
+		ResultSet rs;
+		String sql;
+		ArrayList<Mueble> muebles = new ArrayList<Mueble>();
+		
+		sql = "SELECT * "
+			+ "FROM TbMueble "
+			+ "WHERE idFabricante = "+idFabricante;
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			muebles.add(this.buscarid(rs.getInt("id")));
+		}
+		if(muebles.size() < 1){
+			muebles = null;
+		}
+		
+		return muebles;
+		
 	}
-	if(muebles.size() < 1){
-		muebles = null;
-	}
-	
-	return muebles;
-	
-	
-}
-	
 	
 }
 

@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Fabricante extends Persona {
@@ -68,7 +69,7 @@ public class Fabricante extends Persona {
 	public static void setConsecutivo(int consecutivo) {
 		Fabricante.consecutivo = consecutivo;
 	}
-	public ArrayList<Mueble> getMuebles() {
+	public ArrayList<Mueble> getMuebles() throws SQLException, Exception {
 		ArrayList<Mueble> m;
 		
 		m = (new MultiMueble()).buscarF(this.getId());

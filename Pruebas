@@ -1,0 +1,31 @@
+En este documento debe de ir el nombre de la prueba, el autor, la fecha, el caso de uso y el código de la misma.
+
+
+Plantilla:
+
+====================================================
+Autor:
+Fecha:
+Caso de uso:
+Nombre de la prueba:
+Código:
+
+====================================================
+
+Aquí empiezan las pruebas:
+
+
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 5, 2015
+Caso de uso: Registrar Fabricante (CU1)
+Nombre de la prueba: Registro de un Fabricante
+Código:
+	v = g.RegistrarFabricante("Emilio", "Garro", 666, "Los yoses", 2, 20);
+
+	System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+						+"Identificacion: "+v.get("id")+"\n"
+						+"Anos de experiencia:"   
+						+v.get("annosExp")+"\n");
+
+====================================================

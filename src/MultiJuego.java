@@ -1,12 +1,12 @@
-<<<<<<< Updated upstream
+
 /*
- * author: Daniel Chaves
+ * Autor: Daniel Chaves
  * Descripcion: crea un objeto Juego y sus accesores
  * Version 1.0
  * Fecha: Dic 4, 2015
 	Ediciones:
  */
-=======
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
