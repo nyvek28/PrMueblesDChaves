@@ -4,7 +4,7 @@ public class Fabricante extends Persona {
 
 	private int linea;
 	private int annosExp;
-	private static int consecutivo = 0;
+	private static int consecutivo =  ;
 	private ArrayList<Mueble> muebles;
 	
 	

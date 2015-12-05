@@ -18,7 +18,7 @@ public class Gestor {
 		fabricantes = (new MultiFabricante()).listar();
 		if(fabricantes != null){
 			
-			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId()+1);
+			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());
 			
 		}
 		
