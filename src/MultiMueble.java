@@ -53,7 +53,7 @@ public class MultiMueble {
 		rs.close();
 		return mueble; 
 	}
-public  Mueble buscaridJ(int pid) throws java.sql.SQLException,Exception{
+	public  Mueble buscaridJ(int pid) throws java.sql.SQLException,Exception{
 		
 		Mueble mueble;
 		java.sql.ResultSet rs;
@@ -77,7 +77,7 @@ public  Mueble buscaridJ(int pid) throws java.sql.SQLException,Exception{
 		rs.close();
 		return mueble; 
 	}
-public ArrayList<Mueble> buscarM(int idJuego) throws SQLException, Exception{
+	public ArrayList<Mueble> buscarM(int idJuego) throws SQLException, Exception{
 	
 	ResultSet rs;
 	String sql;

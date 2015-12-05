@@ -53,13 +53,16 @@ public class MultiJuego {
 	
 	/*
 	Autor: Kevyn Quiros
-	Descripcion: Metodo para buscar ls juegos de un montador
+	Descripcion: Metodo para buscar los juegos de un montador
 	Version: v.1.0
 	Fecha: Dic 4, 2015
 	Ediciones:
+	-Kevyn
+		Dic 4, 2015
+		Se arreglo el parametro de idJuego a idMontador
 
 	*/
-	public ArrayList<Juego> buscarM(int idJuego) throws SQLException, Exception{
+	public ArrayList<Juego> buscarM(int idMontador) throws SQLException, Exception{
 		
 		ResultSet rs;
 		String sql;
@@ -67,7 +70,7 @@ public class MultiJuego {
 		
 		sql = "SELECT * "
 			+ "FROM TbJuego "
-			+ "WHERE idJuego = "+idJuego;
+			+ "WHERE idMontador = "+idMontador;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			juegos.add(this.buscarid(rs.getInt("id")));
