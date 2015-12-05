@@ -11,7 +11,7 @@ public class Conector {
 	
         if(conectorDB==null){
 	
-            conectorDB = new AccesoBD("net.ucanaccess.jdbc.UcanaccessDriver","jdbc:ucanaccess://C:/Users/kevin/Documents/eclipse/PrMueblesDChaves/BaseDeDatos/BDMuebles.accdb");
+            conectorDB = new AccesoBD("net.ucanaccess.jdbc.UcanaccessDriver","jdbc:ucanaccess://BaseDeDatos/BDMuebles.accdb");
 	}
         
 	return conectorDB;

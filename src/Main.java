@@ -8,10 +8,12 @@ public class Main {
 		TreeMap v = new TreeMap();
 		
 		g.inicializarPrograma();
-		v = g.RegistrarFabricante("Nicole", "Acosta", 22366336, "Del palo de mango 100 este", 
-				2, 19);
+		v = g.RegistrarFabricante("Emilio", "Garro", 666, "Los yoses", 
+				2, 20);
 
-		System.out.println(v.get("nombre"));
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+						+"Identificacion: "+v.get("id")+"\n"
+						+"Anos de experiencia: "+v.get("annosExp")+"\n");
 		
 	}
 
