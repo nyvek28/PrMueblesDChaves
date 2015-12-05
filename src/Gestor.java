@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -35,21 +36,64 @@ public class Gestor {
 	public TreeMap<String,String> RegistrarFabricante(String pNombre, String pApellido, int pTelefono, String pDireccion,
 			int linea, int annos){
 		
-		TreeMap<String,String> datosFabricante = new TreeMap<String,String>();
+		TreeMap<String,String> datos;
 		Fabricante f;
 		
 		f = Empresa.registrarFabricante(pNombre, pApellido, pTelefono, pDireccion, linea, annos);
-		datosFabricante.put("id", String.valueOf(f.getId()));
-		datosFabricante.put("nombre", f.getNombre());
-		datosFabricante.put("apellido", f.getApellido());
-		datosFabricante.put("telefono", String.valueOf(f.getTelefono()));
-		datosFabricante.put("direccion", f.getDireccion());
-		datosFabricante.put("linea", String.valueOf(f.getLinea()));
-		datosFabricante.put("annosExp", String.valueOf(f.getAnnosExp()));
+		datos = this.fabricanteToTreeMap(f);
 		
-		return datosFabricante;
+		return datos;
 		
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para consultar un Fabricante por su id
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> consultarFabricante(int id) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Fabricante f;
+		
+		f = (new MultiFabricante()).buscar(id);
+		if(f != null){
+			datos = this.fabricanteToTreeMap(f);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que convierte un fabricante en un treemap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	private TreeMap<String, String> fabricanteToTreeMap(Fabricante f){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(f.getId()));
+		datos.put("nombre", f.getNombre());
+		datos.put("apellido", f.getApellido());
+		datos.put("telefono", String.valueOf(f.getTelefono()));
+		datos.put("direccion", f.getDireccion());
+		datos.put("linea", String.valueOf(f.getLinea()));
+		datos.put("annosExp", String.valueOf(f.getAnnosExp()));
+		
+		return datos;
+		
+	}
+	
 	public TreeMap<String, String> registrarMueble(int idFabricante,int pid,int plinea, String pcolor, double ancho, double alto, double largo, String pcategoria)throws Exception{
 		Fabricante f;
 		f=(new MultiFabricante()).buscar(idFabricante);

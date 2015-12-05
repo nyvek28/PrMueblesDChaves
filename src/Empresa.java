@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 
 public class Empresa {
 
@@ -20,6 +21,25 @@ public class Empresa {
 		return f;
 		
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que busca un fabricante por su id
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public static Fabricante consultarFabricante(int id) throws SQLException, Exception{
+		
+		Fabricante f;
+		
+		f = (new MultiFabricante()).buscar(id);
+		
+		return f;
+		
+	}
+	
 	public static Mueble consultarMueble(int idMueble)throws Exception{
 		Mueble mueble;
 		mueble=(new MultiMueble()).buscarid(idMueble);
