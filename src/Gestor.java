@@ -1,7 +1,21 @@
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Gestor {
 
+	
+	public void inicializarPrograma() throws Exception{
+		
+		ArrayList<Fabricante> fabricantes;
+		
+		fabricantes = (new MultiFabricante()).listar();
+		if(fabricantes != null){
+			
+			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId()+1);
+			
+		}
+		
+	}
 	
 	/*
 	Autor: Kevyn Quiros

@@ -1,5 +1,6 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MultiFabricante {
 
@@ -20,21 +21,22 @@ public class MultiFabricante {
 		
 		f = new Fabricante(pNombre, pApellido, pTelefono, pDireccion, linea, annos);
 		sql = "INSERT INTO TbFabricante "
-			+ "VALUES("
+			+ "VALUES ("
 			+ f.getId()+","
 			+ "'"+f.getNombre()+"',"
 			+"'"+f.getApellido()+"',"
-			+f.getTelefono()+"',"
+			+f.getTelefono()+","
 			+"'"+f.getDireccion()+"',"
 			+f.getSwitCh()+","
 			+f.getLinea()+","
 			+f.getAnnosExp()+","
-			+Fabricante.getConsecutivo()
-			+ ")";
+			+Fabricante.getConsecutivo()+ ")";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
-		} catch (Exception e) {
+		} catch (Exception ex) {
+			System.out.println("Error en el conector de crear fabricante \n");
 			f = null;
+			ex.printStackTrace();
 		}
 		
 		return f;
@@ -100,7 +102,7 @@ public class MultiFabricante {
 			+ " apellido = "+f.getApellido()
 			+ " telefono = "+f.getTelefono()
 			+ " direccion = "+f.getDireccion()
-			+ " switch = "+f.getSwitCh()
+			+ " switCh = "+f.getSwitCh()
 			+ " linea = "+f.getLinea()
 			+ " annosExp = "+f.getAnnosExp()
 			+ " WHERE id = "+f.getId();
@@ -159,6 +161,36 @@ public class MultiFabricante {
 		}
 		
 		return f;
+		
+	}
+	
+	public ArrayList<Fabricante> listar() throws Exception{
+		
+		Fabricante f;
+		String sql;
+		ResultSet rs;
+		ArrayList<Fabricante> tabla = new ArrayList<Fabricante>();
+		
+		sql = "SELECT * "
+			+ "FROM TbFabricante ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			f = new Fabricante(
+					rs.getInt("id"),
+					rs.getString("nombre"),
+					rs.getString("apellido"),
+					rs.getInt("telefono"),
+					rs.getString("direccion"),
+					rs.getInt("switch"),
+					rs.getInt("linea"),
+					rs.getInt("annosExp"));
+			tabla.add(f);
+		}
+		if(tabla.size()<1){
+			tabla = null;
+		}
+		
+		return tabla;
 		
 	}
 
