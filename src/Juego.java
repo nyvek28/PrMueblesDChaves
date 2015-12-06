@@ -60,4 +60,7 @@ public class Juego {
 	public void setSwitCh(int switCh) {
 		this.switCh = switCh;
 	}
+	public void eliminar(){
+		switCh=-1;
+	}
 }

@@ -248,13 +248,13 @@ public class Gestor {
 	Ediciones:
 
 	*/
-private TreeMap<String, String> juegoToTreeMap(Juego juego){
+private TreeMap<String, String> juegoToTreeMap(Juego juego)throws Exception{
 		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		
-		String info;
+		String info="";
 		ArrayList<Mueble> listaMuebles=(new MultiJuego().buscarMuebleddeJuego(juego.getId()));
-		for(int i;i<listaMuebles.size();i++){
+		for(int i=0;i<listaMuebles.size();i++){
 			Mueble m=listaMuebles.get(i);
 			info+="\n Mueble"+i+": "+ m.toString();
 				
@@ -299,5 +299,25 @@ private TreeMap<String, String> juegoToTreeMap(Juego juego){
 		return datosJuego;
 		
 	}
-	public void modificarJuego()
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que modifica un juego a gusto del usuario
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public void modificarJuego(){
+		
+	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que elimina
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public void eliminarJuego(int idJuego)throws Exception{
+		Empresa.eliminarJuego(idJuego);
+		
+	}
 }

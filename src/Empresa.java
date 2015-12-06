@@ -126,4 +126,11 @@ public class Empresa {
 		return juego;
 		
 	}
+	//Daniel Chaves
+	public static void eliminarJuego(int idJuego)throws Exception{
+		Juego juego=(new MultiJuego().buscarid(idJuego));
+		if(juego!=null){
+			juego.eliminar();
+		}
+	}
 }
