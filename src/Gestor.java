@@ -281,6 +281,74 @@ public class Gestor {
 		return datos;
 		
 	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para registrar un Cliente
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String,String> RegistrarCliente(int id, String pNombre, String pApellido, int pTelefono, String pDireccion, String trabajo, int telTrabajo){
+		
+		TreeMap<String,String> datos;
+		Cliente c;
+		
+		c = Empresa.registrarCliente(id, pNombre, pApellido, pTelefono, pDireccion,trabajo,telTrabajo);
+		datos = this.clienteToTreeMap(c);
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para consultar un Cliente por su id
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> consultarCliente(int id) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Cliente c;
+		
+		c = (new MultiCliente()).buscar(id);
+		if(c != null){
+			datos = this.clienteToTreeMap(c);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que convierte un cliente en un treemap
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	private TreeMap<String, String> clienteToTreeMap(Cliente c){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(c.getId()));
+		datos.put("nombre", c.getNombre());
+		datos.put("apellido", c.getApellido());
+		datos.put("telefono", String.valueOf(c.getTelefono()));
+		datos.put("direccion", c.getDireccion());
+		datos.put("trabajo", c.getTrabajo());
+		datos.put("telTrabajo", String.valueOf(c.getTelTrabajo()));
+		
+		return datos;
+		
+	}
 	/*
 	Autor: Daniel Chaves
 	Descripcion: Metodo que convierte un mueble en un treemap

@@ -176,4 +176,34 @@ Código:
 		System.out.println(msj);
 	
 ====================================================
+====================================================
+
+Autor: Emilio
+Fecha: Dic 6, 2015
+Caso de uso: Registrar Cliente (CU21)
+Nombre de la prueba: Registro de un Cliente
+Resultado: Exitoso
+codigo:
+	v = g.RegistrarCliente(4,"Master", "Chief", 2345, "por ahi", "Ingeniero de software", 22323);
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n");
+
+====================================================
+====================================================
+
+Autor: Emilio
+Fecha: Dic 6, 2015
+Caso de uso: Consultar Cliente (CU22)
+Nombre de la prueba: Consulta de un Cliente
+Resultado: EXITOSO
+codigo:
+	v = g.RegistrarCliente(3,"Master", "Chief", 2345, "por ahi", "Ingeniero de software", 22323);
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n");
+		
+	v = g.consultarCliente(3);
+
+	System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n");
+
+====================================================
 
