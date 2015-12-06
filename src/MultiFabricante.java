@@ -97,19 +97,20 @@ public class MultiFabricante {
 		
 		sql = " UPDATE TbFabricante "
 			+ " SET "
-			+ " id = "+f.getId()
-			+ " nombre = "+f.getNombre()
-			+ " apellido = "+f.getApellido()
-			+ " telefono = "+f.getTelefono()
-			+ " direccion = "+f.getDireccion()
-			+ " switCh = "+f.getSwitCh()
-			+ " linea = "+f.getLinea()
-			+ " annosExp = "+f.getAnnosExp()
+			+ " id = "+f.getId()+","
+			+ " nombre = '"+f.getNombre()+"',"
+			+ " apellido = '"+f.getApellido()+"',"
+			+ " telefono = "+f.getTelefono()+","
+			+ " direccion = '"+f.getDireccion()+"',"
+			+ " switCh = "+f.getSwitCh()+","
+			+ " linea = "+f.getLinea()+","
+			+ " annosExp = "+f.getAnnosExp()+" "
 			+ " WHERE id = "+f.getId();
 		try {
 			Conector.getConector().ejecutarSQL(sql);
 		} catch (Exception e) {
 			f = null;
+			e.printStackTrace();
 		}
 		
 		return f;
