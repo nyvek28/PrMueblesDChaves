@@ -69,6 +69,27 @@ public class Empresa {
 	}
 	
 	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que elimina a un fabricante
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public static Fabricante eliminarFabricante(int id) throws SQLException, Exception{
+		
+		Fabricante f;
+		
+		f = (new MultiFabricante()).buscar(id);
+		if(f != null){
+			f = (new MultiFabricante()).eliminar(f);
+		}
+		
+		return f;
+		
+	}
+	
+	/*
 	Autor: Emilio Montero
 	Descripcion: Metodo para que la empresa registre un Montador
 	Version: v.1.0

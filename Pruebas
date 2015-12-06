@@ -67,3 +67,33 @@ Código:
 	
 	System.out.println(msj);
 ====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 5, 2015
+Caso de uso: Eliminar Fabricante (CU4 )
+Nombre de la prueba: Eliminacion de un cliente
+Resultado: Exitoso
+Código:
+	v = g.eliminarFabricante(10);
+	if(v != null){
+		msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+			+ "Id: "+v.get("id")+"\n"
+			+ "Annos de Experiencia: "+v.get("annosExp")+"\n";
+	}else{
+		msj = "No se encontro el fabricante que busca";
+	}
+	
+	System.out.println(msj);
+	
+	v = g.consultarFabricante(10);
+	if(v != null){
+		msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+			+ "Id: "+v.get("id")+"\n"
+			+ "Annos de Experiencia: "+v.get("annosExp")+"\n";
+	}else{
+		msj = "No se encontro el fabricante que busca";
+	}
+	
+	System.out.println(msj);
+====================================================
+

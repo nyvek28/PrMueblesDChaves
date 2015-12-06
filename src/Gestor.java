@@ -121,6 +121,30 @@ public class Gestor {
 	}
 	
 	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para consultar un Fabricante por su id
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> eliminarFabricante(int id) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Fabricante f;
+		
+		f = Empresa.eliminarFabricante(id);
+		if(f != null){
+			datos = this.fabricanteToTreeMap(f);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
 	Autor: Emilio Montero
 	Descripcion: Metodo para registrar un Montador
 	Version: v.1.0
