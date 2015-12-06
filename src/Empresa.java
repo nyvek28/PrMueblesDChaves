@@ -23,24 +23,6 @@ public class Empresa {
 	}
 	
 	/*
-	Autor: Emilio Montero
-	Descripcion: Metodo para que la empresa registre un Montador
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
-
-	*/
-	public static Montador registrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
-		
-		Montador m;
-		
-		m = (new MultiMontador()).crear(id,pNombre, pApellido, pTelefono, pDireccion);
-		
-		return m;
-		
-	}
-	
-	/*
 	Autor: Kevyn Quiros
 	Descripcion: Metodo que busca un fabricante por su id
 	Version: v.1.0
@@ -55,6 +37,52 @@ public class Empresa {
 		f = (new MultiFabricante()).buscar(id);
 		
 		return f;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que modifica un fabricante
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public static Fabricante modificarFabricante(int id, String nombre, String apellido, int telefono, String direccion,
+			int linea, int annos) throws SQLException, Exception{
+		
+		Fabricante f;
+		
+		f = (new MultiFabricante()).buscar(id);
+		if(f != null){
+			f.setNombre(nombre);
+			f.setApellido(apellido);
+			f.setTelefono(telefono);
+			f.setDireccion(direccion);
+			f.setLinea(linea);
+			f.setAnnosExp(annos);
+			f = (new MultiFabricante()).modificar(f);
+		}
+		
+		return f;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para que la empresa registre un Montador
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public static Montador registrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
+		
+		Montador m;
+		
+		m = (new MultiMontador()).crear(id,pNombre, pApellido, pTelefono, pDireccion);
+		
+		return m;
 		
 	}
 	

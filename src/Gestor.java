@@ -47,26 +47,6 @@ public class Gestor {
 	}
 	
 	/*
-	Autor: Emilio Montero
-	Descripcion: Metodo para registrar un Montador
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
-
-	*/
-	public TreeMap<String,String> RegistrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
-		
-		TreeMap<String,String> datos;
-		Montador m;
-		
-		m = Empresa.registrarMontador(id, pNombre, pApellido, pTelefono, pDireccion);
-		datos = this.montadorToTreeMap(m);
-		
-		return datos;
-		
-	}
-	
-	/*
 	Autor: Kevyn Quiros
 	Descripcion: Metodo para consultar un Fabricante por su id
 	Version: v.1.0
@@ -79,7 +59,33 @@ public class Gestor {
 		TreeMap<String, String> datos;
 		Fabricante f;
 		
-		f = (new MultiFabricante()).buscar(id);
+		f = Empresa.consultarFabricante(id);
+		if(f != null){
+			datos = this.fabricanteToTreeMap(f);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que busca un fabricante por su id
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> modificarFabricante(int id, String nombre, String apellido, int telefono, String direccion,
+			int linea, int annos) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Fabricante f;
+		
+		f = Empresa.modificarFabricante(id, nombre, apellido, telefono, direccion, linea, annos);
 		if(f != null){
 			datos = this.fabricanteToTreeMap(f);
 		}else{
@@ -109,6 +115,26 @@ public class Gestor {
 		datos.put("direccion", f.getDireccion());
 		datos.put("linea", String.valueOf(f.getLinea()));
 		datos.put("annosExp", String.valueOf(f.getAnnosExp()));
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para registrar un Montador
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String,String> RegistrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
+		
+		TreeMap<String,String> datos;
+		Montador m;
+		
+		m = Empresa.registrarMontador(id, pNombre, pApellido, pTelefono, pDireccion);
+		datos = this.montadorToTreeMap(m);
 		
 		return datos;
 		
