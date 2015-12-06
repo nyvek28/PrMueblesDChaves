@@ -109,4 +109,17 @@ codigo:
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 
 ====================================================
+====================================================
+
+Autor: Emilio
+Fecha: Dic 4, 2015
+Caso de uso: Consultar Montador (CU18)
+Nombre de la prueba: Consulta de un Montador
+Resultado: EXITOSO
+codigo:
+	v = g.consultarMontador(3);
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
+
+====================================================
 

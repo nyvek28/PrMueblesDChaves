@@ -11,10 +11,9 @@ public class Main {
 		String msj;
 		g.inicializarPrograma();
 		
-		v = g.RegistrarMontador(3,"Master", "Chief", 2345, "por ahi");
+		v = g.consultarMontador("kevin");
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
-	
 	}
 
 }

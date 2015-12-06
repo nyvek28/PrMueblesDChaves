@@ -73,5 +73,41 @@ public class MultiMontador {
 		return m;
 		
 	}
+	
+	/*
+	Autor: Emilio Montero 
+	Descripcion: Metodo que busca la informacion de un objeto Montador mediante su nombre y lo 
+	crea basado en esa info
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
+	
+	public Montador buscar(String nombre) throws SQLException, Exception{
+		
+		Montador m;
+		String sql;
+		ResultSet rs;
+		
+		sql = "SELECT * "
+			+ "FROM TbMontador "
+			+ "WHERE nombre = "+nombre
+			+ " AND switch != 0";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		if(rs.next()){
+			m = new Montador(
+					rs.getInt("id"),
+					rs.getString("nombre"),
+					rs.getString("apellido"),
+					rs.getInt("telefono"),
+					rs.getString("direccion"));
+		}else{
+			m = null;
+		}
+		
+		return m;
+		
+	}
 
 }

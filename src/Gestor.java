@@ -166,6 +166,54 @@ public class Gestor {
 	
 	/*
 	Autor: Emilio Montero
+	Descripcion: Metodo para consultar un Montador por su id
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> consultarMontador(int id) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Montador m;
+		
+		m = (new MultiMontador()).buscar(id);
+		if(m != null){
+			datos = this.montadorToTreeMap(m);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para consultar un Montador por su nombre
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> consultarMontador(String nombre) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Montador m;
+		
+		m = (new MultiMontador()).buscar(nombre);
+		if(m != null){
+			datos = this.montadorToTreeMap(m);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
 	Descripcion: Metodo que convierte un montador en un treemap
 	Version: v.1.0
 	Fecha: Dic 5, 2015
