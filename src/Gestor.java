@@ -223,14 +223,19 @@ public class Gestor {
 		
 		
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que registra un mueble
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
 	public TreeMap<String, String> consultarMueble(int idMueble)throws Exception{
 		Mueble mueble=Empresa.consultarMueble(idMueble);
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
-		datosMueble.put("ID", String.valueOf(mueble.getId()));
-		datosMueble.put("Linea", String.valueOf(mueble.getLinea()));
-		datosMueble.put("Color", String.valueOf(mueble.getColor()));
-		datosMueble.put("Dimensiones", String.valueOf(mueble.getDimensiones()));
-		datosMueble.put("Categoria", String.valueOf(mueble.getCategoria()));
+		datosMueble=this.muebleToTreeMap(mueble);
+		
 		
 		return datosMueble;
 		
