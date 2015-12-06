@@ -141,5 +141,26 @@ public class MultiMontador {
 		return m;
 		
 	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que elimina a un objeto Montador logicamente de la base de datos
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public Montador eliminar(Montador m){
+		
+		if(m.getSwitCh() != 0){
+			m.setSwitCh(0);
+			this.modificar(m);
+		}else{
+			m = null;
+		}
+		
+		return m;
+		
+	}
 
 }

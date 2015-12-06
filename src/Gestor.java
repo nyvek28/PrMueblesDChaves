@@ -238,6 +238,30 @@ public class Gestor {
 	
 	/*
 	Autor: Emilio Montero
+	Descripcion: Metodo para eliminar un Montador por su id
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> eliminarMontador(int id) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Montador m;
+		
+		m = Empresa.eliminarMontador(id);
+		if(m != null){
+			datos = this.montadorToTreeMap(m);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
 	Descripcion: Metodo que convierte un montador en un treemap
 	Version: v.1.0
 	Fecha: Dic 5, 2015

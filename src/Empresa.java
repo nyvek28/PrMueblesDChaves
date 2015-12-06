@@ -132,6 +132,27 @@ public class Empresa {
 		
 	}
 	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que elimina a un montador
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public static Montador eliminarMontador(int id) throws SQLException, Exception{
+		
+		Montador m;
+		
+		m = (new MultiMontador()).buscar(id);
+		if(m != null){
+			m = (new MultiMontador()).eliminar(m);
+		}
+		
+		return m;
+		
+	}
+	
 	public static Mueble consultarMueble(int idMueble)throws Exception{
 		Mueble mueble;
 		mueble=(new MultiMueble()).buscarid(idMueble);
