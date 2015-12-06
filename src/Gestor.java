@@ -47,6 +47,26 @@ public class Gestor {
 	}
 	
 	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para registrar un Montador
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String,String> RegistrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
+		
+		TreeMap<String,String> datos;
+		Montador m;
+		
+		m = Empresa.registrarMontador(id, pNombre, pApellido, pTelefono, pDireccion);
+		datos = this.montadorToTreeMap(m);
+		
+		return datos;
+		
+	}
+	
+	/*
 	Autor: Kevyn Quiros
 	Descripcion: Metodo para consultar un Fabricante por su id
 	Version: v.1.0
@@ -89,6 +109,28 @@ public class Gestor {
 		datos.put("direccion", f.getDireccion());
 		datos.put("linea", String.valueOf(f.getLinea()));
 		datos.put("annosExp", String.valueOf(f.getAnnosExp()));
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que convierte un montador en un treemap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	private TreeMap<String, String> montadorToTreeMap(Montador m){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(m.getId()));
+		datos.put("nombre", m.getNombre());
+		datos.put("apellido", m.getApellido());
+		datos.put("telefono", String.valueOf(m.getTelefono()));
+		datos.put("direccion", m.getDireccion());
 		
 		return datos;
 		

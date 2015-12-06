@@ -23,6 +23,24 @@ public class Empresa {
 	}
 	
 	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para que la empresa registre un Montador
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public static Montador registrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
+		
+		Montador m;
+		
+		m = (new MultiMontador()).crear(id,pNombre, pApellido, pTelefono, pDireccion);
+		
+		return m;
+		
+	}
+	
+	/*
 	Autor: Kevyn Quiros
 	Descripcion: Metodo que busca un fabricante por su id
 	Version: v.1.0
