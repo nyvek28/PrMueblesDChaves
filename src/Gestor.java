@@ -225,7 +225,7 @@ public class Gestor {
 	}
 	/*
 	Autor: Daniel Chaves
-	Descripcion: Metodo que registra un mueble
+	Descripcion: Metodo que consulta un mueble
 	Version: v.1.0
 	Fecha: Dic 5, 2015
 	Ediciones:
@@ -240,12 +240,25 @@ public class Gestor {
 		return datosMueble;
 		
 	}
-	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
-		Juego juego=Empresa.consultarJuego(idJuego);
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que convierte info de Juego en TreeMap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+private TreeMap<String, String> juegoToTreeMap(Juego juego){
+		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		datosJuego.put("ID", String.valueOf(juego.getId()));
 		datosJuego.put("Montador", String.valueOf(juego.getIdMontador()));
 		
+		return datosJuego;
+	}
+	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
+		Juego juego=Empresa.consultarJuego(idJuego);
+		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		
 		
 		return datosJuego;
