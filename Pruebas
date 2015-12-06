@@ -138,7 +138,7 @@ Código:
 			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
 				+ "Id: "+v.get("id")+"\n";
 		}else{
-			msj = "No se encontro el fabricante que busca";
+			msj = "No se encontro el montador que busca";
 		}
 		
 		System.out.println(msj);
@@ -221,9 +221,39 @@ Código:
 		if(v != null){
 			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n";
 		}else{
-			msj = "No se encontro el fabricante que busca";
+			msj = "No se encontro el cliente que busca";
 		}
 		
 		System.out.println(msj);
 ====================================================
+====================================================
+Autor: Emilio Montero
+Fecha: Dic 6, 2015
+Caso de uso: Eliminar Cliente (CU24 )
+Nombre de la prueba: Eliminacion de un Cliente
+Resultado: Exitoso
+Código:
 
+		v = g.RegistrarCliente(9,"Alvaro", "Chief", 2345, "por ahi","limpiador de zapatos",2321);
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n");
+		
+		v = g.eliminarCliente(9);
+		if(v != null){
+			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n";
+		}else{
+			msj = "No se encontro el cliente que busca";
+		}
+	
+		System.out.println(msj);
+		
+		v = g.consultarCliente(9);
+		if(v != null){
+			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n";
+		}else{
+			msj = "No se encontro el cliente que busca";
+		}
+		
+		System.out.println(msj);
+	
+====================================================

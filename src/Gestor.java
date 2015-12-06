@@ -358,14 +358,14 @@ public class Gestor {
 	Ediciones:
 
 	*/
-	public TreeMap<String, String> eliminarMontador(int id) throws SQLException, Exception{
+	public TreeMap<String, String> eliminarCliente(int id) throws SQLException, Exception{
 		
 		TreeMap<String, String> datos;
-		Montador m;
+		Cliente c;
 		
-		m = Empresa.eliminarMontador(id);
-		if(m != null){
-			datos = this.montadorToTreeMap(m);
+		c = Empresa.eliminarCliente(id);
+		if(c != null){
+			datos = this.clienteToTreeMap(c);
 		}else{
 			datos = null;
 		}
