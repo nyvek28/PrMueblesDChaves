@@ -35,7 +35,7 @@ public class MultiJuego {
 		Juego juego;
 		java.sql.ResultSet rs;
 		String sql;
-		sql = "SELECT id,idMontador,idMueble1,idMueble2,idMueble3,idMueble4 "+
+		sql = "SELECT id,idMontador "+
 		"FROM TJuego "+
 		"WHERE Id = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
@@ -48,6 +48,32 @@ public class MultiJuego {
 		}
 		rs.close();
 		return juego; 
+	}
+	public ArrayList<Mueble> buscarMuebleddeJuego(int pid)throws java.sql.SQLException,Exception{
+		java.sql.ResultSet rs;
+		String sql;
+		Mueble m;
+		String msj="";
+		ArrayList<Mueble> listaMueble= new ArrayList<Mueble>();
+		sql = "SELECT id,linea,color,ancho,alto,largo,categoria "+
+		"FROM TMueble "+
+		"WHERE IdJuego = '"+pid+"'";
+		rs = Conector.getConector().ejecutarSQL(sql,true);
+		while(rs.next()){
+			m= new Mueble(
+					rs.getInt("id"),
+					rs.getInt("linea"),
+					rs.getString("color"),
+					rs.getDouble("ancho"),
+					rs.getDouble("alto"),
+					rs.getDouble("largo"),
+					rs.getString("categoria"));
+			listaMueble.add(m);
+			
+		}
+		return listaMueble;
+		
+		
 	}
 	
 	

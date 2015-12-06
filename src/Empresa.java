@@ -120,7 +120,7 @@ public class Empresa {
 	
 	}
 	//Daniel Chaves
-	public static Juego crearJuego(int idMontador,int id){
+	public static Juego crearJuego(int idMontador,int id)throws Exception{
 		Montador m=(new MultiMontador().buscar(idMontador));
 		Juego juego=m.crearJuego(id);
 		return juego;

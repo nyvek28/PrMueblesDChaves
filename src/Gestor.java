@@ -251,18 +251,44 @@ public class Gestor {
 private TreeMap<String, String> juegoToTreeMap(Juego juego){
 		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
+		
+		String info;
+		ArrayList<Mueble> listaMuebles=(new MultiJuego().buscarMuebleddeJuego(juego.getId()));
+		for(int i;i<listaMuebles.size();i++){
+			Mueble m=listaMuebles.get(i);
+			info+="\n Mueble"+i+": "+ m.toString();
+				
+		}
 		datosJuego.put("ID", String.valueOf(juego.getId()));
 		datosJuego.put("Montador", String.valueOf(juego.getIdMontador()));
+		datosJuego.put("Informacion Muebles", info);
 		
 		return datosJuego;
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que consulta un Juego
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	 */
+
+
 	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
 		Juego juego=Empresa.consultarJuego(idJuego);
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		
+		datosJuego=this.juegoToTreeMap(juego);
 		
 		return datosJuego;
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que registra un Juego
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
 	public TreeMap<String, String> registrarJuego(int idMontador, int id)throws Exception{
 		Juego j=Empresa.crearJuego(idMontador, id);
 		
@@ -270,8 +296,8 @@ private TreeMap<String, String> juegoToTreeMap(Juego juego){
 		datosJuego.put("ID", String.valueOf(j.getId()));
 		datosJuego.put("Montador", String.valueOf(j.getIdMontador()));
 		
-		
 		return datosJuego;
 		
 	}
+	public void modificarJuego()
 }
