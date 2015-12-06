@@ -19,13 +19,14 @@ public class MultiMontador {
 		String sql;
 		
 		m = new Montador(id,pNombre, pApellido, pTelefono, pDireccion);
-		sql = "INSERT INTO TbMontador"
+		sql = "INSERT INTO TbMontador "
 			+ "VALUES ("
 			+ m.getId()+","
 			+ "'"+m.getNombre()+"',"
 			+"'"+m.getApellido()+"',"
 			+m.getTelefono()+","
-			+"'"+m.getDireccion()+")";
+			+"'"+m.getDireccion()+"',"
+			+m.getSwitCh()+")";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
 		} catch (Exception ex) {

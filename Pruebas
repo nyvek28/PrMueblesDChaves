@@ -96,4 +96,17 @@ Código:
 	
 	System.out.println(msj);
 ====================================================
+====================================================
+
+Autor: Emilio
+Fecha: Dic 4, 2015
+Caso de uso: Registrar Montador (CU17)
+Nombre de la prueba: Registro de un Montador
+Resultado: Exitoso
+codigo:
+	v = g.RegistrarMontador(4,"Master", "Chief", 2345, "por ahi");
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
+
+====================================================
 

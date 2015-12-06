@@ -10,6 +10,10 @@ public class Main {
 		ArrayList a = new ArrayList();
 		String msj;
 		g.inicializarPrograma();
+		
+		v = g.RegistrarMontador(3,"Master", "Chief", 2345, "por ahi");
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 	
 	}
 
