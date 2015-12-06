@@ -214,6 +214,30 @@ public class Gestor {
 	
 	/*
 	Autor: Emilio Montero
+	Descripcion: Metodo que busca un montador por su id
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> modificarMontador(int id, String nombre, String apellido, int telefono, String direccion) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Montador m;
+		
+		m = Empresa.modificarMontador(id, nombre, apellido, telefono, direccion);
+		if(m != null){
+			datos = this.montadorToTreeMap(m);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
 	Descripcion: Metodo que convierte un montador en un treemap
 	Version: v.1.0
 	Fecha: Dic 5, 2015

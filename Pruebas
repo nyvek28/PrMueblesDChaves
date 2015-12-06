@@ -122,4 +122,25 @@ codigo:
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 
 ====================================================
+====================================================
+Autor: Emilio Montero 
+Fecha: Dic 6, 2015
+Caso de uso: Modificar Montador (CU19 )
+Nombre de la prueba: Modificar Montador
+Resultado: Exitoso
+Código:
+	v = g.RegistrarMontador(4,"Master", "Chief", 2345, "por ahi");
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
+		
+		v = g.modificarMontador(4, "Marco", "Odueuber", 3344, "San Jose");
+		if(v != null){
+			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+				+ "Id: "+v.get("id")+"\n";
+		}else{
+			msj = "No se encontro el fabricante que busca";
+		}
+		
+		System.out.println(msj);
+====================================================
 

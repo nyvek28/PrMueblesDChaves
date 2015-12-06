@@ -10,10 +10,6 @@ public class Main {
 		ArrayList a = new ArrayList();
 		String msj;
 		g.inicializarPrograma();
-		
-		v = g.consultarMontador("kevin");
-
-		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 	}
 
 }
