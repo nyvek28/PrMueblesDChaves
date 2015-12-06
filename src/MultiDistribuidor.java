@@ -1,5 +1,6 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MultiDistribuidor {
 
@@ -76,6 +77,15 @@ public class MultiDistribuidor {
 		
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que actualiza un objeto Distribuidor que se le envie
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
 	public Distribuidor modificar(Distribuidor d){
 		
 		String sql;
@@ -100,6 +110,15 @@ public class MultiDistribuidor {
 		
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que elimina a un objeto Distribuidor logicamente de la base de datos
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
 	public Distribuidor eliminar(Distribuidor d){
 		
 		if(d.getSwitCh() != 0){
@@ -113,6 +132,15 @@ public class MultiDistribuidor {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que busca un objeto Distribuidor y luego lo elimina logicamente de la base de 
+	datos
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
 	public Distribuidor eliminar(int id) throws SQLException, Exception{
 		
 		Distribuidor d;
@@ -123,6 +151,42 @@ public class MultiDistribuidor {
 		}
 		
 		return d;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para listar todos los distribuidores en la base de datos
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public ArrayList<Distribuidor> listar() throws Exception{
+		
+		Distribuidor d;
+		String sql;
+		ResultSet rs;
+		ArrayList<Distribuidor> tabla = new ArrayList<Distribuidor>();
+		
+		sql = "SELECT * "
+			+ "FROM TbFabricante ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			d = new Distribuidor(
+					rs.getInt("id"),
+					rs.getString("nombre"),
+					rs.getString("direccion"),
+					rs.getInt("telefono"),
+					rs.getDouble("porcentaje"),
+					rs.getInt("switch"));
+			tabla.add(d);
+		}
+		if(tabla.size()<1){
+			tabla = null;
+		}
+		
+		return tabla;
 		
 	}
 	
