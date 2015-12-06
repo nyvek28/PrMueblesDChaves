@@ -109,5 +109,37 @@ public class MultiMontador {
 		return m;
 		
 	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que actualiza un objeto Montador que se le envie
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public Montador modificar(Montador m){
+		
+		String sql;
+		
+		sql = " UPDATE TbMontador "
+			+ " SET "
+			+ " id = "+m.getId()+","
+			+ " nombre = '"+m.getNombre()+"',"
+			+ " apellido = '"+m.getApellido()+"',"
+			+ " telefono = "+m.getTelefono()+","
+			+ " direccion = '"+m.getDireccion()+"',"
+			+ " switCh = "+m.getSwitCh()+" "
+			+ " WHERE id = "+m.getId();
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		} catch (Exception e) {
+			m = null;
+			e.printStackTrace();
+		}
+		
+		return m;
+		
+	}
 
 }

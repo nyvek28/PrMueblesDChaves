@@ -41,30 +41,27 @@ public class Empresa {
 	}
 	
 	/*
-	Autor: Kevyn Quiros
-	Descripcion: Metodo que modifica un fabricante
+	Autor: Emilio Montero
+	Descripcion: Metodo que modifica un Montador
 	Version: v.1.0
-	Fecha: Dic 5, 2015
+	Fecha: Dic 6, 2015
 	Ediciones:
 
 	*/
-	public static Fabricante modificarFabricante(int id, String nombre, String apellido, int telefono, String direccion,
-			int linea, int annos) throws SQLException, Exception{
+	public static Montador modificarMontador(int id, String nombre, String apellido, int telefono, String direccion) throws SQLException, Exception{
 		
-		Fabricante f;
+		Montador m;
 		
-		f = (new MultiFabricante()).buscar(id);
-		if(f != null){
-			f.setNombre(nombre);
-			f.setApellido(apellido);
-			f.setTelefono(telefono);
-			f.setDireccion(direccion);
-			f.setLinea(linea);
-			f.setAnnosExp(annos);
-			f = (new MultiFabricante()).modificar(f);
+		m = (new MultiMontador()).buscar(id);
+		if(m != null){
+			m.setNombre(nombre);
+			m.setApellido(apellido);
+			m.setTelefono(telefono);
+			m.setDireccion(direccion);
+			m = (new MultiMontador()).modificar(m);
 		}
 		
-		return f;
+		return m;
 		
 	}
 	
@@ -104,6 +101,34 @@ public class Empresa {
 		m = (new MultiMontador()).crear(id,pNombre, pApellido, pTelefono, pDireccion);
 		
 		return m;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que modifica un fabricante
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public static Fabricante modificarFabricante(int id, String nombre, String apellido, int telefono, String direccion,
+			int linea, int annos) throws SQLException, Exception{
+		
+		Fabricante f;
+		
+		f = (new MultiFabricante()).buscar(id);
+		if(f != null){
+			f.setNombre(nombre);
+			f.setApellido(apellido);
+			f.setTelefono(telefono);
+			f.setDireccion(direccion);
+			f.setLinea(linea);
+			f.setAnnosExp(annos);
+			f = (new MultiFabricante()).modificar(f);
+		}
+		
+		return f;
 		
 	}
 	
