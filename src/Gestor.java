@@ -328,6 +328,54 @@ public class Gestor {
 	
 	/*
 	Autor: Emilio Montero
+	Descripcion: Metodo que busca un montador por su id
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> modificarCliente(int id, String nombre, String apellido, int telefono, String direccion, String trabajo, int telTrabajo) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Cliente c;
+		
+		c = Empresa.modificarCliente(id, nombre, apellido, telefono, direccion,trabajo,telTrabajo);
+		if(c != null){
+			datos = this.clienteToTreeMap(c);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para eliminar un Montador por su id
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> eliminarMontador(int id) throws SQLException, Exception{
+		
+		TreeMap<String, String> datos;
+		Montador m;
+		
+		m = Empresa.eliminarMontador(id);
+		if(m != null){
+			datos = this.montadorToTreeMap(m);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
 	Descripcion: Metodo que convierte un cliente en un treemap
 	Version: v.1.0
 	Fecha: Dic 6, 2015

@@ -206,4 +206,24 @@ codigo:
 	System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n");
 
 ====================================================
+====================================================
+Autor: Emilio Montero 
+Fecha: Dic 6, 2015
+Caso de uso: Modificar Montador (CU23 )
+Nombre de la prueba: Modificar Cliente
+Resultado: Exitoso
+Código:
+	v = g.RegistrarCliente(8,"Master", "Chief", 2345, "por ahi","limpiador de zapatos",2321);
+
+		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n");
+		
+		v = g.modificarCliente(8, "Marco", "Odueuber", 3344, "San Jose","jJAJAJAJA",34322);
+		if(v != null){
+			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n";
+		}else{
+			msj = "No se encontro el fabricante que busca";
+		}
+		
+		System.out.println(msj);
+====================================================
 
