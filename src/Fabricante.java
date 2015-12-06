@@ -74,7 +74,7 @@ public class Fabricante extends Persona {
 		
 		m = (new MultiMueble()).buscarF(this.getId());
 		
-		return muebles;
+		return m;
 	}
 	public void setMuebles(ArrayList<Mueble> muebles) {
 		this.muebles = muebles;
