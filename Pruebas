@@ -30,5 +30,40 @@ Código:
 						+"Identificacion: "+v.get("id")+"\n"
 						+"Anos de experiencia:"   
 						+v.get("annosExp")+"\n");
-
+====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 5, 2015
+Caso de uso: Consultar Fabricante (CU3 )
+Nombre de la prueba: Consulta de un cliente
+Resultado: Exitoso
+Código:
+	v = g.consultarFabricante(10);
+	if(v != null){
+		msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+			+ "Id: "+v.get("id")+"\n"
+			+ "Annos de Experiencia: "+v.get("annosExp")+"\n";
+	}else{
+		msj = "No se encontro el fabricante que busca";
+	}
+	
+	System.out.println(msj);
+====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 5, 2015
+Caso de uso: Modificar Fabricante (CU2 )
+Nombre de la prueba: Consulta de un cliente
+Resultado: Exitoso
+Código:
+	v = g.modificarFabricante(1, "Marco", "Odueuber", 3344, "San Jose", 3, 40);
+	if(v != null){
+		msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
+			+ "Id: "+v.get("id")+"\n"
+			+ "Annos de Experiencia: "+v.get("annosExp")+"\n";
+	}else{
+		msj = "No se encontro el fabricante que busca";
+	}
+	
+	System.out.println(msj);
 ====================================================
