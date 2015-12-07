@@ -265,7 +265,7 @@ Nombre de la prueba: Registro de un distribuidor
 Resultado: Fallido (Al registrar 2 o mas distribuidores de mismo id no se produce un error, por lo cual existen multibles ids
 iguales, fuera de eso el caso funciona en su logica)
 Código:
-	v = g.registrarDistribuidor("Carrion", "San Jose", 22375454, 12);
+		v = g.registrarDistribuidor("Carrion", "San Jose", 22375454, 12);
 		if(v != null){
 			msj = "Nombre: " + v.get("nombre") + "\n"
 				+ "Direccion: " + v.get("direccion") + "\n"
@@ -281,4 +281,22 @@ Código:
 		for(int i = 0; i < a.size(); i++){
 			System.out.println("id: "+a.get(i).getId()+"\n");
 		}
+====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 6, 2015
+Caso de uso: Eliminar Fabricante (CU8 )
+Nombre de la prueba: Registro de un distribuidor
+Resultado: Exitoso
+Código:
+		v = g.registrarDistribuidor("Muebleria Gonzales", "Aqui", 45098878, 13);
+		if(v != null){
+			msj = "Id: " + v.get("id") + "\n"
+				+ "Nombre: " + v.get("nombre") + "\n"
+				+ "Direccion: " + v.get("direccion") + "\n";
+		}else{
+			msj = "No se registro el distribuidor";
+		}
+		
+		System.out.println(msj);
 ====================================================
