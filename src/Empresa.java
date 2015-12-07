@@ -264,4 +264,14 @@ public class Empresa {
 
 	}
 	
+	public static Distribuidor consultarDistribuidor(int id) throws SQLException, Exception{
+		
+		Distribuidor d;
+		
+		d = (new MultiDistribuidor()).buscar(id);
+		
+		return d;
+		
+	}
+	
 }

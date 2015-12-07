@@ -20,7 +20,7 @@ public class MultiMontador {
 		
 		m = new Montador(id,pNombre, pApellido, pTelefono, pDireccion);
 		sql = "INSERT INTO TbMontador "
-			+ "VALUES ("
+			+ " VALUES ("
 			+ m.getId()+","
 			+ "'"+m.getNombre()+"',"
 			+"'"+m.getApellido()+"',"

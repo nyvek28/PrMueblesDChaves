@@ -584,9 +584,19 @@ public class Gestor {
 		
 	}
 	
-	public TreeMap<String, String> consultarDistribuidor(){
+	public TreeMap<String, String> consultarDistribuidor(int id) throws SQLException, Exception{
 		
+		TreeMap<String, String> datos;
+		Distribuidor d;
 		
+		d = Empresa.consultarDistribuidor(id);
+		if(d != null){
+			datos = this.distribuidorToTreeMap(d);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
 		
 	}
 	

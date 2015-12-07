@@ -104,7 +104,7 @@ Caso de uso: Registrar Montador (CU17)
 Nombre de la prueba: Registro de un Montador
 Resultado: Exitoso
 codigo:
-	v = g.RegistrarMontador(4,"Master", "Chief", 2345, "por ahi");
+	v = g.registrarMontador(4,"Master", "Chief", 2345, "por ahi");
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 
@@ -129,7 +129,7 @@ Caso de uso: Modificar Montador (CU19 )
 Nombre de la prueba: Modificar Montador
 Resultado: Exitoso
 Código:
-	v = g.RegistrarMontador(4,"Master", "Chief", 2345, "por ahi");
+	v = g.registrarMontador(4,"Master", "Chief", 2345, "por ahi");
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 		
@@ -151,7 +151,7 @@ Nombre de la prueba: Eliminacion de un Montador
 Resultado: Exitoso
 Código:
 
-		v = g.RegistrarMontador(5,"Luna", "MasterChief", 2345, "por ahi");
+		v = g.registrarMontador(5,"Luna", "MasterChief", 2345, "por ahi");
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 		
@@ -184,7 +184,7 @@ Caso de uso: Registrar Cliente (CU21)
 Nombre de la prueba: Registro de un Cliente
 Resultado: Exitoso
 codigo:
-	v = g.RegistrarCliente(4,"Master", "Chief", 2345, "por ahi", "Ingeniero de software", 22323);
+	v = g.registrarCliente(4,"Master", "Chief", 2345, "por ahi", "Ingeniero de software", 22323);
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n");
 
@@ -213,7 +213,7 @@ Caso de uso: Modificar Montador (CU23 )
 Nombre de la prueba: Modificar Cliente
 Resultado: Exitoso
 Código:
-	v = g.RegistrarCliente(8,"Master", "Chief", 2345, "por ahi","limpiador de zapatos",2321);
+	v = g.registrarCliente(8,"Master", "Chief", 2345, "por ahi","limpiador de zapatos",2321);
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n");
 		
@@ -234,7 +234,7 @@ Nombre de la prueba: Eliminacion de un Cliente
 Resultado: Exitoso
 Código:
 
-		v = g.RegistrarCliente(9,"Alvaro", "Chief", 2345, "por ahi","limpiador de zapatos",2321);
+		v = g.registrarCliente(9,"Alvaro", "Chief", 2345, "por ahi","limpiador de zapatos",2321);
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n" + "Trabajo: "+v.get("trabajo") + "\n" + "Telefono Trabajo: "+v.get("telTrabajo")+"\n");
 		
@@ -285,7 +285,7 @@ Código:
 ====================================================
 Autor: Kevyn Quiros
 Fecha: Dic 6, 2015
-Caso de uso: Eliminar Fabricante (CU8 )
+Caso de uso: Registrar Distribuidor (CU8 )
 Nombre de la prueba: Registro de un distribuidor
 Resultado: Exitoso
 Código:
@@ -296,6 +296,24 @@ Código:
 				+ "Direccion: " + v.get("direccion") + "\n";
 		}else{
 			msj = "No se registro el distribuidor";
+		}
+		
+		System.out.println(msj);
+====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 6, 2015
+Caso de uso: Consultar Distribuidor (CU9 )
+Nombre de la prueba: Consulta de un distribuidor
+Resultado: Exitoso
+Código:
+		int id = 4;
+		v = g.consultarDistribuidor(id);
+		if(v != null){
+			msj = "Id: " + v.get("id") + "\n"
+				+ "Nombre: " + v.get("nombre") + "\n";
+		}else{
+			msj = "No se encontro ningun distribuidor con el id "+id;
 		}
 		
 		System.out.println(msj);
