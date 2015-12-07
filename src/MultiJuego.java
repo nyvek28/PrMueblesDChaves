@@ -13,7 +13,13 @@ import java.util.ArrayList;
 
 
 public class MultiJuego {
-	
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que crear juego en BD
+	Version: v.1.0
+	Fecha: Dic 7, 2015
+	Ediciones:
+	 */
 	public Juego crear(int pid, int pidMontador)throws Exception{
 		
 		Juego juego=null;
@@ -30,6 +36,13 @@ public class MultiJuego {
 		return juego;
 	
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que busca juego en BD
+	Version: v.1.0
+	Fecha: Dic 7, 2015
+	Ediciones:
+	 */
 	public  Juego buscarid(int pid) throws java.sql.SQLException,Exception{
 		
 		Juego juego;
@@ -49,6 +62,13 @@ public class MultiJuego {
 		rs.close();
 		return juego; 
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que buesca mueble de juego en BD
+	Version: v.1.0
+	Fecha: Dic 7, 2015
+	Ediciones:
+	 */
 	public ArrayList<Mueble> buscarMuebleddeJuego(int pid)throws java.sql.SQLException,Exception{
 		java.sql.ResultSet rs;
 		String sql;
