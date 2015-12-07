@@ -245,4 +245,23 @@ public class Empresa {
 			juego.eliminar();
 		}
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para que la empresa registre un Distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public static Distribuidor registrarDistribuidor(String nombre, String direccion, int telefono, double porcentaje){
+		
+		Distribuidor d;
+		
+		d = (new MultiDistribuidor()).crear(nombre, direccion, telefono, porcentaje);
+		
+		return d;
+
+	}
+	
 }
