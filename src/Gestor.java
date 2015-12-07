@@ -532,4 +532,51 @@ private TreeMap<String, String> juegoToTreeMap(Juego juego)throws Exception{
 		Empresa.eliminarJuego(idJuego);
 		
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para registrar un distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> registrarDistribuidor(String nombre, String direccion, int telefono, double porcentaje){
+		
+		TreeMap<String, String> datos;
+		Distribuidor d;
+		
+		d = Empresa.registrarDistribuidor(nombre, direccion, telefono, porcentaje);
+		if(d != null){
+			datos = this.distribuidorToTreeMap(d);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para convertir un distribuidor en un treemap
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	private TreeMap<String, String> distribuidorToTreeMap(Distribuidor d){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(d.getId()));
+		datos.put("nombre", d.getNombre());
+		datos.put("telefono", String.valueOf(d.getTelefono()));
+		datos.put("direccion", d.getDireccion());
+		datos.put("porcentaje", String.valueOf(d.getPorcentaje()));
+		
+		return datos;
+		
+	}
+	
 }
