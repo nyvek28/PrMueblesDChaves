@@ -584,12 +584,68 @@ public class Gestor {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para consultar un distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
 	public TreeMap<String, String> consultarDistribuidor(int id) throws SQLException, Exception{
 		
 		TreeMap<String, String> datos;
 		Distribuidor d;
 		
 		d = Empresa.consultarDistribuidor(id);
+		if(d != null){
+			datos = this.distribuidorToTreeMap(d);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para modificar un distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> modificarDistribuidor(int id, String nombre, String direccion, int telefono, double porcentaje) throws SQLException, Exception{
+		
+		Distribuidor d;
+		TreeMap<String, String> datos;
+		
+		d = Empresa.modificarDistribuidor(id, nombre, direccion, telefono, porcentaje);
+		if(d != null){
+			datos = this.distribuidorToTreeMap(d);
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para eliminar un distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> eliminarDistribuidor(int id) throws SQLException, Exception{
+		
+		Distribuidor d;
+		TreeMap<String, String> datos;
+		
+		d = Empresa.eliminarDistribuidor(id);
 		if(d != null){
 			datos = this.distribuidorToTreeMap(d);
 		}else{

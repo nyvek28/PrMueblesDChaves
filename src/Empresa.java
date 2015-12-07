@@ -264,11 +264,66 @@ public class Empresa {
 
 	}
 	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para que la empresa consulte un Distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
 	public static Distribuidor consultarDistribuidor(int id) throws SQLException, Exception{
 		
 		Distribuidor d;
 		
 		d = (new MultiDistribuidor()).buscar(id);
+		
+		return d;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para que la empresa modifique un Distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public static Distribuidor modificarDistribuidor(int id, String nombre, String direccion, int telefono, double porcentaje) throws SQLException, Exception{
+		
+		Distribuidor d;
+		
+		d = (new MultiDistribuidor()).buscar(id);
+		if(d != null){
+			d.setNombre(nombre);
+			d.setDireccion(direccion);
+			d.setTelefono(telefono);
+			d.setPorcentaje(porcentaje);
+			d = (new MultiDistribuidor()).modificar(d);
+		}
+		
+		return d;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para que la empresa modifique un Distribuidor
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public static Distribuidor eliminarDistribuidor(int id) throws SQLException, Exception{
+		
+		Distribuidor d;
+		
+		d = (new MultiDistribuidor()).buscar(id);
+		if(d != null){
+			d = (new MultiDistribuidor()).eliminar(d);
+		}
 		
 		return d;
 		

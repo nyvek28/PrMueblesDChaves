@@ -318,3 +318,39 @@ Código:
 		
 		System.out.println(msj);
 ====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 6, 2015
+Caso de uso: Modificar Distribuidor (CU10 )
+Nombre de la prueba: Modificacion de un distribuidor
+Resultado: Exitoso
+Código:
+		v = g.modificarDistribuidor(6, "El Armario", "San Jose", 22335612, 29.7);
+		if(v != null){
+			msj = "Id: " + v.get("id") + "\n"
+				+ "Nombre: " + v.get("nombre") + "\n"
+				+ "Porcentaje de ganancia: " + v.get("porcentaje") + "%" + "\n";
+		}else{
+			msj = "No se modifico el distribuidor";
+		}
+		
+		System.out.println(msj);
+====================================================
+====================================================
+Autor: Kevyn Quiros
+Fecha: Dic 6, 2015
+Caso de uso: Eliminar Distribuidor (CU11 )
+Nombre de la prueba: Eliminacion de un distribuidor
+Resultado: Exitoso
+Código:
+		v = g.eliminarDistribuidor(2);
+		if(v != null){
+			msj = "Id: " + v.get("id") + "\n"
+				+ "Nombre: " + v.get("nombre") + "\n"
+				+ "Porcentaje de ganancia: " + v.get("porcentaje") + "%" + "\n";
+		}else{
+			msj = "No se elimino el distribuidor";
+		}
+		
+		System.out.println(msj);
+====================================================
