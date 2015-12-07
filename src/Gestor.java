@@ -584,4 +584,10 @@ public class Gestor {
 		
 	}
 	
+	public TreeMap<String, String> consultarDistribuidor(){
+		
+		
+		
+	}
+	
 }
