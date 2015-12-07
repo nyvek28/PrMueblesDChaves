@@ -170,7 +170,7 @@ public class MultiDistribuidor {
 		ArrayList<Distribuidor> tabla = new ArrayList<Distribuidor>();
 		
 		sql = "SELECT * "
-			+ "FROM TbFabricante ";
+			+ "FROM TbDistribuidor ";
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			d = new Distribuidor(
