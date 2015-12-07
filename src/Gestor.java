@@ -15,12 +15,17 @@ public class Gestor {
 	public void inicializarPrograma() throws Exception{
 		
 		ArrayList<Fabricante> fabricantes;
+		ArrayList<Distribuidor> distribuidores;
 		
 		fabricantes = (new MultiFabricante()).listar();
-		if(fabricantes != null){
+		distribuidores = (new MultiDistribuidor()).listar();
+		if(fabricantes != null && distribuidores != null){
 			
 			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());
+			Distribuidor.setConsecutivo(distribuidores.get(distribuidores.size()-1).getId());
 			
+		}else{
+			System.out.println("No se inicio correctamente el sistema");
 		}
 		
 	}
@@ -33,7 +38,7 @@ public class Gestor {
 	Ediciones:
 
 	*/
-	public TreeMap<String,String> RegistrarFabricante(String pNombre, String pApellido, int pTelefono, String pDireccion,
+	public TreeMap<String,String> registrarFabricante(String pNombre, String pApellido, int pTelefono, String pDireccion,
 			int linea, int annos){
 		
 		TreeMap<String,String> datos;
@@ -152,7 +157,7 @@ public class Gestor {
 	Ediciones:
 
 	*/
-	public TreeMap<String,String> RegistrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
+	public TreeMap<String,String> registrarMontador(int id, String pNombre, String pApellido, int pTelefono, String pDireccion){
 		
 		TreeMap<String,String> datos;
 		Montador m;
@@ -290,7 +295,7 @@ public class Gestor {
 	Ediciones:
 
 	*/
-	public TreeMap<String,String> RegistrarCliente(int id, String pNombre, String pApellido, int pTelefono, String pDireccion, String trabajo, int telTrabajo){
+	public TreeMap<String,String> registrarCliente(int id, String pNombre, String pApellido, int pTelefono, String pDireccion, String trabajo, int telTrabajo){
 		
 		TreeMap<String,String> datos;
 		Cliente c;
@@ -460,7 +465,7 @@ public class Gestor {
 	Ediciones:
 
 	*/
-private TreeMap<String, String> juegoToTreeMap(Juego juego)throws Exception{
+	private TreeMap<String, String> juegoToTreeMap(Juego juego)throws Exception{
 		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		
