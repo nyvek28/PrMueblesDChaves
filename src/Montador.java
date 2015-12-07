@@ -18,6 +18,12 @@ public class Montador extends Persona{
 		this.setJuegos(null);
 		
 	}
+	public void modificarJuego(int idJuego, int idMueble,int idmuebleEliminar)throws Exception{
+		Juego juego=(new MultiJuego().buscarid(idJuego));
+		
+		
+		
+	}
 
 	public ArrayList<Juego> getJuegos(){
 		ArrayList<Juego> j;

@@ -1,4 +1,4 @@
-En este documento debe de ir el nombre de la prueba, el autor, la fecha, el caso de uso y el código de la misma.
+﻿En este documento debe de ir el nombre de la prueba, el autor, la fecha, el caso de uso y el código de la misma.
 
 
 Plantilla:
@@ -354,3 +354,74 @@ Código:
 		
 		System.out.println(msj);
 ====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Registrar Mueble (CU5 )
+Nombre de la prueba: Crea un mueble
+Resultado: ?
+Código:
+		Fabricante f;
+		f=(new MultiFabricante()).buscar(idFabricante);
+		Mueble mueble=f.fabricarMueble(pid, plinea, pcolor, ancho, alto, largo, pcategoria);
+		TreeMap<String, String> datos;
+		datos=this.muebleToTreeMap(mueble);
+		return datos;
+
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Consultar Mueble (CU7 )
+Nombre de la prueba: Cinsulta los datos un mueble
+Resultado: ?
+Código:
+Mueble mueble=Empresa.consultarMueble(idMueble);
+		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
+		datosMueble=this.muebleToTreeMap(mueble);
+		
+		return datosMueble;
+
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Consultar Juego (CU13 )
+Nombre de la prueba: Cinsulta los datos un juego
+Resultado: ?
+Código:
+
+		Juego juego=Empresa.consultarJuego(idJuego);
+		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
+		datosJuego=this.juegoToTreeMap(juego);
+		
+		return datosJuego;
+
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Registrar Juego (CU14 )
+Nombre de la prueba: registra los datos un juego
+Resultado: ?
+Código:
+	Juego j=Empresa.crearJuego(idMontador, id);
+		
+		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
+		datosJuego.put("ID", String.valueOf(j.getId()));
+		datosJuego.put("Montador", String.valueOf(j.getIdMontador()));
+		
+		return datosJuego;
+
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Eliminar Juego (CU15 )
+Nombre de la prueba: elimina los datos un juego
+Resultado: ?
+Código:
+	Empresa.eliminarJuego(idJuego);
+
+
+

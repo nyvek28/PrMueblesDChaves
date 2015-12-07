@@ -453,7 +453,6 @@ public class Gestor {
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
 		datosMueble=this.muebleToTreeMap(mueble);
 		
-		
 		return datosMueble;
 		
 	}
@@ -523,7 +522,10 @@ public class Gestor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public void modificarJuego(){
+	public void modificarJuego(int idMontador,int idJuego, int idMueble,int idmuebleEliminar)throws Exception{
+		Juego juego=Empresa.consultarJuego(idJuego);
+		Montador montador=(new MultiMontador().buscar(idMontador));
+		montador.modificarJuego(idJuego, idMueble, idmuebleEliminar);
 		
 	}
 	/*

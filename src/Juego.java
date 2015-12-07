@@ -33,7 +33,9 @@ public class Juego {
 	public void setListaMuebles(int id1)throws Exception {
 		
 		listaMuebles.add((new MultiMueble()).buscarid(id1));
+		
 	}
+	
 	
 	
 	public int getId() {
