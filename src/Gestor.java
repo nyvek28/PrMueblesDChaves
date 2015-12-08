@@ -182,7 +182,7 @@ public class Gestor {
 		TreeMap<String, String> datos;
 		Montador m;
 		
-		m = (new MultiMontador()).buscar(id);
+		m = Empresa.consultarMontador(id);
 		if(m != null){
 			datos = this.montadorToTreeMap(m);
 		}else{

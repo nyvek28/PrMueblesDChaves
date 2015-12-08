@@ -109,6 +109,24 @@ public class Empresa {
 	
 	/*
 	Autor: Emilio Montero
+	Descripcion: Metodo que busca un montador por su id
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	public static Montador consultarMontador(int id) throws SQLException, Exception{
+		
+		Montador m;
+		
+		m = (new MultiMontador()).buscar(id);
+		
+		return m;
+		
+	}
+	
+	/*
+	Autor: Emilio Montero
 	Descripcion: Metodo que modifica un Montador
 	Version: v.1.0
 	Fecha: Dic 6, 2015

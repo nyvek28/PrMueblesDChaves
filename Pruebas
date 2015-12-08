@@ -151,11 +151,11 @@ Nombre de la prueba: Eliminacion de un Montador
 Resultado: Exitoso
 Código:
 
-		v = g.registrarMontador(5,"Luna", "MasterChief", 2345, "por ahi");
+		v = g.registrarMontador(101,"Luna", "MasterChief", 2345, "por ahi");
 
 		System.out.println("Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n");
 		
-		v = g.eliminarMontador(5);
+		v = g.eliminarMontador(101);
 		if(v != null){
 			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
 			+ "Id: "+v.get("id")+"\n";
@@ -165,7 +165,7 @@ Código:
 	
 		System.out.println(msj);
 		
-		v = g.consultarMontador(5);
+		v = g.consultarMontador(101);
 		if(v != null){
 			msj = "Nombre: "+v.get("nombre")+" "+v.get("apellido")+"\n"
 				+ "Id: "+v.get("id")+"\n";
