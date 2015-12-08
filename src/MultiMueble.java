@@ -15,7 +15,7 @@ import java.util.*;
 
 public class MultiMueble {
 		
-	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria)throws Exception{
+	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
 		Mueble mueble=null;
 		String sql;
 		return mueble;
@@ -33,14 +33,7 @@ public class MultiMueble {
 		"WHERE Isbn = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
-			mueble = new Mueble(
-				rs.getInt("id"),
-				rs.getInt("linea"),
-				rs.getString("color"),
-				rs.getDouble("ancho"),
-				rs.getDouble("alto"),
-				rs.getDouble("largo"),
-				rs.getInt("categoria"));
+			mueble = null;
 		} else {
 			mueble = null;
 		}
