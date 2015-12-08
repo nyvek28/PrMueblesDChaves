@@ -55,6 +55,17 @@ public class Distribuidor {
 		this.setJuegos(null);
 		
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que registra una venta
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public Venta registrarVenta(int idJuego, int idCliente)throws Exception{
+		Venta venta =(new MultiVenta().crear(idJuego, idCliente));
+		return venta;
+	}
 
 	public int getId() {
 		return id;

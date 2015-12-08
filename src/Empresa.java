@@ -328,5 +328,17 @@ public class Empresa {
 		return d;
 		
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que registra una venta
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public static Venta registrarVenta(int idDistribuidor, int idJuego, int idCliente)throws Exception{
+		Distribuidor distribuidor= (new MultiDistribuidor().buscar(idDistribuidor));
+		Venta venta=distribuidor.registrarVenta(idJuego, idCliente);
+		return venta;
+	}
 	
 }

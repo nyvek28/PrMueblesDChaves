@@ -657,5 +657,30 @@ public class Gestor {
 		return datos;
 		
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que registra una venta
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public TreeMap<String,String> registrarVenta(int idDistribuidor, int idJuego, int idCliente)throws Exception{
+		Venta venta=Empresa.registrarVenta(idDistribuidor, idJuego, idCliente);
+		TreeMap<String, String> infoVenta=this.ventaToString(venta);
+		return infoVenta;
+		
+	}
+	private TreeMap<String, String> ventaToString(Venta venta){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("idCliente", String.valueOf(venta.getIdCliente()));
+		datos.put("idJuego", String.valueOf(venta.getIdJuego()));
+		datos.put("Muebles", venta.getInfoMuebles());
+		
+		return datos;
+		
+		
+	}
 	
 }
