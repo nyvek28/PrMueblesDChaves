@@ -17,6 +17,7 @@ public class Mueble {
 	private int categoria;// 0 = alto, 1 = bajo, 2 = encimera, 4 = panel
 	private int switCh;
 	private int idJuego;
+	private double precio;
 	private static int consecutivo = 0;
 	
 	/*
@@ -28,13 +29,14 @@ public class Mueble {
 		-Kevyn Quiros, Dic 7,2015
 
 	*/
-	public Mueble(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria){
+	public Mueble(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio){
 		Mueble.setConsecutivo(Mueble.getConsecutivo()+1);
 		this.setId(Mueble.getConsecutivo());
 		this.setLinea(plinea);
 		this.setColor(pcolor);
 		this.setDimensiones(ancho, alto, largo);
 		this.setCategoria(pcategoria);
+		this.setPrecio(precio);
 		this.setIdJuego(-1);
 	}
 	
@@ -46,13 +48,14 @@ public class Mueble {
 	Ediciones:
 
 	*/
-	public Mueble(int id, int linea, String color, double ancho, double alto, double largo, int categoria, int switCh, int idJuego){
+	public Mueble(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego){
 		
 		this.setId(id);
 		this.setLinea(linea);
 		this.setColor(color);
 		this.setDimensiones(ancho, largo, alto);
 		this.setCategoria(categoria);
+		this.setPrecio(precio);
 		this.setSwitCh(switCh);
 		this.setIdJuego(idJuego);
 		
@@ -144,5 +147,13 @@ public class Mueble {
 
 	public void setDimensiones(double[] dimensiones) {
 		this.dimensiones = dimensiones;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 }
