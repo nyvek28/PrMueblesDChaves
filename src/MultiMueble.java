@@ -20,6 +20,9 @@ public class MultiMueble {
 		String sql;
 		return mueble;
 	}
+	
+	
+	
 	public  Mueble buscarid(int pid) throws java.sql.SQLException,Exception{
 		
 		Mueble mueble;

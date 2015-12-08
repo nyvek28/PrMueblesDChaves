@@ -14,6 +14,7 @@ public class Juego {
 
 	private int id;
 	private ArrayList<Mueble> listaMuebles;
+	private static int vendido;
 	
 	private int idMontador;
 	private static int consecutivo=0;
