@@ -15,18 +15,9 @@ import java.util.*;
 
 public class MultiMueble {
 		
-	public Mueble crear(int pid,int plinea, String pcolor, double ancho, double alto, double largo, String pcategoria)throws Exception{
+	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria)throws Exception{
 		Mueble mueble=null;
 		String sql;
-		sql="INSERT INTO TLibro "+
-		"VALUES ('"+pid+"','"+plinea+"', '"+pcolor+"','"+ancho+"','"+alto+"','"+largo+"''"+pcategoria+"');";
-		try {
-			Conector.getConector().ejecutarSQL(sql);
-			mueble = new Mueble(pid,plinea,pcolor, ancho, alto, largo, pcategoria);
-		}
-		catch (Exception e) {
-			throw new Exception (".");
-		}
 		return mueble;
 	}
 	public  Mueble buscarid(int pid) throws java.sql.SQLException,Exception{
@@ -46,7 +37,7 @@ public class MultiMueble {
 				rs.getDouble("ancho"),
 				rs.getDouble("alto"),
 				rs.getDouble("largo"),
-				rs.getString("categoria"));
+				rs.getInt("categoria"));
 		} else {
 			mueble = null;
 		}
