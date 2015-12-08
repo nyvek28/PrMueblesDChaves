@@ -336,8 +336,10 @@ public class Empresa {
 	Ediciones:
 	 */
 	public static Venta registrarVenta(int idDistribuidor, int idJuego, int idCliente)throws Exception{
+		
 		Distribuidor distribuidor= (new MultiDistribuidor().buscar(idDistribuidor));
 		Venta venta=distribuidor.registrarVenta(idJuego, idCliente);
+		
 		return venta;
 	}
 	
