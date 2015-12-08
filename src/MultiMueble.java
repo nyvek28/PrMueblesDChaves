@@ -15,10 +15,33 @@ import java.util.*;
 
 public class MultiMueble {
 		
-	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
-		Mueble mueble=null;
+	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio){
+		Mueble m;
 		String sql;
-		return mueble;
+		
+		m = new Alto(plinea,pcolor,ancho,alto,largo,pcategoria,precio);
+		sql = "INSERT INTO TbMueble "
+			+ "VALUES( "
+			+ m.getId() + ","
+			+ m.getLinea() + ","
+			+ "'" + m.getColor() + "',"
+			+ m.getDimensiones()[0] + ","
+			+ m.getDimensiones()[1] + ","
+			+ m.getDimensiones()[2] + ","
+			+ m.getCategoria() + ","
+			+ m.getSwitCh() + ","
+			+ m.getIdJuego() + ","
+			+ m.getPrecio() + ","
+			+ Mueble.getConsecutivo() + ""
+			+ " )";
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		} catch (Exception e) {
+			m = null;
+			e.printStackTrace();
+		}
+		
+		return m;
 	}
 	
 	
@@ -28,7 +51,7 @@ public class MultiMueble {
 		Mueble mueble;
 		java.sql.ResultSet rs;
 		String sql;
-		sql = "SELECT id,linea,color,ancho,alto,largo,categoria "+
+		sql = "SELECT * "+
 		"FROM TLibro "+
 		"WHERE Isbn = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
@@ -66,7 +89,7 @@ public class MultiMueble {
 	}
 	
 	
-	public ArrayList<Mueble> buscarF(int idFabricante) throws SQLException, Exception{
+	public ArrayList<Mueble> buscarF(int linea) throws SQLException, Exception{
 		
 		ResultSet rs;
 		String sql;
@@ -74,7 +97,7 @@ public class MultiMueble {
 		
 		sql = "SELECT * "
 			+ "FROM TbMueble "
-			+ "WHERE idFabricante = "+idFabricante;
+			+ "WHERE linea = "+linea;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			muebles.add(this.buscarid(rs.getInt("id")));

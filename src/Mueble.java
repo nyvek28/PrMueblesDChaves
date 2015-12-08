@@ -14,7 +14,7 @@ public class Mueble {
 	private int linea;
 	private String color;
 	private double[] dimensiones;
-	private int categoria;// 0 = alto, 1 = bajo, 2 = encimera, 4 = panel
+	private int categoria;// 0 = alto, 1 = bajo, 2 = encimera, 3 = panel
 	private int switCh;
 	private int idJuego;
 	private double precio;

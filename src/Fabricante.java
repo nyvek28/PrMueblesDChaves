@@ -45,10 +45,61 @@ public class Fabricante extends Persona {
 		this.setMuebles(null);
 		
 	}
-	public Mueble fabricarMueble(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria
-			, double precio)throws Exception{
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para fabricar un mueble alto
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
 		Mueble mueble;
-		mueble=(new MultiMueble()).crear(plinea, pcolor, ancho, alto, largo, pcategoria, precio);
+		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio);
+		return mueble;
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para fabricar un mueble bajo
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,double alturaSobreSuelo)throws Exception{
+		Mueble mueble;
+		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio, alturaSobreSuelo);
+		return mueble;
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para fabricar un mueble encimera
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int tipo,
+			double espesor)throws Exception{
+		Mueble mueble;
+		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio, tipo, espesor);
+		return mueble;
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para fabricar un mueble panel
+	Version: v.1.0
+	Fecha: Dic 3, 2015
+	Ediciones:
+
+	*/
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int acabado)throws Exception{
+		Mueble mueble;
+		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio, acabado);
 		return mueble;
 	}
 	
@@ -73,7 +124,7 @@ public class Fabricante extends Persona {
 	public ArrayList<Mueble> getMuebles() throws SQLException, Exception {
 		ArrayList<Mueble> m;
 		
-		m = (new MultiMueble()).buscarF(this.getId());
+		m = (new MultiMueble()).buscarF(this.getLinea());
 		
 		return m;
 	}
