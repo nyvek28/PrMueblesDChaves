@@ -14,8 +14,7 @@ public class Juego {
 
 	private int id;
 	private ArrayList<Mueble> listaMuebles;
-	private static int vendido;
-	
+	private int vendido;
 	private int idMontador;
 	private static int consecutivo=0;
 	private int switCh;
@@ -25,7 +24,15 @@ public class Juego {
 		this.setIdMontador(pidMontador);
 		consecutivo++;
 		this.setSwitCh(1);
+		this.setVendido(0);
 		listaMuebles=new ArrayList<Mueble>();
+	}
+	public int getVendido() {
+		return vendido;
+	}
+
+	public void setVendido(int pvendido) {
+		vendido = pvendido;
 	}
 	
 	public ArrayList<Mueble> getListaMuebles() {

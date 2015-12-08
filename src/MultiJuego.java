@@ -82,7 +82,7 @@ public class MultiJuego {
 		while(rs.next()){
 			m= new Mueble(
 					rs.getInt("id"),
-					rs.getInt("linea"),
+					rs.getString("linea"),
 					rs.getString("color"),
 					rs.getDouble("ancho"),
 					rs.getDouble("alto"),
