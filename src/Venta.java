@@ -12,17 +12,20 @@ import java.util.*;
 public class Venta {
 	
 	private int idJuego;
-	
-
+	private static int id=0;
 	private String msj;
-	
-
 	private int idCliente;
 	
-	
+	public static int getId() {
+		return id;
+	}
+	public static void setId() {
+		id=id+1;
+	}
 	public Venta(int pidJuego,int pidCliente ){
 		this.setIdCliente(pidCliente);
 		this.setIdJuego(pidJuego);
+		this.setId();
 		
 	}
 	public String getInfoMuebles() {

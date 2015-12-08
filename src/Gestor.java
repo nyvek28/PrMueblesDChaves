@@ -672,6 +672,18 @@ public class Gestor {
 	}
 	/*
 	Autor: Daniel Chaves
+	Descripcion: Metodo que consultar venta
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public TreeMap<String, String> consultarVenta(int idVenta)throws Exception{
+		Venta venta = (new MultiVenta().buscar(idVenta));
+		TreeMap<String, String> infoVenta=this.ventaToString(venta);
+		return infoVenta;
+	}
+	/*
+	Autor: Daniel Chaves
 	Descripcion: Metodo que convierte los datos de venta en treemap
 	Version: v.1.0
 	Fecha: Dic 5, 2015
