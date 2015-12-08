@@ -1,3 +1,12 @@
+/*
+	Autor: Daniel Chaves
+	Descripcion: Clase MultiVenta
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+
+
 
 public class MultiVenta {
 

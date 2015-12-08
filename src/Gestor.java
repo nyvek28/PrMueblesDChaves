@@ -670,6 +670,13 @@ public class Gestor {
 		return infoVenta;
 		
 	}
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que convierte los datos de venta en treemap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
 	private TreeMap<String, String> ventaToString(Venta venta){
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();

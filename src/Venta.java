@@ -1,3 +1,13 @@
+/*
+	Autor: Daniel Chaves
+	Descripcion: Clase venta
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+
+
+
 import java.util.*;
 public class Venta {
 	
