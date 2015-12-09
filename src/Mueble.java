@@ -103,7 +103,7 @@ public class Mueble {
 		return dimensiones;
 	}
 	public void setDimensiones(double ancho, double largo, double alto) {
-		double[] a = {ancho,largo,alto};
+		double[] a = {ancho,alto,largo};
 		this.dimensiones = a;
 	}
 	public int getCategoria() {
