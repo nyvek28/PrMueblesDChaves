@@ -32,7 +32,7 @@ public class MultiMueble {
 			+ m.getSwitCh() + ","
 			+ m.getIdJuego() + ","
 			+ m.getPrecio() + ","
-			+ Mueble.getConsecutivo() + ""
+			+ Mueble.getConsecutivo()
 			+ " )";
 		try {
 			Conector.getConector().ejecutarSQL(sql);

@@ -102,9 +102,8 @@ public class Mueble {
 		return dimensiones;
 	}
 	public void setDimensiones(double ancho, double largo, double alto) {
-		dimensiones[0]=alto;
-		dimensiones[1]=largo;
-		dimensiones[2]=alto;
+		double[] a = {ancho,largo,alto};
+		this.dimensiones = a;
 	}
 	public int getCategoria() {
 		return categoria;

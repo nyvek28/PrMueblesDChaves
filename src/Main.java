@@ -11,6 +11,8 @@ public class Main {
 		String msj;
 		g.inicializarPrograma();
 		
+		
+		
 	}
 
 }
