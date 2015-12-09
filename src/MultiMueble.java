@@ -475,7 +475,6 @@ public class MultiMueble {
 			+ "FROM TbMueble ";
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
-			System.out.println("Algo");
 			tabla.add(this.buscarid(rs.getInt("id")));
 		}
 		if(tabla.size() < 1){

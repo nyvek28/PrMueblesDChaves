@@ -416,9 +416,7 @@ public class Gestor {
 	private TreeMap<String, String> muebleToTreeMap(Mueble mueble){
 		
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
-		System.out.println("Funciona el objeto? "+mueble.getId());
 		datosMueble.put("id", String.valueOf(mueble.getId()));
-		System.out.println("Funciona el treemap? "+datosMueble.get("id"));
 		datosMueble.put("linea", String.valueOf(mueble.getLinea()));
 		datosMueble.put("color", String.valueOf(mueble.getColor()));
 		datosMueble.put("dimensiones", String.valueOf(mueble.getDimensiones()));
@@ -443,7 +441,6 @@ public class Gestor {
 		f=(new MultiFabricante()).buscar(idFabricante);
 		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
 		datos=this.muebleToTreeMap(m);
-		System.out.println(datos.get("linea") + " del treemap");
 		
 		return datos;
 		
