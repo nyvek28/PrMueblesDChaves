@@ -256,7 +256,7 @@ public class MultiMueble {
 		String sql;
 		
 		sql = "SELECT * "
-			+ "FROM TbBajo"
+			+ "FROM TbBajo "
 			+ "WHERE id = " + rs.getInt("id");
 		rset = Conector.getConector().ejecutarSQL(sql, true);
 		if(rset.next()){
@@ -296,7 +296,7 @@ public class MultiMueble {
 		String sql;
 		
 		sql = "SELECT * "
-			+ "FROM TbPanel"
+			+ "FROM TbPanel "
 			+ "WHERE id = " + rs.getInt("id");
 		rset = Conector.getConector().ejecutarSQL(sql, true);
 		if(rset.next()){
@@ -336,7 +336,7 @@ public class MultiMueble {
 		String sql;
 		
 		sql = "SELECT * "
-			+ "FROM TbEncimera"
+			+ "FROM TbEncimera "
 			+ "WHERE id = " + rs.getInt("id");
 		rset = Conector.getConector().ejecutarSQL(sql, true);
 		if(rset.next()){

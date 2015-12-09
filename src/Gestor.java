@@ -16,13 +16,16 @@ public class Gestor {
 		
 		ArrayList<Fabricante> fabricantes;
 		ArrayList<Distribuidor> distribuidores;
+		ArrayList<Mueble> mueble;
 		
 		fabricantes = (new MultiFabricante()).listar();
 		distribuidores = (new MultiDistribuidor()).listar();
-		if(fabricantes != null && distribuidores != null){
+		mueble = (new MultiMueble()).listar();
+		if(fabricantes != null && distribuidores != null && mueble != null){
 			
 			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());
 			Distribuidor.setConsecutivo(distribuidores.get(distribuidores.size()-1).getId());
+			Mueble.setConsecutivo(mueble.get((mueble.size()-1)).getId());
 			
 		}else{
 			System.out.println("No se inicio correctamente el sistema");
@@ -430,12 +433,14 @@ public class Gestor {
 
 	*/
 	
-	public TreeMap<String,String>  registrarMueble(int idFabricante,int pid,int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
+	public TreeMap<String,String>  registrarMueble(int idFabricante, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
 		Fabricante f;
+		TreeMap<String, String> datos;
+		
 		f=(new MultiFabricante()).buscar(idFabricante);
 		Mueble mueble=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
-		TreeMap<String, String> datos;
 		datos=this.muebleToTreeMap(mueble);
+		
 		return datos;
 		
 		
