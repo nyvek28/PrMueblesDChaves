@@ -45,7 +45,7 @@ public class Montador extends Persona{
 	public Juego crearJuego(int pid)throws Exception{
 		
 		Juego juego=(new MultiJuego()).crear(pid, super.getId());
-		juegos.add(juego);
+		
 		return juego;
 	}
 	

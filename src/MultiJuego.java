@@ -24,14 +24,16 @@ public class MultiJuego {
 		
 		Juego juego=null;
 		String sql;
-		sql="INSERT INTO TLibro "+
-		"VALUES ('"+pid+"','"+pidMontador+"', );";
+		juego = new Juego(pid,pidMontador);
+		sql="INSERT INTO TbJuego "+
+		"VALUES ("+pid+","+pidMontador+","+juego.getConsecutivo()+","+juego.getSwitCh()+")";
 		try {
-			Conector.getConector().ejecutarSQL(sql);
-			juego = new Juego(pid,pidMontador);
+			Conector.getConector().ejecutarSQL(sql);	
 		}
 		catch (Exception e) {
-			throw new Exception (".");
+			System.out.println("Error en el conector de crear Juego \n");
+			juego=null;
+			e.printStackTrace();
 		}
 		return juego;
 	

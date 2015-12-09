@@ -10,6 +10,7 @@ public class Main {
 		ArrayList<Distribuidor> a = new ArrayList();
 		String msj;
 		g.inicializarPrograma();
+		TreeMap<String, String>q=g.registrarJuego(3, 5);
 		
 		
 		
