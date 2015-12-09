@@ -21,13 +21,13 @@ public class MultiMueble {
 		
 		m = new Alto(plinea,pcolor,ancho,alto,largo,pcategoria,precio);
 		sql = "INSERT INTO TbMueble "
-			+ "VALUES( "
+			+ " VALUES( "
 			+ m.getId() + ","
 			+ m.getLinea() + ","
 			+ "'" + m.getColor() + "',"
-			+ m.getDimensiones()[0] + ","
-			+ m.getDimensiones()[1] + ","
-			+ m.getDimensiones()[2] + ","
+			+ ancho + ","
+			+ alto + ","
+			+ largo + ","
 			+ m.getCategoria() + ","
 			+ m.getSwitCh() + ","
 			+ m.getIdJuego() + ","

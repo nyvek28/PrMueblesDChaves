@@ -38,6 +38,7 @@ public class Mueble {
 		this.setCategoria(pcategoria);
 		this.setPrecio(precio);
 		this.setIdJuego(-1);
+		this.setSwitCh(1);
 	}
 	
 	/*
