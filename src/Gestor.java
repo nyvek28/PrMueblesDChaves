@@ -16,16 +16,16 @@ public class Gestor {
 		
 		ArrayList<Fabricante> fabricantes;
 		ArrayList<Distribuidor> distribuidores;
-		ArrayList<Mueble> mueble;
+		ArrayList<Mueble> muebles;
 		
 		fabricantes = (new MultiFabricante()).listar();
 		distribuidores = (new MultiDistribuidor()).listar();
-		mueble = (new MultiMueble()).listar();
-		if(fabricantes != null && distribuidores != null && mueble != null){
+		muebles = (new MultiMueble()).listar();
+		if(fabricantes != null && distribuidores != null && muebles != null){
 			
 			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());
 			Distribuidor.setConsecutivo(distribuidores.get(distribuidores.size()-1).getId());
-			Mueble.setConsecutivo(mueble.get((mueble.size()-1)).getId());
+			Mueble.setConsecutivo(muebles.get((muebles.size()-1)).getId());
 			
 		}else{
 			System.out.println("No se inicio correctamente el sistema");
@@ -416,7 +416,9 @@ public class Gestor {
 	private TreeMap<String, String> muebleToTreeMap(Mueble mueble){
 		
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
+		System.out.println("Funciona el objeto? "+mueble.getId());
 		datosMueble.put("id", String.valueOf(mueble.getId()));
+		System.out.println("Funciona el treemap? "+datosMueble.get("id"));
 		datosMueble.put("linea", String.valueOf(mueble.getLinea()));
 		datosMueble.put("color", String.valueOf(mueble.getColor()));
 		datosMueble.put("dimensiones", String.valueOf(mueble.getDimensiones()));
@@ -435,11 +437,13 @@ public class Gestor {
 	
 	public TreeMap<String,String>  registrarMueble(int idFabricante, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
 		Fabricante f;
+		Mueble m;
 		TreeMap<String, String> datos;
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
-		Mueble mueble=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
-		datos=this.muebleToTreeMap(mueble);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
+		datos=this.muebleToTreeMap(m);
+		System.out.println(datos.get("linea") + " del treemap");
 		
 		return datos;
 		
