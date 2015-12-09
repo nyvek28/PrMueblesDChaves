@@ -464,6 +464,28 @@ public class MultiMueble {
 		
 	}
 	
+	public ArrayList<Mueble> listar() throws Exception{
+		
+		Mueble m;
+		String sql;
+		ResultSet rs; 
+		ArrayList<Mueble> tabla = new ArrayList<Mueble>();
+		
+		sql = "SELECT * "
+			+ "FROM TbMueble ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			
+			tabla.add(this.buscarid(rs.getInt("id")));
+		}
+		if(tabla.size()<1){
+			tabla = null;
+		}
+		
+		return tabla;
+		
+	}
+	
 }
 
 
