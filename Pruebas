@@ -374,28 +374,37 @@ Autor: Daniel Chaves
 Fecha: Dic 7, 2015
 Caso de uso: Consultar Mueble (CU7 )
 Nombre de la prueba: Cinsulta los datos un mueble
-Resultado: ?
+Resultado: aprobado
 Código:
-Mueble mueble=Empresa.consultarMueble(idMueble);
-		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
-		datosMueble=this.muebleToTreeMap(mueble);
-		
-		return datosMueble;
 
+v = g.consultarMueble(1);
+		System.out.println("id: "+v.get("id"));
+
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Consultar Mueble (CU7 )
+Nombre de la prueba: Elimina los datos un mueble
+Resultado: pendiente
+Código:
+
+v = g.eliminarMueble(1);
+		System.out.println("id: "+v.get("id"));
+		
+		ERROR:unexpected token: IDJUEGO
 ====================================================
 ====================================================
 Autor: Daniel Chaves
 Fecha: Dic 7, 2015
 Caso de uso: Consultar Juego (CU13 )
 Nombre de la prueba: Cinsulta los datos un juego
-Resultado: ?
+Resultado: pendiente
 Código:
 
-		Juego juego=Empresa.consultarJuego(idJuego);
-		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		datosJuego=this.juegoToTreeMap(juego);
-		
-		return datosJuego;
+	v = g.consultarJuego(1);
+		System.out.println("id: "+v.get("id"));
+		ERROR: user lacks privilege or object not found: TJUEGO
 
 ====================================================
 ====================================================

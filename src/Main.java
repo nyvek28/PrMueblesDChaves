@@ -12,7 +12,7 @@ public class Main {
 		g.inicializarPrograma();
 		//g.registrarMueble(idFabricante, pid, plinea, pcolor, ancho, alto, largo, pcategoria, precio);
 		
-		v = g.registrarJuego(3);
+		v = g.consultarJuego(1);
 		System.out.println("id: "+v.get("id"));
 		
 		

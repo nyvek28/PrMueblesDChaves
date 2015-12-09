@@ -153,6 +153,31 @@ public class Gestor {
 	}
 	
 	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que elimina un mueble
+	Version: v.1.0
+	Fecha: Dic 9, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String>eliminarMueble(int idMueble) throws Exception{
+		TreeMap<String, String> datos;
+		Mueble m;
+		m= (new MultiMueble().buscarid(idMueble));
+		if(m!=null){
+			m=(new MultiMueble().eliminar(m));
+		}
+		if(m!=null){
+			datos=this.muebleToTreeMap(m);
+		}
+		else{
+			datos=null;
+		}
+		return datos;
+		
+	}
+	
+	/*
 	Autor: Emilio Montero
 	Descripcion: Metodo para registrar un Montador
 	Version: v.1.0
@@ -455,7 +480,7 @@ public class Gestor {
 
 	*/
 	public TreeMap<String, String> consultarMueble(int idMueble)throws Exception{
-		Mueble mueble=Empresa.consultarMueble(idMueble);
+		Mueble mueble=(new MultiMueble().buscarid(idMueble));
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
 		datosMueble=this.muebleToTreeMap(mueble);
 		
@@ -481,9 +506,9 @@ public class Gestor {
 			info+="\n Mueble"+i+": "+ m.toString();
 				
 		}
-		datosJuego.put("ID", String.valueOf(juego.getId()));
-		datosJuego.put("Montador", String.valueOf(juego.getIdMontador()));
-		datosJuego.put("Informacion Muebles", info);
+		datosJuego.put("id", String.valueOf(juego.getId()));
+		datosJuego.put("montador", String.valueOf(juego.getIdMontador()));
+		datosJuego.put("informacion muebles", info);
 		
 		return datosJuego;
 	}
