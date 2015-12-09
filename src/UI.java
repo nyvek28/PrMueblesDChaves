@@ -14,12 +14,8 @@ public class UI {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				
-				JFrame guiFrame = new JFrame("hello world");
-				guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-				guiFrame.setTitle("Example GUI"); 
-				guiFrame.setSize(300,250); 
-				guiFrame.setLocationRelativeTo(null);
-				guiFrame.setVisible(true);
+				JFrame registrarMontador = new UIRegistrarMontador();
+				registrarMontador.setVisible(true);
 				
 			}
 		});
