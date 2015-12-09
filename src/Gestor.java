@@ -413,11 +413,11 @@ public class Gestor {
 	private TreeMap<String, String> muebleToTreeMap(Mueble mueble){
 		
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
-		datosMueble.put("ID", String.valueOf(mueble.getId()));
-		datosMueble.put("Linea", String.valueOf(mueble.getLinea()));
-		datosMueble.put("Color", String.valueOf(mueble.getColor()));
-		datosMueble.put("Dimensiones", String.valueOf(mueble.getDimensiones()));
-		datosMueble.put("Categoria", String.valueOf(mueble.getCategoria()));
+		datosMueble.put("id", String.valueOf(mueble.getId()));
+		datosMueble.put("linea", String.valueOf(mueble.getLinea()));
+		datosMueble.put("color", String.valueOf(mueble.getColor()));
+		datosMueble.put("dimensiones", String.valueOf(mueble.getDimensiones()));
+		datosMueble.put("categoria", String.valueOf(mueble.getCategoria()));
 		
 		return datosMueble;
 	}
@@ -430,10 +430,10 @@ public class Gestor {
 
 	*/
 	
-	public TreeMap<String,String>  registrarMueble(int idFabricante,int pid,int plinea, String pcolor, double ancho, double alto, double largo, String pcategoria)throws Exception{
+	public TreeMap<String,String>  registrarMueble(int idFabricante,int pid,int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
 		Fabricante f;
 		f=(new MultiFabricante()).buscar(idFabricante);
-		Mueble mueble=f.fabricarMueble(pid, plinea, pcolor, ancho, alto, largo, pcategoria);
+		Mueble mueble=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
 		TreeMap<String, String> datos;
 		datos=this.muebleToTreeMap(mueble);
 		return datos;

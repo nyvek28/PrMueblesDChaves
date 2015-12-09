@@ -56,7 +56,9 @@ public class Fabricante extends Persona {
 	*/
 	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
 		Mueble mueble;
+		System.out.println("asdasd");
 		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio);
+		System.out.println(mueble.getId());
 		return mueble;
 	}
 	
