@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Montador extends Persona{
@@ -22,6 +23,18 @@ public class Montador extends Persona{
 		Juego juego=(new MultiJuego().buscarid(idJuego));
 		
 		
+		
+	}
+	
+	public Mueble agregarMuebleAJuego(int idJuego, int idMueble) throws SQLException, Exception{
+		
+		Mueble m;
+		
+		m = (new MultiMueble()).buscarid(idJuego);
+		m.setIdJuego((new MultiJuego()).buscarid(idJuego).getId());
+		m = (new MultiMueble()).modificar(m);
+		
+		return m;
 		
 	}
 
