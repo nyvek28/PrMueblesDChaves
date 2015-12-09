@@ -14,7 +14,15 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class MultiMueble {
-		
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para crear y guardar mueble alto
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
 	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio){
 		Mueble m;
 		String sql;

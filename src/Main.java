@@ -11,8 +11,7 @@ public class Main {
 		String msj;
 		g.inicializarPrograma();
 		
-		Fabricante f = (new MultiFabricante()).buscar(1);
-		Mueble m = f.fabricarMueble("Rosado", 2, 4, 2, 0, 23);
+		
 		
 	}
 
