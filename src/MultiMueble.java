@@ -52,6 +52,137 @@ public class MultiMueble {
 		return m;
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para crear y guardar mueble bajo
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,
+			double alturaSobreSuelo){
+		Mueble m;
+		String sql;
+		
+		m = new Bajo(plinea,pcolor,ancho,alto,largo,pcategoria,precio, alturaSobreSuelo);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
+			+ " VALUES( "
+			+ m.getId() + ","
+			+ m.getLinea() + ","
+			+ "'" + m.getColor() + "',"
+			+ m.getDimensiones()[0] + ","
+			+ m.getDimensiones()[1] + ","
+			+ m.getDimensiones()[2] + ","
+			+ m.getCategoria() + ","
+			+ m.getSwitCh() + ","
+			+ m.getIdJuego() + ","
+			+ m.getPrecio() + ","
+			+ Mueble.getConsecutivo()
+			+ " ) "
+			+ "INSERT INTO TbBajo (id ,alturaSobreSuelo) "
+			+ " VALUES("
+			+ m.getId() + ","
+			+ ((Bajo)m).getAlturaSobreSuelo() + " "
+			+ ")";
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		} catch (Exception e) {
+			//m = null;
+			e.printStackTrace();
+		}
+		
+		return m;
+	}
+	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para crear y guardar mueble panel
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int acabado){
+		Mueble m;
+		String sql;
+		
+		m = new Panel(plinea,pcolor,ancho,alto,largo,pcategoria,precio,acabado);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
+			+ " VALUES( "
+			+ m.getId() + ","
+			+ m.getLinea() + ","
+			+ "'" + m.getColor() + "',"
+			+ m.getDimensiones()[0] + ","
+			+ m.getDimensiones()[1] + ","
+			+ m.getDimensiones()[2] + ","
+			+ m.getCategoria() + ","
+			+ m.getSwitCh() + ","
+			+ m.getIdJuego() + ","
+			+ m.getPrecio() + ","
+			+ Mueble.getConsecutivo()
+			+ " ) "
+			+ "INSERT INTO TbPanel (id, acabado) "
+			+ " VALUES ("
+			+ m.getId() + ","
+			+ ((Panel)m).getAcabado() + ""
+			+ " ) ";
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		} catch (Exception e) {
+			//m = null;
+			e.printStackTrace();
+		}
+		
+		return m;
+	}
+	
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para crear y guardar mueble encimera
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,int tipo, 
+			double espesor){
+		Mueble m;
+		String sql;
+		
+		m = new Encimera(plinea,pcolor,ancho,alto,largo,pcategoria,precio,tipo,espesor);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
+			+ " VALUES( "
+			+ m.getId() + ","
+			+ m.getLinea() + ","
+			+ "'" + m.getColor() + "',"
+			+ m.getDimensiones()[0] + ","
+			+ m.getDimensiones()[1] + ","
+			+ m.getDimensiones()[2] + ","
+			+ m.getCategoria() + ","
+			+ m.getSwitCh() + ","
+			+ m.getIdJuego() + ","
+			+ m.getPrecio() + ","
+			+ Mueble.getConsecutivo()
+			+ " ) "
+			+ "INSERT INTO TbEncimera (id, tipo, espesor) "
+			+ "VALUES ( "
+			+ m.getId() + ","
+			+ ((Encimera)m).getTipo() + ","
+			+ ((Encimera)m).getEspesor() + ""
+			+ " ) ";
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		} catch (Exception e) {
+			//m = null;
+			e.printStackTrace();
+		}
+		
+		return m;
+	}
+	
 	
 	
 	public  Mueble buscarid(int pid) throws java.sql.SQLException,Exception{
