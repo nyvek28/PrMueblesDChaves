@@ -184,47 +184,201 @@ public class MultiMueble {
 	}
 	
 	
-	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar un mueble
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
 	public  Mueble buscarid(int pid) throws java.sql.SQLException,Exception{
 		
-		Mueble mueble;
+		Mueble m;
 		java.sql.ResultSet rs;
 		String sql;
 		sql = "SELECT * "+
-		"FROM TLibro "+
-		"WHERE Isbn = '"+pid+"'";
+		"FROM TbMueble "+
+		"WHERE id = "+pid+
+		" AND switch != 0";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
+		
 		if (rs.next()){
-			mueble = null;
+			switch(rs.getInt("categoria")){
+			
+			case 1:
+				m = this.buscarBajo(rs);
+				break;
+				
+			case 2:
+				m = this.buscarEncimera(rs);
+				break;
+				
+			case 3:
+				m = this.buscarPanel(rs);
+				break;
+				
+			default:
+				m = new Alto(
+						rs.getInt("id"),
+						rs.getInt("linea"),
+						rs.getString("color"),
+						rs.getDouble("ancho"),
+						rs.getDouble("alto"),
+						rs.getDouble("largo"),
+						rs.getInt("categoria"),
+						rs.getDouble("precio"),
+						rs.getInt("switch"),
+						rs.getInt("idJuego")
+						);
+				break;
+		
+			}
 		} else {
-			mueble = null;
+			m = null;
 		}
 		rs.close();
-		return mueble; 
+		return m; 
 	}
-	public  Mueble buscaridJ(int pid) throws java.sql.SQLException,Exception{
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar la especializacion de bajo
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	private Mueble buscarBajo(ResultSet rs) throws Exception{
 		
-		Mueble mueble;
+		Mueble m;
+		ResultSet rset;
+		String sql;
+		
+		sql = "SELECT * "
+			+ "FROM TbBajo"
+			+ "WHERE id = " + rs.getInt("id");
+		rset = Conector.getConector().ejecutarSQL(sql, true);
+		if(rset.next()){
+			m = new Bajo(
+					rs.getInt("id"),
+					rs.getInt("linea"),
+					rs.getString("color"),
+					rs.getDouble("ancho"),
+					rs.getDouble("alto"),
+					rs.getDouble("largo"),
+					rs.getInt("categoria"),
+					rs.getDouble("precio"),
+					rs.getInt("switch"),
+					rs.getInt("idJuego"),
+					rset.getDouble("alturaSobreSuelo")
+					);
+		}else{
+			m = null;
+		}
+		
+		return m;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar la especializacion de panel
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	private Mueble buscarPanel(ResultSet rs) throws Exception{
+		
+		Mueble m;
+		ResultSet rset;
+		String sql;
+		
+		sql = "SELECT * "
+			+ "FROM TbPanel"
+			+ "WHERE id = " + rs.getInt("id");
+		rset = Conector.getConector().ejecutarSQL(sql, true);
+		if(rset.next()){
+			m = new Panel(
+					rs.getInt("id"),
+					rs.getInt("linea"),
+					rs.getString("color"),
+					rs.getDouble("ancho"),
+					rs.getDouble("alto"),
+					rs.getDouble("largo"),
+					rs.getInt("categoria"),
+					rs.getDouble("precio"),
+					rs.getInt("switch"),
+					rs.getInt("idJuego"),
+					rset.getInt("acabado")
+					);
+		}else{
+			m = null;
+		}
+		
+		return m;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar la especializacion de encimera
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	private Mueble buscarEncimera(ResultSet rs) throws Exception{
+		
+		Mueble m;
+		ResultSet rset;
+		String sql;
+		
+		sql = "SELECT * "
+			+ "FROM TbEncimera"
+			+ "WHERE id = " + rs.getInt("id");
+		rset = Conector.getConector().ejecutarSQL(sql, true);
+		if(rset.next()){
+			m = new Encimera(
+					rs.getInt("id"),
+					rs.getInt("linea"),
+					rs.getString("color"),
+					rs.getDouble("ancho"),
+					rs.getDouble("alto"),
+					rs.getDouble("largo"),
+					rs.getInt("categoria"),
+					rs.getDouble("precio"),
+					rs.getInt("switch"),
+					rs.getInt("idJuego"),
+					rset.getInt("tipo"),
+					rset.getDouble("espesor")
+					);
+		}else{
+			m = null;
+		}
+		
+		return m;
+		
+	}
+	
+	public  ArrayList<Mueble> buscaridJ(int pid) throws java.sql.SQLException,Exception{
+		
+		ArrayList<Mueble> muebles = new ArrayList<Mueble>();
 		java.sql.ResultSet rs;
 		String sql;
 		sql = "SELECT id,idMontador,idMueble1,idMueble2,idMueble3,idMueble4 "+
 		"FROM TMueble "+
 		"WHERE IdJuego = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
-		if (rs.next()){
-			mueble = new Mueble(
-				rs.getInt("id"),
-				rs.getInt("linea"),
-				rs.getString("color"),
-				rs.getDouble("ancho"),
-				rs.getDouble("alto"),
-				rs.getDouble("largo"),
-				rs.getString("categoria"));
-		} else {
-			mueble = null;
+		while(rs.next()){
+			muebles.add(this.buscarid(rs.getInt("id")));
+		}
+		if(muebles.size() < 1){
+			muebles = null;
 		}
 		rs.close();
-		return mueble; 
+		return muebles; 
 	}
 	
 	

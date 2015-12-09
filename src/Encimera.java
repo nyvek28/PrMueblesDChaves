@@ -28,7 +28,7 @@ public class Encimera extends Mueble{
 
 	*/
 	public Encimera(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, 
-			int tipo, double espesor, int switCh, int idJuego){
+			int switCh, int idJuego, int tipo, double espesor){
 		super(id,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego);
 		this.setTipo(tipo);
 		this.setEspesor(espesor);
