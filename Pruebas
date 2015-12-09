@@ -403,15 +403,11 @@ Autor: Daniel Chaves
 Fecha: Dic 7, 2015
 Caso de uso: Registrar Juego (CU14 )
 Nombre de la prueba: registra los datos un juego
-Resultado: ?
+Resultado: aprobado
 Código:
-	Juego j=Empresa.crearJuego(idMontador, id);
-		
-		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		datosJuego.put("ID", String.valueOf(j.getId()));
-		datosJuego.put("Montador", String.valueOf(j.getIdMontador()));
-		
-		return datosJuego;
+	
+v = g.registrarJuego(3);
+		System.out.println("id: "+v.get("id"));
 
 ====================================================
 ====================================================

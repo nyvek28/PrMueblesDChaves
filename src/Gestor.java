@@ -511,12 +511,12 @@ public class Gestor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public TreeMap<String, String> registrarJuego(int idMontador, int id)throws Exception{
-		Juego j=Empresa.crearJuego(idMontador, id);
+	public TreeMap<String, String> registrarJuego(int idMontador)throws Exception{
+		Juego j=Empresa.crearJuego(idMontador);
 		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		datosJuego.put("ID", String.valueOf(j.getId()));
-		datosJuego.put("Montador", String.valueOf(j.getIdMontador()));
+		datosJuego.put("id", String.valueOf(j.getId()));
+		datosJuego.put("idMontador", String.valueOf(j.getIdMontador()));
 		
 		return datosJuego;
 		

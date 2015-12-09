@@ -20,13 +20,13 @@ public class MultiJuego {
 	Fecha: Dic 7, 2015
 	Ediciones:
 	 */
-	public Juego crear(int pid, int pidMontador)throws Exception{
+	public Juego crear(int pidMontador)throws Exception{
 		
 		Juego juego=null;
 		String sql;
-		juego = new Juego(pid,pidMontador);
+		juego = new Juego(pidMontador);
 		sql="INSERT INTO TbJuego "+
-		"VALUES ("+pid+","+pidMontador+","+juego.getConsecutivo()+","+juego.getSwitCh()+")";
+		"VALUES ("+juego.getId()+","+pidMontador+","+juego.getConsecutivo()+","+juego.getSwitCh()+")";
 		try {
 			Conector.getConector().ejecutarSQL(sql);	
 		}
@@ -56,8 +56,9 @@ public class MultiJuego {
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			juego = new Juego(
-				rs.getInt("id"),
-				rs.getInt("idMontador"));
+					rs.getInt("id"),
+					rs.getInt("idMontador"),
+					rs.getInt("switch"));
 		} else {
 			juego = null;
 		}

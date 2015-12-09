@@ -19,13 +19,19 @@ public class Juego {
 	private static int consecutivo=0;
 	private int switCh;
 	
-	public Juego(int pid, int pidMontador)throws Exception{
-		this.setId(pid);
+	public Juego(int pidMontador)throws Exception{
+		Juego.setConsecutivo(Juego.getConsecutivo()+1);
+		this.setId(consecutivo);
 		this.setIdMontador(pidMontador);
-		consecutivo++;
 		this.setSwitCh(1);
 		this.setVendido(0);
-		listaMuebles=new ArrayList<Mueble>();
+		this.setListaMuebles(null);
+	}
+	public Juego(int pid, int pidMontador, int pswitCh){
+		this.setId(pid);
+		this.setIdMontador(pidMontador);
+		this.setSwitCh(pswitCh);
+		
 	}
 	public int getVendido() {
 		return vendido;
@@ -38,10 +44,8 @@ public class Juego {
 	public ArrayList<Mueble> getListaMuebles() {
 		return listaMuebles;
 	}
-	public void setListaMuebles(int id1)throws Exception {
-		
-		listaMuebles.add((new MultiMueble()).buscarid(id1));
-		
+	public void setListaMuebles(ArrayList a)throws Exception {
+		this.listaMuebles=a;
 	}
 	
 	
@@ -49,8 +53,8 @@ public class Juego {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int pid) {
+		this.id = pid;
 	}
 	public int getIdMontador() {
 		return idMontador;
