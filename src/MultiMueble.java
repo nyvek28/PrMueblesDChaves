@@ -20,14 +20,14 @@ public class MultiMueble {
 		String sql;
 		
 		m = new Alto(plinea,pcolor,ancho,alto,largo,pcategoria,precio);
-		sql = "INSERT INTO TbMueble "
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
 			+ " VALUES( "
 			+ m.getId() + ","
 			+ m.getLinea() + ","
 			+ "'" + m.getColor() + "',"
-			+ ancho + ","
-			+ alto + ","
-			+ largo + ","
+			+ m.getDimensiones()[0] + ","
+			+ m.getDimensiones()[1] + ","
+			+ m.getDimensiones()[2] + ","
 			+ m.getCategoria() + ","
 			+ m.getSwitCh() + ","
 			+ m.getIdJuego() + ","
@@ -37,7 +37,7 @@ public class MultiMueble {
 		try {
 			Conector.getConector().ejecutarSQL(sql);
 		} catch (Exception e) {
-			m = null;
+			//m = null;
 			e.printStackTrace();
 		}
 		
