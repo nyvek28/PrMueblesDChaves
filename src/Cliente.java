@@ -7,8 +7,8 @@ public class Cliente extends Persona{
 	private int telTrabajo;
 	
 	/*
-	Autor: Kevyn Quiros
-	Descripcion: Constructor inicial de la clase montador
+	Autor: Emilio Montero
+	Descripcion: Constructor inicial de la clase cliente
 	Version: v.1.0
 	Fecha: Dic 4, 2015
 	Ediciones:
