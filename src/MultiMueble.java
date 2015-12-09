@@ -362,14 +362,22 @@ public class MultiMueble {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar el mueble por su Juego
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
 	public  ArrayList<Mueble> buscaridJ(int pid) throws java.sql.SQLException,Exception{
 		
 		ArrayList<Mueble> muebles = new ArrayList<Mueble>();
 		java.sql.ResultSet rs;
 		String sql;
-		sql = "SELECT id,idMontador,idMueble1,idMueble2,idMueble3,idMueble4 "+
-		"FROM TMueble "+
-		"WHERE IdJuego = '"+pid+"'";
+		sql = "SELECT *"+
+		"FROM TbMueble "+
+		"WHERE idJuego = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		while(rs.next()){
 			muebles.add(this.buscarid(rs.getInt("id")));
@@ -381,7 +389,14 @@ public class MultiMueble {
 		return muebles; 
 	}
 	
-	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para buscar el mueble por su fabricante
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
 	public ArrayList<Mueble> buscarF(int linea) throws SQLException, Exception{
 		
 		ResultSet rs;
@@ -400,6 +415,52 @@ public class MultiMueble {
 		}
 		
 		return muebles;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para modificar mueble
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	public Mueble modificar(Mueble m){
+		
+		String sql;
+		
+		sql = "UPDATE TbMueble "
+			+ "SET switch = " + m.getSwitCh();
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		} catch (Exception e) {
+			m = null;
+			e.printStackTrace();
+		}
+		
+		return m;
+		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para eliminar mueble
+	Version: v.1.0
+	Fecha: Dic 8, 2015
+	Ediciones:
+
+	*/
+	public Mueble eliminar(Mueble m){
+		
+		if(m.getSwitCh() != 0){
+			m.setSwitCh(0);
+			this.modificar(m);
+		}else{
+			m = null;
+		}
+		
+		return m;
 		
 	}
 	

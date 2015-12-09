@@ -177,7 +177,7 @@ public class MultiFabricante {
 		
 		Fabricante f;
 		String sql;
-		ResultSet rs;
+		ResultSet rs; 
 		ArrayList<Fabricante> tabla = new ArrayList<Fabricante>();
 		
 		sql = "SELECT * "
