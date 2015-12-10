@@ -431,6 +431,23 @@ public class Gestor {
 		
 	}
 	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que arma juego
+	Version: v.1.0
+	Fecha: Dic 09, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String,String> armarJuego(int pidMuebles[],int pidMontador)throws SQLException, Exception{
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		Montador m;
+		m = Empresa.consultarMontador(pidMontador);
+		
+		
+		return datos;
+	}
+	/*
 	Autor: Daniel Chaves
 	Descripcion: Metodo que convierte un mueble en un treemap
 	Version: v.1.0

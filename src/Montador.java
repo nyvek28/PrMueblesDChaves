@@ -62,4 +62,17 @@ public class Montador extends Persona{
 		return juego;
 	}
 	
+	public Juego armarJuego(int idMuebles[],int idMontador)throws SQLException, Exception{
+		
+		Juego j = this.crearJuego(idMontador);
+		Mueble m;
+		
+		for(int indice = 0; indice < idMuebles.length;indice ++){
+			
+			m = this.agregarMuebleAJuego(j.getId(), idMuebles[indice]);
+		}
+		
+		return j;
+	}
+	
 }
