@@ -697,7 +697,7 @@ public class Gestor {
 	 */
 	public TreeMap<String,String> venderJuego(int idDistribuidor, int idJuego, int idCliente, String fecha)throws Exception{
 		Venta venta=Empresa.registrarVenta(idDistribuidor, idJuego, idCliente, fecha);
-		TreeMap<String, String> infoVenta=this.ventaToString(venta);
+		TreeMap<String, String> infoVenta=this.ventaToTreeMap(venta);
 		return infoVenta;
 		
 	}
@@ -710,7 +710,7 @@ public class Gestor {
 	 */
 	public TreeMap<String, String> consultarVenta(int idVenta)throws Exception{
 		Venta venta = (new MultiVenta().buscar(idVenta));
-		TreeMap<String, String> infoVenta=this.ventaToString(venta);
+		TreeMap<String, String> infoVenta=this.ventaToTreeMap(venta);
 		return infoVenta;
 	}
 	/*
@@ -720,7 +720,7 @@ public class Gestor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	private TreeMap<String, String> ventaToString(Venta venta){
+	private TreeMap<String, String> ventaToTreeMap(Venta venta){
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		

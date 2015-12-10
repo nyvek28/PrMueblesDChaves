@@ -41,9 +41,9 @@ public class MultiVenta {
 		Venta venta;
 		java.sql.ResultSet rs;
 		String sql;
-		sql = "SELECT id,idCliente,idDistribuidor"+
-		"FROM TVenta "+
-		"WHERE Id = '"+idVenta+"'";
+		sql = "SELECT id,fecha,idCliente,idDistribuidor, idJuego, consecutivo, switCh "+
+		"FROM TbVenta "+
+		"WHERE id = "+idVenta+""; 
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			venta = new Venta(
