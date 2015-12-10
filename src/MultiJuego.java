@@ -50,15 +50,15 @@ public class MultiJuego {
 		Juego juego;
 		java.sql.ResultSet rs;
 		String sql;
-		sql = "SELECT id,idMontador "+
-		"FROM TJuego "+
+		sql = "SELECT id,idMontador, switCh "+
+		"FROM TbJuego "+
 		"WHERE Id = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			juego = new Juego(
 					rs.getInt("id"),
 					rs.getInt("idMontador"),
-					rs.getInt("switch"));
+					rs.getInt("switCh"));
 		} else {
 			juego = null;
 		}
@@ -79,18 +79,22 @@ public class MultiJuego {
 		String msj="";
 		ArrayList<Mueble> listaMueble= new ArrayList<Mueble>();
 		sql = "SELECT id,linea,color,ancho,alto,largo,categoria "+
-		"FROM TMueble "+
+		"FROM TbMueble "+
 		"WHERE IdJuego = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		while(rs.next()){
+			
 			m= new Mueble(
 					rs.getInt("id"),
-					rs.getString("linea"),
+					rs.getInt("linea"),
 					rs.getString("color"),
 					rs.getDouble("ancho"),
 					rs.getDouble("alto"),
 					rs.getDouble("largo"),
-					rs.getString("categoria"));
+					rs.getInt("categoria"),
+					rs.getDouble("precio"),
+					rs.getInt("switCh"),
+					rs.getInt("idJuego"));
 			listaMueble.add(m);
 			
 		}

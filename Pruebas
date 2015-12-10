@@ -399,12 +399,12 @@ Autor: Daniel Chaves
 Fecha: Dic 7, 2015
 Caso de uso: Consultar Juego (CU13 )
 Nombre de la prueba: Cinsulta los datos un juego
-Resultado: pendiente
+Resultado: Aprobado
 Código:
 
 	v = g.consultarJuego(1);
 		System.out.println("id: "+v.get("id"));
-		ERROR: user lacks privilege or object not found: TJUEGO
+		
 
 ====================================================
 ====================================================
