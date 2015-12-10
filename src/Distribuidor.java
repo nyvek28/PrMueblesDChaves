@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Distribuidor {
 
@@ -62,8 +63,10 @@ public class Distribuidor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public Venta registrarVenta(int idJuego, int idCliente)throws Exception{
-		Venta venta =(new MultiVenta().crear(idJuego, idCliente));
+	
+	
+	public Venta registrarVenta(int idJuego, int idCliente, String fecha)throws Exception{
+		Venta venta =(new MultiVenta().crear(idJuego, idCliente,fecha));
 		return venta;
 	}
 

@@ -346,10 +346,10 @@ public class Empresa {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public static Venta registrarVenta(int idDistribuidor, int idJuego, int idCliente)throws Exception{
+	public static Venta registrarVenta(int idDistribuidor, int idJuego, int idCliente, String fecha)throws Exception{
 		
 		Distribuidor distribuidor= (new MultiDistribuidor().buscar(idDistribuidor));
-		Venta venta=distribuidor.registrarVenta(idJuego, idCliente);
+		Venta venta=distribuidor.registrarVenta(idJuego, idCliente, fecha);
 		
 		return venta;
 	}

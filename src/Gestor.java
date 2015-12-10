@@ -695,8 +695,8 @@ public class Gestor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public TreeMap<String,String> venderJuego(int idDistribuidor, int idJuego, int idCliente)throws Exception{
-		Venta venta=Empresa.registrarVenta(idDistribuidor, idJuego, idCliente);
+	public TreeMap<String,String> venderJuego(int idDistribuidor, int idJuego, int idCliente, String fecha)throws Exception{
+		Venta venta=Empresa.registrarVenta(idDistribuidor, idJuego, idCliente, fecha);
 		TreeMap<String, String> infoVenta=this.ventaToString(venta);
 		return infoVenta;
 		

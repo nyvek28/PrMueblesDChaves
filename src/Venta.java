@@ -12,22 +12,71 @@ import java.util.*;
 public class Venta {
 	
 	private int idJuego;
+	private String fecha;
 	private static int id=0;
+	private static int consecutivo = 0;
 	private String msj;
 	private int idCliente;
+	private int switCh;
+	private int IdDistribuidor;
 	
+	
+	
+	public Venta(int pidJuego,int pidCliente, String pfecha ){
+		this.setIdCliente(pidCliente);
+		this.setIdJuego(pidJuego);
+		this.setFecha(pfecha);
+		this.setId();
+		this.setConsecutivo(consecutivo++);
+		this.setSwitCh(1);
+		
+	}
+	public Venta ( int pid,String pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch ){
+		this.setId(pid);
+		this.setFecha(pfecha);
+		this.setIdCliente(pidCliente);
+		this.setIdDistribuidor(pidDistribuidor);
+		this.setIdJuego(pidJuego);
+		this.setConsecutivo(pconsecutivo);
+		this.setSwitCh(pswitch);
+		
+	}
+	public int getIdDistribuidor() {
+		return IdDistribuidor;
+	}
+	public void setIdDistribuidor(int idDistribuidor) {
+		IdDistribuidor = idDistribuidor;
+	}
+	public int getSwitCh() {
+		return switCh;
+	}
+
+	public void setSwitCh(int switCh) {
+		this.switCh = switCh;
+	}
+	public static int getConsecutivo() {
+		return consecutivo;
+	}
+
+	public static void setConsecutivo(int pconsecutivo) {
+		consecutivo = pconsecutivo;
+	}
 	public static int getId() {
 		return id;
+	}
+	public static void setId(int pid){
+		id=pid;
 	}
 	public static void setId() {
 		id=id+1;
 	}
-	public Venta(int pidJuego,int pidCliente ){
-		this.setIdCliente(pidCliente);
-		this.setIdJuego(pidJuego);
-		this.setId();
-		
+	public String getFecha() {
+		return fecha;
 	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
 	public String getInfoMuebles() {
 		return msj;
 	}

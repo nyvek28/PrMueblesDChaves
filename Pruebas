@@ -424,9 +424,30 @@ Autor: Daniel Chaves
 Fecha: Dic 7, 2015
 Caso de uso: Eliminar Juego (CU15 )
 Nombre de la prueba: elimina los datos un juego
-Resultado: ?
+Resultado: aprobado
 Código:
-	Empresa.eliminarJuego(idJuego);
+	g.eliminarJuego(1);
+	
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: Registrar Venta (CU15 )
+Nombre de la prueba: registra una venta
+Resultado: aprobado
+Código:
+	v=g.venderJuego(1, 1, 2, "18 noviembre 2015");
+		System.out.println("id: "+v.get("id"));
 
+====================================================
+====================================================
+Autor: Daniel Chaves
+Fecha: Dic 7, 2015
+Caso de uso: VenderJuego (CU15 )
+Nombre de la prueba: registra una venta
+Resultado: aprobado
+Código:
+	v=g.venderJuego(1, 1, 2, "18 noviembre 2015");
+		System.out.println("id: "+v.get("id"));
 
 

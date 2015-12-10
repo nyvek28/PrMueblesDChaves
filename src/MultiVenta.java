@@ -10,14 +10,19 @@
 
 public class MultiVenta {
 
-	public Venta crear(int idJuego, int idCliente)throws Exception{
+	public Venta crear(int idJuego, int idCliente, String fecha)throws Exception{
 		Venta  venta=null;
 		String sql;
-		sql="INSERT INTO TVenta "+
-		"VALUES ('"+idJuego+"','"+idCliente+"');";
+		venta = new Venta(idJuego, idCliente, fecha);
+		sql="INSERT INTO TbVenta "+
+		"VALUES ('"+venta.getId()+"','"+fecha+"','"+idCliente+"','"
+				+venta.getIdDistribuidor()
+				+"','"+idJuego+"','"
+				+venta.getConsecutivo()
+				+"','"+venta.getSwitCh()+"');";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
-			venta = new Venta(idJuego, idCliente);
+			
 		}
 		catch (Exception e) {
 			throw new Exception (".");
@@ -42,8 +47,13 @@ public class MultiVenta {
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			venta = new Venta(
-				rs.getInt("idCLiente"),
-				rs.getInt("idJuego"));
+				rs.getInt("id"),
+				rs.getString("fecha"),
+				rs.getInt("idCliente"),
+				rs.getInt("idDistribuidor"),
+				rs.getInt("idJuego"),
+				rs.getInt("consecutivo"),
+				rs.getInt("switCh"));
 		} else {
 			venta = null;
 		}
