@@ -127,12 +127,7 @@ public class VentanaRegistrarFabricante extends JFrame {
 				}
 				
 				JOptionPane.showMessageDialog(null, msj);
-				try {
-					this.finalize();
-				} catch (Throwable e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				frame.setVisible(false);
 				
 			}
 		});
@@ -140,6 +135,15 @@ public class VentanaRegistrarFabricante extends JFrame {
 		contentPane.add(btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				frame.setVisible(false);
+				
+			}
+			
+		});
 		btnCancelar.setBounds(215, 364, 117, 29);
 		contentPane.add(btnCancelar);
 	}

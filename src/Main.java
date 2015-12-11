@@ -15,6 +15,11 @@ public class Main {
 		//v=g.consultarVenta(1);
 		//System.out.println("id: "+v.get("id"));
 		
+		(new VentanaRegistrarFabricante()).main(null);
+		
+		(new VentanaRegistrarFabricante()).main(null);
+		
+		(new VentanaRegistrarFabricante()).main(null);
 		
 		
 		
