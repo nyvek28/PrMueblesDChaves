@@ -14,8 +14,8 @@ public class UI {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				
-				JFrame registrarMontador = new UIRegistrarMontador();
-				registrarMontador.setVisible(true);
+				JFrame ventanaPrincipal = new Ventana();
+				ventanaPrincipal.setVisible(true);
 				
 			}
 		});
