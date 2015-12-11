@@ -12,8 +12,8 @@ public class Main {
 		g.inicializarPrograma();
 		//g.registrarMueble(idFabricante, pid, plinea, pcolor, ancho, alto, largo, pcategoria, precio);
 		
-		v=g.consultarVenta(1);
-		System.out.println("id: "+v.get("id"));
+		//v=g.consultarVenta(1);
+		//System.out.println("id: "+v.get("id"));
 		
 		
 		
