@@ -15,12 +15,11 @@ public class Ventana extends JFrame {
 	
 	public Ventana(){
 		
-		super("Registrar Montador");
+		super("Ventana");
 		setLayout(new BorderLayout());
 		panel = new PanelPrincipal();
 		this.add(panel);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		this.setTitle("Registrar Montador"); 
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500,450); 
 		this.setLocationRelativeTo(null);
 		

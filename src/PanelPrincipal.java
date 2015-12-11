@@ -1,32 +1,44 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelPrincipal extends JPanel{
 	
+	private JButton btnFabricante;
 	private PanelRegistrarMontador registrarMontador;
-	muestra a;
+	private PanelRegistrarFabricante registrarFabricante = new PanelRegistrarFabricante();
+	
 	
 	public PanelPrincipal(){
 		
-		registrarMontador = new PanelRegistrarMontador();
-		a = new muestra();
+		this.setLayout(null);
+		this.add(registrarFabricante);
+		//this.add(registrarMontador);
 		
-		this.add(registrarMontador);
-		this.add(a);
-		a.setVisible(false);
-		this.setMaximumSize(getMaximumSize());
-		
-		registrarMontador.getBoton().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e){
+		btnFabricante = new JButton("Fabricante");
+		btnFabricante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
-				registrarMontador.setVisible(false);
-				
-				a.setVisible(true);
+				botonFabricante();
 				
 			}
 		});
+		btnFabricante.setBounds(344, 364, 117, 29);
+		this.add(btnFabricante);
+		
+		this.setVisible(true);
 	}
+	
+	public void botonFabricante(){
+		
+		//registrarFabricante = new PanelRegistrarFabricante();
+		this.setVisible(false);
+		registrarFabricante.setVisible(true);
+		JOptionPane.showMessageDialog(null, "Hola mundo!");
+		
+	}
+	
 }
