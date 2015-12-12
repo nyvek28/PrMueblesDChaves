@@ -750,4 +750,29 @@ public class Gestor {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que lista a los fabricantes de la base de datos
+	Version: v.1.0
+	Fecha: Dic 11, 2015
+	Ediciones:
+
+	*/
+	
+	public ArrayList<TreeMap> listarFabricantes() throws Exception{
+		
+		ArrayList<TreeMap> fabricantes = new ArrayList<TreeMap>();
+		TreeMap datos;
+		
+		for(int i = 0; i < lista.size(); i++){
+			
+			datos = this.fabricanteToTreeMap((new MultiFabricante()).listar().get(i));
+			fabricantes.add(datos);
+			
+		}
+		
+		
+		
+	}
+	
 }
