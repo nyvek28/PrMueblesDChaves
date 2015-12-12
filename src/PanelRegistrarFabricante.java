@@ -1,3 +1,5 @@
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.TreeMap;
@@ -19,61 +21,66 @@ public class PanelRegistrarFabricante extends JPanel {
 	
 	public PanelRegistrarFabricante(){
 		
-		//this.setLayout(null);
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(41, 44, 61, 16);
-		this.add(lblNombre);
+		c.gridy = 1;
+		c.gridx = 1;
+		c.anchor = GridBagConstraints.LINE_END;
+		this.add(lblNombre,c);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setBounds(41, 72, 61, 16);
-		this.add(lblApellido);
+		c.gridy++;
+		this.add(lblApellido,c);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(41, 100, 61, 16);
-		this.add(lblTelefono);
+		c.gridy++;
+		this.add(lblTelefono,c);
 		
 		JLabel lblLinea = new JLabel("Linea:");
-		lblLinea.setBounds(41, 128, 61, 16);
-		this.add(lblLinea);
+		c.gridy++;
+		this.add(lblLinea,c);
 		
 		JLabel lblAnnos = new JLabel("Annos Exp:");
-		lblAnnos.setBounds(41, 156, 84, 16);
-		this.add(lblAnnos);
+		c.gridy++;
+		this.add(lblAnnos,c);
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
-		lblDireccion.setBounds(41, 184, 84, 16);
-		this.add(lblDireccion);
+		c.gridy++;
+		this.add(lblDireccion,c);
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(137, 38, 134, 28);
-		this.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		textFieldNombre = new JTextField(8);
+		c.gridy = 1;
+		c.gridx = 2;
+		c.anchor = GridBagConstraints.LINE_START;
+		this.add(textFieldNombre,c);
+		//textFieldNombre.setColumns(10);
 		
-		textFieldApellido = new JTextField();
-		textFieldApellido.setBounds(137, 66, 134, 28);
-		this.add(textFieldApellido);
-		textFieldApellido.setColumns(10);
+		textFieldApellido = new JTextField(8);
+		c.gridy++;
+		this.add(textFieldApellido,c);
+		//textFieldApellido.setColumns(10);
 		
-		textFieldTelefono = new JTextField();
-		textFieldTelefono.setBounds(137, 94, 134, 28);
-		this.add(textFieldTelefono);
-		textFieldTelefono.setColumns(10);
+		textFieldTelefono = new JTextField(8);
+		c.gridy++;
+		this.add(textFieldTelefono,c);
+		//textFieldTelefono.setColumns(10);
 		
-		textFieldLinea = new JTextField();
-		textFieldLinea.setBounds(137, 122, 134, 28);
-		this.add(textFieldLinea);
-		textFieldLinea.setColumns(10);
+		textFieldLinea = new JTextField(8);
+		c.gridy++;
+		this.add(textFieldLinea,c);
+		//textFieldLinea.setColumns(10);
 		
-		textFieldAnnos = new JTextField();
-		textFieldAnnos.setBounds(137, 150, 134, 28);
-		this.add(textFieldAnnos);
-		textFieldAnnos.setColumns(10);
+		textFieldAnnos = new JTextField(8);
+		c.gridy++;
+		this.add(textFieldAnnos,c);
+		//textFieldAnnos.setColumns(10);
 		
-		textFieldDireccion = new JTextField();
-		textFieldDireccion.setBounds(137, 178, 252, 89);
-		this.add(textFieldDireccion);
-		textFieldDireccion.setColumns(10);
+		textFieldDireccion = new JTextField(15);
+		c.gridy++;
+		this.add(textFieldDireccion,c);
+		//textFieldDireccion.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
@@ -83,8 +90,9 @@ public class PanelRegistrarFabricante extends JPanel {
 				
 			}
 		});
-		btnAceptar.setBounds(344, 364, 117, 29);
-		this.add(btnAceptar);
+		c.gridy = 8;
+		c.gridx = 5;
+		this.add(btnAceptar,c);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener(){
@@ -94,8 +102,8 @@ public class PanelRegistrarFabricante extends JPanel {
 				
 			}
 		});
-		btnCancelar.setBounds(215, 364, 117, 29);
-		this.add(btnCancelar);
+		c.gridx = 4;
+		this.add(btnCancelar,c);
 		
 		this.setVisible(true);
 		
