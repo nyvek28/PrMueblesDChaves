@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class UI {
@@ -14,8 +15,18 @@ public class UI {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				
-				JFrame ventanaPrincipal = new Ventana();
-				ventanaPrincipal.setVisible(true);
+				JFrame ventanaPrincipal;
+				try {
+					ventanaPrincipal = new Ventana();
+				} catch (Exception e) {
+					ventanaPrincipal = null;
+					e.printStackTrace();
+				}
+				if(ventanaPrincipal != null){
+					ventanaPrincipal.setVisible(true);
+				}else{
+					JOptionPane.showMessageDialog(null, "Error al inicializar");
+				}
 				
 			}
 		});

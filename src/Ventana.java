@@ -11,13 +11,13 @@ import javax.swing.JTextArea;
 
 public class Ventana extends JFrame {
 	
-	private PanelPrincipal panel;
+	private JPanel panel;
 	
-	public Ventana(){
+	public Ventana() throws Exception{
 		
 		super("Ventana");
 		setLayout(new BorderLayout());
-		panel = new PanelPrincipal();
+		panel = new PanelModificarFabricante();
 		this.add(panel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500,450); 

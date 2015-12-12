@@ -759,19 +759,19 @@ public class Gestor {
 
 	*/
 	
-	public ArrayList<TreeMap> listarFabricantes() throws Exception{
+	public ArrayList<TreeMap<String, String>> listarFabricantes() throws Exception{
 		
-		ArrayList<TreeMap> fabricantes = new ArrayList<TreeMap>();
+		ArrayList<TreeMap<String, String>> fabricantes = new ArrayList<TreeMap<String,String>>();
 		TreeMap datos;
 		
-		for(int i = 0; i < lista.size(); i++){
+		for(int i = 0; i < (new MultiFabricante()).listar().size(); i++){
 			
 			datos = this.fabricanteToTreeMap((new MultiFabricante()).listar().get(i));
 			fabricantes.add(datos);
 			
 		}
 		
-		
+		return fabricantes;
 		
 	}
 	
