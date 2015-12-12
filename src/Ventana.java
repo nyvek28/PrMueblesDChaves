@@ -11,7 +11,7 @@ public class Ventana extends JFrame {
 		super("Ventana");
 		setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(1000,1000); 
+		this.setSize(600,500); 
 		this.setLocationRelativeTo(null);
 		panel = new PanelPrincipal();
 		this.getContentPane().add(panel);

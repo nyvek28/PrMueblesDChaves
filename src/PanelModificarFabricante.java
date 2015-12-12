@@ -37,7 +37,7 @@ public class PanelModificarFabricante extends JPanel {
 		
 		comboBoxFabricantes = new JComboBox();
 		c.gridy = 0;
-		c.gridx = 1;
+		c.gridx = 2;
 		for(int i = 0; i < lista.size(); i++){	
 			comboBoxFabricantes.addItem(lista.get(i).get("nombre") + " " + lista.get(i).get("apellido"));	
 		}
@@ -50,6 +50,7 @@ public class PanelModificarFabricante extends JPanel {
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		c.gridy++;
+		c.gridx = 1;
 		c.anchor = GridBagConstraints.LINE_END;
 		this.add(lblNombre,c);
 		
@@ -106,7 +107,7 @@ public class PanelModificarFabricante extends JPanel {
 		//textFieldDireccion.setColumns(10);
 		
 		btnAceptar = new JButton("Aceptar");
-		c.gridy = 8;
+		c.gridy = 11;
 		c.gridx = 5;
 		this.add(btnAceptar,c);
 		
