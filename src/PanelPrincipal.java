@@ -11,8 +11,7 @@ import javax.swing.JPanel;
 public class PanelPrincipal extends JPanel{
 	
 	private PanelRegistrarMontador registrarMontador;//= new PanelRegistrarMontador();
-	private PanelRegistrarFabricante registrarFabricante;
-	private PanelModificarFabricante modificarFabricante;// = new PanelRegistrarFabricante();
+	private PanelFormaFabricante modificarFabricante, registrarFabricante;// = new PanelRegistrarFabricante();
 	private muestra m;
 	
 	
@@ -69,7 +68,7 @@ public class PanelPrincipal extends JPanel{
 				String msj;
 				
 				try {
-					info = (new Gestor()).modificarFabricante(Integer.parseInt(modificarFabricante.getLista().get(modificarFabricante.getComboBoxFabricantes().getSelectedIndex()).get("id")), 
+					info = (new Gestor()).modificarFabricante(Integer.parseInt(((PanelModificarFabricante) modificarFabricante).getLista().get(((PanelModificarFabricante) modificarFabricante).getComboBoxFabricantes().getSelectedIndex()).get("id")), 
 									modificarFabricante.getTextFieldNombre().getText(), 
 									modificarFabricante.getTextFieldApellido().getText(), 
 									Integer.parseInt(modificarFabricante.getTextFieldTelefono().getText()), 
@@ -88,8 +87,7 @@ public class PanelPrincipal extends JPanel{
 				}
 				
 				JOptionPane.showMessageDialog(null, msj);
-				modificarFabricante.getTextFieldApellido().removeAll();
-				reiniciarPanelFabricante();
+				reiniciarPanelFabricante(modificarFabricante);
 				modificarFabricante.setVisible(false);
 				m.setVisible(true);
 			}
@@ -101,7 +99,7 @@ public class PanelPrincipal extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				modificarFabricante.setVisible(false);
-				reiniciarPanelFabricante();
+				reiniciarPanelFabricante(modificarFabricante);
 				m.setVisible(true);
 			}
 			
@@ -109,14 +107,14 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 	
-	private void reiniciarPanelFabricante(){
+	private void reiniciarPanelFabricante(PanelFormaFabricante panelF){
 		
-		this.modificarFabricante.getTextFieldNombre().setText(null);
-		this.modificarFabricante.getTextFieldApellido().setText(null);
-		this.modificarFabricante.getTextFieldTelefono().setText(null);
-		this.modificarFabricante.getTextFieldDireccion().setText(null);
-		this.modificarFabricante.getTextFieldLinea().setText(null);
-		this.modificarFabricante.getTextFieldAnnos().setText(null);
+		panelF.getTextFieldNombre().setText(null);
+		panelF.getTextFieldApellido().setText(null);
+		panelF.getTextFieldTelefono().setText(null);
+		panelF.getTextFieldDireccion().setText(null);
+		panelF.getTextFieldLinea().setText(null);
+		panelF.getTextFieldAnnos().setText(null);
 		
 	}
 	
