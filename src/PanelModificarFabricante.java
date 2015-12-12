@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -99,7 +100,12 @@ public class PanelModificarFabricante extends JPanel {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				botonAceptar();
+				try {
+					botonAceptar();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -121,22 +127,23 @@ public class PanelModificarFabricante extends JPanel {
 		
 	}
 	
-	public void botonAceptar(){
+	public void botonAceptar() throws NumberFormatException, SQLException, Exception{
 		
 		TreeMap info;
 		String msj;
 		
-		info = (new Gestor()).modificarFabricante(id, 
-						nombre, 
-						apellido, 
-						telefono, 
-						direccion, 
-						linea, 
-						annos)
+		info = (new Gestor()).modificarFabricante(Integer.parseInt(lista.get(this.comboBoxFabricantes.getSelectedIndex()).get("id")), 
+						this.textFieldNombre.getText(), 
+						this.textFieldApellido.getText(), 
+						Integer.parseInt(this.textFieldTelefono.getText()), 
+						this.textFieldDireccion.getText(), 
+						Integer.parseInt(this.textFieldLinea.getText()), 
+						Integer.parseInt(this.textFieldAnnos.getText())
+						);
 		if(info != null){
 			msj = "Se modifico el fabricante de Id " + info.get("id") + " correctamente";
 		}else{
-			msj = "No se logro registrar al fabricante!";
+			msj = "No se logro modificar al fabricante!";
 		}
 		
 		JOptionPane.showMessageDialog(null, msj);
@@ -165,7 +172,6 @@ public class PanelModificarFabricante extends JPanel {
 		textFieldAnnos.setText(lista.get(i).get("annosExp"));
 		
 	}
-	
 	
 	
 }
