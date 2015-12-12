@@ -24,7 +24,7 @@ public class PanelModificarFabricante extends JPanel {
 	
 	public PanelModificarFabricante() throws Exception{
 		
-		this.setLayout(null);
+		//this.setLayout(null);
 		
 		(new Gestor()).inicializarPrograma();
 		
@@ -123,7 +123,7 @@ public class PanelModificarFabricante extends JPanel {
 		btnCancelar.setBounds(215, 364, 117, 29);
 		this.add(btnCancelar);
 		
-		this.setVisible(true);
+		this.setVisible(false);
 		
 	}
 	

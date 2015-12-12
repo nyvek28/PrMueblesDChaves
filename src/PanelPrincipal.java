@@ -1,65 +1,63 @@
+
+import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelPrincipal extends JPanel{
 	
-	private JButton btnFabricante;
-	private JButton btnMontador;
-	private PanelRegistrarMontador registrarMontador = new PanelRegistrarMontador();
-	private PanelRegistrarFabricante registrarFabricante = new PanelRegistrarFabricante();
+	private PanelRegistrarMontador registrarMontador;//= new PanelRegistrarMontador();
+	private PanelRegistrarFabricante registrarFabricante;
+	private PanelModificarFabricante modificarFabricante;// = new PanelRegistrarFabricante();
+	private muestra m;
 	
 	
 	public PanelPrincipal(){
-		
-		this.setLayout(null);
-		this.add(registrarFabricante);
+		registrarMontador = new PanelRegistrarMontador();
 		this.add(registrarMontador);
+		this.registrarMontador.setVisible(true);
+		registrarFabricante = new PanelRegistrarFabricante();
+		this.add(registrarFabricante);
+		registrarFabricante.setVisible(false);
+		try {
+			modificarFabricante = new PanelModificarFabricante();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		this.add(modificarFabricante);
+		modificarFabricante.setVisible(false);
+		m = new muestra();
+		this.add(m);
+		m.setVisible(false);
+	
 		
-		btnFabricante = new JButton("Fabricante");
-		btnFabricante.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				botonFabricante();
-				
-			}
-		});
-		btnFabricante.setBounds(344, 364, 117, 29);
-		this.add(btnFabricante);
 		
-		btnMontador = new JButton("Montador");
-		btnMontador.addActionListener(new ActionListener(){
+		//this.registrarFabricante.setVisible(false);
+		
+		registrarMontador.getBoton().addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				botonMontador();
+				registrarMontador.setVisible(false);
+				m.setVisible(true);
 				
 			}
 			
 		});
-		btnMontador.setBounds(215, 364, 117, 29);
-		this.add(btnMontador);
 		
-		this.setMaximumSize(getMaximumSize());
-		
-	}
-	
-	public void botonFabricante(){
-		
-		//registrarFabricante = new PanelRegistrarFabricante();
-		this.setVisible(false);
-		registrarFabricante.setVisible(true);
-		JOptionPane.showMessageDialog(null, "Hola mundo!");
-		
-	}
-	
-	public void botonMontador(){
-		
-		registrarMontador.setVisible(true);
-		this.setVisible(false);
+		m.getBoton().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				m.setVisible(false);
+				modificarFabricante.setVisible(true);
+				
+			}
+			
+		});
 		
 	}
 	

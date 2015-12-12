@@ -14,16 +14,21 @@ public class PanelRegistrarMontador extends JPanel {
 
 
 	public PanelRegistrarMontador(){
+	
 		statusLabel = new JLabel("holaaaaaaaaaaaaa");
-		statusLabel.setAlignmentX(1000);;
-	    statusLabel.setSize(100,100);
+		/*statusLabel.setAlignmentX(1000);;
+	    statusLabel.setSize(100,100);*/
 		boton = new JButton("ACEPTAR");
 		String[] comboBoxItems = {"jajaj", "two", "three"};
 		jComboBox1 = new JComboBox<>(comboBoxItems);
 		this.add(jComboBox1, BorderLayout.NORTH);
 		this.add(boton,BorderLayout.SOUTH);
 		this.add(statusLabel,BorderLayout.EAST);
+		
+		
+
 		this.setLayout(new FlowLayout());
+		
 	}
 	
 	/**

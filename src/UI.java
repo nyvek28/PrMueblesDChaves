@@ -15,9 +15,10 @@ public class UI {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 				
-				JFrame ventanaPrincipal;
+				Ventana ventanaPrincipal;
 				try {
 					ventanaPrincipal = new Ventana();
+					
 				} catch (Exception e) {
 					ventanaPrincipal = null;
 					e.printStackTrace();

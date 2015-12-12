@@ -19,7 +19,7 @@ public class PanelRegistrarFabricante extends JPanel {
 	
 	public PanelRegistrarFabricante(){
 		
-		this.setLayout(null);
+		//this.setLayout(null);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(41, 44, 61, 16);
