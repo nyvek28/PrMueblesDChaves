@@ -25,10 +25,12 @@ public class PanelModificarFabricante extends JPanel {
 		
 		this.setLayout(null);
 		
+		(new Gestor()).inicializarPrograma();
+		
 		lista = (new Gestor()).listarFabricantes();
 		
 		comboBoxFabricantes = new JComboBox();
-		comboBoxFabricantes.setBounds(41, 16, 252, 16);
+		comboBoxFabricantes.setBounds(41, 10, 252, 28);
 		for(int i = 0; i < lista.size(); i++){	
 			comboBoxFabricantes.addItem(lista.get(i).get("nombre") + " " + lista.get(i).get("apellido"));	
 		}
@@ -124,13 +126,13 @@ public class PanelModificarFabricante extends JPanel {
 		TreeMap info;
 		String msj;
 		
-		info = (new Gestor()).registrarFabricante(textFieldNombre.getText(),
-				textFieldApellido.getText(),
-				Integer.parseInt(textFieldTelefono.getText()), 
-				textFieldDireccion.getText(), 
-				Integer.parseInt(textFieldLinea.getText()), 
-				Integer.parseInt(textFieldAnnos.getText())
-				);
+		info = (new Gestor()).modificarFabricante(id, 
+						nombre, 
+						apellido, 
+						telefono, 
+						direccion, 
+						linea, 
+						annos)
 		if(info != null){
 			msj = "Se modifico el fabricante de Id " + info.get("id") + " correctamente";
 		}else{
