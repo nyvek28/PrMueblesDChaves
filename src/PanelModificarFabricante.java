@@ -23,6 +23,8 @@ public class PanelModificarFabricante extends JPanel {
 	private JTextField textFieldAnnos;
 	private JComboBox comboBoxFabricantes;
 	private ArrayList<TreeMap<String,String>> lista;
+	private JButton btnAceptar;
+	private JButton btnCancelar;
 	
 	public PanelModificarFabricante() throws Exception{
 		
@@ -45,6 +47,7 @@ public class PanelModificarFabricante extends JPanel {
 			}
 		});
 		this.add(this.comboBoxFabricantes, c);
+		
 		JLabel lblNombre = new JLabel("Nombre:");
 		c.gridy++;
 		c.anchor = GridBagConstraints.LINE_END;
@@ -102,69 +105,16 @@ public class PanelModificarFabricante extends JPanel {
 		this.add(textFieldDireccion,c);
 		//textFieldDireccion.setColumns(10);
 		
-		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					botonAceptar();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}
-		});
+		btnAceptar = new JButton("Aceptar");
 		c.gridy = 8;
 		c.gridx = 5;
 		this.add(btnAceptar,c);
 		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				
-				botonCancelar();
-				
-			}
-		});
+		btnCancelar = new JButton("Cancelar");
 		c.gridx = 4;
 		this.add(btnCancelar,c);
 		
 		this.setVisible(false);
-		
-	}
-	
-	public void botonAceptar() throws NumberFormatException, SQLException, Exception{
-		
-		TreeMap info;
-		String msj;
-		
-		info = (new Gestor()).modificarFabricante(Integer.parseInt(lista.get(this.comboBoxFabricantes.getSelectedIndex()).get("id")), 
-						this.textFieldNombre.getText(), 
-						this.textFieldApellido.getText(), 
-						Integer.parseInt(this.textFieldTelefono.getText()), 
-						this.textFieldDireccion.getText(), 
-						Integer.parseInt(this.textFieldLinea.getText()), 
-						Integer.parseInt(this.textFieldAnnos.getText())
-						);
-		if(info != null){
-			msj = "Se modifico el fabricante de Id " + info.get("id") + " correctamente";
-		}else{
-			msj = "No se logro modificar al fabricante!";
-		}
-		
-		JOptionPane.showMessageDialog(null, msj);
-		this.setVisible(false);
-		muestra p = new muestra();
-		super.add(p);
-		p.setVisible(true);
-		
-	}
-	
-	public void botonCancelar(){
-		
-		this.setVisible(false);
-		
 		
 	}
 	
@@ -180,6 +130,86 @@ public class PanelModificarFabricante extends JPanel {
 		textFieldLinea.setText(lista.get(i).get("linea"));
 		textFieldAnnos.setText(lista.get(i).get("annosExp"));
 		
+	}
+
+	public JTextField getTextFieldNombre() {
+		return textFieldNombre;
+	}
+
+	public void setTextFieldNombre(JTextField textFieldNombre) {
+		this.textFieldNombre = textFieldNombre;
+	}
+
+	public JTextField getTextFieldApellido() {
+		return textFieldApellido;
+	}
+
+	public void setTextFieldApellido(JTextField textFieldApellido) {
+		this.textFieldApellido = textFieldApellido;
+	}
+
+	public JTextField getTextFieldTelefono() {
+		return textFieldTelefono;
+	}
+
+	public void setTextFieldTelefono(JTextField textFieldTelefono) {
+		this.textFieldTelefono = textFieldTelefono;
+	}
+
+	public JTextField getTextFieldDireccion() {
+		return textFieldDireccion;
+	}
+
+	public void setTextFieldDireccion(JTextField textFieldDireccion) {
+		this.textFieldDireccion = textFieldDireccion;
+	}
+
+	public JTextField getTextFieldLinea() {
+		return textFieldLinea;
+	}
+
+	public void setTextFieldLinea(JTextField textFieldLinea) {
+		this.textFieldLinea = textFieldLinea;
+	}
+
+	public JTextField getTextFieldAnnos() {
+		return textFieldAnnos;
+	}
+
+	public void setTextFieldAnnos(JTextField textFieldAnnos) {
+		this.textFieldAnnos = textFieldAnnos;
+	}
+
+	public JComboBox getComboBoxFabricantes() {
+		return comboBoxFabricantes;
+	}
+
+	public void setComboBoxFabricantes(JComboBox comboBoxFabricantes) {
+		this.comboBoxFabricantes = comboBoxFabricantes;
+	}
+
+	public ArrayList<TreeMap<String, String>> getLista() {
+		return lista;
+	}
+
+	public void setLista(ArrayList<TreeMap<String, String>> lista) {
+		this.lista = lista;
+	}
+
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+
+	public JButton getBtnCancelar() {
+		return btnCancelar;
+	}
+
+	public void setBtnCancelar(JButton btnCancelar) {
+		this.btnCancelar = btnCancelar;
 	}
 	
 	

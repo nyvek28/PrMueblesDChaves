@@ -25,7 +25,6 @@ public class PanelRegistrarMontador extends JPanel {
 		this.add(jComboBox1, BorderLayout.NORTH);
 		this.add(boton,BorderLayout.SOUTH);
 		this.add(statusLabel,BorderLayout.EAST);
-		JOptionPane.showMessageDialog(null, "Constuctor montador");
 		
 		
 
