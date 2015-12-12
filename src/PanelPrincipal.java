@@ -89,6 +89,7 @@ public class PanelPrincipal extends JPanel{
 				
 				JOptionPane.showMessageDialog(null, msj);
 				modificarFabricante.getTextFieldApellido().removeAll();
+				reiniciarPanelFabricante();
 				modificarFabricante.setVisible(false);
 				m.setVisible(true);
 			}
@@ -100,10 +101,22 @@ public class PanelPrincipal extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				modificarFabricante.setVisible(false);
+				reiniciarPanelFabricante();
 				m.setVisible(true);
 			}
 			
 		});
+		
+	}
+	
+	private void reiniciarPanelFabricante(){
+		
+		this.modificarFabricante.getTextFieldNombre().setText(null);
+		this.modificarFabricante.getTextFieldApellido().setText(null);
+		this.modificarFabricante.getTextFieldTelefono().setText(null);
+		this.modificarFabricante.getTextFieldDireccion().setText(null);
+		this.modificarFabricante.getTextFieldLinea().setText(null);
+		this.modificarFabricante.getTextFieldAnnos().setText(null);
 		
 	}
 	
