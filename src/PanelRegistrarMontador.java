@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelRegistrarMontador extends JPanel {
@@ -24,6 +25,7 @@ public class PanelRegistrarMontador extends JPanel {
 		this.add(jComboBox1, BorderLayout.NORTH);
 		this.add(boton,BorderLayout.SOUTH);
 		this.add(statusLabel,BorderLayout.EAST);
+		JOptionPane.showMessageDialog(null, "Constuctor montador");
 		
 		
 

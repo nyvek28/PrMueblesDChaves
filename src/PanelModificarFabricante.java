@@ -155,14 +155,16 @@ public class PanelModificarFabricante extends JPanel {
 		
 		JOptionPane.showMessageDialog(null, msj);
 		this.setVisible(false);
-		(new PanelRegistrarFabricante()).setVisible(true);
+		muestra p = new muestra();
+		super.add(p);
+		p.setVisible(true);
 		
 	}
 	
 	public void botonCancelar(){
 		
 		this.setVisible(false);
-		(new PanelRegistrarFabricante()).setVisible(true);
+		
 		
 	}
 	

@@ -55,7 +55,6 @@ public class PanelPrincipal extends JPanel{
 				
 				m.setVisible(false);
 				modificarFabricante.setVisible(true);
-				JOptionPane.showMessageDialog(null, "Hola?");
 				
 			}
 			
