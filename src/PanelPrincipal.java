@@ -13,23 +13,32 @@ public class PanelPrincipal extends JPanel{
 	private PanelRegistrarMontador registrarMontador;//= new PanelRegistrarMontador();
 	private PanelFormaFabricante modificarFabricante, registrarFabricante;// = new PanelRegistrarFabricante();
 	private muestra m;
+	private PanelMenuPrincipal menu;
+	private PanelPlantillaCRUD menuFabricante;
 	
 	
-	public PanelPrincipal(){
+	public PanelPrincipal() throws Exception{
+		
+		menu = new PanelMenuPrincipal();
+		this.add(menu);
+		this.menu.setVisible(true);
+		
 		registrarMontador = new PanelRegistrarMontador();
 		this.add(registrarMontador);
-		this.registrarMontador.setVisible(true);
+		this.registrarMontador.setVisible(false);
+		
 		registrarFabricante = new PanelRegistrarFabricante();
 		this.add(registrarFabricante);
 		registrarFabricante.setVisible(false);
-		try {
-			modificarFabricante = new PanelModificarFabricante();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
+		menuFabricante = new PanelPlantillaCRUD();
+		this.add(menuFabricante);
+		menuFabricante.setVisible(false);
+		
+		modificarFabricante = new PanelModificarFabricante();
 		this.add(modificarFabricante);
 		modificarFabricante.setVisible(false);
+		
 		m = new muestra();
 		this.add(m);
 		m.setVisible(false);
@@ -38,12 +47,22 @@ public class PanelPrincipal extends JPanel{
 		
 		//this.registrarFabricante.setVisible(false);
 		
+		menu.getBtnFabricante().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuFabricante.setVisible(true);
+			}
+			
+		});
+		
 		registrarMontador.getBoton().addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
 				
 				registrarMontador.setVisible(false);
-				m.setVisible(true);
+				menu.setVisible(true);
 				
 			}
 			
@@ -89,7 +108,7 @@ public class PanelPrincipal extends JPanel{
 				JOptionPane.showMessageDialog(null, msj);
 				reiniciarPanelFabricante(modificarFabricante);
 				modificarFabricante.setVisible(false);
-				m.setVisible(true);
+				menu.setVisible(true);
 			}
 			
 		});
@@ -100,7 +119,70 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				modificarFabricante.setVisible(false);
 				reiniciarPanelFabricante(modificarFabricante);
-				m.setVisible(true);
+				menu.setVisible(true);
+			}
+			
+		});
+		
+		this.menuFabricante.getBtnModificar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuFabricante.setVisible(false);
+				modificarFabricante.setVisible(true);
+				
+			}
+		});
+		
+		this.menuFabricante.getBtnRegistrar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuFabricante.setVisible(false);
+				registrarFabricante.setVisible(true);
+				
+			}
+		});
+		
+		this.registrarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TreeMap info;
+				String msj;
+				
+				info = (new Gestor()).registrarFabricante(registrarFabricante.getTextFieldNombre().getText(),
+						registrarFabricante.getTextFieldApellido().getText(),
+						Integer.parseInt(registrarFabricante.getTextFieldTelefono().getText()), 
+						registrarFabricante.getTextFieldDireccion().getText(), 
+						Integer.parseInt(registrarFabricante.getTextFieldLinea().getText()), 
+						Integer.parseInt(registrarFabricante.getTextFieldAnnos().getText())
+						);
+				if(info != null){
+					msj = "Se registro el fabricante de Id " + info.get("id") + " correctamente";
+					registrarFabricante.setVisible(false);
+					reiniciarPanelFabricante(registrarFabricante);
+					menu.setVisible(true);
+				}else{
+					msj = "No se logro registrar al fabricante!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		this.registrarFabricante.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+					
+				registrarFabricante.setVisible(false);
+				reiniciarPanelFabricante(registrarFabricante);
+				menu.setVisible(true);
+			
 			}
 			
 		});
