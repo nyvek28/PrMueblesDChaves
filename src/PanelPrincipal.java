@@ -10,11 +10,12 @@ import javax.swing.JPanel;
 
 public class PanelPrincipal extends JPanel{
 	
-	private PanelRegistrarMontador registrarMontador;//= new PanelRegistrarMontador();
 	private PanelFormaFabricante modificarFabricante, registrarFabricante;// = new PanelRegistrarFabricante();
 	private muestra m;
 	private PanelMenuPrincipal menu;
-	private PanelPlantillaCRUD menuFabricante;
+	private PanelPlantillaCRUD menuFabricante, menuMontador;
+	private PanelFormaMontador registrarMontador;
+	
 	
 	
 	public PanelPrincipal() throws Exception{
@@ -22,10 +23,6 @@ public class PanelPrincipal extends JPanel{
 		menu = new PanelMenuPrincipal();
 		this.add(menu);
 		this.menu.setVisible(true);
-		
-		registrarMontador = new PanelRegistrarMontador();
-		this.add(registrarMontador);
-		this.registrarMontador.setVisible(false);
 		
 		registrarFabricante = new PanelRegistrarFabricante();
 		this.add(registrarFabricante);
@@ -39,9 +36,13 @@ public class PanelPrincipal extends JPanel{
 		this.add(modificarFabricante);
 		modificarFabricante.setVisible(false);
 		
-		m = new muestra();
-		this.add(m);
-		m.setVisible(false);
+		menuMontador = new PanelPlantillaCRUD();
+		this.add(menuMontador);
+		menuMontador.setVisible(false);
+		
+		registrarMontador = new PanelRegistrarMontador();
+		this.add(registrarMontador);
+		registrarMontador.setVisible(false);
 	
 		
 		
@@ -57,27 +58,7 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
-		registrarMontador.getBoton().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				registrarMontador.setVisible(false);
-				menu.setVisible(true);
-				
-			}
-			
-		});
 		
-		m.getBoton().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				m.setVisible(false);
-				modificarFabricante.setVisible(true);
-				
-			}
-			
-		});
 		
 		modificarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
 
@@ -187,6 +168,75 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
+		this.registrarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TreeMap info;
+				String msj;
+				
+				info = (new Gestor()).registrarMontador(Integer.parseInt(registrarMontador.getTextFieldId().getText()),registrarMontador.getTextFieldNombre().getText(),
+						registrarMontador.getTextFieldApellido().getText(),
+						Integer.parseInt(registrarMontador.getTextFieldTelefono().getText()), 
+						registrarMontador.getTextFieldDireccion().getText());
+				if(info != null){
+					msj = "Se registro el fabricante de Id " + info.get("id") + " correctamente";
+					registrarMontador.setVisible(false);
+					reiniciarPanelMontador(registrarMontador);
+					menu.setVisible(true);
+				}else{
+					msj = "No se logro registrar al Montador!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				registrarMontador.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		menu.getBtnMontador().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuMontador.setVisible(true);
+			}
+			
+		});
+		
+		this.menuMontador.getBtnRegistrar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				registrarMontador.setVisible(true);
+				
+			}
+		});
+		
+		registrarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				registrarMontador.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
 	}
 	
 	private void reiniciarPanelFabricante(PanelFormaFabricante panelF){
@@ -198,6 +248,15 @@ public class PanelPrincipal extends JPanel{
 		panelF.getTextFieldLinea().setText(null);
 		panelF.getTextFieldAnnos().setText(null);
 		
+	}
+	
+	
+	private void reiniciarPanelMontador(PanelFormaMontador panelM){
+		
+		panelM.getTextFieldNombre().setText(null);
+		panelM.getTextFieldApellido().setText(null);
+		panelM.getTextFieldTelefono().setText(null);
+		panelM.getTextFieldDireccion().setText(null);
 	}
 	
 }

@@ -1,48 +1,27 @@
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.TreeMap;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class PanelRegistrarMontador extends JPanel {
+public class PanelRegistrarMontador extends PanelFormaMontador {
+
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldTelefono;
+	private JTextField textFieldDireccion;
+	private JTextField textFieldLinea;
+	private JTextField textFieldAnnos;
 	
-	private JButton boton;
-	private JLabel statusLabel;
-	JComboBox<String> jComboBox1;
-
-
 	public PanelRegistrarMontador(){
-	
-		statusLabel = new JLabel("holaaaaaaaaaaaaa");
-		/*statusLabel.setAlignmentX(1000);;
-	    statusLabel.setSize(100,100);*/
-		boton = new JButton("ACEPTAR");
-		String[] comboBoxItems = {"jajaj", "two", "three"};
-		jComboBox1 = new JComboBox<>(comboBoxItems);
-		this.add(jComboBox1, BorderLayout.NORTH);
-		this.add(boton,BorderLayout.SOUTH);
-		this.add(statusLabel,BorderLayout.EAST);
 		
+		super();
 		
-
-		this.setLayout(new FlowLayout());
-		
-	}
-	
-	/**
-	 * @return the boton
-	 */
-	public JButton getBoton() {
-		return boton;
-	}
-
-	/**
-	 * @param boton the boton to set
-	 */
-	public void setBoton(JButton boton) {
-		this.boton = boton;
 	}
 }

@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 public class PanelFormaMontador extends JPanel {
 
+	private JTextField textFieldId;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldTelefono;
@@ -40,6 +41,10 @@ public class PanelFormaMontador extends JPanel {
 		c.gridy++;
 		this.add(lblDireccion,c);
 		
+		JLabel lblId = new JLabel("ID:");
+		c.gridy++;
+		this.add(lblId,c);
+		
 		textFieldNombre = new JTextField(8);
 		c.gridy = 1;
 		c.gridx = 2;
@@ -62,6 +67,10 @@ public class PanelFormaMontador extends JPanel {
 		c.gridy++;
 		this.add(textFieldDireccion,c);
 		//textFieldDireccion.setColumns(10);
+		
+		textFieldId = new JTextField(8);
+		c.gridy++;
+		this.add(textFieldId,c);
 		
 		btnAceptar = new JButton("Aceptar");
 		c.gridy = 8;
@@ -106,6 +115,14 @@ public class PanelFormaMontador extends JPanel {
 
 	public void setTextFieldDireccion(JTextField textFieldDireccion) {
 		this.textFieldDireccion = textFieldDireccion;
+	}
+	
+	public JTextField getTextFieldId() {
+		return textFieldTelefono;
+	}
+
+	public void setTextFieldId(JTextField textFieldId) {
+		this.textFieldId = textFieldId;
 	}
 
 	public JButton getBtnAceptar() {
