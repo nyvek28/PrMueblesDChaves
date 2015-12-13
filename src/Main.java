@@ -10,10 +10,12 @@ public class Main {
 		ArrayList<Distribuidor> a = new ArrayList();
 		String msj;
 		g.inicializarPrograma();
-		//g.registrarMueble(idFabricante, pid, plinea, pcolor, ancho, alto, largo, pcategoria, precio);
-		
-		//v=g.consultarVenta(1);
-		//System.out.println("id: "+v.get("id"));
+		int[] listaMuebles= new int[4];
+				listaMuebles[0]=1;
+				listaMuebles[1]=2;
+				listaMuebles[2]=3;
+				listaMuebles[3]=4;
+		System.out.println(g.armarJuego(listaMuebles, 1));
 		
 		
 		
