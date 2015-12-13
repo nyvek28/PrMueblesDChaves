@@ -13,7 +13,12 @@ public class Ventana extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600,500); 
 		this.setLocationRelativeTo(null);
-		panel = new PanelPrincipal();
+		try {
+			panel = new PanelPrincipal();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.getContentPane().add(panel);
 		
 
