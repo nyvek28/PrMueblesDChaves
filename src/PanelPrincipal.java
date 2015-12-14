@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class PanelPrincipal extends JPanel{
 	
-	private PanelFormaFabricante modificarFabricante, registrarFabricante, consultarFabricante;// = new PanelRegistrarFabricante();
+	private PanelFormaFabricante modificarFabricante, registrarFabricante, consultarFabricante, eliminarFabricante;// = new PanelRegistrarFabricante();
 	private muestra m;
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador;
@@ -47,6 +47,11 @@ public class PanelPrincipal extends JPanel{
 		consultarFabricante = new PanelConsultarFabricante();
 		this.add(consultarFabricante);
 		consultarFabricante.setVisible(false);
+		consultarFabricante.getBtnCancelar().setVisible(false);
+		
+		eliminarFabricante = new PanelConsultarFabricante();
+		this.add(eliminarFabricante);
+		eliminarFabricante.setVisible(false);
 	
 		
 		
@@ -135,6 +140,16 @@ public class PanelPrincipal extends JPanel{
 				
 				menuFabricante.setVisible(false);
 				consultarFabricante.setVisible(true);
+				
+			}
+		});
+		
+		this.menuFabricante.getBtnEliminar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuFabricante.setVisible(false);
+				eliminarFabricante.setVisible(true);
 				
 			}
 		});
@@ -251,6 +266,81 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
+		eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String msj;
+				
+				try {
+					(new Gestor()).eliminarFabricante(Integer.parseInt(((PanelConsultarFabricante)eliminarFabricante).getTxtId().getText()));
+					eliminarFabricante.setVisible(false);
+					((PanelConsultarFabricante)eliminarFabricante).getTxtId().setText(null);
+					reiniciarPanelFabricante(eliminarFabricante);
+					menu.setVisible(true);
+					msj = "Se logro eliminar al fabricante";
+				} catch (Exception e1) {
+					msj = "No se logro eliminar al fabricante";
+					e1.printStackTrace();
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		eliminarFabricante.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				eliminarFabricante.setVisible(false);
+				((PanelConsultarFabricante)eliminarFabricante).getTxtId().setText(null);
+				reiniciarPanelFabricante(eliminarFabricante);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		((PanelConsultarFabricante)eliminarFabricante).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarFabricante)consultarFabricante).getTxtId().getText()));
+					eliminarFabricante.getTextFieldNombre().setText(info.get("nombre"));
+					eliminarFabricante.getTextFieldApellido().setText(info.get("apellido"));
+					eliminarFabricante.getTextFieldTelefono().setText(info.get("telefono"));
+					eliminarFabricante.getTextFieldDireccion().setText(info.get("direccion"));
+					eliminarFabricante.getTextFieldLinea().setText(info.get("linea"));
+					eliminarFabricante.getTextFieldAnnos().setText(info.get("annosExp"));		
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+			}
+			
+		});
+		
+		consultarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarFabricante.setVisible(false);
+				((PanelConsultarFabricante)consultarFabricante).getTxtId().setText(null);
+				reiniciarPanelFabricante(consultarFabricante);
+				menu.setVisible(true);
+			}
+			
+		});
+		
 		((PanelConsultarFabricante)consultarFabricante).getBtnBuscar().addActionListener(new ActionListener(){
 
 			@Override
@@ -271,18 +361,6 @@ public class PanelPrincipal extends JPanel{
 					JOptionPane.showMessageDialog(null, "Revise el Id");
 				}
 				
-			}
-			
-		});
-		
-		consultarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				consultarFabricante.setVisible(false);
-				((PanelConsultarFabricante)consultarFabricante).getTxtId().setText(null);
-				reiniciarPanelFabricante(consultarFabricante);
-				menu.setVisible(true);
 			}
 			
 		});

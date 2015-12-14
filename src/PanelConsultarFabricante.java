@@ -34,7 +34,6 @@ public class PanelConsultarFabricante extends PanelFormaFabricante {
 		this.getTextFieldLinea().setEditable(false);
 		this.getTextFieldDireccion().setEditable(false);
 		this.getTextFieldAnnos().setEditable(false);
-		this.getBtnCancelar().setVisible(false);
 		
 	}
 
