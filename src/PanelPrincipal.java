@@ -14,7 +14,7 @@ public class PanelPrincipal extends JPanel{
 	private muestra m;
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador;
-	private PanelFormaMontador registrarMontador;
+	private PanelFormaMontador registrarMontador,modificarMontador;
 	
 	
 	
@@ -43,6 +43,10 @@ public class PanelPrincipal extends JPanel{
 		registrarMontador = new PanelRegistrarMontador();
 		this.add(registrarMontador);
 		registrarMontador.setVisible(false);
+		
+		modificarMontador = new PanelModificarMontador();
+		this.add(modificarMontador);
+		modificarMontador.setVisible(false);
 	
 		
 		
@@ -226,6 +230,16 @@ public class PanelPrincipal extends JPanel{
 			}
 		});
 		
+		this.menuMontador.getBtnModificar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				modificarMontador.setVisible(true);
+				
+			}
+		});
+		
 		registrarMontador.getBtnCancelar().addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
@@ -233,6 +247,49 @@ public class PanelPrincipal extends JPanel{
 				registrarMontador.setVisible(false);
 				menu.setVisible(true);
 				
+			}
+			
+		});
+		
+		modificarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap info;
+				String msj;
+				
+				try {
+					info = (new Gestor()).modificarMontador(Integer.parseInt(((PanelModificarMontador) modificarMontador).getLista().get(((PanelModificarMontador) modificarMontador).getComboBoxMontadores().getSelectedIndex()).get("id")), 
+									modificarFabricante.getTextFieldNombre().getText(), 
+									modificarFabricante.getTextFieldApellido().getText(), 
+									Integer.parseInt(modificarFabricante.getTextFieldTelefono().getText()), 
+									modificarFabricante.getTextFieldDireccion().getText()
+									);
+				} catch (Exception e1) {
+					info = null;
+					e1.printStackTrace();
+				}
+				if(info != null){
+					msj = "Se modifico el Montador de Id " + info.get("id") + " correctamente";
+				}else{
+					msj = "No se logro modificar al Montador!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				reiniciarPanelFabricante(modificarFabricante);
+				modificarFabricante.setVisible(false);
+				menu.setVisible(true);
+			}
+			
+		});
+		
+		modificarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modificarMontador.setVisible(false);
+				reiniciarPanelMontador(modificarMontador);
+				menu.setVisible(true);
 			}
 			
 		});

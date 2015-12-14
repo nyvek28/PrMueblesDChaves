@@ -19,6 +19,14 @@ public class Montador extends Persona{
 		this.setJuegos(null);
 		
 	}
+	
+	public Montador(int pId, String pNombre, String pApellido, int pTelefono, String pDireccion,int switCh){
+		
+		super(pId, pNombre, pApellido, pTelefono, pDireccion, switCh);
+		this.setJuegos(null);
+		
+	}
+
 	public void modificarJuego(int idJuego, int idMueble,int idmuebleEliminar)throws Exception{
 		Juego juego=(new MultiJuego().buscarid(idJuego));
 		

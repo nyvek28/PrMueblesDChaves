@@ -162,5 +162,41 @@ public class MultiMontador {
 		return m;
 		
 	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para listar todos los montadores en la base de datos
+	Version: v.1.0
+	Fecha: Dic 13, 2015
+	Ediciones:
+
+	*/
+	public ArrayList<Montador> listar() throws Exception{
+		
+		Montador m;
+		String sql;
+		ResultSet rs; 
+		ArrayList<Montador> tabla = new ArrayList<Montador>();
+		
+		sql = "SELECT * "
+			+ "FROM TbMontador ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			m = new Montador(
+					rs.getInt("id"),
+					rs.getString("nombre"),
+					rs.getString("apellido"),
+					rs.getInt("telefono"),
+					rs.getString("direccion"),
+					rs.getInt("switch"));
+			tabla.add(m);
+		}
+		if(tabla.size()<1){
+			tabla = null;
+		}
+		
+		return tabla;
+		
+	}
 
 }

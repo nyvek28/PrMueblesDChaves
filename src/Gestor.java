@@ -775,4 +775,29 @@ public class Gestor {
 		
 	}
 	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que lista a los montadores de la base de datos
+	Version: v.1.0
+	Fecha: Dic 13, 2015
+	Ediciones:
+
+	*/
+	
+	public ArrayList<TreeMap<String, String>> listarMontadores() throws Exception{
+		
+		ArrayList<TreeMap<String, String>> montadores = new ArrayList<TreeMap<String,String>>();
+		TreeMap datos;
+		
+		for(int i = 0; i < (new MultiMontador()).listar().size(); i++){
+			
+			datos = this.montadorToTreeMap((new MultiMontador()).listar().get(i));
+			montadores.add(datos);
+			
+		}
+		
+		return montadores;
+		
+	}
+	
 }
