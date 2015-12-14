@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class PanelPrincipal extends JPanel{
 	
-	private PanelFormaFabricante modificarFabricante, registrarFabricante;// = new PanelRegistrarFabricante();
+	private PanelFormaFabricante modificarFabricante, registrarFabricante, consultarFabricante;// = new PanelRegistrarFabricante();
 	private muestra m;
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador;
@@ -43,6 +43,10 @@ public class PanelPrincipal extends JPanel{
 		registrarMontador = new PanelRegistrarMontador();
 		this.add(registrarMontador);
 		registrarMontador.setVisible(false);
+		
+		consultarFabricante = new PanelConsultarFabricante();
+		this.add(consultarFabricante);
+		consultarFabricante.setVisible(false);
 	
 		
 		
@@ -121,6 +125,16 @@ public class PanelPrincipal extends JPanel{
 				
 				menuFabricante.setVisible(false);
 				registrarFabricante.setVisible(true);
+				
+			}
+		});
+		
+		this.menuFabricante.getBtnConsultar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuFabricante.setVisible(false);
+				consultarFabricante.setVisible(true);
 				
 			}
 		});
@@ -233,6 +247,42 @@ public class PanelPrincipal extends JPanel{
 				registrarMontador.setVisible(false);
 				menu.setVisible(true);
 				
+			}
+			
+		});
+		
+		((PanelConsultarFabricante)consultarFabricante).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarFabricante)consultarFabricante).getTxtId().getText()));
+					consultarFabricante.getTextFieldNombre().setText(info.get("nombre"));
+					consultarFabricante.getTextFieldApellido().setText(info.get("apellido"));
+					consultarFabricante.getTextFieldTelefono().setText(info.get("telefono"));
+					consultarFabricante.getTextFieldDireccion().setText(info.get("direccion"));
+					consultarFabricante.getTextFieldLinea().setText(info.get("linea"));
+					consultarFabricante.getTextFieldAnnos().setText(info.get("annosExp"));		
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+			}
+			
+		});
+		
+		consultarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarFabricante.setVisible(false);
+				((PanelConsultarFabricante)consultarFabricante).getTxtId().setText(null);
+				reiniciarPanelFabricante(consultarFabricante);
+				menu.setVisible(true);
 			}
 			
 		});
