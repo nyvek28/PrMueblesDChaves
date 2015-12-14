@@ -313,7 +313,7 @@ public class PanelPrincipal extends JPanel{
 				
 				try{
 					
-					info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarFabricante)consultarFabricante).getTxtId().getText()));
+					info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarFabricante)eliminarFabricante).getTxtId().getText()));
 					eliminarFabricante.getTextFieldNombre().setText(info.get("nombre"));
 					eliminarFabricante.getTextFieldApellido().setText(info.get("apellido"));
 					eliminarFabricante.getTextFieldTelefono().setText(info.get("telefono"));
