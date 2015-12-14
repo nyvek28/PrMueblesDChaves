@@ -168,7 +168,7 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
-		this.registrarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+		this.registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
