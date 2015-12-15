@@ -14,7 +14,7 @@ public class PanelPrincipal extends JPanel{
 	private muestra m;
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente;
-	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador;
+	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador, eliminarMontador;
 	private PanelFormaCliente registrarCliente;
 	
 	
@@ -66,7 +66,10 @@ public class PanelPrincipal extends JPanel{
 		eliminarFabricante = new PanelConsultarFabricante();
 		this.add(eliminarFabricante);
 		eliminarFabricante.setVisible(false);
-	
+		
+		eliminarMontador = new PanelConsultarMontador();
+		this.add(eliminarMontador);
+		eliminarMontador.setVisible(false);
 		
 		
 		//this.registrarFabricante.setVisible(false);
@@ -366,6 +369,78 @@ public class PanelPrincipal extends JPanel{
 				
 			}
 			
+		});
+		
+		eliminarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String msj;
+				
+				try {
+					(new Gestor()).eliminarMontador(Integer.parseInt(((PanelConsultarMontador)eliminarMontador).getTxtId().getText()));
+					eliminarMontador.setVisible(false);
+					((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
+					reiniciarPanelMontador(eliminarMontador);
+					menu.setVisible(true);
+					msj = "Se logro eliminar al Montador";
+				} catch (Exception e1) {
+					msj = "No se logro eliminar al montador";
+					e1.printStackTrace();
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		((PanelConsultarMontador)eliminarMontador).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarMontador(Integer.parseInt(((PanelConsultarMontador)eliminarMontador).getTxtId().getText()));
+					eliminarMontador.getTextFieldNombre().setText(info.get("nombre"));
+					eliminarMontador.getTextFieldApellido().setText(info.get("apellido"));
+					eliminarMontador.getTextFieldTelefono().setText(info.get("telefono"));
+					eliminarMontador.getTextFieldDireccion().setText(info.get("direccion"));		
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+
+			}
+			
+		});
+		
+		eliminarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				eliminarMontador.setVisible(false);
+				((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
+				reiniciarPanelMontador(eliminarMontador);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		this.menuMontador.getBtnEliminar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				eliminarMontador.setVisible(true);
+				
+			}
 		});
 
 		eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
