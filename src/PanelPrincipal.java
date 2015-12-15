@@ -15,7 +15,7 @@ public class PanelPrincipal extends JPanel{
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente;
 	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador, eliminarMontador;
-	private PanelFormaCliente registrarCliente, modificarCliente;
+	private PanelFormaCliente registrarCliente, modificarCliente, consultarCliente, eliminarCliente;
 	
 	
 	
@@ -37,6 +37,15 @@ public class PanelPrincipal extends JPanel{
 		this.add(modificarFabricante);
 		modificarFabricante.setVisible(false);
 		
+		consultarFabricante = new PanelConsultarFabricante();
+		this.add(consultarFabricante);
+		consultarFabricante.setVisible(false);
+		consultarFabricante.getBtnCancelar().setVisible(false);
+		
+		eliminarFabricante = new PanelConsultarFabricante();
+		this.add(eliminarFabricante);
+		eliminarFabricante.setVisible(false);
+		
 		menuMontador = new PanelPlantillaCRUD();
 		this.add(menuMontador);
 		menuMontador.setVisible(false);
@@ -54,6 +63,10 @@ public class PanelPrincipal extends JPanel{
 		consultarMontador.setVisible(false);
 		consultarMontador.getBtnCancelar().setVisible(false);
 		
+		eliminarMontador = new PanelConsultarMontador();
+		this.add(eliminarMontador);
+		eliminarMontador.setVisible(false);
+		
 		registrarCliente = new PanelRegistrarCliente();
 		this.add(registrarCliente);
 		registrarCliente.setVisible(false);
@@ -62,19 +75,14 @@ public class PanelPrincipal extends JPanel{
 		this.add(modificarCliente);
 		modificarCliente.setVisible(false);
 		
-		consultarFabricante = new PanelConsultarFabricante();
-		this.add(consultarFabricante);
-		consultarFabricante.setVisible(false);
-		consultarFabricante.getBtnCancelar().setVisible(false);
+		consultarCliente = new PanelConsultarCliente();
+		this.add(consultarCliente);
+		consultarCliente.setVisible(false);
+		consultarCliente.getBtnCancelar().setVisible(false);
 		
-		eliminarFabricante = new PanelConsultarFabricante();
-		this.add(eliminarFabricante);
-		eliminarFabricante.setVisible(false);
-		
-		eliminarMontador = new PanelConsultarMontador();
-		this.add(eliminarMontador);
-		eliminarMontador.setVisible(false);
-		
+		eliminarCliente = new PanelConsultarCliente();
+		this.add(eliminarCliente);
+		eliminarCliente.setVisible(false);
 		
 		//this.registrarFabricante.setVisible(false);
 		
@@ -551,6 +559,79 @@ public class PanelPrincipal extends JPanel{
 				reiniciarPanelCliente(modificarCliente);
 				modificarCliente.setVisible(false);
 				menu.setVisible(true);
+			}
+		});
+		
+		this.menuCliente.getBtnConsultar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				consultarCliente.setVisible(true);
+				
+			}
+		});
+		
+		consultarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarCliente.setVisible(false);
+				((PanelConsultarCliente)consultarCliente).getTxtId().setText(null);
+				reiniciarPanelCliente(consultarCliente);
+
+				menu.setVisible(true);
+			}
+			
+		});
+		
+
+		((PanelConsultarCliente)consultarCliente).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarCliente(Integer.parseInt(((PanelConsultarCliente)consultarCliente).getTxtId().getText()));
+					consultarCliente.getTextFieldNombre().setText(info.get("nombre"));
+					consultarCliente.getTextFieldApellido().setText(info.get("apellido"));
+					consultarCliente.getTextFieldTelefono().setText(info.get("telefono"));
+					consultarCliente.getTextFieldDireccion().setText(info.get("direccion"));
+					consultarCliente.getTextFieldTrabajo().setText(info.get("trabajo"));
+					consultarCliente.getTextFieldTelTrabajo().setText(info.get("telTrabajo"));
+					
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+			}
+			
+		});
+		
+		eliminarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				eliminarMontador.setVisible(false);
+				((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
+				reiniciarPanelMontador(eliminarMontador);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		this.menuMontador.getBtnEliminar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				eliminarMontador.setVisible(true);
+				
 			}
 		});
 		

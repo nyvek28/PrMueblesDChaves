@@ -8,17 +8,17 @@ public class PanelConsultarCliente extends PanelFormaCliente{
 	
 	private JTextField txtId;
 	private JButton btnBuscar;
-	private JLabel lblId;
+	private JLabel lblID;
 	
 	public PanelConsultarCliente(){
 		
 		super();
 		GridBagConstraints c = new GridBagConstraints();
 		
-		this.setLblId(new JLabel("Digite un Id:"));
+		this.setLblID(new JLabel("Digite un Id:"));
 		c.gridx = 1;
 		c.gridy = 0;
-		this.add(this.getLblId(), c);
+		this.add(this.getLblID(), c);
 		
 		this.setTxtId(new JTextField(8));
 		c.gridx++;
@@ -34,6 +34,8 @@ public class PanelConsultarCliente extends PanelFormaCliente{
 		this.getTextFieldDireccion().setEditable(false);
 		this.getTextFieldTelTrabajo().setEditable(false);
 		this.getTextFieldTelTrabajo().setEditable(false);
+		this.getTextFieldId().setVisible(false);
+		this.getLblId().setVisible(false);
 	}
 	
 	public JTextField getTxtId() {
@@ -52,12 +54,12 @@ public class PanelConsultarCliente extends PanelFormaCliente{
 		this.btnBuscar = btnBuscar;
 	}
 
-	public JLabel getLblId() {
-		return lblId;
+	public JLabel getLblID() {
+		return lblID;
 	}
 
-	public void setLblId(JLabel lblId) {
-		this.lblId = lblId;
+	public void setLblID(JLabel lblID) {
+		this.lblID = lblID;
 	}
 	
 }

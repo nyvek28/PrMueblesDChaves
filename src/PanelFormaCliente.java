@@ -19,6 +19,7 @@ public class PanelFormaCliente extends JPanel {
 	private JTextField textFieldTelTrabajo;
 	private JButton btnAceptar;
 	private JButton btnCancelar;
+	private JLabel lblId;
 	
 	public PanelFormaCliente(){
 		
@@ -51,7 +52,7 @@ public class PanelFormaCliente extends JPanel {
 		c.gridy++;
 		this.add(lblTelTrabajo,c);
 		
-		JLabel lblId = new JLabel("ID:");
+		lblId = new JLabel("ID:");
 		c.gridy++;
 		this.add(lblId,c);
 		
@@ -101,6 +102,15 @@ public class PanelFormaCliente extends JPanel {
 		
 		this.setVisible(true);
 		
+	}
+	
+	
+	public JLabel getLblId() {
+		return lblId;
+	}
+
+	public void setLblId(JLabel plblId) {
+		lblId = plblId;
 	}
 
 	public JTextField getTextFieldNombre() {
