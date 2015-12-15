@@ -42,6 +42,8 @@ public class PanelModificarCliente extends PanelFormaCliente{
 			}
 		});
 		this.add(this.getComboBoxClientes(), c);
+		this.getTextFieldId().setVisible(false);
+		this.getLblId().setVisible(false);
 		
 		this.setVisible(false);
 	}

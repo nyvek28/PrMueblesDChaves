@@ -32,7 +32,7 @@ public class PanelConsultarCliente extends PanelFormaCliente{
 		this.getTextFieldApellido().setEditable(false);
 		this.getTextFieldTelefono().setEditable(false);
 		this.getTextFieldDireccion().setEditable(false);
-		this.getTextFieldTelTrabajo().setEditable(false);
+		this.getTextFieldTrabajo().setEditable(false);
 		this.getTextFieldTelTrabajo().setEditable(false);
 		this.getTextFieldId().setVisible(false);
 		this.getLblId().setVisible(false);

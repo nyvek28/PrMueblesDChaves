@@ -84,6 +84,10 @@ public class PanelPrincipal extends JPanel{
 		this.add(eliminarCliente);
 		eliminarCliente.setVisible(false);
 		
+		menuCliente = new PanelPlantillaCRUD();
+		this.add(menuCliente);
+		menuCliente.setVisible(false);
+		
 		//this.registrarFabricante.setVisible(false);
 		
 		menu.getBtnFabricante().addActionListener(new ActionListener(){
@@ -525,6 +529,7 @@ public class PanelPrincipal extends JPanel{
 				menuCliente.setVisible(false);
 				modificarCliente.setVisible(true);
 				
+				
 			}
 		});
 		
@@ -560,6 +565,19 @@ public class PanelPrincipal extends JPanel{
 				modificarCliente.setVisible(false);
 				menu.setVisible(true);
 			}
+		});
+		
+		modificarCliente.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				modificarCliente.setVisible(false);
+				reiniciarPanelCliente(modificarCliente);
+				menu.setVisible(true);
+				
+			}
+			
 		});
 		
 		this.menuCliente.getBtnConsultar().addActionListener(new ActionListener(){
@@ -611,28 +629,78 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
-		eliminarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+		eliminarCliente.getBtnCancelar().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 		
-				eliminarMontador.setVisible(false);
-				((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
-				reiniciarPanelMontador(eliminarMontador);
+				eliminarCliente.setVisible(false);
+				((PanelConsultarCliente)eliminarCliente).getTxtId().setText(null);
+				reiniciarPanelCliente(eliminarCliente);
 				menu.setVisible(true);
 				
 			}
 			
 		});
 		
-		this.menuMontador.getBtnEliminar().addActionListener(new ActionListener(){
+		this.menuCliente.getBtnEliminar().addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				menuMontador.setVisible(false);
-				eliminarMontador.setVisible(true);
+				menuCliente.setVisible(false);
+				eliminarCliente.setVisible(true);
 				
 			}
+		});
+		
+		eliminarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String msj;
+				
+				try {
+					(new Gestor()).eliminarCliente(Integer.parseInt(((PanelConsultarCliente)eliminarCliente).getTxtId().getText()));
+					eliminarCliente.setVisible(false);
+					((PanelConsultarCliente)eliminarCliente).getTxtId().setText(null);
+					reiniciarPanelCliente(eliminarCliente);
+					menu.setVisible(true);
+					msj = "Se logro eliminar al cliente";
+				} catch (Exception e1) {
+					msj = "No se logro eliminar al cliente";
+					e1.printStackTrace();
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		((PanelConsultarCliente)eliminarCliente).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarCliente(Integer.parseInt(((PanelConsultarCliente)eliminarCliente).getTxtId().getText()));
+					eliminarCliente.getTextFieldNombre().setText(info.get("nombre"));
+					eliminarCliente.getTextFieldApellido().setText(info.get("apellido"));
+					eliminarCliente.getTextFieldTelefono().setText(info.get("telefono"));
+					eliminarCliente.getTextFieldDireccion().setText(info.get("direccion"));
+					eliminarCliente.getTextFieldTrabajo().setText(info.get("trabajo"));
+					eliminarCliente.getTextFieldTelTrabajo().setText(info.get("telTrabajo"));		
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+
+			}
+			
 		});
 		
 		//======================= aqui empieza fabricante   ======================//

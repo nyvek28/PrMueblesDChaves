@@ -818,7 +818,7 @@ public class Gestor {
 		
 		for(int i = 0; i < (new MultiCliente()).listar().size(); i++){
 			
-			datos = this.fabricanteToTreeMap((new MultiFabricante()).listar().get(i));
+			datos = this.clienteToTreeMap((new MultiCliente()).listar().get(i));
 			clientes.add(datos);
 			
 		}
