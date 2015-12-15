@@ -214,6 +214,16 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
+		menu.getBtnMontador().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuMontador.setVisible(true);
+			}
+			
+		});
+		
 		this.registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
 
 			@Override
@@ -248,16 +258,6 @@ public class PanelPrincipal extends JPanel{
 				registrarMontador.setVisible(false);
 				menu.setVisible(true);
 				
-			}
-			
-		});
-		
-		menu.getBtnMontador().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menu.setVisible(false);
-				menuMontador.setVisible(true);
 			}
 			
 		});
@@ -442,6 +442,68 @@ public class PanelPrincipal extends JPanel{
 				
 			}
 		});
+		
+		// ========================= aqui inicia cliente ====================//
+		
+		menu.getBtnCliente().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuCliente.setVisible(true);
+			}
+			
+		});
+		
+		this.registrarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TreeMap info;
+				String msj;
+				
+				info = (new Gestor()).registrarCliente(Integer.parseInt(registrarCliente.getTextFieldId().getText()),registrarCliente.getTextFieldNombre().getText(),
+						registrarCliente.getTextFieldApellido().getText(),
+						Integer.parseInt(registrarCliente.getTextFieldTelefono().getText()), 
+						registrarCliente.getTextFieldDireccion().getText(),
+						registrarCliente.getTextFieldTrabajo().getText(),
+						Integer.parseInt(registrarCliente.getTextFieldTelTrabajo().getText()));
+				if(info != null){
+					msj = "Se registro el cliente de Id " + info.get("id") + " correctamente";
+					registrarCliente.setVisible(false);
+					reiniciarPanelCliente(registrarCliente);
+					menu.setVisible(true);
+				}else{
+					msj = "No se logro registrar al Cliente!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		registrarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				registrarCliente.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		this.menuCliente.getBtnRegistrar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				registrarCliente.setVisible(true);
+				
+			}
+		});
 
 		eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
 
@@ -578,6 +640,17 @@ public class PanelPrincipal extends JPanel{
 		panelM.getTextFieldApellido().setText(null);
 		panelM.getTextFieldTelefono().setText(null);
 		panelM.getTextFieldDireccion().setText(null);
+	}
+	
+	private void reiniciarPanelCliente(PanelFormaCliente panelC){
+		
+		panelC.getTextFieldNombre().setText(null);
+		panelC.getTextFieldApellido().setText(null);
+		panelC.getTextFieldTelefono().setText(null);
+		panelC.getTextFieldDireccion().setText(null);
+		panelC.getTextFieldTrabajo().setText(null);
+		panelC.getTextFieldTelTrabajo().setText(null);
+		
 	}
 	
 }
