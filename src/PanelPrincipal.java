@@ -44,11 +44,10 @@ public class PanelPrincipal extends JPanel{
 		this.add(registrarMontador);
 		registrarMontador.setVisible(false);
 		
-<<<<<<< HEAD
 		modificarMontador = new PanelModificarMontador();
 		this.add(modificarMontador);
 		modificarMontador.setVisible(false);
-=======
+		
 		consultarFabricante = new PanelConsultarFabricante();
 		this.add(consultarFabricante);
 		consultarFabricante.setVisible(false);
@@ -57,7 +56,6 @@ public class PanelPrincipal extends JPanel{
 		eliminarFabricante = new PanelConsultarFabricante();
 		this.add(eliminarFabricante);
 		eliminarFabricante.setVisible(false);
->>>>>>> origin/master
 	
 		
 		
@@ -282,7 +280,7 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
-<<<<<<< HEAD
+
 		modificarMontador.getBtnAceptar().addActionListener(new ActionListener(){
 
 			@Override
@@ -311,7 +309,9 @@ public class PanelPrincipal extends JPanel{
 				reiniciarPanelFabricante(modificarFabricante);
 				modificarFabricante.setVisible(false);
 				menu.setVisible(true);
-=======
+			}
+		});
+
 		eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
 
 			@Override
@@ -371,19 +371,21 @@ public class PanelPrincipal extends JPanel{
 					JOptionPane.showMessageDialog(null, "Revise el Id");
 				}
 				
->>>>>>> origin/master
+
 			}
 			
 		});
 		
-<<<<<<< HEAD
+
 		modificarMontador.getBtnCancelar().addActionListener(new ActionListener(){
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e){ 
 				modificarMontador.setVisible(false);
 				reiniciarPanelMontador(modificarMontador);
-=======
+			}
+		});
+
 		consultarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
 
 			@Override
@@ -391,14 +393,13 @@ public class PanelPrincipal extends JPanel{
 				consultarFabricante.setVisible(false);
 				((PanelConsultarFabricante)consultarFabricante).getTxtId().setText(null);
 				reiniciarPanelFabricante(consultarFabricante);
->>>>>>> origin/master
+
 				menu.setVisible(true);
 			}
 			
 		});
 		
-<<<<<<< HEAD
-=======
+
 		((PanelConsultarFabricante)consultarFabricante).getBtnBuscar().addActionListener(new ActionListener(){
 
 			@Override
@@ -423,8 +424,9 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
->>>>>>> origin/master
+
 	}
+
 	
 	private void reiniciarPanelFabricante(PanelFormaFabricante panelF){
 		
@@ -447,3 +449,4 @@ public class PanelPrincipal extends JPanel{
 	}
 	
 }
+			
