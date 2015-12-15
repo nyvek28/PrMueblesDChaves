@@ -443,8 +443,11 @@ public class Gestor {
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		Montador m;
 		m = Empresa.consultarMontador(pidMontador);
-		
-		
+		Juego juego=m.crearJuego(m.getId());
+		for(int i=0;i<= pidMuebles.length; i++){
+			m.agregarMuebleAJuego(juego.getId(), pidMuebles[i]);
+		}
+		datos=this.juegoToTreeMap(juego);
 		return datos;
 	}
 	/*
@@ -521,7 +524,6 @@ public class Gestor {
 		for(int i=0;i<listaMuebles.size();i++){
 			Mueble m=listaMuebles.get(i);
 			info+="\n Mueble"+i+": "+ m.toString();
-				
 		}
 		datosJuego.put("id", String.valueOf(juego.getId()));
 		datosJuego.put("montador", String.valueOf(juego.getIdMontador()));
