@@ -8,18 +8,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelFormaMontador extends JPanel {
+public class PanelFormaCliente extends JPanel {
 
 	private JTextField textFieldId;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldDireccion;
+	private JTextField textFieldTrabajo;
+	private JTextField textFieldTelTrabajo;
 	private JButton btnAceptar;
 	private JButton btnCancelar;
-	private JLabel lblId;
 	
-	public PanelFormaMontador(){
+	public PanelFormaCliente(){
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -42,7 +43,15 @@ public class PanelFormaMontador extends JPanel {
 		c.gridy++;
 		this.add(lblDireccion,c);
 		
-		lblId = new JLabel("ID:");
+		JLabel lblTrabajo = new JLabel("Trabajo:");
+		c.gridy++;
+		this.add(lblTrabajo,c);
+		
+		JLabel lblTelTrabajo = new JLabel("Telefono trabajo:");
+		c.gridy++;
+		this.add(lblTelTrabajo,c);
+		
+		JLabel lblId = new JLabel("ID:");
 		c.gridy++;
 		this.add(lblId,c);
 		
@@ -68,6 +77,14 @@ public class PanelFormaMontador extends JPanel {
 		c.gridy++;
 		this.add(textFieldDireccion,c);
 		//textFieldDireccion.setColumns(10);
+		
+		textFieldTrabajo = new JTextField(15);
+		c.gridy++;
+		this.add(textFieldTrabajo,c);
+		
+		textFieldTelTrabajo = new JTextField(15);
+		c.gridy++;
+		this.add(textFieldTelTrabajo,c);
 		
 		textFieldId = new JTextField(8);
 		c.gridy++;
@@ -118,20 +135,28 @@ public class PanelFormaMontador extends JPanel {
 		this.textFieldDireccion = textFieldDireccion;
 	}
 	
+	public JTextField getTextFieldTrabajo() {
+		return textFieldTrabajo;
+	}
+
+	public void setTextFieldTrabajo(JTextField textFieldTrabajo) {
+		this.textFieldTrabajo = textFieldTrabajo;
+	}
+	
+	public JTextField getTextFieldTelTrabajo() {
+		return textFieldTelTrabajo;
+	}
+
+	public void setTextFieldTelTrabajo(JTextField textFieldTelTrabajo) {
+		this.textFieldTelTrabajo = textFieldTelTrabajo;
+	}
+	
 	public JTextField getTextFieldId() {
 		return textFieldId;
 	}
 
 	public void setTextFieldId(JTextField textFieldId) {
 		this.textFieldId = textFieldId;
-	}
-	
-	public JLabel getLblId() {
-		return lblId;
-	}
-
-	public void setLblId(JLabel plblId) {
-		lblId = plblId;
 	}
 
 	public JButton getBtnAceptar() {

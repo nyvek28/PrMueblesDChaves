@@ -13,8 +13,9 @@ public class PanelPrincipal extends JPanel{
 	private PanelFormaFabricante modificarFabricante, registrarFabricante, consultarFabricante, eliminarFabricante;// = new PanelRegistrarFabricante();
 	private muestra m;
 	private PanelMenuPrincipal menu;
-	private PanelPlantillaCRUD menuFabricante, menuMontador;
-	private PanelFormaMontador registrarMontador,modificarMontador;
+	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente;
+	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador;
+	private PanelFormaCliente registrarCliente;
 	
 	
 	
@@ -47,6 +48,15 @@ public class PanelPrincipal extends JPanel{
 		modificarMontador = new PanelModificarMontador();
 		this.add(modificarMontador);
 		modificarMontador.setVisible(false);
+		
+		consultarMontador = new PanelConsultarMontador();
+		this.add(consultarMontador);
+		consultarMontador.setVisible(false);
+		consultarMontador.getBtnCancelar().setVisible(false);
+		
+		registrarCliente = new PanelRegistrarCliente();
+		this.add(registrarCliente);
+		registrarCliente.setVisible(false);
 		
 		consultarFabricante = new PanelConsultarFabricante();
 		this.add(consultarFabricante);
@@ -311,6 +321,52 @@ public class PanelPrincipal extends JPanel{
 				menu.setVisible(true);
 			}
 		});
+		
+		this.menuMontador.getBtnConsultar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				consultarMontador.setVisible(true);
+				
+			}
+		});
+		
+		consultarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarMontador.setVisible(false);
+				((PanelConsultarMontador)consultarMontador).getTxtId().setText(null);
+				reiniciarPanelMontador(consultarMontador);
+
+				menu.setVisible(true);
+			}
+			
+		});
+		
+
+		((PanelConsultarMontador)consultarMontador).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarMontador(Integer.parseInt(((PanelConsultarMontador)consultarMontador).getTxtId().getText()));
+					consultarMontador.getTextFieldNombre().setText(info.get("nombre"));
+					consultarMontador.getTextFieldApellido().setText(info.get("apellido"));
+					consultarMontador.getTextFieldTelefono().setText(info.get("telefono"));
+					consultarMontador.getTextFieldDireccion().setText(info.get("direccion"));
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+			}
+			
+		});
 
 		eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
 
@@ -383,6 +439,7 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent e){ 
 				modificarMontador.setVisible(false);
 				reiniciarPanelMontador(modificarMontador);
+				menu.setVisible(true);
 			}
 		});
 
