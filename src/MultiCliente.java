@@ -131,5 +131,43 @@ public class MultiCliente {
 		return c;
 		
 	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo para listar todos los clientes en la base de datos
+	Version: v.1.0
+	Fecha: Dic 15, 2015
+	Ediciones:
+
+	*/
+	public ArrayList<Cliente> listar() throws Exception{
+		
+		Cliente c;
+		String sql;
+		ResultSet rs; 
+		ArrayList<Cliente> tabla = new ArrayList<Cliente>();
+		
+		sql = "SELECT * "
+			+ "FROM TbCliente ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			c = new Cliente(
+					rs.getInt("id"),
+					rs.getString("nombre"),
+					rs.getString("apellido"),
+					rs.getInt("telefono"),
+					rs.getString("direccion"),
+					rs.getInt("switch"),
+					rs.getString("trabajo"),
+					rs.getInt("telTrabajo"));
+			tabla.add(c);
+		}
+		if(tabla.size()<1){
+			tabla = null;
+		}
+		
+		return tabla;
+		
+	}
 
 }

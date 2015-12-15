@@ -15,7 +15,7 @@ public class PanelPrincipal extends JPanel{
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente;
 	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador, eliminarMontador;
-	private PanelFormaCliente registrarCliente;
+	private PanelFormaCliente registrarCliente, modificarCliente;
 	
 	
 	
@@ -57,6 +57,10 @@ public class PanelPrincipal extends JPanel{
 		registrarCliente = new PanelRegistrarCliente();
 		this.add(registrarCliente);
 		registrarCliente.setVisible(false);
+		
+		modificarCliente = new PanelModificarCliente();
+		this.add(modificarCliente);
+		modificarCliente.setVisible(false);
 		
 		consultarFabricante = new PanelConsultarFabricante();
 		this.add(consultarFabricante);
@@ -272,16 +276,6 @@ public class PanelPrincipal extends JPanel{
 			}
 		});
 		
-		this.menuMontador.getBtnModificar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuMontador.setVisible(false);
-				modificarMontador.setVisible(true);
-				
-			}
-		});
-		
 		registrarMontador.getBtnCancelar().addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e) {
@@ -291,6 +285,17 @@ public class PanelPrincipal extends JPanel{
 				
 			}
 			
+		});
+		
+		
+		this.menuMontador.getBtnModificar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				modificarMontador.setVisible(true);
+				
+			}
 		});
 		
 
@@ -303,10 +308,10 @@ public class PanelPrincipal extends JPanel{
 				
 				try {
 					info = (new Gestor()).modificarMontador(Integer.parseInt(((PanelModificarMontador) modificarMontador).getLista().get(((PanelModificarMontador) modificarMontador).getComboBoxMontadores().getSelectedIndex()).get("id")), 
-									modificarFabricante.getTextFieldNombre().getText(), 
-									modificarFabricante.getTextFieldApellido().getText(), 
-									Integer.parseInt(modificarFabricante.getTextFieldTelefono().getText()), 
-									modificarFabricante.getTextFieldDireccion().getText()
+									modificarMontador.getTextFieldNombre().getText(), 
+									modificarMontador.getTextFieldApellido().getText(), 
+									Integer.parseInt(modificarMontador.getTextFieldTelefono().getText()), 
+									modificarMontador.getTextFieldDireccion().getText()
 									);
 				} catch (Exception e1) {
 					info = null;
@@ -319,8 +324,8 @@ public class PanelPrincipal extends JPanel{
 				}
 				
 				JOptionPane.showMessageDialog(null, msj);
-				reiniciarPanelFabricante(modificarFabricante);
-				modificarFabricante.setVisible(false);
+				reiniciarPanelMontador(modificarMontador);
+				modificarMontador.setVisible(false);
 				menu.setVisible(true);
 			}
 		});
@@ -504,6 +509,52 @@ public class PanelPrincipal extends JPanel{
 				
 			}
 		});
+		
+		this.menuCliente.getBtnModificar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				modificarCliente.setVisible(true);
+				
+			}
+		});
+		
+
+		modificarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap info;
+				String msj;
+				
+				try {
+					info = (new Gestor()).modificarCliente(Integer.parseInt(((PanelModificarCliente) modificarCliente).getLista().get(((PanelModificarCliente) modificarCliente).getComboBoxClientes().getSelectedIndex()).get("id")), 
+									modificarCliente.getTextFieldNombre().getText(), 
+									modificarCliente.getTextFieldApellido().getText(), 
+									Integer.parseInt(modificarCliente.getTextFieldTelefono().getText()), 
+									modificarCliente.getTextFieldDireccion().getText(),
+									modificarCliente.getTextFieldTrabajo().getText(),
+									Integer.parseInt(modificarCliente.getTextFieldTelTrabajo().getText())
+									);
+				} catch (Exception e1) {
+					info = null;
+					e1.printStackTrace();
+				}
+				if(info != null){
+					msj = "Se modifico el Cliente de Id " + info.get("id") + " correctamente";
+				}else{
+					msj = "No se logro modificar al cliente!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				reiniciarPanelCliente(modificarCliente);
+				modificarCliente.setVisible(false);
+				menu.setVisible(true);
+			}
+		});
+		
+		//======================= aqui empieza fabricante   ======================//
 
 		eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
 

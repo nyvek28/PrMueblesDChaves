@@ -23,6 +23,14 @@ public class Cliente extends Persona{
 		this.setTelTrabajo(telTrabajo);
 		
 	}
+	
+public Cliente(int pId, String pNombre, String pApellido, int pTelefono, String pDireccion,int switCh,String trabajo, int telTrabajo){
+		
+		super(pId, pNombre, pApellido, pTelefono, pDireccion,switCh);
+		this.setTrabajo(trabajo);
+		this.setTelTrabajo(telTrabajo);
+		
+	}
 
 	
 	/**

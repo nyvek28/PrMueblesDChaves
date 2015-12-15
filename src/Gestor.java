@@ -802,4 +802,29 @@ public class Gestor {
 		
 	}
 	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que lista a los clientes de la base de datos
+	Version: v.1.0
+	Fecha: Dic 15, 2015
+	Ediciones:
+
+	*/
+	
+	public ArrayList<TreeMap<String, String>> listarClientes() throws Exception{
+		
+		ArrayList<TreeMap<String, String>> clientes = new ArrayList<TreeMap<String,String>>();
+		TreeMap datos;
+		
+		for(int i = 0; i < (new MultiCliente()).listar().size(); i++){
+			
+			datos = this.fabricanteToTreeMap((new MultiFabricante()).listar().get(i));
+			clientes.add(datos);
+			
+		}
+		
+		return clientes;
+		
+	}
+	
 }
