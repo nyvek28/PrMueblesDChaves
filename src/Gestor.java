@@ -796,7 +796,7 @@ public ArrayList<TreeMap<String, String>> listarMuebles(int plinea) throws Excep
 	
 	
 	
-public ArrayList<TreeMap<String, String>> listarJuegos() throws Exception{
+	public ArrayList<TreeMap<String, String>> listarJuegos() throws Exception{
 		
 		ArrayList<TreeMap<String, String>> juegos = new ArrayList<TreeMap<String,String>>();
 		TreeMap datos;

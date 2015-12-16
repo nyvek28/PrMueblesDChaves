@@ -136,7 +136,7 @@ public class MultiJuego {
 		
 		
 	}
-public ArrayList<Juego> listar() throws Exception{
+	public ArrayList<Juego> listar() throws Exception{
 		
 		Juego f;
 		String sql;
