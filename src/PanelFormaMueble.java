@@ -84,6 +84,7 @@ public class PanelFormaMueble extends JPanel {
 		//textFieldTelefono.setColumns(10);
 		
 		textFieldCategoria = new JTextField(8);
+		textFieldCategoria.setEditable(false);
 		c.gridy++;
 		this.add(textFieldCategoria,c);
 		//textFieldLinea.setColumns(10);
