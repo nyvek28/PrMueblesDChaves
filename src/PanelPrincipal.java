@@ -175,6 +175,74 @@ public class PanelPrincipal extends JPanel{
 		});
 		
 		
+		menuJuego.getBtnConsultar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuJuego.setVisible(false);
+				consultarJuego.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		menuJuego.getBtnRegistrar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuJuego.setVisible(false);
+				registrarJuego.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		menuMueble.getBtnConsultar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				menuMueble.setVisible(false);
+				consultarMueble.setVisible(true);
+				
+			}
+			
+		});
+		menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuMueble.setVisible(false);
+				registrarMueble.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		menuVenta.getBtnConsultar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuVenta.setVisible(false);
+				consultarVenta.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		menuVenta.getBtnRegistrar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuVenta.setVisible(false);
+				registrarVenta.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		
 		menu.getBtnDistribuidor().addActionListener(new ActionListener(){
 
 			@Override
@@ -195,6 +263,8 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
+		
 		
 		this.registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
 
@@ -233,6 +303,7 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
 		
 		this.menuMontador.getBtnRegistrar().addActionListener(new ActionListener(){
 			@Override
