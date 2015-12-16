@@ -48,7 +48,14 @@ public PanelModificarMontador() throws Exception{
 		this.getTextFieldDireccion().setText(lista.get(i).get("direccion"));
 	}
 	
+	
 	public ArrayList<TreeMap<String, String>> getLista() {
+		try {
+			this.setLista((new Gestor()).listarMontadores());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return lista;
 	}
 
