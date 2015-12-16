@@ -115,7 +115,7 @@ public class Distribuidor {
 			
 		}
 		
-		costoTotal += (this.getPorcentaje() * costoTotal / 100);
+		costoTotal +=  + (this.getPorcentaje() * costoTotal / 100);
 		
 		return costoTotal;
 		

@@ -27,12 +27,12 @@ public class Montador extends Persona{
 		
 	}
 
-	public void modificarJuego(int idJuego, int idMueble,int idmuebleEliminar)throws Exception{
-		Juego juego=(new MultiJuego().buscarid(idJuego));
-		
-		
-		
-	}
+//	public void modificarJuego(int idJuego, int idMueble,int idmuebleEliminar)throws Exception{
+//		Juego juego=(new MultiJuego().buscarid(idJuego));
+//		
+//		
+//		
+//	}
 	
 	public Mueble agregarMuebleAJuego(int idJuego, int idMueble) throws SQLException, Exception{
 		
