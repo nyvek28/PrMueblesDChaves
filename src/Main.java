@@ -19,6 +19,8 @@ public class Main {
 			System.out.println("Error");
 		}
 		
+		System.out.println((new MultiMueble()).buscarid(5).getIdJuego());
+		
 		
 		
 	}
