@@ -27,7 +27,7 @@ public class PanelPrincipal extends JPanel{
 		registrarMueble= new PanelRegistrarMueble();
 		this.add(registrarMueble);
 		this.registrarMueble.setVisible(true);
-		consultarMueble= new PanelConsultarMueble;
+		consultarMueble= new PanelConsultarMueble();
 		this.add(consultarMueble);
 		this.consultarMueble.setVisible(true);
 		

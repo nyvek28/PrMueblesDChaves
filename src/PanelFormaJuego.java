@@ -14,6 +14,8 @@ public class PanelFormaJuego extends JPanel {
 	private JTextField textFieldMuebles;
 	private JTextField textFieldMontador;
 	private JTextField textFieldEstado;//Vendido o disponible
+	
+
 	private JButton btnAceptar;
 	private JButton btnCancelar;
 	
@@ -74,8 +76,15 @@ public class PanelFormaJuego extends JPanel {
 		this.setVisible(true);
 		
 	}
+	public JTextField getTextFieldEstado() {
+		return textFieldEstado;
+	}
 
-	public JTextField getTextFieldId() {
+	public void setTextFieldEstado(JTextField textFieldEstado) {
+		this.textFieldEstado = textFieldEstado;
+	}
+
+	public JTextField getTextFieldID() {
 		return textFieldID;
 	}
 
