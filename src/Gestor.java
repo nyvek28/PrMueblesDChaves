@@ -17,15 +17,18 @@ public class Gestor {
 		ArrayList<Fabricante> fabricantes;
 		ArrayList<Distribuidor> distribuidores;
 		ArrayList<Mueble> muebles;
+		ArrayList<Juego> juegos;
 		
 		fabricantes = (new MultiFabricante()).listar();
 		distribuidores = (new MultiDistribuidor()).listar();
 		muebles = (new MultiMueble()).listar();
+		juegos = (new MultiJuego()).listar();
 		if(fabricantes != null && distribuidores != null && muebles != null){
 			
 			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());
 			Distribuidor.setConsecutivo(distribuidores.get(distribuidores.size()-1).getId());
 			Mueble.setConsecutivo(muebles.get((muebles.size()-1)).getId());
+			Juego.setConsecutivo(juegos.get((juegos.size()-1)).getId());
 			
 		}else{
 			System.out.println("No se inicio correctamente el sistema");
@@ -444,7 +447,7 @@ public class Gestor {
 		Montador m;
 		m = Empresa.consultarMontador(pidMontador);
 		Juego juego=m.crearJuego(m.getId());
-		for(int i=0;i<= pidMuebles.size(); i++){
+		for(int i=0;i < pidMuebles.size(); i++){
 			m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
 		}
 		datos=this.juegoToTreeMap(juego);
@@ -527,7 +530,7 @@ public class Gestor {
 		}
 		datosJuego.put("id", String.valueOf(juego.getId()));
 		datosJuego.put("montador", String.valueOf(juego.getIdMontador()));
-		datosJuego.put("informacion muebles", info);
+		datosJuego.put("info", info);
 		
 		return datosJuego;
 	}
