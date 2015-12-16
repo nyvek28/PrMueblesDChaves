@@ -776,6 +776,21 @@ public class Gestor {
 		return fabricantes;
 		
 	}
+public ArrayList<TreeMap<String, String>> listarMuebles(int plinea) throws Exception{
+		
+		ArrayList<TreeMap<String, String>> muebles = new ArrayList<TreeMap<String,String>>();
+		TreeMap datos;
+		
+		for(int i = 0; i < (new MultiMueble()).listar(plinea).size(); i++){
+			
+			datos = this.muebleToTreeMap((new MultiMueble()).listar(plinea).get(i));
+			muebles.add(datos);
+			
+		}
+		
+		return muebles;
+		
+	}
 	
 	
 	

@@ -465,7 +465,7 @@ public class MultiMueble {
 		
 	}
 	
-	public ArrayList<Mueble> listar() throws Exception{
+	public ArrayList<Mueble> listar(int plinea) throws Exception{
 		
 		Mueble m;
 		String sql;
@@ -473,7 +473,7 @@ public class MultiMueble {
 		ArrayList<Mueble> tabla = new ArrayList<Mueble>();
 		
 		sql = "SELECT * "
-			+ "FROM TbMueble ";
+			+ "FROM TbMueble WHERE linea+ '"+plinea;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			tabla.add(this.buscarid(rs.getInt("id")));
