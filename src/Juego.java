@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.*;
 
 
@@ -41,8 +42,12 @@ public class Juego {
 		vendido = pvendido;
 	}
 	
-	public ArrayList<Mueble> getListaMuebles() {
-		return listaMuebles;
+	public ArrayList<Mueble> getListaMuebles() throws SQLException, Exception {
+		ArrayList<Mueble> l;
+		
+		l = (new MultiMueble()).buscaridJ(this.getId());
+		
+		return l;
 	}
 	public void setListaMuebles(ArrayList a)throws Exception {
 		this.listaMuebles=a;

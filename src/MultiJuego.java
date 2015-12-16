@@ -78,7 +78,7 @@ public class MultiJuego {
 		Mueble m;
 		String msj="";
 		ArrayList<Mueble> listaMueble= new ArrayList<Mueble>();
-		sql = "SELECT id,linea,color,ancho,alto,largo,categoria "+
+		sql = "SELECT * "+
 		"FROM TbMueble "+
 		"WHERE IdJuego = '"+pid+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);

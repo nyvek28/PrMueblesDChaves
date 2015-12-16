@@ -39,6 +39,9 @@ public class Montador extends Persona{
 		Mueble m;
 		
 		m = (new MultiMueble()).buscarid(idMueble);
+		if(m == null){
+			System.out.println("Esta null");
+		}
 		System.out.println("id:" +m.getId() + "\n"
 						+ "idJuego:" + m.getIdJuego() + "\n");
 		m.setIdJuego((new MultiJuego()).buscarid(idJuego).getId());

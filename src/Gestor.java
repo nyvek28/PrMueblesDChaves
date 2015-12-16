@@ -449,6 +449,7 @@ public class Gestor {
 		m = Empresa.consultarMontador(pidMontador);
 		Juego juego=m.crearJuego(m.getId());
 		for(int i=0;i < pidMuebles.size(); i++){
+			System.out.println("Se esta mandando: " + pidMuebles.get(i));
 			m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
 		}
 		datos=this.juegoToTreeMap(juego);
@@ -495,6 +496,51 @@ public class Gestor {
 		
 		
 	}
+	
+	public TreeMap<String,String>  registrarMueble(int idFabricante, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,double alturaSobreSuelo)throws Exception{
+		Fabricante f;
+		Mueble m;
+		TreeMap<String, String> datos;
+		
+		f=(new MultiFabricante()).buscar(idFabricante);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio,alturaSobreSuelo);
+		datos=this.muebleToTreeMap(m);
+		
+		return datos;
+		
+		
+	}
+	
+	public TreeMap<String,String>  registrarMueble(int idFabricante, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int tipo,
+			double espesor)throws Exception{
+		Fabricante f;
+		Mueble m;
+		TreeMap<String, String> datos;
+		
+		f=(new MultiFabricante()).buscar(idFabricante);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio,tipo,espesor);
+		datos=this.muebleToTreeMap(m);
+		
+		return datos;
+		
+		
+	}
+	
+	public TreeMap<String,String>  registrarMueble(int idFabricante, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int acabado)throws Exception{
+		Fabricante f;
+		Mueble m;
+		TreeMap<String, String> datos;
+		
+		f=(new MultiFabricante()).buscar(idFabricante);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio, acabado);
+		datos=this.muebleToTreeMap(m);
+		
+		return datos;
+		
+		
+	}
+	
+	
 	/*
 	Autor: Daniel Chaves
 	Descripcion: Metodo que consulta un mueble
@@ -718,10 +764,22 @@ public class Gestor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public TreeMap<String,String> venderJuego(int idDistribuidor, int idJuego, int idCliente, String fecha)throws Exception{
-		Venta venta=Empresa.registrarVenta(idDistribuidor, idJuego, idCliente, fecha);
-		TreeMap<String, String> infoVenta=this.ventaToTreeMap(venta);
-		return infoVenta;
+	public TreeMap<String,String> venderJuego(int idDistribuidor, int idJuego, int idCliente)throws Exception{
+		Venta v;
+		TreeMap<String, String> info;
+		
+		if((new MultiDistribuidor()).buscar(idDistribuidor) != null){
+				if((new MultiCliente()).buscar(idCliente) != null){
+				v = (new MultiDistribuidor()).buscar(idDistribuidor).registrarVenta(idJuego, idCliente);
+				info = this.ventaToTreeMap(v);
+			}else{
+				info = null;
+			}
+		}else{
+			info = null;
+		}
+		
+		return info;
 		
 	}
 	/*
@@ -743,13 +801,15 @@ public class Gestor {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	private TreeMap<String, String> ventaToTreeMap(Venta venta){
+	private TreeMap<String, String> ventaToTreeMap(Venta venta) throws SQLException, Exception{
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		
-		datos.put("idCliente", String.valueOf(venta.getIdCliente()));
+		datos.put("cliente", (new MultiCliente()).buscar(venta.getIdCliente()).getNombre()+" "+(new MultiCliente()).buscar(venta.getIdCliente()).getApellido());
 		datos.put("idJuego", String.valueOf(venta.getIdJuego()));
-		datos.put("Muebles", venta.getInfoMuebles());
+		datos.put("distribuidor", (new MultiDistribuidor().buscar(venta.getIdDistribuidor()).getNombre()));
+		datos.put("monto", String.valueOf(venta.getMonto()));
+		datos.put("monto", String.valueOf(venta.getMonto()));
 		
 		return datos;
 		
@@ -890,6 +950,28 @@ public ArrayList<TreeMap<String, String>> listarMuebles(int plinea) throws Excep
 		}
 		
 		return distribuidores;
+		
+	}
+	
+	public double calcularCosto(int idDistribuidor, int idJuego) throws SQLException, Exception{
+		
+		Distribuidor f;
+		Juego j;
+		double costo;
+		
+		f = Empresa.consultarDistribuidor(idDistribuidor);
+		if(f != null){
+			j = (new MultiJuego()).buscarid(idJuego);
+			if(j != null){
+				costo = f.calcularCostoJuego(j);
+			}else{
+				costo = -1;
+			}
+		}else{
+			costo = -1;
+		}
+		
+		return costo;
 		
 	}
 	

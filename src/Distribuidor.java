@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -74,7 +75,7 @@ public class Distribuidor {
 		return venta;
 	}
 	
-	public double calcularCostoJuego(Juego j){
+	public double calcularCostoJuego(Juego j) throws SQLException, Exception{
 		
 		double costoTotal = 0;
 		

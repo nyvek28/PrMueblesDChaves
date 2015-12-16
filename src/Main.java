@@ -8,19 +8,35 @@ public class Main {
 		(new Gestor()).inicializarPrograma();
 		TreeMap datos;
 		ArrayList<Integer> ids = new ArrayList<Integer>();
-		for(int i = 1; i <= 5; i++){
+		for(int i = 6; i <= 9; i++){
 			ids.add(i);
 		}
 		
-		datos = (new Gestor()).armarJuego(ids, 666);
+//		datos = (new Gestor()).venderJuego(1, 26, 9);
+//		if(datos != null){
+//			System.out.println(datos.get("idJuego"));
+//			System.out.println(datos.get("cliente"));
+//			System.out.println(datos.get("distribuidor"));
+//			System.out.println(datos.get("monto"));
+//		}else{
+//			System.out.println("Error");
+//		}
+		
+		datos = (new Gestor()).consultarVenta(0);
 		if(datos != null){
-			System.out.println(datos.get("info"));
+			System.out.println(datos.get("idJuego"));
+			System.out.println(datos.get("cliente"));
+			System.out.println(datos.get("distribuidor"));
+			System.out.println(datos.get("monto"));
 		}else{
 			System.out.println("Error");
 		}
+		//System.out.println((new MultiDistribuidor()).buscar(1).calcularCostoJuego((new MultiJuego()).buscarid(Integer.parseInt((String) datos.get("id")))));
 		
-		System.out.println((new MultiMueble()).buscarid(5).getIdJuego());
-		
+//		datos = (new Gestor()).registrarMueble(1, "Blanco", 23, 12, 45, 1, 32900, 12);
+//		System.out.println(datos.get("id"));
+//		datos = (new Gestor()).registrarMueble(1, "Verde", 56, 76, 123, 2, 100500, 1, 12);
+//		System.out.println(datos.get("id"));
 		
 		
 	}

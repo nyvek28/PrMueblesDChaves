@@ -8,6 +8,7 @@
 
 
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -26,18 +27,18 @@ public class Venta {
 	
 	
 	
-	public Venta(int pidDistribuidor,int pidJuego,int pidCliente ) throws ParseException{
+	public Venta(int pidDistribuidor,int pidJuego,int pidCliente ) throws SQLException, Exception{
 		this.setIdCliente(pidCliente);
 		this.setIdDistribuidor(pidDistribuidor);
 		this.setIdJuego(pidJuego);
 		this.setFecha((new SimpleDateFormat()).parse((new SimpleDateFormat()).format(new Date())));
-		this.setConsecutivo(consecutivo++);
+		Venta.setConsecutivo(consecutivo++);
 		this.setId(Venta.getConsecutivo());
-		
+		this.setMonto((new MultiDistribuidor()).buscar(pidDistribuidor).calcularCostoJuego((new MultiJuego()).buscarid(pidJuego)));
 		this.setSwitCh(1);
 		
 	}
-	public Venta ( int pid,Date pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch ){
+	public Venta ( int pid,Date pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch, double monto ){
 		this.setId(pid);
 		this.setFecha(pfecha);
 		this.setIdCliente(pidCliente);
@@ -45,6 +46,7 @@ public class Venta {
 		this.setIdJuego(pidJuego);
 		this.setConsecutivo(pconsecutivo);
 		this.setSwitCh(pswitch);
+		this.setMonto(monto);
 		
 	}
 	public double getMonto() {
