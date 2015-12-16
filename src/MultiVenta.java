@@ -6,6 +6,7 @@
 	Ediciones:
 	 */
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class MultiVenta {
@@ -14,21 +15,22 @@ public class MultiVenta {
 		Venta  venta=null;
 		String sql;
 		venta = new Venta(idDistribuidor,idJuego, idCliente);
-		Date pfecha= new Date();
-		String fecha=pfecha.toString();
-		sql="INSERT INTO TbVenta "+
-		"VALUES ('"+venta.getId()+"','"+fecha+"','"+idCliente+"','"
-				+venta.getIdDistribuidor()
-				+"','"+idJuego+"','"
-				+venta.getConsecutivo()
-				+"','"+venta.getSwitCh()
-				+"','"+venta.getMonto()+")";
+		sql="INSERT INTO TbVenta (id, fecha, idCliente, idDistribuidor, idJuego, consecutivo, switCh, monto) " +
+		" VALUES (" + venta.getId() + ","
+				+ "'" + (new SimpleDateFormat()).format(venta.getFecha()) +"',"
+				+ venta.getIdCliente()+","
+				+ venta.getIdDistribuidor() +"," 
+				+ venta.getIdJuego() + ","
+				+ Venta.getConsecutivo() + "," 
+				+ venta.getSwitCh() +","
+				+ venta.getMonto()+")";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
 			
 		}
 		catch (Exception e) {
-			throw new Exception (".");
+			venta = null;
+			e.printStackTrace();
 		}
 		return venta;
 	}
@@ -51,7 +53,7 @@ public class MultiVenta {
 		if (rs.next()){
 			venta = new Venta(
 				rs.getInt("id"),
-				rs.getString("fecha"),
+				(new SimpleDateFormat()).parse(rs.getString("fecha")),
 				rs.getInt("idCliente"),
 				rs.getInt("idDistribuidor"),
 				rs.getInt("idJuego"),

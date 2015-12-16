@@ -8,12 +8,14 @@
 
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 public class Venta {
 	
 	private int idJuego;
 	private Date fecha;
-	private static int id=0;
+	private int id=0;
 	private static int consecutivo = 0;
 	private String msj;
 	private int idCliente;
@@ -24,13 +26,14 @@ public class Venta {
 	
 	
 	
-	public Venta(int pidDistribuidor,int pidJuego,int pidCliente ){
+	public Venta(int pidDistribuidor,int pidJuego,int pidCliente ) throws ParseException{
 		this.setIdCliente(pidCliente);
 		this.setIdDistribuidor(pidDistribuidor);
 		this.setIdJuego(pidJuego);
-		this.setFecha(new Date());
-		this.setId();
+		this.setFecha((new SimpleDateFormat()).parse((new SimpleDateFormat()).format(new Date())));
 		this.setConsecutivo(consecutivo++);
+		this.setId(Venta.getConsecutivo());
+		
 		this.setSwitCh(1);
 		
 	}
@@ -70,13 +73,13 @@ public class Venta {
 	public static void setConsecutivo(int pconsecutivo) {
 		consecutivo = pconsecutivo;
 	}
-	public static int getId() {
+	public int getId() {
 		return id;
 	}
-	public static void setId(int pid){
+	public void setId(int pid){
 		id=pid;
 	}
-	public static void setId() {
+	public void setId() {
 		id=id+1;
 	}
 	public Date getFecha() {
@@ -111,20 +114,20 @@ public class Venta {
 		this.idCliente = idCliente;
 	}
 	
-	public void info() throws Exception{
-		msj="";
-		String info="";
-		Cliente cliente=(new MultiCliente().buscar(idCliente));
-		Juego juego= (new MultiJuego().buscarid(idJuego));
-		msj+="Cliente: "+cliente.getNombre()+" "+cliente.getApellido();
-		ArrayList<Mueble> listaMuebles=(new MultiJuego().buscarMuebleddeJuego(idJuego));
-		for(int i=0;i<listaMuebles.size();i++){
-			Mueble m=listaMuebles.get(i);
-			msj+="\n Mueble"+i+": "+ m.toString();
-				
-		}
-		
-		
-	}
+//	public void info() throws Exception{
+//		msj="";
+//		String info="";
+//		Cliente cliente=(new MultiCliente().buscar(idCliente));
+//		Juego juego= (new MultiJuego().buscarid(idJuego));
+//		msj+="Cliente: "+cliente.getNombre()+" "+cliente.getApellido();
+//		ArrayList<Mueble> listaMuebles=(new MultiJuego().buscarMuebleddeJuego(idJuego));
+//		for(int i=0;i<listaMuebles.size();i++){
+//			Mueble m=listaMuebles.get(i);
+//			msj+="\n Mueble"+i+": "+ m.toString();
+//				
+//		}
+//		
+//		
+//	}
 
 }

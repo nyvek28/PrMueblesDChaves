@@ -575,7 +575,7 @@ public class Gestor {
 	public void modificarJuego(int idMontador,int idJuego, int idMueble,int idmuebleEliminar)throws Exception{
 		Juego juego=Empresa.consultarJuego(idJuego);
 		Montador montador=(new MultiMontador().buscar(idMontador));
-		montador.modificarJuego(idJuego, idMueble, idmuebleEliminar);
+		//montador.modificarJuego(idJuego, idMueble, idmuebleEliminar);
 		
 	}
 	/*
