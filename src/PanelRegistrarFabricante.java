@@ -11,13 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PanelRegistrarFabricante extends PanelFormaFabricante {
-
-	private JTextField textFieldNombre;
-	private JTextField textFieldApellido;
-	private JTextField textFieldTelefono;
-	private JTextField textFieldDireccion;
-	private JTextField textFieldLinea;
-	private JTextField textFieldAnnos;
 	
 	public PanelRegistrarFabricante(){
 		

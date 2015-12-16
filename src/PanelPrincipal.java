@@ -91,6 +91,7 @@ public class PanelPrincipal extends JPanel{
 		//this.registrarFabricante.setVisible(false);
 		
 		this.inicializarPanelesFabricante();
+		this.inicializarPanelesDistribuidor();
 		
 		menu.getBtnFabricante().addActionListener(new ActionListener(){
 
@@ -864,6 +865,12 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
+	}
+
+	private void inicializarPanelesDistribuidor(){
+		
+		
 		
 	}
 	
