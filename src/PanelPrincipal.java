@@ -14,7 +14,7 @@ public class PanelPrincipal extends JPanel{
 	private PanelFormaDistribuidor modificarDistribuidor, registrarDistribuidor, consultarDistribuidor, eliminarDistribuidor;
 	private muestra m;
 	private PanelMenuPrincipal menu;
-	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente, menuDistribuidor;
+	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente, menuDistribuidor, menuVenta, menuMueble, menuJuego;
 	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador, eliminarMontador;
 	private PanelFormaCliente registrarCliente, modificarCliente, consultarCliente, eliminarCliente;
 	private PanelFormaJuego registrarJuego, consultarJuego;
@@ -35,6 +35,15 @@ public class PanelPrincipal extends JPanel{
 		this.add(menu);
 		this.menu.setVisible(true);
 		
+		menuVenta= new PanelPlantillaCRUD();
+		this.add(menuVenta);
+		this.menuVenta.setVisible(true);
+		menuMueble= new PanelPlantillaCRUD();
+		this.add(menuMueble);
+		this.menuMueble.setVisible(true);
+		menuJuego= new PanelPlantillaCRUD();
+		this.add(menuMueble);
+		this.menuMueble.setVisible(true);
 		registrarFabricante = new PanelRegistrarFabricante();
 		this.add(registrarFabricante);
 		registrarFabricante.setVisible(false);
@@ -130,6 +139,37 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				menu.setVisible(false);
 				menuFabricante.setVisible(true);
+			}
+			
+		});
+		menu.getBtnJuego().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				menu.setVisible(false);
+				menuJuego.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		menu.getBtnMueble().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuMueble.setVisible(true);
+				
+			}
+			
+		});
+		menu.getBtnVenta().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuVenta.setVisible(true);
+				
 			}
 			
 		});
