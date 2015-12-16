@@ -11,7 +11,6 @@ import javax.swing.JTextField;
 public class PanelFormaDistribuidor extends JPanel {
 
 	private JTextField textFieldNombre;
-	private JTextField textFieldApellido;
 	private JTextField textFieldTelefono;
 	private JTextField textFieldDireccion;
 	private JTextField textFieldPorcentaje;
@@ -28,10 +27,6 @@ public class PanelFormaDistribuidor extends JPanel {
 		c.gridx = 1;
 		c.anchor = GridBagConstraints.LINE_END;
 		this.add(lblNombre,c);
-		
-		JLabel lblApellido = new JLabel("Apellido:");
-		c.gridy++;
-		this.add(lblApellido,c);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
 		c.gridy++;
@@ -51,11 +46,6 @@ public class PanelFormaDistribuidor extends JPanel {
 		c.anchor = GridBagConstraints.LINE_START;
 		this.add(textFieldNombre,c);
 		//textFieldNombre.setColumns(10);
-		
-		textFieldApellido = new JTextField(8);
-		c.gridy++;
-		this.add(textFieldApellido,c);
-		//textFieldApellido.setColumns(10);
 		
 		textFieldTelefono = new JTextField(8);
 		c.gridy++;
@@ -91,14 +81,6 @@ public class PanelFormaDistribuidor extends JPanel {
 
 	public void setTextFieldNombre(JTextField textFieldNombre) {
 		this.textFieldNombre = textFieldNombre;
-	}
-
-	public JTextField getTextFieldApellido() {
-		return textFieldApellido;
-	}
-
-	public void setTextFieldApellido(JTextField textFieldApellido) {
-		this.textFieldApellido = textFieldApellido;
 	}
 
 	public JTextField getTextFieldTelefono() {

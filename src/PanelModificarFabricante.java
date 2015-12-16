@@ -25,17 +25,20 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 		(new Gestor()).inicializarPrograma();
 		GridBagConstraints c = new GridBagConstraints();
 		
-		this.setLista((new Gestor()).listarFabricantes());
+		this.setLista(null);
 		
 		this.setComboBoxFabricantes(new JComboBox());
 		c.gridy = 0;
 		c.gridx = 2;
-		for(int i = 0; i < lista.size(); i++){	
-			this.getComboBoxFabricantes().addItem(lista.get(i).get("nombre") + " " + lista.get(i).get("apellido"));	
-		}
+		this.llenarSelect();
 		this.getComboBoxFabricantes().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				seleccionarFabricante();
+				try {
+					seleccionarFabricante();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		this.add(this.getComboBoxFabricantes(), c);
@@ -44,17 +47,25 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 		
 	}
 	
-	public void seleccionarFabricante(){
+	public void seleccionarFabricante() throws Exception{
 		
 		int i;
 		
 		i = this.comboBoxFabricantes.getSelectedIndex();
-		this.getTextFieldNombre().setText(lista.get(i).get("nombre"));
-		this.getTextFieldApellido().setText(lista.get(i).get("apellido"));
-		this.getTextFieldTelefono().setText(lista.get(i).get("telefono"));
-		this.getTextFieldDireccion().setText(lista.get(i).get("direccion"));
-		this.getTextFieldLinea().setText(lista.get(i).get("linea"));
-		this.getTextFieldAnnos().setText(lista.get(i).get("annosExp"));
+		this.getTextFieldNombre().setText(this.getLista().get(i).get("nombre"));
+		this.getTextFieldApellido().setText(this.getLista().get(i).get("apellido"));
+		this.getTextFieldTelefono().setText(this.getLista().get(i).get("telefono"));
+		this.getTextFieldDireccion().setText(this.getLista().get(i).get("direccion"));
+		this.getTextFieldLinea().setText(this.getLista().get(i).get("linea"));
+		this.getTextFieldAnnos().setText(this.getLista().get(i).get("annosExp"));
+		
+	}
+	
+	private void llenarSelect() throws Exception{
+		
+		for(int i = 0; i < this.getLista().size(); i++){	
+			this.getComboBoxFabricantes().addItem(this.getLista().get(i).get("nombre") + " " + this.getLista().get(i).get("apellido"));	
+		}
 		
 	}
 
@@ -66,8 +77,12 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 		this.comboBoxFabricantes = comboBoxFabricantes;
 	}
 
-	public ArrayList<TreeMap<String, String>> getLista() {
-		return lista;
+	public ArrayList<TreeMap<String, String>> getLista() throws Exception {
+		ArrayList<TreeMap<String, String>> l;
+		
+		l = (new Gestor()).listarFabricantes();
+		
+		return l;
 	}
 
 	public void setLista(ArrayList<TreeMap<String, String>> lista) {
