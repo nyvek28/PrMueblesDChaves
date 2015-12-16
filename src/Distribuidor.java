@@ -66,7 +66,10 @@ public class Distribuidor {
 	
 	
 	public Venta registrarVenta(int idJuego, int idCliente, String fecha)throws Exception{
-		Venta venta =(new MultiVenta().crear(idJuego, idCliente,fecha));
+		
+		Juego juego =(new MultiJuego().buscarid(idJuego));
+		double precioTotal= calcularCostoJuego(juego);
+		Venta venta =(new MultiVenta().crear(idJuego, idCliente,fecha, precioTotal));
 		return venta;
 	}
 	

@@ -19,16 +19,19 @@ public class Venta {
 	private int idCliente;
 	private int switCh;
 	private int IdDistribuidor;
+	private double monto;
 	
 	
 	
-	public Venta(int pidJuego,int pidCliente, String pfecha ){
+	
+	public Venta(int pidJuego,int pidCliente, String pfecha, double pmonto ){
 		this.setIdCliente(pidCliente);
 		this.setIdJuego(pidJuego);
 		this.setFecha(pfecha);
 		this.setId();
 		this.setConsecutivo(consecutivo++);
 		this.setSwitCh(1);
+		this.setMonto(pmonto);
 		
 	}
 	public Venta ( int pid,String pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch ){
@@ -40,6 +43,12 @@ public class Venta {
 		this.setConsecutivo(pconsecutivo);
 		this.setSwitCh(pswitch);
 		
+	}
+	public double getMonto() {
+		return monto;
+	}
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
 	public int getIdDistribuidor() {
 		return IdDistribuidor;

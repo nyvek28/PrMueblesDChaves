@@ -10,16 +10,17 @@
 
 public class MultiVenta {
 
-	public Venta crear(int idJuego, int idCliente, String fecha)throws Exception{
+	public Venta crear(int idJuego, int idCliente, String fecha, double monto)throws Exception{
 		Venta  venta=null;
 		String sql;
-		venta = new Venta(idJuego, idCliente, fecha);
+		venta = new Venta(idJuego, idCliente, fecha, monto);
 		sql="INSERT INTO TbVenta "+
 		"VALUES ('"+venta.getId()+"','"+fecha+"','"+idCliente+"','"
 				+venta.getIdDistribuidor()
 				+"','"+idJuego+"','"
 				+venta.getConsecutivo()
-				+"','"+venta.getSwitCh()+"');";
+				+"','"+venta.getSwitCh()
+				+"','"+venta.getMonto()+")";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
 			
