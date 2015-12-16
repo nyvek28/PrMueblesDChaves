@@ -17,10 +17,19 @@ public class PanelPrincipal extends JPanel{
 	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente, menuDistribuidor;
 	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador, eliminarMontador;
 	private PanelFormaCliente registrarCliente, modificarCliente, consultarCliente, eliminarCliente;
-	
+	private PanelFormaJuego registrarJuego, consultarJuego;
+	private PanelFormaMueble registrarMueble, consultarMueble;
+	private PanelFormaVenta registrarVenta, consultarVenta;
 	
 	
 	public PanelPrincipal() throws Exception{
+		
+		registrarMueble= new PanelRegistrarMueble();
+		this.add(registrarMueble);
+		this.registrarMueble.setVisible(true);
+		consultarMueble= new PanelConsultarMueble;
+		this.add(consultarMueble);
+		this.consultarMueble.setVisible(true);
 		
 		menu = new PanelMenuPrincipal();
 		this.add(menu);

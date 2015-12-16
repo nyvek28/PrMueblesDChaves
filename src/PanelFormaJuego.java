@@ -102,8 +102,6 @@ public class PanelFormaJuego extends JPanel {
 		this.textFieldMontador = textFieldMontador;
 	}
 
-	
-
 	public JButton getBtnAceptar() {
 		return btnAceptar;
 	}
