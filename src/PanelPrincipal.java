@@ -26,10 +26,10 @@ public class PanelPrincipal extends JPanel{
 		
 		registrarMueble= new PanelRegistrarMueble();
 		this.add(registrarMueble);
-		this.registrarMueble.setVisible(true);
+		this.registrarMueble.setVisible(false);
 		consultarMueble= new PanelConsultarMueble();
 		this.add(consultarMueble);
-		this.consultarMueble.setVisible(true);
+		this.consultarMueble.setVisible(false);
 		
 		menu = new PanelMenuPrincipal();
 		this.add(menu);
@@ -37,13 +37,13 @@ public class PanelPrincipal extends JPanel{
 		
 		menuVenta= new PanelPlantillaCRUD();
 		this.add(menuVenta);
-		this.menuVenta.setVisible(true);
+		this.menuVenta.setVisible(false);
 		menuMueble= new PanelPlantillaCRUD();
 		this.add(menuMueble);
-		this.menuMueble.setVisible(true);
+		this.menuMueble.setVisible(false);
 		menuJuego= new PanelPlantillaCRUD();
 		this.add(menuMueble);
-		this.menuMueble.setVisible(true);
+		this.menuMueble.setVisible(false);
 		registrarFabricante = new PanelRegistrarFabricante();
 		this.add(registrarFabricante);
 		registrarFabricante.setVisible(false);
