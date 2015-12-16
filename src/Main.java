@@ -22,15 +22,7 @@ public class Main {
 //			System.out.println("Error");
 //		}
 		
-		datos = (new Gestor()).consultarVenta(0);
-		if(datos != null){
-			System.out.println(datos.get("idJuego"));
-			System.out.println(datos.get("cliente"));
-			System.out.println(datos.get("distribuidor"));
-			System.out.println(datos.get("monto"));
-		}else{
-			System.out.println("Error");
-		}
+		
 		//System.out.println((new MultiDistribuidor()).buscar(1).calcularCostoJuego((new MultiJuego()).buscarid(Integer.parseInt((String) datos.get("id")))));
 		
 //		datos = (new Gestor()).registrarMueble(1, "Blanco", 23, 12, 45, 1, 32900, 12);
