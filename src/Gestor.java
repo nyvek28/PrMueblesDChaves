@@ -780,6 +780,7 @@ public class Gestor {
 	
 	
 	
+	
 public ArrayList<TreeMap<String, String>> listarJuegos() throws Exception{
 		
 		ArrayList<TreeMap<String, String>> juegos = new ArrayList<TreeMap<String,String>>();

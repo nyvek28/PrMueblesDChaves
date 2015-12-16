@@ -30,6 +30,15 @@ public class PanelPrincipal extends JPanel{
 		consultarMueble= new PanelConsultarMueble();
 		this.add(consultarMueble);
 		this.consultarMueble.setVisible(false);
+		consultarVenta= new PanelRegistrarVenta();
+		this.add(registrarMueble);
+		this.consultarVenta.setVisible(false);
+		registrarVenta= new PanelRegistrarVenta();
+		this.add(registrarVenta);
+		this.registrarVenta.setVisible(true);
+		consultarJuego= new PanelConsultarJuego();
+		this.add(consultarJuego);
+		this.consultarJuego.setVisible(false);
 		
 		menu = new PanelMenuPrincipal();
 		this.add(menu);
