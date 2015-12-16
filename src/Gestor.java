@@ -438,14 +438,14 @@ public class Gestor {
 	Ediciones:
 
 	*/
-	public TreeMap<String,String> armarJuego(int pidMuebles[],int pidMontador)throws SQLException, Exception{
+	public TreeMap<String,String> armarJuego(ArrayList<Integer> pidMuebles,int pidMontador)throws SQLException, Exception{
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		Montador m;
 		m = Empresa.consultarMontador(pidMontador);
 		Juego juego=m.crearJuego(m.getId());
-		for(int i=0;i<= pidMuebles.length; i++){
-			m.agregarMuebleAJuego(juego.getId(), pidMuebles[i]);
+		for(int i=0;i<= pidMuebles.size(); i++){
+			m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
 		}
 		datos=this.juegoToTreeMap(juego);
 		return datos;
