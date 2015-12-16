@@ -30,6 +30,17 @@ public class Panel extends Mueble{
 		this.setAcabado(acabado);
 	}
 	
+	public String acabadoToString(){
+		
+		String acabado;
+		String[] acabados = {"Regular","Normal","Fino","Muy Fino"};
+		
+		acabado = acabados[this.getAcabado()];
+		
+		return acabado;
+		
+	}
+	
 	public int getAcabado() {
 		return acabado;
 	}

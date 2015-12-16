@@ -69,6 +69,51 @@ public class Distribuidor {
 		Venta venta =(new MultiVenta().crear(idJuego, idCliente,fecha));
 		return venta;
 	}
+	
+	public double calcularCostoJuego(Juego j){
+		
+		double costoTotal = 0;
+		
+		for(int i = 0; i < j.getListaMuebles().size(); i++){
+			
+			Mueble m;
+			
+			m = j.getListaMuebles().get(i);
+			if(m instanceof Bajo){
+				
+				costoTotal += m.getPrecio() + (2.3 * m.getPrecio() / 100);
+				
+			}else if(m instanceof Panel){
+				
+				if(((Panel) m).getAcabado() == 0){
+					costoTotal += m.getPrecio() + (1.2 * m.getPrecio() / 100);
+				}else if(((Panel) m).getAcabado() == 1){
+					costoTotal += m.getPrecio() + (2.3 * m.getPrecio() / 100);
+				}else if(((Panel) m).getAcabado() == 2){
+					costoTotal += m.getPrecio() + (3.4 * m.getPrecio() / 100);
+				}else{
+					costoTotal += m.getPrecio() + (4.2 * m.getPrecio() / 100);
+				}
+				
+			}else if(m instanceof Encimera){
+				
+				if(((Encimera) m).getTipo() == 0){
+					costoTotal += m.getPrecio() + (1.0 * m.getPrecio() / 100);
+				}else{
+					costoTotal += m.getPrecio() + (0.07 * m.getPrecio() / 100);
+				}
+				
+			}else{
+				
+				costoTotal += m.getPrecio();
+				
+			}
+			
+		}
+		
+		return costoTotal;
+		
+	}
 
 	public int getId() {
 		return id;
