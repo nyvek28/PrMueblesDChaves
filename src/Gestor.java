@@ -827,4 +827,29 @@ public class Gestor {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que lista a los distribuidores de la base de datos
+	Version: v.1.0
+	Fecha: Dic 15, 2015
+	Ediciones:
+
+	*/
+	
+	public ArrayList<TreeMap<String, String>> listarDistribuidores() throws Exception{
+		
+		ArrayList<TreeMap<String, String>> distribuidores = new ArrayList<TreeMap<String,String>>();
+		TreeMap datos;
+		
+		for(int i = 0; i < (new MultiDistribuidor()).listar().size(); i++){
+			
+			datos = this.distribuidorToTreeMap((new MultiDistribuidor()).listar().get(i));
+			distribuidores.add(datos);
+			
+		}
+		
+		return distribuidores;
+		
+	}
+	
 }
