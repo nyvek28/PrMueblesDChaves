@@ -23,6 +23,7 @@ public class Gestor {
 		distribuidores = (new MultiDistribuidor()).listar();
 		muebles = (new MultiMueble()).listar();
 		juegos = (new MultiJuego()).listar();
+
 		if(fabricantes != null && distribuidores != null && muebles != null){
 			
 			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());

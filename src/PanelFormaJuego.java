@@ -48,9 +48,9 @@ public class PanelFormaJuego extends JPanel {
 		this.add(textFieldID,c);
 		//textFieldNombre.setColumns(10);
 		
-		textFieldID = new JTextField(8);
+		textFieldEstado = new JTextField(8);
 		c.gridy++;
-		this.add(textFieldID,c);
+		this.add(textFieldEstado,c);
 		//textFieldApellido.setColumns(10);
 		
 		textFieldMuebles = new JTextField(8);
