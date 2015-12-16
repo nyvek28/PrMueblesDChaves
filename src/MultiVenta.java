@@ -6,14 +6,16 @@
 	Ediciones:
 	 */
 
-
+import java.util.*;
 
 public class MultiVenta {
 
-	public Venta crear(int idJuego, int idCliente, String fecha, double monto)throws Exception{
+	public Venta crear(int idDistribuidor,int idJuego, int idCliente)throws Exception{
 		Venta  venta=null;
 		String sql;
-		venta = new Venta(idJuego, idCliente, fecha, monto);
+		venta = new Venta(idDistribuidor,idJuego, idCliente);
+		Date pfecha= new Date();
+		String fecha=pfecha.toString();
 		sql="INSERT INTO TbVenta "+
 		"VALUES ('"+venta.getId()+"','"+fecha+"','"+idCliente+"','"
 				+venta.getIdDistribuidor()

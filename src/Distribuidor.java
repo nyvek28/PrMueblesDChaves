@@ -65,11 +65,12 @@ public class Distribuidor {
 	 */
 	
 	
-	public Venta registrarVenta(int idJuego, int idCliente, String fecha)throws Exception{
+	public Venta registrarVenta(int idJuego, int idCliente)throws Exception{
 		
 		Juego juego =(new MultiJuego().buscarid(idJuego));
-		double precioTotal= calcularCostoJuego(juego);
-		Venta venta =(new MultiVenta().crear(idJuego, idCliente,fecha, precioTotal));
+		
+		Venta venta =(new MultiVenta().crear(this.getId(),idJuego, idCliente));
+		venta.setMonto(this.calcularCostoJuego(juego));
 		return venta;
 	}
 	

@@ -349,7 +349,7 @@ public class Empresa {
 	public static Venta registrarVenta(int idDistribuidor, int idJuego, int idCliente, String fecha)throws Exception{
 		
 		Distribuidor distribuidor= (new MultiDistribuidor().buscar(idDistribuidor));
-		Venta venta=distribuidor.registrarVenta(idJuego, idCliente, fecha);
+		Venta venta=distribuidor.registrarVenta(idJuego, idCliente);
 		
 		return venta;
 	}

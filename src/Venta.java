@@ -12,7 +12,7 @@ import java.util.*;
 public class Venta {
 	
 	private int idJuego;
-	private String fecha;
+	private Date fecha;
 	private static int id=0;
 	private static int consecutivo = 0;
 	private String msj;
@@ -24,17 +24,17 @@ public class Venta {
 	
 	
 	
-	public Venta(int pidJuego,int pidCliente, String pfecha, double pmonto ){
+	public Venta(int pidDistribuidor,int pidJuego,int pidCliente ){
 		this.setIdCliente(pidCliente);
+		this.setIdDistribuidor(pidDistribuidor);
 		this.setIdJuego(pidJuego);
-		this.setFecha(pfecha);
+		this.setFecha(new Date());
 		this.setId();
 		this.setConsecutivo(consecutivo++);
 		this.setSwitCh(1);
-		this.setMonto(pmonto);
 		
 	}
-	public Venta ( int pid,String pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch ){
+	public Venta ( int pid,Date pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch ){
 		this.setId(pid);
 		this.setFecha(pfecha);
 		this.setIdCliente(pidCliente);
@@ -79,10 +79,10 @@ public class Venta {
 	public static void setId() {
 		id=id+1;
 	}
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
