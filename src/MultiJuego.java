@@ -136,6 +136,30 @@ public class MultiJuego {
 		
 		
 	}
+public ArrayList<Juego> listar() throws Exception{
+		
+		Juego f;
+		String sql;
+		ResultSet rs; 
+		ArrayList<Juego> tabla = new ArrayList<Juego>();
+		
+		sql = "SELECT * "
+			+ "FROM TbJuego ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			f = new Juego(
+					rs.getInt("id"),
+					rs.getInt("idMontador"),
+					rs.getInt("switCh"));
+			tabla.add(f);
+		}
+		if(tabla.size()<1){
+			tabla = null;
+		}
+		
+		return tabla;
+		
+	}
 
 
 }

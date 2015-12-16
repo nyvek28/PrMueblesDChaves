@@ -777,6 +777,27 @@ public class Gestor {
 		
 	}
 	
+	
+	
+	
+public ArrayList<TreeMap<String, String>> listarJuegos() throws Exception{
+		
+		ArrayList<TreeMap<String, String>> juegos = new ArrayList<TreeMap<String,String>>();
+		TreeMap datos;
+		
+		for(int i = 0; i < (new MultiFabricante()).listar().size(); i++){
+			
+			datos = this.juegoToTreeMap((new MultiJuego()).listar().get(i));
+			juegos.add(datos);
+			
+		}
+		
+		return juegos;
+		
+	}
+	
+	
+	
 	/*
 	Autor: Emilio Montero
 	Descripcion: Metodo que lista a los montadores de la base de datos
