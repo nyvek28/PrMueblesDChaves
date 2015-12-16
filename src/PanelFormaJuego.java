@@ -11,9 +11,9 @@ import javax.swing.JTextField;
 public class PanelFormaJuego extends JPanel {
 
 	private JTextField textFieldID;
-	private JTextField textFieldJuego;
-	private JTextField textFieldIdDistribuidor;
-	private JTextField textFieldMonto;
+	private JTextField textFieldMuebles;
+	private JTextField textFieldMontador;
+	private JTextField textFieldEstado;//Vendido o disponible
 	private JButton btnAceptar;
 	private JButton btnCancelar;
 	
@@ -28,17 +28,14 @@ public class PanelFormaJuego extends JPanel {
 		c.anchor = GridBagConstraints.LINE_END;
 		this.add(lblID,c);
 		
-		JLabel lblJuegos = new JLabel("Juegos:");
+		JLabel lblMuebles = new JLabel("Muebles:");
 		c.gridy++;
-		this.add(lblJuegos,c);
+		this.add(lblMuebles,c);
 		
-		JLabel lblDistribuidor = new JLabel("Distribuidor:");
+		JLabel lblMontador = new JLabel("Montador:");
 		c.gridy++;
-		this.add(lblDistribuidor,c);
-		
-		JLabel lblMonto = new JLabel("Monto:");
-		c.gridy++;
-		this.add(lblMonto,c);
+		this.add(lblMontador,c);
+	
 		
 		
 		
@@ -54,20 +51,16 @@ public class PanelFormaJuego extends JPanel {
 		this.add(textFieldID,c);
 		//textFieldApellido.setColumns(10);
 		
-		textFieldJuego = new JTextField(8);
+		textFieldMuebles = new JTextField(8);
 		c.gridy++;
-		this.add(textFieldJuego,c);
+		this.add(textFieldMuebles,c);
 		//textFieldTelefono.setColumns(10);
 		
-		textFieldIdDistribuidor = new JTextField(8);
+		textFieldMontador = new JTextField(8);
 		c.gridy++;
-		this.add(textFieldIdDistribuidor,c);
+		this.add(textFieldMontador,c);
 		//textFieldTelefono.setColumns(10)
-		
-		textFieldMonto = new JTextField(8);
-		c.gridy++;
-		this.add(textFieldMonto,c);
-		//textFieldTelefono.setColumns(10)
+
 
 		btnAceptar = new JButton("Aceptar");
 		c.gridy = 8;
@@ -93,29 +86,23 @@ public class PanelFormaJuego extends JPanel {
 
 	
 
-	public JTextField getTextFieldJuego() {
-		return textFieldJuego;
+	public JTextField getTextFieldMuebles() {
+		return textFieldMuebles;
 	}
 
-	public void setTextFieldMuebles(JTextField textFieldJuego) {
-		this.textFieldJuego = textFieldJuego;
+	public void setTextFieldMuebles(JTextField textFieldMuebles) {
+		this.textFieldMuebles = textFieldMuebles;
 	}
 
-	public JTextField getTextFieldIdDistribuidor() {
-		return textFieldIdDistribuidor;
+	public JTextField getTextFieldMontador() {
+		return textFieldMontador;
 	}
 
-	public void setTextFieldIdDistribuidor(JTextField textFieldIdDistribuidor) {
-		this.textFieldIdDistribuidor = textFieldIdDistribuidor;
+	public void setTextFieldIdDistribuidor(JTextField textFieldMontador) {
+		this.textFieldMontador = textFieldMontador;
 	}
 
-	public JTextField getTextFieldMonto() {
-		return textFieldMonto;
-	}
-
-	public void setTextFieldMonto(JTextField textFieldMonto) {
-		this.textFieldMonto = textFieldMonto;
-	}
+	
 
 	public JButton getBtnAceptar() {
 		return btnAceptar;
