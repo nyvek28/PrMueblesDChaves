@@ -473,7 +473,7 @@ public class MultiMueble {
 		ArrayList<Mueble> tabla = new ArrayList<Mueble>();
 		
 		sql = "SELECT * "
-			+ "FROM TbMueble WHERE linea+ '"+plinea;
+			+ "FROM TbMueble WHERE linea = "+plinea;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			tabla.add(this.buscarid(rs.getInt("id")));

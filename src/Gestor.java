@@ -20,7 +20,7 @@ public class Gestor {
 		
 		fabricantes = (new MultiFabricante()).listar();
 		distribuidores = (new MultiDistribuidor()).listar();
-		muebles = (new MultiMueble()).listar();
+		muebles = (new MultiMueble()).listar(1);
 		if(fabricantes != null && distribuidores != null && muebles != null){
 			
 			Fabricante.setConsecutivo(fabricantes.get(fabricantes.size()-1).getId());

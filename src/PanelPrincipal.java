@@ -35,7 +35,7 @@ public class PanelPrincipal extends JPanel{
 		this.consultarVenta.setVisible(false);
 		registrarVenta= new PanelRegistrarVenta();
 		this.add(registrarVenta);
-		this.registrarVenta.setVisible(true);
+		this.registrarVenta.setVisible(false);
 		consultarJuego= new PanelConsultarJuego();
 		this.add(consultarJuego);
 		this.consultarJuego.setVisible(false);
