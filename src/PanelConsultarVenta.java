@@ -29,6 +29,10 @@ public class PanelConsultarVenta extends PanelFormaVenta{
 		this.add(this.getBtnBuscar(), c);
 		
 		this.getTextFieldID().setEditable(false);
+		this.getTextFieldJuego().setEditable(false);
+		this.getTextFieldMonto().setEditable(false);
+		this.getTextFieldIdDistribuidor().setEditable(false);
+		
 		
 	}
 	

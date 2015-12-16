@@ -108,7 +108,7 @@ public class PanelFormaVenta extends JPanel {
 		this.textFieldJuego = textFieldJuego;
 	}
 	
-	public JTextField getTextFieldAlto() {
+	public JTextField getTextFieldIdDistribuidor() {
 		return textFieldIdDistribuidor;
 	}
 

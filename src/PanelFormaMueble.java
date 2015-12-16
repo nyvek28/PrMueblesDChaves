@@ -109,7 +109,7 @@ public class PanelFormaMueble extends JPanel {
 		
 	}
 
-	public JTextField getTextFieldI() {
+	public JTextField getTextFieldID() {
 		return textFieldID;
 	}
 
