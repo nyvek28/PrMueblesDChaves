@@ -30,7 +30,7 @@ public class PanelConsultarDistribuidor extends PanelFormaDistribuidor {
 		
 		this.getTextFieldNombre().setEditable(false);
 		this.getTextFieldTelefono().setEditable(false);
-		this.getTextFieldLinea().setEditable(false);
+		this.getTextFieldPorcentaje().setEditable(false);
 		this.getTextFieldDireccion().setEditable(false);
 		
 	}

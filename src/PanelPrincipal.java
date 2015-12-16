@@ -14,7 +14,7 @@ public class PanelPrincipal extends JPanel{
 	private PanelFormaDistribuidor modificarDistribuidor, registrarDistribuidor, consultarDistribuidor, eliminarDistribuidor;
 	private muestra m;
 	private PanelMenuPrincipal menu;
-	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente;
+	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente, menuDistribuidor;
 	private PanelFormaMontador registrarMontador,modificarMontador, consultarMontador, eliminarMontador;
 	private PanelFormaCliente registrarCliente, modificarCliente, consultarCliente, eliminarCliente;
 	
@@ -89,6 +89,27 @@ public class PanelPrincipal extends JPanel{
 		this.add(menuCliente);
 		menuCliente.setVisible(false);
 		
+		menuDistribuidor = new PanelPlantillaCRUD();
+		this.add(menuDistribuidor);
+		menuDistribuidor.setVisible(false);
+		
+		registrarDistribuidor = new PanelRegistrarDistribuidor();
+		this.add(registrarDistribuidor);
+		registrarDistribuidor.setVisible(false);
+		
+		modificarDistribuidor = new PanelModificarDistribuidor();
+		this.add(modificarDistribuidor);
+		modificarDistribuidor.setVisible(false);
+		
+		consultarDistribuidor = new PanelConsultarDistribuidor();
+		this.add(consultarDistribuidor);
+		consultarDistribuidor.setVisible(false);
+		consultarDistribuidor.getBtnCancelar().setVisible(false);
+		
+		eliminarDistribuidor = new PanelConsultarDistribuidor();
+		this.add(eliminarDistribuidor);
+		eliminarDistribuidor.setVisible(false);
+		
 		//this.registrarFabricante.setVisible(false);
 		
 		this.inicializarPanelesFabricante();
@@ -105,7 +126,15 @@ public class PanelPrincipal extends JPanel{
 		});
 		
 		
-		
+		menu.getBtnDistribuidor().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menu.setVisible(false);
+				menuDistribuidor.setVisible(true);
+			}
+			
+		});
 		
 		
 		menu.getBtnMontador().addActionListener(new ActionListener(){
@@ -610,7 +639,7 @@ public class PanelPrincipal extends JPanel{
 		panelF.getTextFieldNombre().setText(null);
 		panelF.getTextFieldTelefono().setText(null);
 		panelF.getTextFieldDireccion().setText(null);
-		panelF.getTextFieldLinea().setText(null);
+		panelF.getTextFieldPorcentaje().setText(null);
 		
 	}
 	
@@ -890,11 +919,11 @@ public class PanelPrincipal extends JPanel{
 						String msj;
 						
 						try {
-							info = (new Gestor()).modificarFabricante(Integer.parseInt(((PanelModificarDistribuidor) modificarDistribuidor).getLista().get(((PanelModificarDistribuidor) modificarDistribuidor).getComboBoxFabricantes().getSelectedIndex()).get("id")), 
+							info = (new Gestor()).modificarDistribuidor(Integer.parseInt(((PanelModificarDistribuidor) modificarDistribuidor).getLista().get(((PanelModificarDistribuidor) modificarDistribuidor).getComboBoxDistribuidores().getSelectedIndex()).get("id")), 
 											modificarDistribuidor.getTextFieldNombre().getText(), 
+											modificarDistribuidor.getTextFieldDireccion().getText(), 
 											Integer.parseInt(modificarDistribuidor.getTextFieldTelefono().getText()), 
-											modificarFabricante.getTextFieldDireccion().getText(), 
-											Integer.parseInt(modificarDistribuidor.getTextFieldLinea().getText())
+											Double.parseDouble(modificarDistribuidor.getTextFieldPorcentaje().getText())
 											);
 						} catch (Exception e1) {
 							info = null;
@@ -914,12 +943,12 @@ public class PanelPrincipal extends JPanel{
 					
 				});
 				
-				modificarFabricante.getBtnCancelar().addActionListener(new ActionListener(){
+				modificarDistribuidor.getBtnCancelar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						modificarFabricante.setVisible(false);
-						reiniciarPanelFabricante(modificarFabricante);
+						modificarDistribuidor.setVisible(false);
+						reiniciarPanelDistribuidor(modificarDistribuidor);
 						menu.setVisible(true);
 					}
 					
@@ -927,49 +956,49 @@ public class PanelPrincipal extends JPanel{
 				
 				//======================= Menu   ======================//
 				
-				this.menuFabricante.getBtnModificar().addActionListener(new ActionListener(){
+				this.menuDistribuidor.getBtnModificar().addActionListener(new ActionListener(){
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						
-						menuFabricante.setVisible(false);
-						modificarFabricante.setVisible(true);
+						menuDistribuidor.setVisible(false);
+						modificarDistribuidor.setVisible(true);
 						
 					}
 				});
 				
-				this.menuFabricante.getBtnRegistrar().addActionListener(new ActionListener(){
+				this.menuDistribuidor.getBtnRegistrar().addActionListener(new ActionListener(){
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						
-						menuFabricante.setVisible(false);
-						registrarFabricante.setVisible(true);
+						menuDistribuidor.setVisible(false);
+						registrarDistribuidor.setVisible(true);
 						
 					}
 				});
 				
-				this.menuFabricante.getBtnConsultar().addActionListener(new ActionListener(){
+				this.menuDistribuidor.getBtnConsultar().addActionListener(new ActionListener(){
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						
-						menuFabricante.setVisible(false);
-						consultarFabricante.setVisible(true);
+						menuDistribuidor.setVisible(false);
+						consultarDistribuidor.setVisible(true);
 						
 					}
 				});
 				
-				this.menuFabricante.getBtnEliminar().addActionListener(new ActionListener(){
+				this.menuDistribuidor.getBtnEliminar().addActionListener(new ActionListener(){
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						
-						menuFabricante.setVisible(false);
-						eliminarFabricante.setVisible(true);
+						menuDistribuidor.setVisible(false);
+						eliminarDistribuidor.setVisible(true);
 						
 					}
 				});
 				
 				//======================= Registrar   ======================//
 				
-				this.registrarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+				this.registrarDistribuidor.getBtnAceptar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
@@ -977,20 +1006,18 @@ public class PanelPrincipal extends JPanel{
 						TreeMap info;
 						String msj;
 						
-						info = (new Gestor()).registrarFabricante(registrarFabricante.getTextFieldNombre().getText(),
-								registrarFabricante.getTextFieldApellido().getText(),
-								Integer.parseInt(registrarFabricante.getTextFieldTelefono().getText()), 
-								registrarFabricante.getTextFieldDireccion().getText(), 
-								Integer.parseInt(registrarFabricante.getTextFieldLinea().getText()), 
-								Integer.parseInt(registrarFabricante.getTextFieldAnnos().getText())
+						info = (new Gestor()).registrarDistribuidor(registrarDistribuidor.getTextFieldNombre().getText(),
+								registrarDistribuidor.getTextFieldDireccion().getText(), 
+								Integer.parseInt(registrarDistribuidor.getTextFieldTelefono().getText()), 
+								Double.parseDouble(registrarDistribuidor.getTextFieldPorcentaje().getText())
 								);
 						if(info != null){
-							msj = "Se registro el fabricante de Id " + info.get("id") + " correctamente";
-							registrarFabricante.setVisible(false);
-							reiniciarPanelFabricante(registrarFabricante);
+							msj = "Se registro el distribuidor de Id " + info.get("id") + " correctamente";
+							registrarDistribuidor.setVisible(false);
+							reiniciarPanelDistribuidor(registrarDistribuidor);
 							menu.setVisible(true);
 						}else{
-							msj = "No se logro registrar al fabricante!";
+							msj = "No se logro registrar al distribuidor!";
 						}
 						
 						JOptionPane.showMessageDialog(null, msj);
@@ -999,13 +1026,13 @@ public class PanelPrincipal extends JPanel{
 					
 				});
 				
-				this.registrarFabricante.getBtnCancelar().addActionListener(new ActionListener(){
+				this.registrarDistribuidor.getBtnCancelar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 							
-						registrarFabricante.setVisible(false);
-						reiniciarPanelFabricante(registrarFabricante);
+						registrarDistribuidor.setVisible(false);
+						reiniciarPanelDistribuidor(registrarDistribuidor);
 						menu.setVisible(true);
 					
 					}
@@ -1014,7 +1041,7 @@ public class PanelPrincipal extends JPanel{
 				
 				//======================= Eliminar   ======================//
 				
-				eliminarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+				eliminarDistribuidor.getBtnAceptar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -1022,14 +1049,14 @@ public class PanelPrincipal extends JPanel{
 						String msj;
 						
 						try {
-							(new Gestor()).eliminarFabricante(Integer.parseInt(((PanelConsultarFabricante)eliminarFabricante).getTxtId().getText()));
-							eliminarFabricante.setVisible(false);
-							((PanelConsultarFabricante)eliminarFabricante).getTxtId().setText(null);
-							reiniciarPanelFabricante(eliminarFabricante);
+							(new Gestor()).eliminarDistribuidor(Integer.parseInt(((PanelConsultarDistribuidor)eliminarDistribuidor).getTxtId().getText()));
+							eliminarDistribuidor.setVisible(false);
+							((PanelConsultarDistribuidor)eliminarDistribuidor).getTxtId().setText(null);
+							reiniciarPanelDistribuidor(eliminarDistribuidor);
 							menu.setVisible(true);
-							msj = "Se logro eliminar al fabricante";
+							msj = "Se logro eliminar al distribuidor";
 						} catch (Exception e1) {
-							msj = "No se logro eliminar al fabricante";
+							msj = "No se logro eliminar al distribuidor";
 							e1.printStackTrace();
 						}
 						
@@ -1039,21 +1066,21 @@ public class PanelPrincipal extends JPanel{
 					
 				});
 				
-				eliminarFabricante.getBtnCancelar().addActionListener(new ActionListener(){
+				eliminarDistribuidor.getBtnCancelar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 				
-						eliminarFabricante.setVisible(false);
-						((PanelConsultarFabricante)eliminarFabricante).getTxtId().setText(null);
-						reiniciarPanelFabricante(eliminarFabricante);
+						eliminarDistribuidor.setVisible(false);
+						((PanelConsultarDistribuidor)eliminarDistribuidor).getTxtId().setText(null);
+						reiniciarPanelDistribuidor(eliminarDistribuidor);
 						menu.setVisible(true);
 						
 					}
 					
 				});
 				
-				((PanelConsultarFabricante)eliminarFabricante).getBtnBuscar().addActionListener(new ActionListener(){
+				((PanelConsultarDistribuidor)eliminarDistribuidor).getBtnBuscar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -1061,13 +1088,11 @@ public class PanelPrincipal extends JPanel{
 						
 						try{
 							
-							info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarFabricante)eliminarFabricante).getTxtId().getText()));
-							eliminarFabricante.getTextFieldNombre().setText(info.get("nombre"));
-							eliminarFabricante.getTextFieldApellido().setText(info.get("apellido"));
-							eliminarFabricante.getTextFieldTelefono().setText(info.get("telefono"));
-							eliminarFabricante.getTextFieldDireccion().setText(info.get("direccion"));
-							eliminarFabricante.getTextFieldLinea().setText(info.get("linea"));
-							eliminarFabricante.getTextFieldAnnos().setText(info.get("annosExp"));		
+							info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarDistribuidor)eliminarDistribuidor).getTxtId().getText()));
+							eliminarDistribuidor.getTextFieldNombre().setText(info.get("nombre"));
+							eliminarDistribuidor.getTextFieldTelefono().setText(info.get("telefono"));
+							eliminarDistribuidor.getTextFieldDireccion().setText(info.get("direccion"));
+							eliminarDistribuidor.getTextFieldPorcentaje().setText(info.get("linea"));	
 							
 						}catch(Exception e2){
 							JOptionPane.showMessageDialog(null, "Revise el Id");
@@ -1080,13 +1105,13 @@ public class PanelPrincipal extends JPanel{
 				
 				//======================= Consultar   ======================//
 				
-				consultarFabricante.getBtnAceptar().addActionListener(new ActionListener(){
+				consultarDistribuidor.getBtnAceptar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						consultarFabricante.setVisible(false);
-						((PanelConsultarFabricante)consultarFabricante).getTxtId().setText(null);
-						reiniciarPanelFabricante(consultarFabricante);
+						consultarDistribuidor.setVisible(false);
+						((PanelConsultarDistribuidor)consultarDistribuidor).getTxtId().setText(null);
+						reiniciarPanelDistribuidor(consultarDistribuidor);
 
 						menu.setVisible(true);
 					}
@@ -1094,7 +1119,7 @@ public class PanelPrincipal extends JPanel{
 				});
 				
 
-				((PanelConsultarFabricante)consultarFabricante).getBtnBuscar().addActionListener(new ActionListener(){
+				((PanelConsultarDistribuidor)consultarDistribuidor).getBtnBuscar().addActionListener(new ActionListener(){
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -1102,13 +1127,11 @@ public class PanelPrincipal extends JPanel{
 						
 						try{
 							
-							info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarFabricante)consultarFabricante).getTxtId().getText()));
-							consultarFabricante.getTextFieldNombre().setText(info.get("nombre"));
-							consultarFabricante.getTextFieldApellido().setText(info.get("apellido"));
-							consultarFabricante.getTextFieldTelefono().setText(info.get("telefono"));
-							consultarFabricante.getTextFieldDireccion().setText(info.get("direccion"));
-							consultarFabricante.getTextFieldLinea().setText(info.get("linea"));
-							consultarFabricante.getTextFieldAnnos().setText(info.get("annosExp"));		
+							info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarDistribuidor)consultarDistribuidor).getTxtId().getText()));
+							consultarDistribuidor.getTextFieldNombre().setText(info.get("nombre"));
+							consultarDistribuidor.getTextFieldTelefono().setText(info.get("telefono"));
+							consultarDistribuidor.getTextFieldDireccion().setText(info.get("direccion"));
+							consultarDistribuidor.getTextFieldPorcentaje().setText(info.get("linea"));		
 							
 						}catch(Exception e2){
 							JOptionPane.showMessageDialog(null, "Revise el Id");

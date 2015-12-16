@@ -99,11 +99,11 @@ public class PanelFormaDistribuidor extends JPanel {
 		this.textFieldDireccion = textFieldDireccion;
 	}
 
-	public JTextField getTextFieldLinea() {
+	public JTextField getTextFieldPorcentaje() {
 		return textFieldPorcentaje;
 	}
 
-	public void setTextFieldLinea(JTextField textFieldLinea) {
+	public void setTextFieldPorcentaje(JTextField textFieldLinea) {
 		this.textFieldPorcentaje = textFieldLinea;
 	}
 

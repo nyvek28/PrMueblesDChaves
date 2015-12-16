@@ -55,7 +55,7 @@ public class PanelModificarDistribuidor extends PanelFormaDistribuidor {
 		this.getTextFieldNombre().setText(this.getLista().get(i).get("nombre"));
 		this.getTextFieldTelefono().setText(this.getLista().get(i).get("telefono"));
 		this.getTextFieldDireccion().setText(this.getLista().get(i).get("direccion"));
-		this.getTextFieldLinea().setText(this.getLista().get(i).get("porcentaje"));
+		this.getTextFieldPorcentaje().setText(this.getLista().get(i).get("porcentaje"));
 		
 	}
 	
