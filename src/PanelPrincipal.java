@@ -419,6 +419,19 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
+		registrarCliente.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				registrarCliente.setVisible(false);
+				reiniciarPanelCliente(registrarCliente);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
 		this.menuCliente.getBtnRegistrar().addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
