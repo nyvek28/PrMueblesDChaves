@@ -24,21 +24,29 @@ public class PanelPrincipal extends JPanel{
 	
 	public PanelPrincipal() throws Exception{
 		
+		this.registrarVenta.setVisible(false);
 		registrarMueble= new PanelRegistrarMueble();
 		this.add(registrarMueble);
-		this.registrarMueble.setVisible(false);
+		
+		this.consultarMueble.setVisible(false);
 		consultarMueble= new PanelConsultarMueble();
 		this.add(consultarMueble);
-		this.consultarMueble.setVisible(false);
+		
+		this.consultarVenta.setVisible(false);
 		consultarVenta= new PanelRegistrarVenta();
-		this.add(registrarMueble);
+		this.add(consultarVenta);
+		
 		this.consultarVenta.setVisible(false);
 		registrarVenta= new PanelRegistrarVenta();
 		this.add(registrarVenta);
+		
 		this.registrarVenta.setVisible(false);
 		consultarJuego= new PanelConsultarJuego();
 		this.add(consultarJuego);
+		
+		this.consultarJuego = new PanelFormaJuego();
 		this.consultarJuego.setVisible(false);
+		this.add(consultarJuego);
 		
 		menu = new PanelMenuPrincipal();
 		this.add(menu);
@@ -139,8 +147,18 @@ public class PanelPrincipal extends JPanel{
 		
 		//this.registrarFabricante.setVisible(false);
 		
+		this.inicializarMenu();
 		this.inicializarPanelesFabricante();
 		this.inicializarPanelesDistribuidor();
+		this.inicializarPanelesCliente();
+		this.inicializarPanelesJuego();
+		this.inicializarPanelesMontador();
+		this.inicializarPanelesVenta();
+		this.inicializarPanelesMueble();
+			
+	}
+
+	private void inicializarMenu(){
 		
 		menu.getBtnFabricante().addActionListener(new ActionListener(){
 
@@ -151,6 +169,7 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
 		menu.getBtnJuego().addActionListener(new ActionListener(){
 
 			@Override
@@ -162,6 +181,7 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
 		menu.getBtnMueble().addActionListener(new ActionListener(){
 
 			@Override
@@ -172,6 +192,7 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
 		menu.getBtnVenta().addActionListener(new ActionListener(){
 
 			@Override
@@ -182,75 +203,6 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
-		
-		
-		menuJuego.getBtnConsultar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuJuego.setVisible(false);
-				consultarJuego.setVisible(true);
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		menuJuego.getBtnRegistrar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuJuego.setVisible(false);
-				registrarJuego.setVisible(true);
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		menuMueble.getBtnConsultar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				menuMueble.setVisible(false);
-				consultarMueble.setVisible(true);
-				
-			}
-			
-		});
-		menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuMueble.setVisible(false);
-				registrarMueble.setVisible(true);
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		menuVenta.getBtnConsultar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuVenta.setVisible(false);
-				consultarVenta.setVisible(true);
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		menuVenta.getBtnRegistrar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuVenta.setVisible(false);
-				registrarVenta.setVisible(true);
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
 		
 		menu.getBtnDistribuidor().addActionListener(new ActionListener(){
 
@@ -273,231 +225,6 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
-		
-		
-		this.registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				TreeMap info;
-				String msj;
-				
-				info = (new Gestor()).registrarMontador(Integer.parseInt(registrarMontador.getTextFieldId().getText()),registrarMontador.getTextFieldNombre().getText(),
-						registrarMontador.getTextFieldApellido().getText(),
-						Integer.parseInt(registrarMontador.getTextFieldTelefono().getText()), 
-						registrarMontador.getTextFieldDireccion().getText());
-				if(info != null){
-					msj = "Se registro el fabricante de Id " + info.get("id") + " correctamente";
-					registrarMontador.setVisible(false);
-					reiniciarPanelMontador(registrarMontador);
-					menu.setVisible(true);
-				}else{
-					msj = "No se logro registrar al Montador!";
-				}
-				
-				JOptionPane.showMessageDialog(null, msj);
-				
-			}
-			
-		});
-		
-		registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				registrarMontador.setVisible(false);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		
-		this.menuMontador.getBtnRegistrar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuMontador.setVisible(false);
-				registrarMontador.setVisible(true);
-				
-			}
-		});
-		
-		registrarMontador.getBtnCancelar().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				registrarMontador.setVisible(false);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		
-		this.menuMontador.getBtnModificar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuMontador.setVisible(false);
-				modificarMontador.setVisible(true);
-				
-			}
-		});
-		
-
-		modificarMontador.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TreeMap info;
-				String msj;
-				
-				try {
-					info = (new Gestor()).modificarMontador(Integer.parseInt(((PanelModificarMontador) modificarMontador).getLista().get(((PanelModificarMontador) modificarMontador).getComboBoxMontadores().getSelectedIndex()).get("id")), 
-									modificarMontador.getTextFieldNombre().getText(), 
-									modificarMontador.getTextFieldApellido().getText(), 
-									Integer.parseInt(modificarMontador.getTextFieldTelefono().getText()), 
-									modificarMontador.getTextFieldDireccion().getText()
-									);
-				} catch (Exception e1) {
-					info = null;
-					e1.printStackTrace();
-				}
-				if(info != null){
-					msj = "Se modifico el Montador de Id " + info.get("id") + " correctamente";
-				}else{
-					msj = "No se logro modificar al Montador!";
-				}
-				
-				JOptionPane.showMessageDialog(null, msj);
-				reiniciarPanelMontador(modificarMontador);
-				modificarMontador.setVisible(false);
-				menu.setVisible(true);
-			}
-		});
-		
-		this.menuMontador.getBtnConsultar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuMontador.setVisible(false);
-				consultarMontador.setVisible(true);
-				
-			}
-		});
-		
-		consultarMontador.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				consultarMontador.setVisible(false);
-				((PanelConsultarMontador)consultarMontador).getTxtId().setText(null);
-				reiniciarPanelMontador(consultarMontador);
-
-				menu.setVisible(true);
-			}
-			
-		});
-		
-
-		((PanelConsultarMontador)consultarMontador).getBtnBuscar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TreeMap<String,String> info;
-				
-				try{
-					
-					info = (new Gestor()).consultarMontador(Integer.parseInt(((PanelConsultarMontador)consultarMontador).getTxtId().getText()));
-					consultarMontador.getTextFieldNombre().setText(info.get("nombre"));
-					consultarMontador.getTextFieldApellido().setText(info.get("apellido"));
-					consultarMontador.getTextFieldTelefono().setText(info.get("telefono"));
-					consultarMontador.getTextFieldDireccion().setText(info.get("direccion"));
-					
-				}catch(Exception e2){
-					JOptionPane.showMessageDialog(null, "Revise el Id");
-				}
-				
-			}
-			
-		});
-		
-		eliminarMontador.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				String msj;
-				
-				try {
-					(new Gestor()).eliminarMontador(Integer.parseInt(((PanelConsultarMontador)eliminarMontador).getTxtId().getText()));
-					eliminarMontador.setVisible(false);
-					((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
-					reiniciarPanelMontador(eliminarMontador);
-					menu.setVisible(true);
-					msj = "Se logro eliminar al Montador";
-				} catch (Exception e1) {
-					msj = "No se logro eliminar al montador";
-					e1.printStackTrace();
-				}
-				
-				JOptionPane.showMessageDialog(null, msj);
-				
-			}
-			
-		});
-		
-		((PanelConsultarMontador)eliminarMontador).getBtnBuscar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TreeMap<String,String> info;
-				
-				try{
-					
-					info = (new Gestor()).consultarMontador(Integer.parseInt(((PanelConsultarMontador)eliminarMontador).getTxtId().getText()));
-					eliminarMontador.getTextFieldNombre().setText(info.get("nombre"));
-					eliminarMontador.getTextFieldApellido().setText(info.get("apellido"));
-					eliminarMontador.getTextFieldTelefono().setText(info.get("telefono"));
-					eliminarMontador.getTextFieldDireccion().setText(info.get("direccion"));		
-					
-				}catch(Exception e2){
-					JOptionPane.showMessageDialog(null, "Revise el Id");
-				}
-				
-
-			}
-			
-		});
-		
-		eliminarMontador.getBtnCancelar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		
-				eliminarMontador.setVisible(false);
-				((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
-				reiniciarPanelMontador(eliminarMontador);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		this.menuMontador.getBtnEliminar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuMontador.setVisible(false);
-				eliminarMontador.setVisible(true);
-				
-			}
-		});
-		
-		// ========================= aqui inicia cliente ====================//
-		
 		menu.getBtnCliente().addActionListener(new ActionListener(){
 
 			@Override
@@ -507,301 +234,6 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
-		
-		this.registrarCliente.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				TreeMap info;
-				String msj;
-				
-				info = (new Gestor()).registrarCliente(Integer.parseInt(registrarCliente.getTextFieldId().getText()),registrarCliente.getTextFieldNombre().getText(),
-						registrarCliente.getTextFieldApellido().getText(),
-						Integer.parseInt(registrarCliente.getTextFieldTelefono().getText()), 
-						registrarCliente.getTextFieldDireccion().getText(),
-						registrarCliente.getTextFieldTrabajo().getText(),
-						Integer.parseInt(registrarCliente.getTextFieldTelTrabajo().getText()));
-				if(info != null){
-					msj = "Se registro el cliente de Id " + info.get("id") + " correctamente";
-					registrarCliente.setVisible(false);
-					reiniciarPanelCliente(registrarCliente);
-					menu.setVisible(true);
-				}else{
-					msj = "No se logro registrar al Cliente!";
-				}
-				
-				JOptionPane.showMessageDialog(null, msj);
-				
-			}
-			
-		});
-		
-		registrarCliente.getBtnAceptar().addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e) {
-				
-				registrarCliente.setVisible(false);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		registrarCliente.getBtnCancelar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		
-				registrarCliente.setVisible(false);
-				reiniciarPanelCliente(registrarCliente);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		this.menuCliente.getBtnRegistrar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuCliente.setVisible(false);
-				registrarCliente.setVisible(true);
-				
-			}
-		});
-		
-		this.menuCliente.getBtnModificar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuCliente.setVisible(false);
-				modificarCliente.setVisible(true);
-				
-				
-			}
-		});
-		
-
-		modificarCliente.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TreeMap info;
-				String msj;
-				
-				try {
-					info = (new Gestor()).modificarCliente(Integer.parseInt(((PanelModificarCliente) modificarCliente).getLista().get(((PanelModificarCliente) modificarCliente).getComboBoxClientes().getSelectedIndex()).get("id")), 
-									modificarCliente.getTextFieldNombre().getText(), 
-									modificarCliente.getTextFieldApellido().getText(), 
-									Integer.parseInt(modificarCliente.getTextFieldTelefono().getText()), 
-									modificarCliente.getTextFieldDireccion().getText(),
-									modificarCliente.getTextFieldTrabajo().getText(),
-									Integer.parseInt(modificarCliente.getTextFieldTelTrabajo().getText())
-									);
-				} catch (Exception e1) {
-					info = null;
-					e1.printStackTrace();
-				}
-				if(info != null){
-					msj = "Se modifico el Cliente de Id " + info.get("id") + " correctamente";
-				}else{
-					msj = "No se logro modificar al cliente!";
-				}
-				
-				JOptionPane.showMessageDialog(null, msj);
-				reiniciarPanelCliente(modificarCliente);
-				modificarCliente.setVisible(false);
-				menu.setVisible(true);
-			}
-		});
-		
-		modificarCliente.getBtnCancelar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		
-				modificarCliente.setVisible(false);
-				reiniciarPanelCliente(modificarCliente);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		this.menuCliente.getBtnConsultar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuCliente.setVisible(false);
-				consultarCliente.setVisible(true);
-				
-			}
-		});
-		
-		consultarCliente.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				consultarCliente.setVisible(false);
-				((PanelConsultarCliente)consultarCliente).getTxtId().setText(null);
-				reiniciarPanelCliente(consultarCliente);
-
-				menu.setVisible(true);
-			}
-			
-		});
-		
-
-		((PanelConsultarCliente)consultarCliente).getBtnBuscar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TreeMap<String,String> info;
-				
-				try{
-					
-					info = (new Gestor()).consultarCliente(Integer.parseInt(((PanelConsultarCliente)consultarCliente).getTxtId().getText()));
-					consultarCliente.getTextFieldNombre().setText(info.get("nombre"));
-					consultarCliente.getTextFieldApellido().setText(info.get("apellido"));
-					consultarCliente.getTextFieldTelefono().setText(info.get("telefono"));
-					consultarCliente.getTextFieldDireccion().setText(info.get("direccion"));
-					consultarCliente.getTextFieldTrabajo().setText(info.get("trabajo"));
-					consultarCliente.getTextFieldTelTrabajo().setText(info.get("telTrabajo"));
-					
-					
-				}catch(Exception e2){
-					JOptionPane.showMessageDialog(null, "Revise el Id");
-				}
-				
-			}
-			
-		});
-		
-		eliminarCliente.getBtnCancelar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		
-				eliminarCliente.setVisible(false);
-				((PanelConsultarCliente)eliminarCliente).getTxtId().setText(null);
-				reiniciarPanelCliente(eliminarCliente);
-				menu.setVisible(true);
-				
-			}
-			
-		});
-		
-		this.menuCliente.getBtnEliminar().addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				menuCliente.setVisible(false);
-				eliminarCliente.setVisible(true);
-				
-			}
-		});
-		
-		eliminarCliente.getBtnAceptar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				String msj;
-				
-				try {
-					(new Gestor()).eliminarCliente(Integer.parseInt(((PanelConsultarCliente)eliminarCliente).getTxtId().getText()));
-					eliminarCliente.setVisible(false);
-					((PanelConsultarCliente)eliminarCliente).getTxtId().setText(null);
-					reiniciarPanelCliente(eliminarCliente);
-					menu.setVisible(true);
-					msj = "Se logro eliminar al cliente";
-				} catch (Exception e1) {
-					msj = "No se logro eliminar al cliente";
-					e1.printStackTrace();
-				}
-				
-				JOptionPane.showMessageDialog(null, msj);
-				
-			}
-			
-		});
-		
-		((PanelConsultarCliente)eliminarCliente).getBtnBuscar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TreeMap<String,String> info;
-				
-				try{
-					
-					info = (new Gestor()).consultarCliente(Integer.parseInt(((PanelConsultarCliente)eliminarCliente).getTxtId().getText()));
-					eliminarCliente.getTextFieldNombre().setText(info.get("nombre"));
-					eliminarCliente.getTextFieldApellido().setText(info.get("apellido"));
-					eliminarCliente.getTextFieldTelefono().setText(info.get("telefono"));
-					eliminarCliente.getTextFieldDireccion().setText(info.get("direccion"));
-					eliminarCliente.getTextFieldTrabajo().setText(info.get("trabajo"));
-					eliminarCliente.getTextFieldTelTrabajo().setText(info.get("telTrabajo"));		
-					
-				}catch(Exception e2){
-					JOptionPane.showMessageDialog(null, "Revise el Id");
-				}
-				
-
-			}
-			
-		});
-	
-		modificarMontador.getBtnCancelar().addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e){ 
-				modificarMontador.setVisible(false);
-				reiniciarPanelMontador(modificarMontador);
-				menu.setVisible(true);
-			}
-		});
-		
-	}
-
-	
-	private void reiniciarPanelFabricante(PanelFormaFabricante panelF){
-		
-		panelF.getTextFieldNombre().setText(null);
-		panelF.getTextFieldApellido().setText(null);
-		panelF.getTextFieldTelefono().setText(null);
-		panelF.getTextFieldDireccion().setText(null);
-		panelF.getTextFieldLinea().setText(null);
-		panelF.getTextFieldAnnos().setText(null);
-		
-	}
-	
-	private void reiniciarPanelDistribuidor(PanelFormaDistribuidor panelF){
-		
-		panelF.getTextFieldNombre().setText(null);
-		panelF.getTextFieldTelefono().setText(null);
-		panelF.getTextFieldDireccion().setText(null);
-		panelF.getTextFieldPorcentaje().setText(null);
-		
-	}
-	
-	
-	private void reiniciarPanelMontador(PanelFormaMontador panelM){
-		
-		panelM.getTextFieldNombre().setText(null);
-		panelM.getTextFieldApellido().setText(null);
-		panelM.getTextFieldTelefono().setText(null);
-		panelM.getTextFieldDireccion().setText(null);
-	}
-	
-	private void reiniciarPanelCliente(PanelFormaCliente panelC){
-		
-		panelC.getTextFieldNombre().setText(null);
-		panelC.getTextFieldApellido().setText(null);
-		panelC.getTextFieldTelefono().setText(null);
-		panelC.getTextFieldDireccion().setText(null);
-		panelC.getTextFieldTrabajo().setText(null);
-		panelC.getTextFieldTelTrabajo().setText(null);
 		
 	}
 	
@@ -1242,7 +674,7 @@ public class PanelPrincipal extends JPanel{
 						
 						try{
 							
-							info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarDistribuidor)eliminarDistribuidor).getTxtId().getText()));
+							info = (new Gestor()).eliminarDistribuidor(Integer.parseInt(((PanelConsultarDistribuidor)eliminarDistribuidor).getTxtId().getText()));
 							eliminarDistribuidor.getTextFieldNombre().setText(info.get("nombre"));
 							eliminarDistribuidor.getTextFieldTelefono().setText(info.get("telefono"));
 							eliminarDistribuidor.getTextFieldDireccion().setText(info.get("direccion"));
@@ -1294,6 +726,683 @@ public class PanelPrincipal extends JPanel{
 					}
 					
 				});
+		
+	}
+	
+	private void inicializarPanelesJuego(){
+		
+		//======================= Menu ======================//
+		
+		menuJuego.getBtnConsultar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuJuego.setVisible(false);
+				consultarJuego.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		menuJuego.getBtnRegistrar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuJuego.setVisible(false);
+				registrarJuego.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		//======================= Registrar   ======================//
+		
+		
+		
+		//======================= Consultar   ======================//
+		
+		
+		
+		//======================= Modificar   ======================//
+		
+		
+		
+		//======================= Eliminar   ======================//
+		
+	}
+	
+	private void inicializarPanelesCliente(){
+		
+		//======================= Menu ======================//
+		
+		this.menuCliente.getBtnEliminar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				eliminarCliente.setVisible(true);
+				
+			}
+		});
+		
+		this.menuCliente.getBtnRegistrar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				registrarCliente.setVisible(true);
+				
+			}
+		});
+		
+		this.menuCliente.getBtnModificar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				modificarCliente.setVisible(true);
+				
+				
+			}
+		});
+		
+		this.menuCliente.getBtnConsultar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuCliente.setVisible(false);
+				consultarCliente.setVisible(true);
+				
+			}
+		});
+		
+		//======================= Registrar   ======================//
+		
+		this.registrarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TreeMap info;
+				String msj;
+				
+				info = (new Gestor()).registrarCliente(Integer.parseInt(registrarCliente.getTextFieldId().getText()),registrarCliente.getTextFieldNombre().getText(),
+						registrarCliente.getTextFieldApellido().getText(),
+						Integer.parseInt(registrarCliente.getTextFieldTelefono().getText()), 
+						registrarCliente.getTextFieldDireccion().getText(),
+						registrarCliente.getTextFieldTrabajo().getText(),
+						Integer.parseInt(registrarCliente.getTextFieldTelTrabajo().getText()));
+				if(info != null){
+					msj = "Se registro el cliente de Id " + info.get("id") + " correctamente";
+					registrarCliente.setVisible(false);
+					reiniciarPanelCliente(registrarCliente);
+					menu.setVisible(true);
+				}else{
+					msj = "No se logro registrar al Cliente!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		registrarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				registrarCliente.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		registrarCliente.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				registrarCliente.setVisible(false);
+				reiniciarPanelCliente(registrarCliente);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		//======================= Consultar   ======================//
+		
+		consultarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarCliente.setVisible(false);
+				((PanelConsultarCliente)consultarCliente).getTxtId().setText(null);
+				reiniciarPanelCliente(consultarCliente);
+
+				menu.setVisible(true);
+			}
+			
+		});
+		
+
+		((PanelConsultarCliente)consultarCliente).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarCliente(Integer.parseInt(((PanelConsultarCliente)consultarCliente).getTxtId().getText()));
+					consultarCliente.getTextFieldNombre().setText(info.get("nombre"));
+					consultarCliente.getTextFieldApellido().setText(info.get("apellido"));
+					consultarCliente.getTextFieldTelefono().setText(info.get("telefono"));
+					consultarCliente.getTextFieldDireccion().setText(info.get("direccion"));
+					consultarCliente.getTextFieldTrabajo().setText(info.get("trabajo"));
+					consultarCliente.getTextFieldTelTrabajo().setText(info.get("telTrabajo"));
+					
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+			}
+			
+		});
+		
+		//======================= Modificar   ======================//
+		
+		
+		
+
+		modificarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap info;
+				String msj;
+				
+				try {
+					info = (new Gestor()).modificarCliente(Integer.parseInt(((PanelModificarCliente) modificarCliente).getLista().get(((PanelModificarCliente) modificarCliente).getComboBoxClientes().getSelectedIndex()).get("id")), 
+									modificarCliente.getTextFieldNombre().getText(), 
+									modificarCliente.getTextFieldApellido().getText(), 
+									Integer.parseInt(modificarCliente.getTextFieldTelefono().getText()), 
+									modificarCliente.getTextFieldDireccion().getText(),
+									modificarCliente.getTextFieldTrabajo().getText(),
+									Integer.parseInt(modificarCliente.getTextFieldTelTrabajo().getText())
+									);
+				} catch (Exception e1) {
+					info = null;
+					e1.printStackTrace();
+				}
+				if(info != null){
+					msj = "Se modifico el Cliente de Id " + info.get("id") + " correctamente";
+				}else{
+					msj = "No se logro modificar al cliente!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				reiniciarPanelCliente(modificarCliente);
+				modificarCliente.setVisible(false);
+				menu.setVisible(true);
+			}
+		});
+		
+		modificarCliente.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				modificarCliente.setVisible(false);
+				reiniciarPanelCliente(modificarCliente);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		//======================= Eliminar   ======================//
+		
+		eliminarCliente.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				eliminarCliente.setVisible(false);
+				((PanelConsultarCliente)eliminarCliente).getTxtId().setText(null);
+				reiniciarPanelCliente(eliminarCliente);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		eliminarCliente.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String msj;
+				
+				try {
+					(new Gestor()).eliminarCliente(Integer.parseInt(((PanelConsultarCliente)eliminarCliente).getTxtId().getText()));
+					eliminarCliente.setVisible(false);
+					((PanelConsultarCliente)eliminarCliente).getTxtId().setText(null);
+					reiniciarPanelCliente(eliminarCliente);
+					menu.setVisible(true);
+					msj = "Se logro eliminar al cliente";
+				} catch (Exception e1) {
+					msj = "No se logro eliminar al cliente";
+					e1.printStackTrace();
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		((PanelConsultarCliente)eliminarCliente).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarCliente(Integer.parseInt(((PanelConsultarCliente)eliminarCliente).getTxtId().getText()));
+					eliminarCliente.getTextFieldNombre().setText(info.get("nombre"));
+					eliminarCliente.getTextFieldApellido().setText(info.get("apellido"));
+					eliminarCliente.getTextFieldTelefono().setText(info.get("telefono"));
+					eliminarCliente.getTextFieldDireccion().setText(info.get("direccion"));
+					eliminarCliente.getTextFieldTrabajo().setText(info.get("trabajo"));
+					eliminarCliente.getTextFieldTelTrabajo().setText(info.get("telTrabajo"));		
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+
+			}
+			
+		});
+		
+	}
+
+	private void inicializarPanelesMontador(){
+	
+		//======================= Menu ======================//
+		
+		this.menuMontador.getBtnRegistrar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				registrarMontador.setVisible(true);
+				
+			}
+		});
+		
+		this.menuMontador.getBtnModificar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				modificarMontador.setVisible(true);
+				
+			}
+		});
+		
+
+		
+		
+		this.menuMontador.getBtnConsultar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				consultarMontador.setVisible(true);
+				
+			}
+		});
+		
+		this.menuMontador.getBtnEliminar().addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				menuMontador.setVisible(false);
+				eliminarMontador.setVisible(true);
+				
+			}
+		});
+		
+		//======================= Registrar   ======================//
+		
+		registrarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				registrarMontador.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		this.registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				TreeMap info;
+				String msj;
+				
+				info = (new Gestor()).registrarMontador(Integer.parseInt(registrarMontador.getTextFieldId().getText()),registrarMontador.getTextFieldNombre().getText(),
+						registrarMontador.getTextFieldApellido().getText(),
+						Integer.parseInt(registrarMontador.getTextFieldTelefono().getText()), 
+						registrarMontador.getTextFieldDireccion().getText());
+				if(info != null){
+					msj = "Se registro el fabricante de Id " + info.get("id") + " correctamente";
+					registrarMontador.setVisible(false);
+					reiniciarPanelMontador(registrarMontador);
+					menu.setVisible(true);
+				}else{
+					msj = "No se logro registrar al Montador!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		registrarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				registrarMontador.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+		//======================= Consultar   ======================//
+		
+		consultarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarMontador.setVisible(false);
+				((PanelConsultarMontador)consultarMontador).getTxtId().setText(null);
+				reiniciarPanelMontador(consultarMontador);
+
+				menu.setVisible(true);
+			}
+			
+		});
+		
+
+		((PanelConsultarMontador)consultarMontador).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarMontador(Integer.parseInt(((PanelConsultarMontador)consultarMontador).getTxtId().getText()));
+					consultarMontador.getTextFieldNombre().setText(info.get("nombre"));
+					consultarMontador.getTextFieldApellido().setText(info.get("apellido"));
+					consultarMontador.getTextFieldTelefono().setText(info.get("telefono"));
+					consultarMontador.getTextFieldDireccion().setText(info.get("direccion"));
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+			}
+			
+		});
+		
+		//======================= Modificar   ======================//
+		
+		modificarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e){ 
+				modificarMontador.setVisible(false);
+				reiniciarPanelMontador(modificarMontador);
+				menu.setVisible(true);
+			}
+		});
+		
+		modificarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap info;
+				String msj;
+				
+				try {
+					info = (new Gestor()).modificarMontador(Integer.parseInt(((PanelModificarMontador) modificarMontador).getLista().get(((PanelModificarMontador) modificarMontador).getComboBoxMontadores().getSelectedIndex()).get("id")), 
+									modificarMontador.getTextFieldNombre().getText(), 
+									modificarMontador.getTextFieldApellido().getText(), 
+									Integer.parseInt(modificarMontador.getTextFieldTelefono().getText()), 
+									modificarMontador.getTextFieldDireccion().getText()
+									);
+				} catch (Exception e1) {
+					info = null;
+					e1.printStackTrace();
+				}
+				if(info != null){
+					msj = "Se modifico el Montador de Id " + info.get("id") + " correctamente";
+				}else{
+					msj = "No se logro modificar al Montador!";
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				reiniciarPanelMontador(modificarMontador);
+				modificarMontador.setVisible(false);
+				menu.setVisible(true);
+			}
+		});
+		
+		//======================= Eliminar   ======================//
+	
+		eliminarMontador.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String msj;
+				
+				try {
+					(new Gestor()).eliminarMontador(Integer.parseInt(((PanelConsultarMontador)eliminarMontador).getTxtId().getText()));
+					eliminarMontador.setVisible(false);
+					((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
+					reiniciarPanelMontador(eliminarMontador);
+					menu.setVisible(true);
+					msj = "Se logro eliminar al Montador";
+				} catch (Exception e1) {
+					msj = "No se logro eliminar al montador";
+					e1.printStackTrace();
+				}
+				
+				JOptionPane.showMessageDialog(null, msj);
+				
+			}
+			
+		});
+		
+		((PanelConsultarMontador)eliminarMontador).getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TreeMap<String,String> info;
+				
+				try{
+					
+					info = (new Gestor()).consultarMontador(Integer.parseInt(((PanelConsultarMontador)eliminarMontador).getTxtId().getText()));
+					eliminarMontador.getTextFieldNombre().setText(info.get("nombre"));
+					eliminarMontador.getTextFieldApellido().setText(info.get("apellido"));
+					eliminarMontador.getTextFieldTelefono().setText(info.get("telefono"));
+					eliminarMontador.getTextFieldDireccion().setText(info.get("direccion"));		
+					
+				}catch(Exception e2){
+					JOptionPane.showMessageDialog(null, "Revise el Id");
+				}
+				
+
+			}
+			
+		});
+		
+		eliminarMontador.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				eliminarMontador.setVisible(false);
+				((PanelConsultarMontador)eliminarMontador).getTxtId().setText(null);
+				reiniciarPanelMontador(eliminarMontador);
+				menu.setVisible(true);
+				
+			}
+			
+		});
+		
+	}
+	
+	private void inicializarPanelesVenta(){
+		
+		//======================= Menu ======================//
+		
+		menuVenta.getBtnConsultar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuVenta.setVisible(false);
+				consultarVenta.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		menuVenta.getBtnRegistrar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuVenta.setVisible(false);
+				registrarVenta.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		//======================= Registrar   ======================//
+		
+		
+		
+		//======================= Consultar   ======================//
+		
+		
+		
+		//======================= Modificar   ======================//
+		
+		
+		
+		//======================= Eliminar   ======================//
+	
+	}
+	
+	private void inicializarPanelesMueble(){
+		
+		//======================= Menu ======================//
+		
+		menuMueble.getBtnConsultar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				menuMueble.setVisible(false);
+				consultarMueble.setVisible(true);
+				
+			}
+			
+		});
+		menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuMueble.setVisible(false);
+				registrarMueble.setVisible(true);
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		//======================= Registrar   ======================//
+		
+		
+		
+		//======================= Consultar   ======================//
+		
+		
+		
+		//======================= Modificar   ======================//
+		
+		
+		
+		//======================= Eliminar   ======================//
+	
+		
+	}
+	
+
+	private void reiniciarPanelFabricante(PanelFormaFabricante panelF){
+		
+		panelF.getTextFieldNombre().setText(null);
+		panelF.getTextFieldApellido().setText(null);
+		panelF.getTextFieldTelefono().setText(null);
+		panelF.getTextFieldDireccion().setText(null);
+		panelF.getTextFieldLinea().setText(null);
+		panelF.getTextFieldAnnos().setText(null);
+		
+	}
+	
+	private void reiniciarPanelDistribuidor(PanelFormaDistribuidor panelF){
+		
+		panelF.getTextFieldNombre().setText(null);
+		panelF.getTextFieldTelefono().setText(null);
+		panelF.getTextFieldDireccion().setText(null);
+		panelF.getTextFieldPorcentaje().setText(null);
+		
+	}
+	
+	
+	private void reiniciarPanelMontador(PanelFormaMontador panelM){
+		
+		panelM.getTextFieldNombre().setText(null);
+		panelM.getTextFieldApellido().setText(null);
+		panelM.getTextFieldTelefono().setText(null);
+		panelM.getTextFieldDireccion().setText(null);
+	}
+	
+	private void reiniciarPanelCliente(PanelFormaCliente panelC){
+		
+		panelC.getTextFieldNombre().setText(null);
+		panelC.getTextFieldApellido().setText(null);
+		panelC.getTextFieldTelefono().setText(null);
+		panelC.getTextFieldDireccion().setText(null);
+		panelC.getTextFieldTrabajo().setText(null);
+		panelC.getTextFieldTelTrabajo().setText(null);
 		
 	}
 	
