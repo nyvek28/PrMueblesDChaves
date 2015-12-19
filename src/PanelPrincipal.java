@@ -861,6 +861,12 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				
 				menuFabricante.setVisible(false);
+				try {
+					((PanelModificarFabricante) modificarFabricante).llenarSelect();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				modificarFabricante.setVisible(true);
 				
 			}

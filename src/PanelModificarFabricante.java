@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 
 	private JComboBox comboBoxFabricantes;
 	private ArrayList<TreeMap<String,String>> lista;
+	private DefaultComboBoxModel dm;
 	
 	public PanelModificarFabricante() throws Exception{
 		
@@ -30,7 +32,6 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 		this.setComboBoxFabricantes(new JComboBox());
 		c.gridy = 0;
 		c.gridx = 2;
-		this.llenarSelect();
 		this.getComboBoxFabricantes().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -61,12 +62,16 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 		
 	}
 	
-	private void llenarSelect() throws Exception{
+	public void llenarSelect() throws Exception{
+		
+		this.setDm(new DefaultComboBoxModel());
 		
 		for(int i = 0; i < this.getLista().size(); i++){	
-			this.getComboBoxFabricantes().addItem(this.getLista().get(i).get("nombre") + " " + this.getLista().get(i).get("apellido"));	
+			this.getDm().addElement(this.getLista().get(i).get("nombre") + " " + this.getLista().get(i).get("apellido"));
+			//this.getComboBoxFabricantes.addItem(this.getLista().get(i).get("nombre") + " " + this.getLista().get(i).get("apellido"));	
 		}
 		
+		this.getComboBoxFabricantes().setModel(this.getDm());
 	}
 
 	public JComboBox getComboBoxFabricantes() {
@@ -87,6 +92,14 @@ public class PanelModificarFabricante extends PanelFormaFabricante {
 
 	public void setLista(ArrayList<TreeMap<String, String>> lista) {
 		this.lista = lista;
+	}
+
+	public DefaultComboBoxModel getDm() {
+		return dm;
+	}
+
+	public void setDm(DefaultComboBoxModel dm) {
+		this.dm = dm;
 	}
 	
 }
