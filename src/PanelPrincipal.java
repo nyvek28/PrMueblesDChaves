@@ -1109,6 +1109,12 @@ public class PanelPrincipal extends JPanel{
 					public void actionPerformed(ActionEvent arg0) {
 						
 						menuDistribuidor.setVisible(false);
+						try {
+							((PanelModificarDistribuidor) modificarDistribuidor).llenarSelect();
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						modificarDistribuidor.setVisible(true);
 						
 					}

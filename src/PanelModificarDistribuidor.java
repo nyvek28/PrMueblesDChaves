@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ public class PanelModificarDistribuidor extends PanelFormaDistribuidor {
 
 	private JComboBox comboBoxDistribuidores;
 	private ArrayList<TreeMap<String,String>> lista;
+	private DefaultComboBoxModel dm; 
 	
 	public PanelModificarDistribuidor() throws Exception{
 		
@@ -30,7 +32,6 @@ public class PanelModificarDistribuidor extends PanelFormaDistribuidor {
 		this.setComboBoxDistribuidores(new JComboBox());
 		c.gridy = 0;
 		c.gridx = 2;
-		this.llenarSelect();
 		this.getComboBoxDistribuidores().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -59,11 +60,16 @@ public class PanelModificarDistribuidor extends PanelFormaDistribuidor {
 		
 	}
 	
-	private void llenarSelect() throws Exception{
+	public void llenarSelect() throws Exception{
 		
-		for(int i = 0; i < this.getLista().size(); i++){	
-			this.getComboBoxDistribuidores().addItem(this.getLista().get(i).get("nombre"));	
+		this.setDm(new DefaultComboBoxModel());
+		
+		for(int i = 0; i < this.getLista().size(); i++){
+			this.getDm().addElement(this.getLista().get(i).get("nombre"));	
+			//this.getComboBoxDistribuidores().addItem(this.getLista().get(i).get("nombre"));	
 		}
+		
+		this.getComboBoxDistribuidores().setModel(getDm());
 		
 	}
 
@@ -85,6 +91,14 @@ public class PanelModificarDistribuidor extends PanelFormaDistribuidor {
 
 	public void setLista(ArrayList<TreeMap<String, String>> lista) {
 		this.lista = lista;
+	}
+
+	public DefaultComboBoxModel getDm() {
+		return dm;
+	}
+
+	public void setDm(DefaultComboBoxModel dm) {
+		this.dm = dm;
 	}
 	
 }
