@@ -1,3 +1,4 @@
+import java.util.TreeMap;
 
 public class Bajo extends Mueble{
 
@@ -28,6 +29,27 @@ public class Bajo extends Mueble{
 			int idDistribuidor, int vendido, double alturaSobreSuelo){
 		super(id,idFabricante,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego,idDistribuidor,vendido);
 		this.setAlturaSobreSuelo(alturaSobreSuelo); 
+	}
+	
+	public TreeMap<String,String> toTreeMap(){
+		
+		TreeMap<String,String> datos;
+		
+		datos = super.toTreeMap();
+		datos.put("alturaSobreSuelo", String.valueOf(this.getAlturaSobreSuelo()));
+		
+		return datos;
+		
+	}
+	
+	public double calcularCosto(){
+		
+		double total;
+		
+		total = this.getPrecio() + (this.getAlturaSobreSuelo() * 2.3 / 100);
+		
+		return total;
+		
 	}
 
 	public double getAlturaSobreSuelo() {

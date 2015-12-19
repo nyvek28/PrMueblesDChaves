@@ -1,3 +1,4 @@
+import java.util.TreeMap;
 
 public class Panel extends Mueble{
 
@@ -38,6 +39,35 @@ public class Panel extends Mueble{
 		acabado = acabados[this.getAcabado()];
 		
 		return acabado;
+		
+	}
+	
+	public TreeMap<String,String> toTreeMap(){
+		
+		TreeMap<String,String> datos;
+		
+		datos = super.toTreeMap();
+		datos.put("tipo", this.acabadoToString());
+		
+		return datos;
+		
+	}
+	
+	public double calcularCosto(){
+		
+		double total;
+		
+		if(this.getAcabado() == 0){
+			total = this.getPrecio() + (this.getPrecio() * 1.2 / 100);
+		}else if(this.getAcabado() == 1){
+			total = this.getPrecio() + (this.getPrecio() * 2.3 / 100);
+		}else if(this.getAcabado() == 2){
+			total = this.getPrecio() + (this.getPrecio() * 3.4 / 100);
+		}else{
+			total = this.getPrecio() + (this.getPrecio() * 4.2 / 100);
+		}
+		
+		return total;
 		
 	}
 	

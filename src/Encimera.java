@@ -1,3 +1,4 @@
+import java.util.TreeMap;
 
 public class Encimera extends Mueble{
 
@@ -50,6 +51,32 @@ public class Encimera extends Mueble{
 		tipo = tipos[this.getTipo()];
 		
 		return tipo;
+		
+	}
+	
+	public TreeMap<String,String> toTreeMap(){
+		
+		TreeMap<String,String> datos;
+		
+		datos = super.toTreeMap();
+		datos.put("espesor", String.valueOf(this.getEspesor()));
+		datos.put("tipo", this.tipoToString());
+		
+		return datos;
+		
+	}
+	
+	public double calcularCosto(){
+		
+		double total;
+		
+		if(this.getTipo() == 0){
+			total = this.getPrecio() + (this.getPrecio() * 1 / 100);
+		}else{
+			total = this.getPrecio() + (this.getPrecio() * 0.07 / 100);
+		}
+		
+		return total;
 		
 	}
 	

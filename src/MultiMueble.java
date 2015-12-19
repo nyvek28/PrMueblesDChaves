@@ -63,7 +63,7 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(Fabricante f,int plinea, String pcolor, double ancho, double alto, double largo, double precio,
+	public Mueble crear(Fabricante f, String pcolor, double ancho, double alto, double largo, double precio,
 			double alturaSobreSuelo){
 		Mueble m;
 		String sql;
@@ -110,7 +110,7 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(Fabricante f,int plinea, String pcolor, double ancho, double alto, double largo, double precio, int acabado){
+	public Mueble crear(Fabricante f, String pcolor, double ancho, double alto, double largo, double precio, int acabado){
 		Mueble m;
 		String sql;
 		
@@ -156,7 +156,7 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(Fabricante f,int plinea, String pcolor, double ancho, double alto, double largo, double precio,int tipo, 
+	public Mueble crear(Fabricante f, String pcolor, double ancho, double alto, double largo, double precio,int tipo, 
 			double espesor){
 		Mueble m;
 		String sql;

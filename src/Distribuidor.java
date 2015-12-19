@@ -71,54 +71,49 @@ public class Distribuidor {
 		Juego juego =(new MultiJuego().buscarid(idJuego));
 		
 		Venta venta =(new MultiVenta().crear(this.getId(),idJuego, idCliente));
-		venta.setMonto(this.calcularCostoJuego(juego));
+		venta.setMonto(this.calcularCostoJuego(idJuego));
 		return venta;
 	}
 	
-	public double calcularCostoJuego(Juego j) throws SQLException, Exception{
+	public double calcularCostoJuego(int idJuego) throws SQLException, Exception{
 		
 		double costoTotal = 0;
+		Juego j;
 		
-		for(int i = 0; i < j.getListaMuebles().size(); i++){
+		j = this.buscarJuego(idJuego);
+		if(j != null){
+			ArrayList<Mueble> muebles = j.getListaMuebles();
 			
-			Mueble m;
-			
-			m = j.getListaMuebles().get(i);
-			if(m instanceof Bajo){
+			for(int i = 0; i < muebles.size(); i++){
 				
-				costoTotal += m.getPrecio() + (2.3 * m.getPrecio() / 100);
-				
-			}else if(m instanceof Panel){
-				
-				if(((Panel) m).getAcabado() == 0){
-					costoTotal += m.getPrecio() + (1.2 * m.getPrecio() / 100);
-				}else if(((Panel) m).getAcabado() == 1){
-					costoTotal += m.getPrecio() + (2.3 * m.getPrecio() / 100);
-				}else if(((Panel) m).getAcabado() == 2){
-					costoTotal += m.getPrecio() + (3.4 * m.getPrecio() / 100);
-				}else{
-					costoTotal += m.getPrecio() + (4.2 * m.getPrecio() / 100);
-				}
-				
-			}else if(m instanceof Encimera){
-				
-				if(((Encimera) m).getTipo() == 0){
-					costoTotal += m.getPrecio() + (1.0 * m.getPrecio() / 100);
-				}else{
-					costoTotal += m.getPrecio() + (0.07 * m.getPrecio() / 100);
-				}
-				
-			}else{
-				
-				costoTotal += m.getPrecio();
+				costoTotal += muebles.get(i).calcularCosto();
 				
 			}
 			
+			costoTotal +=  + (this.getPorcentaje() * costoTotal / 100);
+		}else{
+			costoTotal = -1;
 		}
 		
-		costoTotal +=  + (this.getPorcentaje() * costoTotal / 100);
-		
 		return costoTotal;
+		
+	}
+	
+	public Juego buscarJuego(int idJuego){
+		
+		ArrayList<Juego> lista;
+		Juego j = null;
+		
+		lista = this.getJuegos();
+		if(lista != null){
+			for(int i = 0; i < lista.size(); i++){
+				if(lista.get(i).getId() == idJuego){
+					j = lista.get(i);
+				}
+			}
+		}
+		
+		return j;
 		
 	}
 

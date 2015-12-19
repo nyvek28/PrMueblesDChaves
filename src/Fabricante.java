@@ -54,9 +54,9 @@ public class Fabricante extends Persona {
 	Ediciones:
 
 	*/
-	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio)throws Exception{
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, double precio)throws Exception{
 		Mueble mueble;
-		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio);
+		mueble=(new MultiMueble()).crear(this, pcolor, ancho, alto, largo, precio);
 		return mueble;
 	}
 	
@@ -68,9 +68,9 @@ public class Fabricante extends Persona {
 	Ediciones:
 
 	*/
-	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,double alturaSobreSuelo)throws Exception{
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, double precio,double alturaSobreSuelo)throws Exception{
 		Mueble mueble;
-		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio, alturaSobreSuelo);
+		mueble=(new MultiMueble()).crear(this, pcolor, ancho, alto, largo, precio, alturaSobreSuelo);
 		return mueble;
 	}
 	
@@ -82,10 +82,10 @@ public class Fabricante extends Persona {
 	Ediciones:
 
 	*/
-	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int tipo,
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, double precio, int tipo,
 			double espesor)throws Exception{
 		Mueble mueble;
-		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio, tipo, espesor);
+		mueble=(new MultiMueble()).crear(this, pcolor, ancho, alto, largo, precio, tipo, espesor);
 		return mueble;
 	}
 	
@@ -97,9 +97,9 @@ public class Fabricante extends Persona {
 	Ediciones:
 
 	*/
-	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int acabado)throws Exception{
+	public Mueble fabricarMueble(String pcolor, double ancho, double alto, double largo, double precio, int acabado)throws Exception{
 		Mueble mueble;
-		mueble=(new MultiMueble()).crear(this.getLinea(), pcolor, ancho, alto, largo, pcategoria, precio, acabado);
+		mueble=(new MultiMueble()).crear(this, pcolor, ancho, alto, largo, precio, acabado);
 		return mueble;
 	}
 	

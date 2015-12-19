@@ -471,7 +471,7 @@ public class Gestor {
 		TreeMap<String, String> datos;
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
-		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, precio);
 		datos=m.toTreeMap();
 		
 		return datos;
@@ -485,7 +485,7 @@ public class Gestor {
 		TreeMap<String, String> datos;
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
-		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio,alturaSobreSuelo);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, precio,alturaSobreSuelo);
 		datos=m.toTreeMap();
 		
 		return datos;
@@ -500,7 +500,7 @@ public class Gestor {
 		TreeMap<String, String> datos;
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
-		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio,tipo,espesor);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, precio,tipo,espesor);
 		datos=m.toTreeMap();
 		
 		return datos;
@@ -514,7 +514,7 @@ public class Gestor {
 		TreeMap<String, String> datos;
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
-		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio, acabado);
+		m=f.fabricarMueble(pcolor, ancho, alto, largo, precio, acabado);
 		datos=m.toTreeMap();
 		
 		return datos;
@@ -574,7 +574,7 @@ public class Gestor {
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		
 		String info="";
-		ArrayList<Mueble> listaMuebles=(new MultiJuego().buscarMuebleddeJuego(juego.getId()));
+		ArrayList<Mueble> listaMuebles=(new MultiMueble().buscaridJ(juego.getId()));
 		for(int i=0;i<listaMuebles.size();i++){
 			Mueble m=listaMuebles.get(i);
 			info+="\n Mueble"+i+": "+ m.toString();
@@ -960,15 +960,15 @@ public class Gestor {
 	
 	public double calcularCosto(int idDistribuidor, int idJuego) throws SQLException, Exception{
 		
-		Distribuidor f;
+		Distribuidor d;
 		Juego j;
 		double costo;
 		
-		f = Empresa.consultarDistribuidor(idDistribuidor);
-		if(f != null){
+		d = Empresa.consultarDistribuidor(idDistribuidor);
+		if(d != null){
 			j = (new MultiJuego()).buscarid(idJuego);
 			if(j != null){
-				costo = f.calcularCostoJuego(j);
+				costo = d.calcularCostoJuego(idJuego);
 			}else{
 				costo = -1;
 			}

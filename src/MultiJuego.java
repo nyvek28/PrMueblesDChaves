@@ -65,44 +65,6 @@ public class MultiJuego {
 		rs.close();
 		return juego; 
 	}
-	/*
-	Autor: Daniel Chaves
-	Descripcion: Metodo que buesca mueble de juego en BD
-	Version: v.1.0
-	Fecha: Dic 7, 2015
-	Ediciones:
-	 */
-	public ArrayList<Mueble> buscarMuebleddeJuego(int pid)throws java.sql.SQLException,Exception{
-		java.sql.ResultSet rs;
-		String sql;
-		Mueble m;
-		String msj="";
-		ArrayList<Mueble> listaMueble= new ArrayList<Mueble>();
-		sql = "SELECT * "+
-		"FROM TbMueble "+
-		"WHERE IdJuego = '"+pid+"'";
-		rs = Conector.getConector().ejecutarSQL(sql,true);
-		while(rs.next()){
-			
-			m= new Mueble(
-					rs.getInt("id"),
-					rs.getInt("linea"),
-					rs.getString("color"),
-					rs.getDouble("ancho"),
-					rs.getDouble("alto"),
-					rs.getDouble("largo"),
-					rs.getInt("categoria"),
-					rs.getDouble("precio"),
-					rs.getInt("switCh"),
-					rs.getInt("idJuego"));
-			listaMueble.add(m);
-			
-		}
-		return listaMueble;
-		
-		
-	}
-	
 	
 	/*
 	Autor: Kevyn Quiros
