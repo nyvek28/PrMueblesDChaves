@@ -1281,11 +1281,11 @@ public class PanelPrincipal extends JPanel{
 						
 						try{
 							
-							info = (new Gestor()).consultarFabricante(Integer.parseInt(((PanelConsultarDistribuidor)consultarDistribuidor).getTxtId().getText()));
+							info = (new Gestor()).consultarDistribuidor(Integer.parseInt(((PanelConsultarDistribuidor)consultarDistribuidor).getTxtId().getText()));
 							consultarDistribuidor.getTextFieldNombre().setText(info.get("nombre"));
 							consultarDistribuidor.getTextFieldTelefono().setText(info.get("telefono"));
 							consultarDistribuidor.getTextFieldDireccion().setText(info.get("direccion"));
-							consultarDistribuidor.getTextFieldPorcentaje().setText(info.get("linea"));		
+							consultarDistribuidor.getTextFieldPorcentaje().setText(info.get("porcentaje"));		
 							
 						}catch(Exception e2){
 							JOptionPane.showMessageDialog(null, "Revise el Id");
