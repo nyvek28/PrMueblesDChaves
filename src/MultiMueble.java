@@ -23,12 +23,12 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio){
+	public Mueble crear(Fabricante f, String pcolor, double ancho, double alto, double largo, double precio){
 		Mueble m;
 		String sql;
 		
-		m = new Alto(plinea,pcolor,ancho,alto,largo,pcategoria,precio);
-		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
+		m = new Alto(f.getId(), f.getLinea(), pcolor, ancho, alto,  largo, precio);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo, idFabricante, idDistribuidor, vendido)"
 			+ " VALUES( "
 			+ m.getId() + ","
 			+ m.getLinea() + ","
@@ -40,7 +40,10 @@ public class MultiMueble {
 			+ m.getSwitCh() + ","
 			+ m.getIdJuego() + ","
 			+ m.getPrecio() + ","
-			+ Mueble.getConsecutivo()
+			+ Mueble.getConsecutivo() +","
+			+ m.getIdFabricante() + ","
+			+ m.getIdDistribuidor() + ","
+			+ m.getVendido()
 			+ " )";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
@@ -60,26 +63,29 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,
+	public Mueble crear(Fabricante f,int plinea, String pcolor, double ancho, double alto, double largo, double precio,
 			double alturaSobreSuelo){
 		Mueble m;
 		String sql;
 		
-		m = new Bajo(plinea,pcolor,ancho,alto,largo,pcategoria,precio, alturaSobreSuelo);
-		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
-			+ " VALUES( "
-			+ m.getId() + ","
-			+ m.getLinea() + ","
-			+ "'" + m.getColor() + "',"
-			+ m.getDimensiones()[0] + ","
-			+ m.getDimensiones()[1] + ","
-			+ m.getDimensiones()[2] + ","
-			+ m.getCategoria() + ","
-			+ m.getSwitCh() + ","
-			+ m.getIdJuego() + ","
-			+ m.getPrecio() + ","
-			+ Mueble.getConsecutivo()
-			+ " ) "
+		m = new Bajo(f.getId(), f.getLinea(), pcolor, ancho, alto,  largo, precio, alturaSobreSuelo);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo, idFabricante, idDistribuidor, vendido)"
+				+ " VALUES( "
+				+ m.getId() + ","
+				+ m.getLinea() + ","
+				+ "'" + m.getColor() + "',"
+				+ m.getDimensiones()[0] + ","
+				+ m.getDimensiones()[1] + ","
+				+ m.getDimensiones()[2] + ","
+				+ m.getCategoria() + ","
+				+ m.getSwitCh() + ","
+				+ m.getIdJuego() + ","
+				+ m.getPrecio() + ","
+				+ Mueble.getConsecutivo() +","
+				+ m.getIdFabricante() + ","
+				+ m.getIdDistribuidor() + ","
+				+ m.getVendido()
+				+ " )"
 			+ "INSERT INTO TbBajo (id ,alturaSobreSuelo) "
 			+ " VALUES("
 			+ m.getId() + ","
@@ -104,25 +110,28 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int acabado){
+	public Mueble crear(Fabricante f,int plinea, String pcolor, double ancho, double alto, double largo, double precio, int acabado){
 		Mueble m;
 		String sql;
 		
-		m = new Panel(plinea,pcolor,ancho,alto,largo,pcategoria,precio,acabado);
-		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
-			+ " VALUES( "
-			+ m.getId() + ","
-			+ m.getLinea() + ","
-			+ "'" + m.getColor() + "',"
-			+ m.getDimensiones()[0] + ","
-			+ m.getDimensiones()[1] + ","
-			+ m.getDimensiones()[2] + ","
-			+ m.getCategoria() + ","
-			+ m.getSwitCh() + ","
-			+ m.getIdJuego() + ","
-			+ m.getPrecio() + ","
-			+ Mueble.getConsecutivo()
-			+ " ) "
+		m = new Panel(f.getId(), f.getLinea(), pcolor, ancho, alto,  largo, precio,acabado);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo, idFabricante, idDistribuidor, vendido)"
+				+ " VALUES( "
+				+ m.getId() + ","
+				+ m.getLinea() + ","
+				+ "'" + m.getColor() + "',"
+				+ m.getDimensiones()[0] + ","
+				+ m.getDimensiones()[1] + ","
+				+ m.getDimensiones()[2] + ","
+				+ m.getCategoria() + ","
+				+ m.getSwitCh() + ","
+				+ m.getIdJuego() + ","
+				+ m.getPrecio() + ","
+				+ Mueble.getConsecutivo() +","
+				+ m.getIdFabricante() + ","
+				+ m.getIdDistribuidor() + ","
+				+ m.getVendido()
+				+ " )"
 			+ "INSERT INTO TbPanel (id, acabado) "
 			+ " VALUES ("
 			+ m.getId() + ","
@@ -147,26 +156,29 @@ public class MultiMueble {
 	Ediciones:
 
 	*/
-	public Mueble crear(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,int tipo, 
+	public Mueble crear(Fabricante f,int plinea, String pcolor, double ancho, double alto, double largo, double precio,int tipo, 
 			double espesor){
 		Mueble m;
 		String sql;
 		
-		m = new Encimera(plinea,pcolor,ancho,alto,largo,pcategoria,precio,tipo,espesor);
-		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo)"
-			+ " VALUES( "
-			+ m.getId() + ","
-			+ m.getLinea() + ","
-			+ "'" + m.getColor() + "',"
-			+ m.getDimensiones()[0] + ","
-			+ m.getDimensiones()[1] + ","
-			+ m.getDimensiones()[2] + ","
-			+ m.getCategoria() + ","
-			+ m.getSwitCh() + ","
-			+ m.getIdJuego() + ","
-			+ m.getPrecio() + ","
-			+ Mueble.getConsecutivo()
-			+ " ) "
+		m = new Encimera(f.getId(), f.getLinea(), pcolor, ancho, alto,  largo, precio,tipo,espesor);
+		sql = "INSERT INTO TbMueble (id, linea, color, ancho, alto, largo, categoria, switch, idJuego, precio, consecutivo, idFabricante, idDistribuidor, vendido)"
+				+ " VALUES( "
+				+ m.getId() + ","
+				+ m.getLinea() + ","
+				+ "'" + m.getColor() + "',"
+				+ m.getDimensiones()[0] + ","
+				+ m.getDimensiones()[1] + ","
+				+ m.getDimensiones()[2] + ","
+				+ m.getCategoria() + ","
+				+ m.getSwitCh() + ","
+				+ m.getIdJuego() + ","
+				+ m.getPrecio() + ","
+				+ Mueble.getConsecutivo() +","
+				+ m.getIdFabricante() + ","
+				+ m.getIdDistribuidor() + ","
+				+ m.getVendido()
+				+ " )"
 			+ "INSERT INTO TbEncimera (id, tipo, espesor) "
 			+ "VALUES ( "
 			+ m.getId() + ","
@@ -221,6 +233,7 @@ public class MultiMueble {
 			default:
 				m = new Alto(
 						rs.getInt("id"),
+						rs.getInt("idFabricante"),
 						rs.getInt("linea"),
 						rs.getString("color"),
 						rs.getDouble("ancho"),
@@ -229,7 +242,9 @@ public class MultiMueble {
 						rs.getInt("categoria"),
 						rs.getDouble("precio"),
 						rs.getInt("switch"),
-						rs.getInt("idJuego")
+						rs.getInt("idJuego"),
+						rs.getInt("idDistribuidor"),
+						rs.getInt("vendido")
 						);
 				break;
 		
@@ -262,6 +277,7 @@ public class MultiMueble {
 		if(rset.next()){
 			m = new Bajo(
 					rs.getInt("id"),
+					rs.getInt("idFabricante"),
 					rs.getInt("linea"),
 					rs.getString("color"),
 					rs.getDouble("ancho"),
@@ -271,6 +287,8 @@ public class MultiMueble {
 					rs.getDouble("precio"),
 					rs.getInt("switch"),
 					rs.getInt("idJuego"),
+					rs.getInt("idDistribuidor"),
+					rs.getInt("vendido"),
 					rset.getDouble("alturaSobreSuelo")
 					);
 		}else{
@@ -302,6 +320,7 @@ public class MultiMueble {
 		if(rset.next()){
 			m = new Panel(
 					rs.getInt("id"),
+					rs.getInt("idFabricante"),
 					rs.getInt("linea"),
 					rs.getString("color"),
 					rs.getDouble("ancho"),
@@ -311,6 +330,8 @@ public class MultiMueble {
 					rs.getDouble("precio"),
 					rs.getInt("switch"),
 					rs.getInt("idJuego"),
+					rs.getInt("idDistribuidor"),
+					rs.getInt("vendido"),
 					rset.getInt("acabado")
 					);
 		}else{
@@ -342,6 +363,7 @@ public class MultiMueble {
 		if(rset.next()){
 			m = new Encimera(
 					rs.getInt("id"),
+					rs.getInt("idFabricante"),
 					rs.getInt("linea"),
 					rs.getString("color"),
 					rs.getDouble("ancho"),
@@ -351,6 +373,8 @@ public class MultiMueble {
 					rs.getDouble("precio"),
 					rs.getInt("switch"),
 					rs.getInt("idJuego"),
+					rs.getInt("idDistribuidor"),
+					rs.getInt("vendido"),
 					rset.getInt("tipo"),
 					rset.getDouble("espesor")
 					);
@@ -505,6 +529,27 @@ public class MultiMueble {
 		}
 		
 		return tabla;
+		
+	}
+	
+	public ArrayList<Mueble> buscarD(int idDistribuidor) throws SQLException, Exception{
+		
+		String sql;
+		ResultSet rs;
+		ArrayList<Mueble> muebles = new ArrayList<Mueble>();
+		
+		sql = "SELECT * "
+			+ "FROM TbMueble "
+			+ "WHERE idDistribuidor = "+idDistribuidor;
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			muebles.add(this.buscarid(rs.getInt("id")));
+		}
+		if(muebles.size() < 1){
+			muebles = null;
+		}
+		
+		return muebles;
 		
 	}
 	

@@ -9,8 +9,8 @@ public class Alto extends Mueble{
 	Ediciones:
 
 	*/
-	public Alto(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio) {
-		super(plinea, pcolor, ancho, alto, largo, pcategoria, precio);
+	public Alto(int idFabricante ,int plinea, String pcolor, double ancho, double alto, double largo, double precio) {
+		super(idFabricante, plinea, pcolor, ancho, alto, largo, 0, precio);
 	}
 	
 	/*
@@ -21,9 +21,9 @@ public class Alto extends Mueble{
 	Ediciones:
 
 	*/
-	public Alto(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, 
-			int switCh, int idJuego){
-		super(id,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego);
+	public Alto(int id, int idFabricante, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego,
+			int idDistribuidor, int vendido){
+		super(id,idFabricante,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego,idDistribuidor,vendido);
 	}
 
 }

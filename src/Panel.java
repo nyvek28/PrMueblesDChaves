@@ -11,8 +11,8 @@ public class Panel extends Mueble{
 	Ediciones:
 
 	*/
-	public Panel(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int acabado) {
-		super(plinea, pcolor, ancho, alto, largo, pcategoria, precio);
+	public Panel(int idFabricante ,int plinea, String pcolor, double ancho, double alto, double largo, double precio, int acabado) {
+		super(idFabricante, plinea, pcolor, ancho, alto, largo, 3, precio);
 		this.setAcabado(acabado);
 	}
 	
@@ -24,9 +24,9 @@ public class Panel extends Mueble{
 	Ediciones:
 
 	*/
-	public Panel(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, 
-			int acabado, int switCh, int idJuego){
-		super(id,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego);
+	public Panel(int id, int idFabricante, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego,
+			int idDistribuidor, int vendido,int acabado){
+		super(id,idFabricante,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego,idDistribuidor,vendido);
 		this.setAcabado(acabado);
 	}
 	

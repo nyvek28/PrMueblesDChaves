@@ -12,9 +12,9 @@ public class Encimera extends Mueble{
 	Ediciones:
 
 	*/
-	public Encimera(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio, int tipo,
+	public Encimera(int idFabricante ,int plinea, String pcolor, double ancho, double alto, double largo, double precio, int tipo,
 			double espesor) {
-		super(plinea, pcolor, ancho, alto, largo, pcategoria, precio);
+		super(idFabricante, plinea, pcolor, ancho, alto, largo, 2, precio);
 		this.setTipo(tipo);
 		this.setEspesor(espesor);
 	}
@@ -27,9 +27,9 @@ public class Encimera extends Mueble{
 	Ediciones:
 
 	*/
-	public Encimera(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, 
-			int switCh, int idJuego, int tipo, double espesor){
-		super(id,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego);
+	public Encimera(int id, int idFabricante, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego,
+			int idDistribuidor, int vendido, int tipo, double espesor){
+		super(id,idFabricante,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego,idDistribuidor,vendido);
 		this.setTipo(tipo);
 		this.setEspesor(espesor);
 	}

@@ -11,8 +11,8 @@ public class Bajo extends Mueble{
 	Ediciones:
 
 	*/
-	public Bajo(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio,double alturaSobreSuelo) {
-		super(plinea, pcolor, ancho, alto, largo, pcategoria, precio);
+	public Bajo(int idFabricante, int plinea, String pcolor, double ancho, double alto, double largo, double precio,double alturaSobreSuelo) {
+		super(idFabricante,plinea, pcolor, ancho, alto, largo, 1, precio);
 		this.setAlturaSobreSuelo(alturaSobreSuelo);
 	}
 	
@@ -24,9 +24,9 @@ public class Bajo extends Mueble{
 	Ediciones:
 
 	*/
-	public Bajo(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, 
-			int switCh, int idJuego, double alturaSobreSuelo){
-		super(id,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego);
+	public Bajo(int id, int idFabricante, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego,
+			int idDistribuidor, int vendido, double alturaSobreSuelo){
+		super(id,idFabricante,linea,color,ancho,alto,largo,categoria,precio,switCh,idJuego,idDistribuidor,vendido);
 		this.setAlturaSobreSuelo(alturaSobreSuelo); 
 	}
 

@@ -3,6 +3,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,10 +23,13 @@ public class PanelArmarJuego extends JPanel {
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
+		this.setDistribuidor(new JComboBox());
+		c.gridx = 2;
+		c.gridy = 3;
+		
 		this.setTbLibres(new JTable());
 		this.getTbLibres().setVisible(true);
-		c.gridx = 2;
-		c.gridy = 4;
+		c.gridy++;
 		this.add(tbLibres, c);
 		
 		btnAgregar = new JButton();
@@ -37,6 +41,34 @@ public class PanelArmarJuego extends JPanel {
 		this.getTbSeleccionados().setVisible(true);
 		c.gridx++;
 		this.add(tbSeleccionados, c);
+		
+	}
+	
+	public void construirTablas(){
+		
+		this.setDm1(new DefaultTableModel());
+		this.getDm1().addColumn("ID");
+		this.getDm1().addColumn("Color");
+		this.getDm1().addColumn("Ancho");
+		this.getDm1().addColumn("Alto");
+		this.getDm1().addColumn("Largo");
+		this.getDm1().addColumn("Precio");
+		this.getTbLibres().setModel(this.getDm1());
+		
+		this.setDm2(new DefaultTableModel());
+		this.getDm2().addColumn("ID");
+		this.getDm2().addColumn("Color");
+		this.getDm2().addColumn("Ancho");
+		this.getDm2().addColumn("Alto");
+		this.getDm2().addColumn("Largo");
+		this.getDm2().addColumn("Precio");
+		this.getTbSeleccionados().setModel(this.getDm2());
+		
+	}
+	
+	public void llenarLibres(){
+		
+		
 		
 	}
 	

@@ -1,3 +1,4 @@
+import java.util.TreeMap;
 
 /*
  * author: Daniel Chaves
@@ -19,6 +20,9 @@ public class Mueble {
 	private int idJuego;
 	private double precio;
 	private static int consecutivo = 0;
+	private int idDistribuidor;
+	private int idFabricante;
+	private int vendido;
 	
 	/*
 	Autor: Daniel Chaves
@@ -29,7 +33,8 @@ public class Mueble {
 		-Kevyn Quiros, Dic 7,2015
 
 	*/
-	public Mueble(int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio){
+	public Mueble(int idFabricante ,int plinea, String pcolor, double ancho, double alto, double largo, int pcategoria, double precio){
+		
 		Mueble.setConsecutivo(Mueble.getConsecutivo()+1);
 		this.setId(Mueble.getConsecutivo());
 		this.setLinea(plinea);
@@ -39,6 +44,9 @@ public class Mueble {
 		this.setPrecio(precio);
 		this.setIdJuego(-1);
 		this.setSwitCh(1);
+		this.setIdDistribuidor(-1);
+		this.setIdFabricante(idFabricante);
+		this.setVendido(0);
 	}
 	
 	/*
@@ -49,9 +57,11 @@ public class Mueble {
 	Ediciones:
 
 	*/
-	public Mueble(int id, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego){
+	public Mueble(int id, int idFabricante, int linea, String color, double ancho, double alto, double largo, int categoria, double precio, int switCh, int idJuego,
+			int idDistribuidor, int vendido){
 		
 		this.setId(id);
+		this.setIdFabricante(idFabricante);
 		this.setLinea(linea);
 		this.setColor(color);
 		this.setDimensiones(ancho, largo, alto);
@@ -59,6 +69,8 @@ public class Mueble {
 		this.setPrecio(precio);
 		this.setSwitCh(switCh);
 		this.setIdJuego(idJuego);
+		this.setIdDistribuidor(idDistribuidor);
+		this.setVendido(vendido);
 		
 	}
 	
@@ -79,6 +91,46 @@ public class Mueble {
 		
 		return categoria;
 		
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que clacula el precio del mueble
+	Version: v.1.0
+	Fecha: Dic 7, 2015
+	Ediciones:
+
+	*/
+	public double calcularCosto(){
+		
+		return this.getPrecio();
+		
+	}
+	
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que convierte un mueble en un treemap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> toTreeMap(){
+		
+		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
+		
+		datosMueble.put("id", String.valueOf(this.getId()));
+		datosMueble.put("linea", String.valueOf(this.getLinea()));
+		datosMueble.put("color", String.valueOf(this.getColor()));
+		datosMueble.put("ancho", String.valueOf(this.getDimensiones()[0]));
+		datosMueble.put("alto", String.valueOf(this.getDimensiones()[2]));
+		datosMueble.put("largo", String.valueOf(this.getDimensiones()[1]));
+		datosMueble.put("categoria", String.valueOf(this.getCategoria()));
+		datosMueble.put("idJuego", String.valueOf(this.getIdJuego()));
+		datosMueble.put("idDistribuidor", String.valueOf(this.getIdDistribuidor()));
+		datosMueble.put("idFabricante", String.valueOf(this.getIdFabricante()));
+		
+		return datosMueble;
 	}
 	
 	public int getId() {
@@ -155,5 +207,29 @@ public class Mueble {
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+
+	public int getIdDistribuidor() {
+		return idDistribuidor;
+	}
+
+	public void setIdDistribuidor(int idDistribuidor) {
+		this.idDistribuidor = idDistribuidor;
+	}
+
+	public int getVendido() {
+		return vendido;
+	}
+
+	public void setVendido(int vendido) {
+		this.vendido = vendido;
+	}
+
+	public int getIdFabricante() {
+		return idFabricante;
+	}
+
+	public void setIdFabricante(int idFabricante) {
+		this.idFabricante = idFabricante;
 	}
 }

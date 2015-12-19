@@ -172,7 +172,7 @@ public class Gestor {
 			m=(new MultiMueble().eliminar(m));
 		}
 		if(m!=null){
-			datos=this.muebleToTreeMap(m);
+			datos=m.toTreeMap();
 		}
 		else{
 			datos=null;
@@ -455,25 +455,7 @@ public class Gestor {
 		datos=this.juegoToTreeMap(juego);
 		return datos;
 	}
-	/*
-	Autor: Daniel Chaves
-	Descripcion: Metodo que convierte un mueble en un treemap
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
-
-	*/
-	private TreeMap<String, String> muebleToTreeMap(Mueble mueble){
-		
-		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
-		datosMueble.put("id", String.valueOf(mueble.getId()));
-		datosMueble.put("linea", String.valueOf(mueble.getLinea()));
-		datosMueble.put("color", String.valueOf(mueble.getColor()));
-		datosMueble.put("dimensiones", String.valueOf(mueble.getDimensiones()));
-		datosMueble.put("categoria", String.valueOf(mueble.getCategoria()));
-		
-		return datosMueble;
-	}
+	
 	/*
 	Autor: Daniel Chaves
 	Descripcion: Metodo que registra un mueble
@@ -490,7 +472,7 @@ public class Gestor {
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
 		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio);
-		datos=this.muebleToTreeMap(m);
+		datos=m.toTreeMap();
 		
 		return datos;
 		
@@ -504,7 +486,7 @@ public class Gestor {
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
 		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio,alturaSobreSuelo);
-		datos=this.muebleToTreeMap(m);
+		datos=m.toTreeMap();
 		
 		return datos;
 		
@@ -519,7 +501,7 @@ public class Gestor {
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
 		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio,tipo,espesor);
-		datos=this.muebleToTreeMap(m);
+		datos=m.toTreeMap();
 		
 		return datos;
 		
@@ -533,7 +515,7 @@ public class Gestor {
 		
 		f=(new MultiFabricante()).buscar(idFabricante);
 		m=f.fabricarMueble(pcolor, ancho, alto, largo, pcategoria, precio, acabado);
-		datos=this.muebleToTreeMap(m);
+		datos=m.toTreeMap();
 		
 		return datos;
 		
@@ -552,11 +534,33 @@ public class Gestor {
 	public TreeMap<String, String> consultarMueble(int idMueble)throws Exception{
 		Mueble mueble=(new MultiMueble().buscarid(idMueble));
 		TreeMap<String,String> datosMueble = new TreeMap<String,String>();
-		datosMueble=this.muebleToTreeMap(mueble);
+		datosMueble=mueble.toTreeMap();
 		
 		return datosMueble;
 		
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que consulta muebles por su distribuidor
+	Version: v.1.0
+	Fecha: Dic 19, 2015
+	Ediciones:
+
+	*/
+	public ArrayList<TreeMap<String, String>> consultarMueblePorDistribuidor(int idDistribuidor)throws Exception{
+		
+		ArrayList<TreeMap<String, String>> info = new ArrayList<TreeMap<String, String>>();
+		ArrayList<Mueble> muebles = (new MultiMueble()).buscarD(idDistribuidor);
+		
+		for(int i = 0; i < muebles.size(); i++){
+			info.add(muebles.get(i).toTreeMap());
+		}
+		
+		return info;
+		
+	}
+	
 	/*
 	Autor: Daniel Chaves
 	Descripcion: Metodo que convierte info de Juego en TreeMap
@@ -840,14 +844,15 @@ public class Gestor {
 		return fabricantes;
 		
 	}
-public ArrayList<TreeMap<String, String>> listarMuebles(int plinea) throws Exception{
+	
+	public ArrayList<TreeMap<String, String>> listarMuebles(int plinea) throws Exception{
 		
 		ArrayList<TreeMap<String, String>> muebles = new ArrayList<TreeMap<String,String>>();
 		TreeMap datos;
 		
 		for(int i = 0; i < (new MultiMueble()).listar(plinea).size(); i++){
 			
-			datos = this.muebleToTreeMap((new MultiMueble()).listar(plinea).get(i));
+			datos = (new MultiMueble()).listar(plinea).get(i).toTreeMap();
 			muebles.add(datos);
 			
 		}
