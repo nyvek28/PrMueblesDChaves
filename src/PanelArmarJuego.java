@@ -1,5 +1,6 @@
 import java.awt.GridBagConstraints;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ public class PanelArmarJuego extends JPanel {
 	private DefaultTableModel dm1;
 	private DefaultTableModel dm2;
 	private JComboBox distribuidor;
+	private DefaultComboBoxModel dm3;
 	
 	public PanelArmarJuego(){
 		
@@ -35,6 +37,31 @@ public class PanelArmarJuego extends JPanel {
 		this.getTbSeleccionados().setVisible(true);
 		c.gridx++;
 		this.add(tbSeleccionados, c);
+		
+	}
+	
+	public void seleccionarDistribuidor() throws Exception{
+		
+		int i;
+		
+		i = this.distribuidor.getSelectedIndex();
+//		this.getTextFieldNombre().setText((new Gestor()).listarDistribuidores().get(i).get("nombre"));
+//		this.getTextFieldTelefono().setText((new Gestor()).listarDistribuidores().get(i).get("telefono"));
+//		this.getTextFieldDireccion().setText((new Gestor()).listarDistribuidores().get(i).get("direccion"));
+//		this.getTextFieldPorcentaje().setText((new Gestor()).listarDistribuidores().get(i).get("porcentaje"));
+		
+	}
+	
+	public void llenarSelect() throws Exception{
+		
+		this.setDm3(new DefaultComboBoxModel());
+		
+		for(int i = 0; i < (new Gestor()).listarDistribuidores().size(); i++){
+			this.getDm3().addElement((new Gestor()).listarDistribuidores().get(i).get("nombre"));	
+			//this.getComboBoxDistribuidores().addItem(this.getLista().get(i).get("nombre"));	
+		}
+		
+		this.getDistribuidor().setModel(getDm3());
 		
 	}
 	
@@ -76,6 +103,22 @@ public class PanelArmarJuego extends JPanel {
 
 	public void setDm2(DefaultTableModel dm2) {
 		this.dm2 = dm2;
+	}
+
+	public JComboBox getDistribuidor() {
+		return distribuidor;
+	}
+
+	public void setDistribuidor(JComboBox distribuidor) {
+		this.distribuidor = distribuidor;
+	}
+
+	public DefaultComboBoxModel getDm3() {
+		return dm3;
+	}
+
+	public void setDm3(DefaultComboBoxModel dm3) {
+		this.dm3 = dm3;
 	}
 	
 }

@@ -158,6 +158,8 @@ public class PanelPrincipal extends JPanel{
 			
 	}
 
+//================================================================================================================================//	
+	
 	private void inicializarMenu(){
 		
 		menu.getBtnFabricante().addActionListener(new ActionListener(){
@@ -236,6 +238,8 @@ public class PanelPrincipal extends JPanel{
 		});
 		
 	}
+	
+//================================================================================================================================//
 	
 	private void inicializarPanelesFabricante(){
 		
@@ -487,6 +491,8 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 
+//================================================================================================================================//
+	
 	private void inicializarPanelesDistribuidor(){
 		
 		//======================= Modificar   ======================//
@@ -729,6 +735,8 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 	
+//================================================================================================================================//
+	
 	private void inicializarPanelesJuego(){
 		
 		//======================= Menu ======================//
@@ -772,6 +780,8 @@ public class PanelPrincipal extends JPanel{
 		//======================= Eliminar   ======================//
 		
 	}
+	
+//================================================================================================================================//
 	
 	private void inicializarPanelesCliente(){
 		
@@ -1033,6 +1043,8 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 
+//================================================================================================================================//
+	
 	private void inicializarPanelesMontador(){
 	
 		//======================= Menu ======================//
@@ -1278,6 +1290,8 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 	
+//================================================================================================================================//
+	
 	private void inicializarPanelesVenta(){
 		
 		//======================= Menu ======================//
@@ -1320,6 +1334,8 @@ public class PanelPrincipal extends JPanel{
 		//======================= Eliminar   ======================//
 	
 	}
+	
+//================================================================================================================================//
 	
 	private void inicializarPanelesMueble(){
 		
@@ -1365,7 +1381,8 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 	
-
+//================================================================================================================================//
+	
 	private void reiniciarPanelFabricante(PanelFormaFabricante panelF){
 		
 		panelF.getTextFieldNombre().setText(null);
