@@ -34,6 +34,26 @@ public class Juego {
 		this.setSwitCh(pswitCh);
 		
 	}
+	
+	public double calcularCosto() throws SQLException, Exception{
+		
+		double costoTotal = 0;
+		ArrayList<Mueble> muebles = this.getListaMuebles();
+		
+		if(muebles != null){
+			for(int i = 0; i < muebles.size(); i++){
+				
+				costoTotal += muebles.get(i).calcularCosto();
+				
+			}
+		}else{
+			costoTotal = -1;
+		}
+		
+		return costoTotal;
+		
+	}
+	
 	public int getVendido() {
 		return vendido;
 	}

@@ -81,18 +81,9 @@ public class Distribuidor {
 		Juego j;
 		
 		j = this.buscarJuego(idJuego);
-		if(j != null){
-			ArrayList<Mueble> muebles = j.getListaMuebles();
-			
-			for(int i = 0; i < muebles.size(); i++){
-				
-				costoTotal += muebles.get(i).calcularCosto();
-				
-			}
-			
-			costoTotal +=  + (this.getPorcentaje() * costoTotal / 100);
-		}else{
-			costoTotal = -1;
+		costoTotal = j.calcularCosto();
+		if(costoTotal != -1){
+			costoTotal += costoTotal * this.getPorcentaje() / 100;
 		}
 		
 		return costoTotal;
