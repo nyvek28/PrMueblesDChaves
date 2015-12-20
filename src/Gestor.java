@@ -380,12 +380,12 @@ public class Gestor {
 	Ediciones:
 
 	*/
-	public TreeMap<String,String> armarJuego(ArrayList<Integer> pidMuebles,int pidMontador)throws SQLException, Exception{
+	public TreeMap<String,String> armarJuego(ArrayList<Integer> pidMuebles,int pidMontador, int idDistribuidor)throws SQLException, Exception{
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		Montador m;
 		m = Empresa.consultarMontador(pidMontador);
-		Juego juego=m.crearJuego(m.getId());
+		Juego juego=m.crearJuego(idDistribuidor);
 		for(int i=0;i < pidMuebles.size(); i++){
 			System.out.println("Se esta mandando: " + pidMuebles.get(i));
 			m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));

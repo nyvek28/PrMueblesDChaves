@@ -22,19 +22,20 @@ public class Juego {
 	private Montador montador;
 	private int idDistribuidor;
 	
-	public Juego(int pidMontador)throws Exception{
+	public Juego(int pidMontador, int idDistribuidor)throws Exception{
 		Juego.setConsecutivo(Juego.getConsecutivo()+1);
 		this.setId(consecutivo);
 		this.setIdMontador(pidMontador);
 		this.setSwitCh(1);
 		this.setVendido(0);
 		this.setListaMuebles(null);
+		this.setIdDistribuidor(idDistribuidor);
 	}
-	public Juego(int pid, int pidMontador, int pswitCh){
+	public Juego(int pid, int pidMontador, int pswitCh, int idDistribuidor){
 		this.setId(pid);
 		this.setIdMontador(pidMontador);
 		this.setSwitCh(pswitCh);
-		
+		this.setIdDistribuidor(idDistribuidor);
 	}
 	
 	public double calcularCosto() throws SQLException, Exception{
@@ -74,9 +75,6 @@ public class Juego {
 	public void setListaMuebles(ArrayList a)throws Exception {
 		this.listaMuebles=a;
 	}
-	
-	
-	
 	public int getId() {
 		return id;
 	}

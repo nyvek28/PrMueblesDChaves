@@ -20,13 +20,19 @@ public class MultiJuego {
 	Fecha: Dic 7, 2015
 	Ediciones:
 	 */
-	public Juego crear(int pidMontador)throws Exception{
+	public Juego crear(int pidMontador, int idDistribuidor)throws Exception{
 		
 		Juego juego=null;
 		String sql;
-		juego = new Juego(pidMontador);
-		sql="INSERT INTO TbJuego "+
-		"VALUES ("+juego.getId()+","+pidMontador+","+juego.getConsecutivo()+","+juego.getSwitCh()+")";
+		juego = new Juego(pidMontador, idDistribuidor);
+		sql="INSERT INTO TbJuego (id,idMontador,consecutivo,switCh,idDistribuidor) "+
+		" VALUES ("
+				+juego.getId() + ","
+				+pidMontador + ","
+				+Juego.getConsecutivo() + ","
+				+juego.getSwitCh() + ","
+				+juego.getIdDistribuidor() + " "
+				+")";
 		try {
 			Conector.getConector().ejecutarSQL(sql);	
 		}
@@ -58,7 +64,9 @@ public class MultiJuego {
 			juego = new Juego(
 					rs.getInt("id"),
 					rs.getInt("idMontador"),
-					rs.getInt("switCh"));
+					rs.getInt("switCh"),
+					rs.getInt("idDistribuidor")
+					);
 		} else {
 			juego = null;
 		}
@@ -98,6 +106,29 @@ public class MultiJuego {
 		
 		
 	}
+	
+	public ArrayList<Juego> buscarD(int idDistribuidor) throws SQLException, Exception{
+		
+		ResultSet rs;
+		String sql;
+		ArrayList<Juego> juegos = new ArrayList<Juego>();
+		
+		sql = "SELECT * "
+			+ "FROM TbJuego "
+			+ "WHERE idDistribuidor = "+idDistribuidor;
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			juegos.add(this.buscarid(rs.getInt("id")));
+		}
+		if(juegos.size() < 1){
+			juegos = null;
+		}
+		
+		return juegos;
+		
+		
+	}
+	
 	public ArrayList<Juego> listar() throws Exception{
 		
 		Juego f;
@@ -112,7 +143,9 @@ public class MultiJuego {
 			f = new Juego(
 					rs.getInt("id"),
 					rs.getInt("idMontador"),
-					rs.getInt("switCh"));
+					rs.getInt("switCh"),
+					rs.getInt("idDisitribuidor")
+					);
 			tabla.add(f);
 		}
 		if(tabla.size()<1){
