@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -19,6 +20,9 @@ import javax.swing.table.DefaultTableModel;
 public class PanelArmarJuego extends JPanel {
 
 	private JButton btnAgregar;
+	private JButton btnQuitar;
+	private JButton btnAceptar;
+	private JButton btnCancelar;
 	private JTable tbLibres;
 	private JTable tbSeleccionados;
 	private DefaultTableModel dm1;
@@ -51,6 +55,11 @@ public class PanelArmarJuego extends JPanel {
 		c.gridx++;
 		this.add(btnAgregar, c);
 		
+		btnQuitar = new JButton("Quitar");
+		btnQuitar.setVisible(true);
+		c.anchor = GridBagConstraints.SOUTH;
+		this.add(btnQuitar, c);
+		
 		this.setTbSeleccionados(new JTable());
 		this.getTbSeleccionados().setVisible(true);
 		this.getTbSeleccionados().setPreferredScrollableViewportSize(new Dimension(300, 200));
@@ -70,6 +79,24 @@ public class PanelArmarJuego extends JPanel {
 					e.printStackTrace();
 				}
 				
+			}
+			
+		});
+		
+		this.getBtnAgregar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				agregarASeleccionados();
+			}
+			
+		});
+		
+		this.getBtnQuitar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				quitarDeSeleccionados();
 			}
 			
 		});
@@ -95,6 +122,44 @@ public class PanelArmarJuego extends JPanel {
 		this.getDm2().addColumn("Largo");
 		this.getDm2().addColumn("Precio");
 		this.getTbSeleccionados().setModel(this.getDm2());
+		
+	}
+	
+	private void agregarASeleccionados(){
+		
+		if(this.getTbLibres().getSelectedRow() >= 0){
+			String[] datos = {(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 0),
+					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 1),
+					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 2),
+					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 3),
+					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 4),
+					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 5)
+					};
+			
+			this.getDm2().addRow(datos);
+			this.getDm1().removeRow(this.getTbLibres().getSelectedRow());
+		}else{
+			JOptionPane.showMessageDialog(null, "Porfavor, seleccione una fila");
+		}
+		
+	}
+	
+	private void quitarDeSeleccionados(){
+		
+		if(this.getTbSeleccionados().getSelectedRow() >= 0){
+			String[] datos = {(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 0),
+					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 1),
+					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 2),
+					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 3),
+					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 4),
+					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 5)
+					};
+			
+			this.getDm1().addRow(datos);
+			this.getDm2().removeRow(this.getTbSeleccionados().getSelectedRow());
+		}else{
+			JOptionPane.showMessageDialog(null, "Porfavor, seleccione una fila");
+		}
 		
 	}
 	
@@ -202,6 +267,30 @@ public class PanelArmarJuego extends JPanel {
 
 	public void setDm3(DefaultComboBoxModel dm3) {
 		this.dm3 = dm3;
+	}
+
+	public JButton getBtnQuitar() {
+		return btnQuitar;
+	}
+
+	public void setBtnQuitar(JButton btnQuitar) {
+		this.btnQuitar = btnQuitar;
+	}
+
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+
+	public JButton getBtnCancelar() {
+		return btnCancelar;
+	}
+
+	public void setBtnCancelar(JButton btnCancelar) {
+		this.btnCancelar = btnCancelar;
 	}
 	
 }
