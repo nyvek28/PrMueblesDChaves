@@ -99,7 +99,7 @@ public class Montador extends Persona{
 	Ediciones:
 
 	*/
-	public TreeMap<String, String> montadorToTreeMap(){
+	public TreeMap<String, String> toTreeMap(){
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		

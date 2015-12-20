@@ -122,7 +122,7 @@ public class Venta {
 	Fecha: Dic 5, 2015
 	Ediciones:
 	 */
-	public TreeMap<String, String> ventaToTreeMap() throws SQLException, Exception{
+	public TreeMap<String, String> toTreeMap() throws SQLException, Exception{
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		

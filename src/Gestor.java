@@ -52,7 +52,7 @@ public class Gestor {
 		Fabricante f;
 		
 		f = Empresa.registrarFabricante(pNombre, pApellido, pTelefono, pDireccion, linea, annos);
-		datos = this.fabricanteToTreeMap(f);
+		datos = f.toTreeMap();
 		
 		return datos;
 		
@@ -73,7 +73,7 @@ public class Gestor {
 		
 		f = Empresa.consultarFabricante(id);
 		if(f != null){
-			datos = this.fabricanteToTreeMap(f);
+			datos = f.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -99,7 +99,7 @@ public class Gestor {
 		
 		f = Empresa.modificarFabricante(id, nombre, apellido, telefono, direccion, linea, annos);
 		if(f != null){
-			datos = this.fabricanteToTreeMap(f);
+			datos = f.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -126,7 +126,7 @@ public class Gestor {
 		
 		f = Empresa.eliminarFabricante(id);
 		if(f != null){
-			datos = (new MultiFabricante().buscar(id)).fabricanteToTreeMap();
+			datos = (new MultiFabricante().buscar(id)).toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -174,7 +174,7 @@ public class Gestor {
 		Montador m;
 		
 		m = Empresa.registrarMontador(id, pNombre, pApellido, pTelefono, pDireccion);
-		datos = this.montadorToTreeMap(m);
+		datos = m.toTreeMap();
 		
 		return datos;
 		
@@ -195,7 +195,7 @@ public class Gestor {
 		
 		m = Empresa.consultarMontador(id);
 		if(m != null){
-			datos = this.montadorToTreeMap(m);
+			datos = m.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -219,7 +219,7 @@ public class Gestor {
 		
 		m = (new MultiMontador()).buscar(nombre);
 		if(m != null){
-			datos = this.montadorToTreeMap(m);
+			datos = m.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -243,7 +243,7 @@ public class Gestor {
 		
 		m = Empresa.modificarMontador(id, nombre, apellido, telefono, direccion);
 		if(m != null){
-			datos = this.montadorToTreeMap(m);
+			datos = m.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -267,7 +267,7 @@ public class Gestor {
 		
 		m = Empresa.eliminarMontador(id);
 		if(m != null){
-			datos = (new MultiMontador().buscar(id)).montadorToTreeMap();
+			datos = (new MultiMontador().buscar(id)).toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -293,7 +293,7 @@ public class Gestor {
 		Cliente c;
 		
 		c = Empresa.registrarCliente(id, pNombre, pApellido, pTelefono, pDireccion,trabajo,telTrabajo);
-		datos = this.clienteToTreeMap(c);
+		datos = c.toTreeMap();
 		
 		return datos;
 		
@@ -314,7 +314,7 @@ public class Gestor {
 		
 		c = (new MultiCliente()).buscar(id);
 		if(c != null){
-			datos = this.clienteToTreeMap(c);
+			datos = c.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -338,7 +338,7 @@ public class Gestor {
 		
 		c = Empresa.modificarCliente(id, nombre, apellido, telefono, direccion,trabajo,telTrabajo);
 		if(c != null){
-			datos = this.clienteToTreeMap(c);
+			datos = c.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -362,7 +362,7 @@ public class Gestor {
 		
 		c = Empresa.eliminarCliente(id);
 		if(c != null){
-			datos = (new MultiCliente().buscar(id)).clienteToTreeMap();
+			datos = (new MultiCliente().buscar(id)).toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -390,7 +390,7 @@ public class Gestor {
 			System.out.println("Se esta mandando: " + pidMuebles.get(i));
 			m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
 		}
-		datos=this.juegoToTreeMap(juego);
+		datos=juego.toTreeMap();
 		return datos;
 	}
 	
@@ -517,7 +517,7 @@ public class Gestor {
 	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
 		Juego juego=Empresa.consultarJuego(idJuego);
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		datosJuego=(new MultiJuego().buscarid(idJuego).juegoToTreeMap());
+		datosJuego=(new MultiJuego().buscarid(idJuego)).toTreeMap();
 		
 		return datosJuego;
 	}
@@ -578,7 +578,7 @@ public class Gestor {
 		
 		d = Empresa.registrarDistribuidor(nombre, direccion, telefono, porcentaje);
 		if(d != null){
-			datos = this.distribuidorToTreeMap(d);
+			datos = d.toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -604,7 +604,7 @@ public class Gestor {
 		
 		d = Empresa.consultarDistribuidor(id);
 		if(d != null){
-			datos = (new MultiDistribuidor().buscar(id).distribuidorToTreeMap());
+			datos = (new MultiDistribuidor().buscar(id)).toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -628,7 +628,7 @@ public class Gestor {
 		
 		d = Empresa.modificarDistribuidor(id, nombre, direccion, telefono, porcentaje);
 		if(d != null){
-			datos = (new MultiDistribuidor().buscar(id).distribuidorToTreeMap());
+			datos = (new MultiDistribuidor().buscar(id)).toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -652,7 +652,7 @@ public class Gestor {
 		
 		d = Empresa.eliminarDistribuidor(id);
 		if(d != null){
-			datos = (new MultiDistribuidor().buscar(id).distribuidorToTreeMap());
+			datos = (new MultiDistribuidor().buscar(id)).toTreeMap();
 		}else{
 			datos = null;
 		}
@@ -674,7 +674,7 @@ public class Gestor {
 		if((new MultiDistribuidor()).buscar(idDistribuidor) != null){
 				if((new MultiCliente()).buscar(idCliente) != null){
 				v = (new MultiDistribuidor()).buscar(idDistribuidor).registrarVenta(idJuego, idCliente);
-				info = (new MultiVenta().buscar(v.getId()).ventaToTreeMap());
+				info = (new MultiVenta().buscar(v.getId())).toTreeMap();
 			}else{
 				info = null;
 			}
@@ -694,7 +694,7 @@ public class Gestor {
 	 */
 	public TreeMap<String, String> consultarVenta(int idVenta)throws Exception{
 		Venta venta = (new MultiVenta().buscar(idVenta));
-		TreeMap<String, String> infoVenta=(new MultiVenta().buscar(idVenta).ventaToTreeMap());
+		TreeMap<String, String> infoVenta=(new MultiVenta().buscar(idVenta)).toTreeMap();
 		return infoVenta;
 	}
 	/*
@@ -716,7 +716,7 @@ public class Gestor {
 		
 		for(int i = 0; i < (new MultiFabricante()).listar().size(); i++){
 			
-			datos = this.fabricanteToTreeMap((new MultiFabricante()).listar().get(i));
+			datos = (new MultiFabricante()).listar().get(i).toTreeMap();
 			fabricantes.add(datos);
 			
 		}
@@ -752,7 +752,7 @@ public class Gestor {
 		
 		for(int i = 0; i < (new MultiFabricante()).listar().size(); i++){
 			
-			datos = this.juegoToTreeMap((new MultiJuego()).listar().get(i));
+			datos = (new MultiJuego()).listar().get(i).toTreeMap();
 			juegos.add(datos);
 			
 		}
@@ -779,7 +779,7 @@ public class Gestor {
 		
 		for(int i = 0; i < (new MultiMontador()).listar().size(); i++){
 			
-			datos = this.montadorToTreeMap((new MultiMontador()).listar().get(i));
+			datos = (new MultiMontador()).listar().get(i).toTreeMap();
 			montadores.add(datos);
 			
 		}
@@ -804,7 +804,7 @@ public class Gestor {
 		
 		for(int i = 0; i < (new MultiCliente()).listar().size(); i++){
 			
-			datos = this.clienteToTreeMap((new MultiCliente()).listar().get(i));
+			datos = (new MultiCliente()).listar().get(i).toTreeMap();
 			clientes.add(datos);
 			
 		}
@@ -829,7 +829,7 @@ public class Gestor {
 		
 		for(int i = 0; i < (new MultiDistribuidor()).listar().size(); i++){
 			
-			datos = this.distribuidorToTreeMap((new MultiDistribuidor()).listar().get(i));
+			datos = (new MultiDistribuidor()).listar().get(i).toTreeMap();
 			distribuidores.add(datos);
 			
 		}

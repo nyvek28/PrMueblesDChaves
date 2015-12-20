@@ -189,7 +189,7 @@ public class Distribuidor {
 	Ediciones:
 
 	*/
-	public TreeMap<String, String> distribuidorToTreeMap(){
+	public TreeMap<String, String>toTreeMap(){
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		

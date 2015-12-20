@@ -71,7 +71,7 @@ public class Cliente extends Persona{
 	Ediciones:
 
 	*/
-	public TreeMap<String, String> clienteToTreeMap(){
+	public TreeMap<String, String> toTreeMap(){
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		

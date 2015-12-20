@@ -141,7 +141,7 @@ public class Fabricante extends Persona {
 	Ediciones:
 
 	*/
-	public TreeMap<String, String> fabricanteToTreeMap(){
+	public TreeMap<String, String> toTreeMap(){
 		
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		

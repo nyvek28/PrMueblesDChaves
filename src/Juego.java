@@ -111,7 +111,7 @@ public class Juego {
 	Ediciones:
 
 	*/
-	public TreeMap<String, String> juegoToTreeMap()throws Exception{
+	public TreeMap<String, String> toTreeMap()throws Exception{
 		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		
