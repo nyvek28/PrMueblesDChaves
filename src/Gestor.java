@@ -553,8 +553,12 @@ public class Gestor {
 		ArrayList<TreeMap<String, String>> info = new ArrayList<TreeMap<String, String>>();
 		ArrayList<Mueble> muebles = (new MultiMueble()).buscarD(idDistribuidor);
 		
-		for(int i = 0; i < muebles.size(); i++){
-			info.add(muebles.get(i).toTreeMap());
+		if(muebles != null){
+			for(int i = 0; i < muebles.size(); i++){
+				info.add(muebles.get(i).toTreeMap());
+			}
+		}else{
+			info = null;
 		}
 		
 		return info;

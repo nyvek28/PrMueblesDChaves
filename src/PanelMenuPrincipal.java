@@ -1,5 +1,7 @@
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -18,34 +20,42 @@ public class PanelMenuPrincipal extends JPanel {
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.insets = new Insets(3,3,5,3);
 		
 		this.setBtnCliente(new JButton("Opciones Cliente"));
 		c.gridx = 4;
 		c.gridy = 1;
+		this.getBtnCliente().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnCliente(),c);
 		
 		this.setBtnDistribuidor(new JButton("Opciones Distribuidor"));
 		c.gridy++;
+		this.getBtnDistribuidor().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnDistribuidor(),c);
 		
 		this.setBtnFabricante(new JButton("Opciones Fabricante"));
 		c.gridy++;
+		this.getBtnFabricante().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnFabricante(),c);
 
 		this.setBtnJuego(new JButton("Opciones Juego"));
 		c.gridy++;
+		this.getBtnJuego().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnJuego(),c);
 		
 		this.setBtnMontador(new JButton("Opciones Montador"));
 		c.gridy++;
+		this.getBtnMontador().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnMontador(),c);
 		
 		this.setBtnMueble(new JButton("Opciones Mueble"));
 		c.gridy++;
+		this.getBtnMueble().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnMueble(),c);
 		
 		this.setBtnVenta(new JButton("Opciones Venta"));
 		c.gridy++;
+		this.getBtnVenta().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnVenta(),c);
 		
 	}

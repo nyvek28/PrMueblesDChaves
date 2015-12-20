@@ -59,9 +59,11 @@ public class PanelPrincipal extends JPanel{
 		menuMueble= new PanelPlantillaCRUD();
 		this.add(menuMueble);
 		this.menuMueble.setVisible(false);
+		
 		menuJuego= new PanelPlantillaCRUD();
-		this.add(menuMueble);
-		this.menuMueble.setVisible(false);
+		this.add(menuJuego);
+		this.menuJuego.setVisible(false);
+		
 		registrarFabricante = new PanelRegistrarFabricante();
 		this.add(registrarFabricante);
 		registrarFabricante.setVisible(false);
@@ -764,7 +766,7 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				menuJuego.setVisible(false);
 				try {
-					armarJuego.llenarSelect();
+					armarJuego.iniciarPanel();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

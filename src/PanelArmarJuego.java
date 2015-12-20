@@ -1,4 +1,9 @@
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -7,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,27 +28,51 @@ public class PanelArmarJuego extends JPanel {
 	
 	public PanelArmarJuego(){
 		
-		
+		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.insets = new Insets(3,3,5,3);
 		
 		this.setDistribuidor(new JComboBox());
+		this.setVisible(true);
 		c.gridx = 2;
-		c.gridy = 3;
+		c.gridy = 0;
+		this.add(this.getDistribuidor(), c);
 		
 		this.setTbLibres(new JTable());
 		this.getTbLibres().setVisible(true);
-		c.gridy++;
-		this.add(tbLibres, c);
+		this.getTbLibres().setPreferredScrollableViewportSize(new Dimension(300, 200));
+		JScrollPane p1 = new JScrollPane(this.getTbLibres());
+		c.gridy = 2;
+		c.gridx = 2;
+		this.add(p1, c);
 		
-		btnAgregar = new JButton();
+		btnAgregar = new JButton("Agregar");
 		btnAgregar.setVisible(true);
 		c.gridx++;
 		this.add(btnAgregar, c);
 		
 		this.setTbSeleccionados(new JTable());
 		this.getTbSeleccionados().setVisible(true);
+		this.getTbSeleccionados().setPreferredScrollableViewportSize(new Dimension(300, 200));
+		JScrollPane p2 = new JScrollPane(this.getTbSeleccionados());
 		c.gridx++;
-		this.add(tbSeleccionados, c);
+		this.add(p2, c);
+		
+		this.getDistribuidor().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					llenarLibres();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+		});
 		
 	}
 	
@@ -68,20 +98,31 @@ public class PanelArmarJuego extends JPanel {
 		
 	}
 	
-	public void llenarLibres() throws NumberFormatException, Exception{
+	public void iniciarPanel() throws NumberFormatException, Exception{
+		
+		this.llenarSelect();
+		this.construirTablas();;
+		
+	}
+	
+	private void llenarLibres() throws NumberFormatException, Exception{
 		
 		ArrayList<TreeMap<String,String>> muebles;
 		
 		muebles = (new Gestor()).consultarMueblePorDistribuidor(Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id")));
-		for(int i = 0; i < muebles.size(); i++){
-			String[] fila = {muebles.get(i).get("id"),muebles.get(i).get("color"),muebles.get(i).get("ancho"),muebles.get(i).get("alto"),
-					muebles.get(i).get("largo"),muebles.get(i).get("precio")};
-			this.getDm1().addRow(fila);
+		if(muebles != null){
+			for(int i = 0; i < muebles.size(); i++){
+				String[] fila = {muebles.get(i).get("id"),muebles.get(i).get("color"),muebles.get(i).get("ancho"),muebles.get(i).get("alto"),
+						muebles.get(i).get("largo"),muebles.get(i).get("precio")};
+				this.getDm1().addRow(fila);
+			}
+		}else{
+			JOptionPane.showMessageDialog(null, "Este distribuidor no tiene muebles");
 		}
 		
 	}
 	
-	public void seleccionarDistribuidor() throws Exception{
+	private void seleccionarDistribuidor() throws Exception{
 		
 		int i;
 		
@@ -93,7 +134,7 @@ public class PanelArmarJuego extends JPanel {
 		
 	}
 	
-	public void llenarSelect() throws Exception{
+	private void llenarSelect() throws Exception{
 		
 		this.setDm3(new DefaultComboBoxModel());
 		
