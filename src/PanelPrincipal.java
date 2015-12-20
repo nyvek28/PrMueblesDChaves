@@ -20,28 +20,29 @@ public class PanelPrincipal extends JPanel{
 	private PanelFormaJuego registrarJuego, consultarJuego;
 	private PanelFormaMueble registrarMueble, consultarMueble;
 	private PanelFormaVenta registrarVenta, consultarVenta;
+	private PanelArmarJuego armarJuego;
 	
 	
 	public PanelPrincipal() throws Exception{
 		
-		this.registrarVenta.setVisible(false);
 		registrarMueble= new PanelRegistrarMueble();
+		this.registrarMueble.setVisible(false);
 		this.add(registrarMueble);
 		
-		this.consultarMueble.setVisible(false);
 		consultarMueble= new PanelConsultarMueble();
+		this.consultarMueble.setVisible(false);
 		this.add(consultarMueble);
 		
-		this.consultarVenta.setVisible(false);
 		consultarVenta= new PanelRegistrarVenta();
+		this.consultarVenta.setVisible(false);
 		this.add(consultarVenta);
 		
-		this.consultarVenta.setVisible(false);
 		registrarVenta= new PanelRegistrarVenta();
+		this.registrarVenta.setVisible(false);
 		this.add(registrarVenta);
 		
-		this.registrarVenta.setVisible(false);
 		consultarJuego= new PanelConsultarJuego();
+		this.consultarJuego.setVisible(false);
 		this.add(consultarJuego);
 		
 		this.consultarJuego = new PanelFormaJuego();
@@ -144,6 +145,10 @@ public class PanelPrincipal extends JPanel{
 		eliminarDistribuidor = new PanelConsultarDistribuidor();
 		this.add(eliminarDistribuidor);
 		eliminarDistribuidor.setVisible(false);
+		
+		armarJuego = new PanelArmarJuego();
+		this.add(armarJuego);
+		armarJuego.setVisible(false);
 		
 		//this.registrarFabricante.setVisible(false);
 		
@@ -758,7 +763,13 @@ public class PanelPrincipal extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				menuJuego.setVisible(false);
-				registrarJuego.setVisible(true);
+				try {
+					armarJuego.llenarSelect();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				armarJuego.setVisible(true);
 				// TODO Auto-generated method stub
 				
 			}

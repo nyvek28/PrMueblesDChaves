@@ -1,4 +1,6 @@
 import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -66,9 +68,16 @@ public class PanelArmarJuego extends JPanel {
 		
 	}
 	
-	public void llenarLibres(){
+	public void llenarLibres() throws NumberFormatException, Exception{
 		
+		ArrayList<TreeMap<String,String>> muebles;
 		
+		muebles = (new Gestor()).consultarMueblePorDistribuidor(Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id")));
+		for(int i = 0; i < muebles.size(); i++){
+			String[] fila = {muebles.get(i).get("id"),muebles.get(i).get("color"),muebles.get(i).get("ancho"),muebles.get(i).get("alto"),
+					muebles.get(i).get("largo"),muebles.get(i).get("precio")};
+			this.getDm1().addRow(fila);
+		}
 		
 	}
 	
