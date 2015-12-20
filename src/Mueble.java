@@ -125,6 +125,7 @@ public class Mueble {
 		datosMueble.put("ancho", String.valueOf(this.getDimensiones()[0]));
 		datosMueble.put("alto", String.valueOf(this.getDimensiones()[2]));
 		datosMueble.put("largo", String.valueOf(this.getDimensiones()[1]));
+		datosMueble.put("precio", String.valueOf(this.calcularCosto()));
 		datosMueble.put("categoria", this.categoriaToString());
 		datosMueble.put("idJuego", String.valueOf(this.getIdJuego()));
 		datosMueble.put("idDistribuidor", String.valueOf(this.getIdDistribuidor()));

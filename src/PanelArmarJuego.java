@@ -109,6 +109,7 @@ public class PanelArmarJuego extends JPanel {
 		
 		ArrayList<TreeMap<String,String>> muebles;
 		
+		this.construirTablas();
 		muebles = (new Gestor()).consultarMueblePorDistribuidor(Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id")));
 		if(muebles != null){
 			for(int i = 0; i < muebles.size(); i++){
