@@ -108,29 +108,8 @@ public class Gestor {
 		
 	}
 	
-	/*
-	Autor: Kevyn Quiros
-	Descripcion: Metodo que convierte un fabricante en un treemap
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
+	
 
-	*/
-	private TreeMap<String, String> fabricanteToTreeMap(Fabricante f){
-		
-		TreeMap<String,String> datos = new TreeMap<String,String>();
-		
-		datos.put("id", String.valueOf(f.getId()));
-		datos.put("nombre", f.getNombre());
-		datos.put("apellido", f.getApellido());
-		datos.put("telefono", String.valueOf(f.getTelefono()));
-		datos.put("direccion", f.getDireccion());
-		datos.put("linea", String.valueOf(f.getLinea()));
-		datos.put("annosExp", String.valueOf(f.getAnnosExp()));
-		
-		return datos;
-		
-	}
 	
 	/*
 	Autor: Kevyn Quiros
@@ -147,7 +126,7 @@ public class Gestor {
 		
 		f = Empresa.eliminarFabricante(id);
 		if(f != null){
-			datos = this.fabricanteToTreeMap(f);
+			datos = (new MultiFabricante().buscar(id)).fabricanteToTreeMap();
 		}else{
 			datos = null;
 		}
@@ -288,7 +267,7 @@ public class Gestor {
 		
 		m = Empresa.eliminarMontador(id);
 		if(m != null){
-			datos = this.montadorToTreeMap(m);
+			datos = (new MultiMontador().buscar(id)).montadorToTreeMap();
 		}else{
 			datos = null;
 		}
@@ -298,26 +277,7 @@ public class Gestor {
 	}
 	
 	/*
-	Autor: Emilio Montero
-	Descripcion: Metodo que convierte un montador en un treemap
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
-
-	*/
-	private TreeMap<String, String> montadorToTreeMap(Montador m){
-		
-		TreeMap<String,String> datos = new TreeMap<String,String>();
-		
-		datos.put("id", String.valueOf(m.getId()));
-		datos.put("nombre", m.getNombre());
-		datos.put("apellido", m.getApellido());
-		datos.put("telefono", String.valueOf(m.getTelefono()));
-		datos.put("direccion", m.getDireccion());
-		
-		return datos;
-		
-	}
+	
 	
 	/*
 	Autor: Emilio Montero
@@ -402,7 +362,7 @@ public class Gestor {
 		
 		c = Empresa.eliminarCliente(id);
 		if(c != null){
-			datos = this.clienteToTreeMap(c);
+			datos = (new MultiCliente().buscar(id)).clienteToTreeMap();
 		}else{
 			datos = null;
 		}
@@ -411,29 +371,7 @@ public class Gestor {
 		
 	}
 	
-	/*
-	Autor: Emilio Montero
-	Descripcion: Metodo que convierte un cliente en un treemap
-	Version: v.1.0
-	Fecha: Dic 6, 2015
-	Ediciones:
-
-	*/
-	private TreeMap<String, String> clienteToTreeMap(Cliente c){
-		
-		TreeMap<String,String> datos = new TreeMap<String,String>();
-		
-		datos.put("id", String.valueOf(c.getId()));
-		datos.put("nombre", c.getNombre());
-		datos.put("apellido", c.getApellido());
-		datos.put("telefono", String.valueOf(c.getTelefono()));
-		datos.put("direccion", c.getDireccion());
-		datos.put("trabajo", c.getTrabajo());
-		datos.put("telTrabajo", String.valueOf(c.getTelTrabajo()));
-		
-		return datos;
-		
-	}
+	
 	/*
 	Autor: Emilio Montero
 	Descripcion: Metodo que arma juego
@@ -565,30 +503,7 @@ public class Gestor {
 		
 	}
 	
-	/*
-	Autor: Daniel Chaves
-	Descripcion: Metodo que convierte info de Juego en TreeMap
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
-
-	*/
-	private TreeMap<String, String> juegoToTreeMap(Juego juego)throws Exception{
-		
-		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		
-		String info="";
-		ArrayList<Mueble> listaMuebles=(new MultiMueble().buscaridJ(juego.getId()));
-		for(int i=0;i<listaMuebles.size();i++){
-			Mueble m=listaMuebles.get(i);
-			info+="\n Mueble"+i+": "+ m.toString();
-		}
-		datosJuego.put("id", String.valueOf(juego.getId()));
-		datosJuego.put("montador", String.valueOf(juego.getIdMontador()));
-		datosJuego.put("info", info);
-		
-		return datosJuego;
-	}
+	
 	/*
 	Autor: Daniel Chaves
 	Descripcion: Metodo que consulta un Juego
@@ -602,7 +517,7 @@ public class Gestor {
 	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
 		Juego juego=Empresa.consultarJuego(idJuego);
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		datosJuego=this.juegoToTreeMap(juego);
+		datosJuego=(new MultiJuego().buscarid(idJuego).juegoToTreeMap());
 		
 		return datosJuego;
 	}
@@ -672,27 +587,7 @@ public class Gestor {
 		
 	}
 	
-	/*
-	Autor: Kevyn Quiros
-	Descripcion: Metodo para convertir un distribuidor en un treemap
-	Version: v.1.0
-	Fecha: Dic 6, 2015
-	Ediciones:
-
-	*/
-	private TreeMap<String, String> distribuidorToTreeMap(Distribuidor d){
-		
-		TreeMap<String,String> datos = new TreeMap<String,String>();
-		
-		datos.put("id", String.valueOf(d.getId()));
-		datos.put("nombre", d.getNombre());
-		datos.put("telefono", String.valueOf(d.getTelefono()));
-		datos.put("direccion", d.getDireccion());
-		datos.put("porcentaje", String.valueOf(d.getPorcentaje()));
-		
-		return datos;
-		
-	}
+	
 	
 	/*
 	Autor: Kevyn Quiros
@@ -709,7 +604,7 @@ public class Gestor {
 		
 		d = Empresa.consultarDistribuidor(id);
 		if(d != null){
-			datos = this.distribuidorToTreeMap(d);
+			datos = (new MultiDistribuidor().buscar(id).distribuidorToTreeMap());
 		}else{
 			datos = null;
 		}
@@ -733,7 +628,7 @@ public class Gestor {
 		
 		d = Empresa.modificarDistribuidor(id, nombre, direccion, telefono, porcentaje);
 		if(d != null){
-			datos = this.distribuidorToTreeMap(d);
+			datos = (new MultiDistribuidor().buscar(id).distribuidorToTreeMap());
 		}else{
 			datos = null;
 		}
@@ -757,7 +652,7 @@ public class Gestor {
 		
 		d = Empresa.eliminarDistribuidor(id);
 		if(d != null){
-			datos = this.distribuidorToTreeMap(d);
+			datos = (new MultiDistribuidor().buscar(id).distribuidorToTreeMap());
 		}else{
 			datos = null;
 		}
@@ -779,7 +674,7 @@ public class Gestor {
 		if((new MultiDistribuidor()).buscar(idDistribuidor) != null){
 				if((new MultiCliente()).buscar(idCliente) != null){
 				v = (new MultiDistribuidor()).buscar(idDistribuidor).registrarVenta(idJuego, idCliente);
-				info = this.ventaToTreeMap(v);
+				info = (new MultiVenta().buscar(v.getId()).ventaToTreeMap());
 			}else{
 				info = null;
 			}
@@ -799,30 +694,11 @@ public class Gestor {
 	 */
 	public TreeMap<String, String> consultarVenta(int idVenta)throws Exception{
 		Venta venta = (new MultiVenta().buscar(idVenta));
-		TreeMap<String, String> infoVenta=this.ventaToTreeMap(venta);
+		TreeMap<String, String> infoVenta=(new MultiVenta().buscar(idVenta).ventaToTreeMap());
 		return infoVenta;
 	}
 	/*
-	Autor: Daniel Chaves
-	Descripcion: Metodo que convierte los datos de venta en treemap
-	Version: v.1.0
-	Fecha: Dic 5, 2015
-	Ediciones:
-	 */
-	private TreeMap<String, String> ventaToTreeMap(Venta venta) throws SQLException, Exception{
-		
-		TreeMap<String,String> datos = new TreeMap<String,String>();
-		
-		datos.put("cliente", (new MultiCliente()).buscar(venta.getIdCliente()).getNombre()+" "+(new MultiCliente()).buscar(venta.getIdCliente()).getApellido());
-		datos.put("idJuego", String.valueOf(venta.getIdJuego()));
-		datos.put("distribuidor", (new MultiDistribuidor().buscar(venta.getIdDistribuidor()).getNombre()));
-		datos.put("monto", String.valueOf(venta.getMonto()));
-		datos.put("monto", String.valueOf(venta.getMonto()));
-		
-		return datos;
-		
-		
-	}
+	
 	
 	/*
 	Autor: Kevyn Quiros

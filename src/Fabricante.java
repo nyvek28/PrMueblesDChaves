@@ -1,5 +1,6 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Fabricante extends Persona {
 
@@ -130,6 +131,30 @@ public class Fabricante extends Persona {
 	}
 	public void setMuebles(ArrayList<Mueble> muebles) {
 		this.muebles = muebles;
+	}
+	
+	/*
+	Autor: Kevyn Quiros y Daniel Chaves
+	Descripcion: Metodo que convierte un fabricante en un treemap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> fabricanteToTreeMap(){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(this.getId()));
+		datos.put("nombre", this.getNombre());
+		datos.put("apellido", this.getApellido());
+		datos.put("telefono", String.valueOf(this.getTelefono()));
+		datos.put("direccion", this.getDireccion());
+		datos.put("linea", String.valueOf(this.getLinea()));
+		datos.put("annosExp", String.valueOf(this.getAnnosExp()));
+		
+		return datos;
+		
 	}
 	
 }

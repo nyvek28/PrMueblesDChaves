@@ -102,4 +102,29 @@ public class Juego {
 	public void eliminar(){
 		switCh=-1;
 	}
+	
+	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que convierte info de Juego en TreeMap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> juegoToTreeMap()throws Exception{
+		
+		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
+		
+		String info="";
+		ArrayList<Mueble> listaMuebles=(new MultiMueble().buscaridJ(this.getId()));
+		for(int i=0;i<listaMuebles.size();i++){
+			Mueble m=listaMuebles.get(i);
+			info+="\n Mueble"+i+": "+ m.toString();
+		}
+		datosJuego.put("id", String.valueOf(this.getId()));
+		datosJuego.put("montador", String.valueOf(this.getIdMontador()));
+		datosJuego.put("info", info);
+		
+		return datosJuego;
+	}
 }

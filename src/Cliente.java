@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Cliente extends Persona{
 	
@@ -60,5 +61,29 @@ public class Cliente extends Persona{
 	 */
 	public void setTelTrabajo(int telTrabajo) {
 		this.telTrabajo = telTrabajo;
+	}
+	
+	/*
+	Autor: Emilio Montero
+	Descripcion: Metodo que convierte un cliente en un treemap
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> clienteToTreeMap(){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(this.getId()));
+		datos.put("nombre", this.getNombre());
+		datos.put("apellido", this.getApellido());
+		datos.put("telefono", String.valueOf(this.getTelefono()));
+		datos.put("direccion", this.getDireccion());
+		datos.put("trabajo", this.getTrabajo());
+		datos.put("telTrabajo", String.valueOf(this.getTelTrabajo()));
+		
+		return datos;
+		
 	}
 }

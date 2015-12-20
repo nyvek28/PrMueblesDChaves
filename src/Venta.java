@@ -116,6 +116,27 @@ public class Venta {
 		this.idCliente = idCliente;
 	}
 	
+	/*Autor: Daniel Chaves
+	Descripcion: Metodo que convierte los datos de venta en treemap
+	Version: v.1.0
+	Fecha: Dic 5, 2015
+	Ediciones:
+	 */
+	public TreeMap<String, String> ventaToTreeMap() throws SQLException, Exception{
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("cliente", (new MultiCliente()).buscar(this.getIdCliente()).getNombre()+" "+(new MultiCliente()).buscar(this.getIdCliente()).getApellido());
+		datos.put("idJuego", String.valueOf(this.getIdJuego()));
+		datos.put("distribuidor", (new MultiDistribuidor().buscar(this.getIdDistribuidor()).getNombre()));
+		datos.put("monto", String.valueOf(this.getMonto()));
+		datos.put("monto", String.valueOf(this.getMonto()));
+		
+		return datos;
+		
+		
+	}
+	
 //	public void info() throws Exception{
 //		msj="";
 //		String info="";

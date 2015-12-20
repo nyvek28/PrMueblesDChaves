@@ -1,6 +1,7 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TreeMap;
 
 public class Distribuidor {
 
@@ -178,6 +179,28 @@ public class Distribuidor {
 
 	public void setJuegos(ArrayList<Juego> juegos) {
 		this.juegos = juegos;
+	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo para convertir un distribuidor en un treemap
+	Version: v.1.0
+	Fecha: Dic 6, 2015
+	Ediciones:
+
+	*/
+	public TreeMap<String, String> distribuidorToTreeMap(){
+		
+		TreeMap<String,String> datos = new TreeMap<String,String>();
+		
+		datos.put("id", String.valueOf(this.getId()));
+		datos.put("nombre", this.getNombre());
+		datos.put("telefono", String.valueOf(this.getTelefono()));
+		datos.put("direccion", this.getDireccion());
+		datos.put("porcentaje", String.valueOf(this.getPorcentaje()));
+		
+		return datos;
+		
 	}
 	
 }
