@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -5,6 +6,10 @@ import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class PanelMenuPrincipal extends JPanel {
 
@@ -15,6 +20,7 @@ public class PanelMenuPrincipal extends JPanel {
 	private JButton btnMontador;
 	private JButton btnMueble;
 	private JButton btnVenta;
+	private JButton btnSalir;
 	
 	public PanelMenuPrincipal(){
 		
@@ -57,6 +63,11 @@ public class PanelMenuPrincipal extends JPanel {
 		c.gridy++;
 		this.getBtnVenta().setPreferredSize(new Dimension(200,25));
 		this.add(this.getBtnVenta(),c);
+		
+		this.setBtnSalir(new JButton("Salir"));
+		c.gridy++;
+		this.getBtnSalir().setPreferredSize(new Dimension(200,25));
+		this.add(this.getBtnSalir(),c);
 		
 	}
 
@@ -115,5 +126,14 @@ public class PanelMenuPrincipal extends JPanel {
 	public void setBtnVenta(JButton btnVenta) {
 		this.btnVenta = btnVenta;
 	}
+
+	public JButton getBtnSalir() {
+		return btnSalir;
+	}
+
+	public void setBtnSalir(JButton btnSalir) {
+		this.btnSalir = btnSalir;
+	}
+	
 	
 }

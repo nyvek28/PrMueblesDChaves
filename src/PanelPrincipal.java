@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class PanelPrincipal extends JPanel{
 	
@@ -240,6 +241,15 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				menu.setVisible(false);
 				menuCliente.setVisible(true);
+			}
+			
+		});
+		
+		menu.getBtnSalir().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 			
 		});
@@ -780,7 +790,38 @@ public class PanelPrincipal extends JPanel{
 		
 		//======================= Registrar   ======================//
 		
+		armarJuego.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				armarJuego.setVisible(false);
+				menu.setVisible(true);
+			}
+			
+		});
 		
+		armarJuego.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				boolean registro;
+				
+				try {
+					registro = armarJuego.crearJuego();
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "Ocurrio un error, porfavor intentelo mas tarde");
+					e1.printStackTrace();
+					registro = true;
+				}
+				if(registro){
+					armarJuego.setVisible(false);
+					menu.setVisible(true);
+				}
+				
+			}
+			
+		});
 		
 		//======================= Consultar   ======================//
 		

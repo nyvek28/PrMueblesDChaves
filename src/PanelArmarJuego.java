@@ -29,6 +29,9 @@ public class PanelArmarJuego extends JPanel {
 	private DefaultTableModel dm2;
 	private JComboBox distribuidor;
 	private DefaultComboBoxModel dm3;
+	private JComboBox montador;
+	private DefaultComboBoxModel dm4;
+	private TreeMap mSeleccionado;
 	
 	public PanelArmarJuego(){
 		
@@ -40,7 +43,10 @@ public class PanelArmarJuego extends JPanel {
 		this.setVisible(true);
 		c.gridx = 2;
 		c.gridy = 0;
+		c.anchor = GridBagConstraints.WEST;
 		this.add(this.getDistribuidor(), c);
+		
+		this.setMontador(new JComboBox());
 		
 		this.setTbLibres(new JTable());
 		this.getTbLibres().setVisible(true);
@@ -66,6 +72,19 @@ public class PanelArmarJuego extends JPanel {
 		JScrollPane p2 = new JScrollPane(this.getTbSeleccionados());
 		c.gridx++;
 		this.add(p2, c);
+		
+		this.setBtnCancelar(new JButton("Cancelar"));
+		this.getBtnCancelar().setVisible(true);
+		c.gridx = 4;
+		c.gridy = 5;
+		c.anchor = GridBagConstraints.EAST;
+		this.add(btnCancelar, c);
+		
+		this.setBtnAceptar(new JButton("Aceptar"));
+		this.getBtnAceptar().setVisible(true);
+		c.gridx++;
+		c.anchor = GridBagConstraints.WEST;
+		this.add(btnAceptar, c);
 		
 		this.getDistribuidor().addActionListener(new ActionListener(){
 
@@ -101,25 +120,25 @@ public class PanelArmarJuego extends JPanel {
 			
 		});
 		
+		
+		
 	}
 	
 	public void construirTablas(){
 		
 		this.setDm1(new DefaultTableModel());
-		this.getDm1().addColumn("ID");
+		this.getDm1().addColumn("Id");
 		this.getDm1().addColumn("Color");
-		this.getDm1().addColumn("Ancho");
-		this.getDm1().addColumn("Alto");
-		this.getDm1().addColumn("Largo");
+		this.getDm1().addColumn("Dimensiones");
+		this.getDm1().addColumn("Juego");
 		this.getDm1().addColumn("Precio");
 		this.getTbLibres().setModel(this.getDm1());
 		
 		this.setDm2(new DefaultTableModel());
-		this.getDm2().addColumn("ID");
+		this.getDm2().addColumn("Id");
 		this.getDm2().addColumn("Color");
-		this.getDm2().addColumn("Ancho");
-		this.getDm2().addColumn("Alto");
-		this.getDm2().addColumn("Largo");
+		this.getDm2().addColumn("Dimensiones");
+		this.getDm2().addColumn("Juego");
 		this.getDm2().addColumn("Precio");
 		this.getTbSeleccionados().setModel(this.getDm2());
 		
@@ -132,8 +151,7 @@ public class PanelArmarJuego extends JPanel {
 					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 1),
 					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 2),
 					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 3),
-					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 4),
-					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 5)
+					(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 4)
 					};
 			
 			this.getDm2().addRow(datos);
@@ -151,8 +169,7 @@ public class PanelArmarJuego extends JPanel {
 					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 1),
 					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 2),
 					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 3),
-					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 4),
-					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 5)
+					(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 4)
 					};
 			
 			this.getDm1().addRow(datos);
@@ -166,7 +183,9 @@ public class PanelArmarJuego extends JPanel {
 	public void iniciarPanel() throws NumberFormatException, Exception{
 		
 		this.llenarSelect();
-		this.construirTablas();;
+		this.llenarMontador();
+		this.construirTablas();
+		JOptionPane.showMessageDialog( null, this.getMontador(), "Elija un montador", JOptionPane.QUESTION_MESSAGE);
 		
 	}
 	
@@ -178,8 +197,8 @@ public class PanelArmarJuego extends JPanel {
 		muebles = (new Gestor()).consultarMueblePorDistribuidor(Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id")));
 		if(muebles != null){
 			for(int i = 0; i < muebles.size(); i++){
-				String[] fila = {muebles.get(i).get("id"),muebles.get(i).get("color"),muebles.get(i).get("ancho"),muebles.get(i).get("alto"),
-						muebles.get(i).get("largo"),muebles.get(i).get("precio")};
+				String[] fila = {muebles.get(i).get("id"),muebles.get(i).get("color"),muebles.get(i).get("ancho")+"x"+muebles.get(i).get("alto")+"x"+
+						muebles.get(i).get("largo"),muebles.get(i).get("idJuego"),muebles.get(i).get("precio")};
 				this.getDm1().addRow(fila);
 			}
 		}else{
@@ -188,15 +207,26 @@ public class PanelArmarJuego extends JPanel {
 		
 	}
 	
-	private void seleccionarDistribuidor() throws Exception{
+	public boolean crearJuego() throws Exception{
 		
-		int i;
+		TreeMap j;
+		ArrayList<Integer> indices = new ArrayList<Integer>();
+		boolean registro;
 		
-		i = this.distribuidor.getSelectedIndex();
-//		this.getTextFieldNombre().setText((new Gestor()).listarDistribuidores().get(i).get("nombre"));
-//		this.getTextFieldTelefono().setText((new Gestor()).listarDistribuidores().get(i).get("telefono"));
-//		this.getTextFieldDireccion().setText((new Gestor()).listarDistribuidores().get(i).get("direccion"));
-//		this.getTextFieldPorcentaje().setText((new Gestor()).listarDistribuidores().get(i).get("porcentaje"));
+		for(int i = 0; i < this.getTbSeleccionados().getRowCount(); i++){
+			indices.add(Integer.parseInt((String) this.getTbSeleccionados().getValueAt(i, 0)));
+		}
+		
+		if(indices.size() > 0){
+			j = (new Gestor()).armarJuego(indices, Integer.parseInt((String) this.mSeleccionado.get("id")));
+			JOptionPane.showMessageDialog(null, "Se registro el juego de id " + j.get("id") + " con " + this.getTbSeleccionados().getRowCount() + " muebles");
+			registro = true;
+		}else{
+			JOptionPane.showMessageDialog(null, "No se logro registrar el juego");
+			registro = false;
+		}
+		
+		return registro;
 		
 	}
 	
@@ -210,6 +240,26 @@ public class PanelArmarJuego extends JPanel {
 		}
 		
 		this.getDistribuidor().setModel(getDm3());
+		
+	}
+	
+	private void llenarMontador() throws Exception{
+		
+		this.setDm4(new DefaultComboBoxModel());
+		
+		for(int i = 0; i < (new Gestor()).listarMontadores().size(); i++){
+			this.getDm4().addElement((new Gestor()).listarMontadores().get(i).get("nombre") + " " + (new Gestor()).listarMontadores().get(i).get("apellido"));
+			System.out.println((new Gestor()).listarMontadores().get(i).get("nombre") + " " + (new Gestor()).listarMontadores().get(i).get("apellido"));
+			//this.getComboBoxDistribuidores().addItem(this.getLista().get(i).get("nombre"));	
+		}
+		
+		this.getMontador().setModel(getDm4());
+		
+	}
+	
+	private void seleccionarMontador() throws Exception{
+		
+		mSeleccionado = (new Gestor()).listarMontadores().get(this.getMontador().getSelectedIndex());
 		
 	}
 	
@@ -291,6 +341,22 @@ public class PanelArmarJuego extends JPanel {
 
 	public void setBtnCancelar(JButton btnCancelar) {
 		this.btnCancelar = btnCancelar;
+	}
+
+	public JComboBox getMontador() {
+		return montador;
+	}
+
+	public void setMontador(JComboBox montador) {
+		this.montador = montador;
+	}
+
+	public DefaultComboBoxModel getDm4() {
+		return dm4;
+	}
+
+	public void setDm4(DefaultComboBoxModel dm4) {
+		this.dm4 = dm4;
 	}
 	
 }

@@ -8,10 +8,10 @@ public class Ventana extends JFrame {
 	
 	public Ventana(){
 		
-		super("Ventana");
+		super("Programa de Muebles");
 		setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600,500); 
+		this.setSize(850,500); 
 		this.setLocationRelativeTo(null);
 		try {
 			panel = new PanelPrincipal();
