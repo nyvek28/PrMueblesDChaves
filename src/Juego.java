@@ -19,6 +19,8 @@ public class Juego {
 	private int idMontador;
 	private static int consecutivo=0;
 	private int switCh;
+	private Montador montador;
+	private int idDistribuidor;
 	
 	public Juego(int pidMontador)throws Exception{
 		Juego.setConsecutivo(Juego.getConsecutivo()+1);
@@ -98,6 +100,22 @@ public class Juego {
 	}
 	public void setSwitCh(int switCh) {
 		this.switCh = switCh;
+	}
+	public Montador getMontador() throws SQLException, Exception {
+		Montador m;
+		
+		m = (new MultiMontador()).buscar(this.getIdMontador());
+		
+		return m;
+	}
+	public void setMontador(Montador montador) {
+		this.montador = montador;
+	}
+	public int getIdDistribuidor() {
+		return idDistribuidor;
+	}
+	public void setIdDistribuidor(int idDistribuidor) {
+		this.idDistribuidor = idDistribuidor;
 	}
 	public void eliminar(){
 		switCh=-1;
