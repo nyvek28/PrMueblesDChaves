@@ -456,7 +456,9 @@ public class MultiMueble {
 		
 		sql = "UPDATE TbMueble "
 			+ " SET switch = " + m.getSwitCh() + ", "
-			+ " idJuego = " + m.getIdJuego()
+			+ " idJuego = " + m.getIdJuego() + ", "
+			+ " idDistribuidor = " + m.getIdDistribuidor() + ", "
+			+ " vendido = " + m.getVendido()
 			+ " WHERE id = " + m.getId();
 		try {
 			Conector.getConector().ejecutarSQL(sql);
