@@ -233,7 +233,6 @@ public class PanelArmarJuego extends JPanel {
 		}
 		
 		if(indices.size() > 0){
-			JOptionPane.showMessageDialog(null, (String) this.mSeleccionado.get("id"));
 			j = (new Gestor()).armarJuego(indices, 
 					Integer.parseInt((String) this.mSeleccionado.get("id")), 
 					Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id"))

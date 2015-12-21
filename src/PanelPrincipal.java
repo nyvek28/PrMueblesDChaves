@@ -831,7 +831,15 @@ public class PanelPrincipal extends JPanel{
 		
 		//======================= Consultar   ======================//
 		
-		
+		consultarJuego.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultarJuego.setVisible(false);
+				menu.setVisible(true);
+			}
+			
+		});
 		
 		//======================= Modificar   ======================//
 		

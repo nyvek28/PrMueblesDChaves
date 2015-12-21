@@ -19,6 +19,7 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		super();
 		GridBagConstraints c = new GridBagConstraints();
 
+		this.getBtnCancelar().setVisible(false);
 		
 		this.setBtnBuscar(new JButton("Buscar"));
 		c.gridx = 3;
@@ -73,6 +74,7 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 	
 	private void llenarTabla(ArrayList<TreeMap<String,String>> muebles){
 		
+		this.construirTabla();
 		if(muebles != null){
 			for(int i = 0; i < muebles.size(); i++){
 				String[] fila = {muebles.get(i).get("id"),

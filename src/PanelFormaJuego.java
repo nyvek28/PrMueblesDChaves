@@ -104,7 +104,7 @@ public class PanelFormaJuego extends JPanel {
 		
 	}
 	
-	private void construirTabla(){
+	protected void construirTabla(){
 		
 		this.setDm1(new DefaultTableModel());
 		this.getDm1().addColumn("Id");
