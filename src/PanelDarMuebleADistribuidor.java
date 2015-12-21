@@ -4,6 +4,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -268,29 +269,26 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 		mSeleccionado = (new Gestor()).listarDistribuidores().get(this.getDistribuidor().getSelectedIndex());
 		
 	}
-	public TreeMap<String, String> entregarMuebles(){
+	public String entregarMuebles() throws NumberFormatException, SQLException, Exception{
 		TreeMap j;
 		ArrayList<Integer> indices = new ArrayList<Integer>();
-		boolean registro;
+		String registro="";
 		
 		for(int i = 0; i < this.getTbSeleccionados().getRowCount(); i++){
 			
 			indices.add(Integer.parseInt((String) this.getTbSeleccionados().getValueAt(i, 0)));
 		}
 		if(indices.size() > 0){
-			j = (new Gestor()).armarJuego(indices, 
+			registro = (new Gestor()).darMuebles(indices, 
 					Integer.parseInt((String) this.mSeleccionado.get("id")), 
-					Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id"))
+					Integer.parseInt((new Gestor()).listarFabricantes().get(this.fabricante.getSelectedIndex()).get("id"))
 					);
 		}else{
 			JOptionPane.showMessageDialog(null, "No se logro registrar el juego");
-			registro = false;
+			;
 		}
 		
 		return registro;
-		
-		
-		
 	}
 
 

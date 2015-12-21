@@ -770,6 +770,27 @@ public class Gestor {
 		return fabricantes;
 		
 	}
+	public String darMuebles(ArrayList<Integer> indices,int idDistribuidor, int idFabricante) throws SQLException, Exception{
+		Fabricante f;
+		Distribuidor d;
+		String result="";
+		
+		
+		for(int i=0; i<= indices.size();i++){
+			if((d= (new MultiDistribuidor().buscar(idDistribuidor)))!=null){
+				if((f= (new MultiFabricante().buscar(idFabricante)))!=null){
+					d.agregarMueble(f.buscarMueble(indices.get(i)));
+					result="Mueble agregado";
+				}else{
+					result="Fabricante no existe";
+				}	
+			}else{
+				result="Distribuidor no existe";
+			}
+		}
+		return result;
+		
+	}
 	
 	public ArrayList<TreeMap<String, String>> listarMuebles(int plinea) throws Exception{
 		
@@ -782,10 +803,23 @@ public class Gestor {
 			muebles.add(datos);
 			
 		}
-		
 		return muebles;
 		
 	}
+	public ArrayList<TreeMap<String, String>> listarMuebles() throws Exception{
+		
+		ArrayList<TreeMap<String, String>> muebles = new ArrayList<TreeMap<String,String>>();
+		TreeMap datos;
+		
+		for(int i = 0; i < (new MultiMueble()).listar().size(); i++){
+			
+			datos = (new MultiMueble()).listar().get(i).toTreeMap();
+			muebles.add(datos);
+			
+		}
+		return muebles;
+	}
+	
 	
 	
 	

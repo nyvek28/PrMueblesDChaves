@@ -103,6 +103,16 @@ public class Fabricante extends Persona {
 		mueble=(new MultiMueble()).crear(this, pcolor, ancho, alto, largo, precio, acabado);
 		return mueble;
 	}
+	public Mueble buscarMueble(int id) throws SQLException, Exception{
+		Mueble m;
+		if( new MultiMueble().buscarid(id) !=null){
+			m = new MultiMueble().buscarid(id);
+		}else{
+			m=null;
+		}
+		return m;
+		
+	}
 	
 	public int getLinea() {
 		return linea;

@@ -563,6 +563,14 @@ public class PanelPrincipal extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				darMuebleaDistribuidor.setVisible(false);
+				menu.setVisible(true);
+				try {
+					JOptionPane.showMessageDialog(null,darMueble.entregarMuebles()  );
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				// TODO Auto-generated method stub
 				
 			}
