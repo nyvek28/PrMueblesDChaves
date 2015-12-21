@@ -526,6 +526,9 @@ public class PanelPrincipal extends JPanel{
 		
 		JButton BtnDarMueble= new JButton("Dar Mueble");
 		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 4;
+		c.gridy = 5;
+		c.anchor = GridBagConstraints.CENTER;
 		
 		
 		this.menuDistribuidor.add(BtnDarMueble,c);

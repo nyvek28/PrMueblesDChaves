@@ -187,6 +187,8 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 	
 	public void construirTablas(){
 		
+		JOptionPane.showMessageDialog(null, "a ver si sirve");
+		
 		this.setDm1(new DefaultTableModel());
 		this.getDm1().addColumn("Id");
 		this.getDm1().addColumn("Color");
