@@ -1,15 +1,15 @@
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class PanelPrincipal extends JPanel{
 	
@@ -1460,53 +1460,200 @@ public class PanelPrincipal extends JPanel{
 		
 		//======================= Menu ======================//
 		
-		menuMueble.getBtnConsultar().addActionListener(new ActionListener(){
+				menuMueble.getBtnConsultar().addActionListener(new ActionListener(){
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				menuMueble.setVisible(false);
-				consultarMueble.setVisible(true);
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						menuMueble.setVisible(false);
+						consultarMueble.setVisible(true);
+						
+					}
+					
+				});
 				
-			}
-			
-		});
-		
-		
-		//======================= Registrar   ======================//
-		
-		menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
+				menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				menuMueble.setVisible(false);
-				registrarMueble.setVisible(true);
-				// TODO Auto-generated method stub
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						
+						menuMueble.setVisible(false);
+						registrarMueble.setVisible(true);
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
 				
-			}
-			
-		});
-		
-		((PanelRegistrarMueble)registrarMueble).getComboBoxTipo().addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				int i;
 				
-				i = ((PanelRegistrarMueble)registrarMueble).getComboBoxTipo().getSelectedIndex();
-				switchCategoria(i);
-			}
-		});
-		
-		registrarMueble.getBtnCancelar().addActionListener(new ActionListener(){
+				//======================= Registrar   ======================//
+				
+				
+				
+				registrarMueble.getBtnAceptar().addActionListener(new ActionListener(){
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		
-				registrarMueble.setVisible(false);
-				menu.setVisible(true);
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						String msj;
+						int idFabricante;
+						int i;
+						DefaultComboBoxModel dm = new DefaultComboBoxModel();
+						JComboBox jcb = new JComboBox();
+						ArrayList<TreeMap<String, String>> lista = null;
+						jcb.setModel(dm);
+						try {
+							lista = (new Gestor()).listarFabricantes();
+						} catch (Exception e2) {
+							// TODO Auto-generated catch block
+							e2.printStackTrace();
+						}
+						
+						
+						for(int z = 0; z < lista.size(); z++){	
+							dm.addElement(lista.get(z).get("nombre") + " " + lista.get(z).get("apellido"));
+							//this.getComboBoxFabricantes.addItem(this.getLista().get(i).get("nombre") + " " + this.getLista().get(i).get("apellido"));	
+						}
+						
+						JOptionPane.showMessageDialog(null,jcb,"seleccione un fabricante",JOptionPane.QUESTION_MESSAGE);
+						
+						jcb.setModel(dm);
+						i = jcb.getSelectedIndex();
+						i = Integer.parseInt(lista.get(i).get("id"));
+						int j;
+						
+						j = ((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().getSelectedIndex();
+						
+						switch(j){
+						
+							case 0:
+								
+							try {
+								(new Gestor()).registrarMueble(i,((PanelRegistrarMueble)registrarMueble).getTextFieldColor().getText(),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAncho().getText()),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAlto().getText()),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldLargo().getText()),
+										((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().getSelectedIndex(),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldPrecio().getText()));
+							} catch (NumberFormatException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							
+							break;
+							
+							case 1:
+								
+							try {
+								(new Gestor()).registrarMueble(i,((PanelRegistrarMueble)registrarMueble).getTextFieldColor().getText(),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAncho().getText()),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAlto().getText()),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldLargo().getText()),
+										((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().getSelectedIndex(),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldPrecio().getText()),
+										Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldalturaSobreSuelo().getText()));
+							} catch (NumberFormatException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							
+							break;
+							
+							case 2:
+								
+								try {
+									(new Gestor()).registrarMueble(i,((PanelRegistrarMueble)registrarMueble).getTextFieldColor().getText(),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAncho().getText()),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAlto().getText()),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldLargo().getText()),
+											((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().getSelectedIndex(),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldPrecio().getText()),
+											((PanelRegistrarMueble)registrarMueble).getComboBoxTipo().getSelectedIndex(),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldEspesor().getText()));
+								} catch (NumberFormatException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} catch (Exception e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								
+								break;
+								
+							case 3:
+								
+								try {
+									(new Gestor()).registrarMueble(i,((PanelRegistrarMueble)registrarMueble).getTextFieldColor().getText(),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAncho().getText()),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldAlto().getText()),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldLargo().getText()),
+											((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().getSelectedIndex(),
+											Double.parseDouble(((PanelRegistrarMueble)registrarMueble).getTextFieldPrecio().getText()),
+											((PanelRegistrarMueble)registrarMueble).getComboBoxAcabado().getSelectedIndex());
+								} catch (NumberFormatException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} catch (Exception e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+								
+								break;
+							
+						}
+						
+						
+						
+						/*jcb.addActionListener(new ActionListener(){
+							public void actionPerformed(ActionEvent e) {
+								
+								try {
+									
+									
+									
+								} catch (Exception e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+							}
+						});*/
+						
+						
+						registrarMueble.setVisible(false);
+						//reiniciarPanelMueble(registrarMueble);
+						menu.setVisible(true);
+					}
+					
+				});
 				
-			}
-			
-		});
+				((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e) {
+						int i;
+						
+						i = ((PanelRegistrarMueble)registrarMueble).getComboBoxCategoria().getSelectedIndex();
+						switchCategoria(i);
+					}
+				});
+				
+				registrarMueble.getBtnCancelar().addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+				
+						registrarMueble.setVisible(false);
+
+						menu.setVisible(true);
+						
+					}
+					
+				});
 		
 		//======================= Consultar   ======================//
 		
@@ -1565,22 +1712,48 @@ public class PanelPrincipal extends JPanel{
 	
 	private void switchCategoria(int i){
 		
-		switch(i){
+		this.setBajoComponents(false);
+		this.setEncimeraComponents(false);
+		this.setPanelComponente(false);
 		
+		switch(i){
+					
 			case 1:
-				// aparece campo alturaSobreSuelo
+				this.setBajoComponents(true);
 				break;
 				
 			case 2:
-				// aparece combobox tipo
-				// aparececampo espesor
+				this.setEncimeraComponents(true);
 				break;
 			
 			case 3:
-				//aparece campo acabado
+				this.setPanelComponente(true);
 				break;
 	
 		}
+	}
+	
+	private void setBajoComponents(boolean estado){
+		
+		this.registrarMueble.getLblAlturaSobreSuelo().setVisible(estado);
+		this.registrarMueble.getTextFieldalturaSobreSuelo().setVisible(estado);
+		
+	}
+	
+	private void setEncimeraComponents(boolean estado){
+		
+		this.registrarMueble.getComboBoxTipo().setVisible(estado);
+		this.registrarMueble.getLblTipo().setVisible(estado);
+		this.registrarMueble.getLblespesor().setVisible(estado);
+		this.registrarMueble.getTextFieldEspesor().setVisible(estado);
+		
+	}
+	
+	
+	private void setPanelComponente(boolean estado){
+		
+		this.registrarMueble.getLblAcabado().setVisible(estado);
+		this.registrarMueble.getComboBoxAcabado().setVisible(estado);
 	}
 	
 }
