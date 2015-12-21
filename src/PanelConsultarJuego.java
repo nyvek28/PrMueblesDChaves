@@ -36,7 +36,7 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 				try {
 					llenarCampos();
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
+					System.out.println("Error en buscar");
 					e1.printStackTrace();
 				}
 			}
@@ -71,7 +71,21 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		
 	}
 	
-	private void llenarTabla(ArrayList muebles){
+	private void llenarTabla(ArrayList<TreeMap<String,String>> muebles){
+		
+		if(muebles != null){
+			for(int i = 0; i < muebles.size(); i++){
+				String[] fila = {muebles.get(i).get("id"),
+							muebles.get(i).get("color"),
+							muebles.get(i).get("ancho")+"x"+muebles.get(i).get("alto")+"x"+muebles.get(i).get("largo"),
+							muebles.get(i).get("idJuego"),
+							muebles.get(i).get("precio")
+							};
+				this.getDm1().addRow(fila);
+			}
+		}else{
+			JOptionPane.showMessageDialog(null, "Este distribuidor no tiene muebles");
+		}
 		
 	}
 
