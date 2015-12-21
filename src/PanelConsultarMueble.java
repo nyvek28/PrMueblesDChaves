@@ -29,7 +29,7 @@ public class PanelConsultarMueble extends PanelFormaMueble{
 		
 		
 		this.getTextFieldID().setEditable(false);
-		this.getTextFieldCategoria().setEditable(false);
+		//this.getTextFieldCategoria().setEditable(false);
 		this.getTextFieldAlto().setEditable(false);
 		this.getTextFieldAncho().setEditable(false);
 		this.getTextFieldLargo().setEditable(false);

@@ -1406,6 +1406,10 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
+		
+		//======================= Registrar   ======================//
+		
 		menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
 
 			@Override
@@ -1418,9 +1422,27 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
-		//======================= Registrar   ======================//
+		((PanelRegistrarMueble)registrarMueble).getComboBoxTipo().addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				int i;
+				
+				i = ((PanelRegistrarMueble)registrarMueble).getComboBoxTipo().getSelectedIndex();
+				switchCategoria(i);
+			}
+		});
 		
+		registrarMueble.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
 		
+				registrarMueble.setVisible(false);
+				reiniciarPanelMueble(registrarMueble);
+				menu.setVisible(true);
+				
+			}
+			
+		});
 		
 		//======================= Consultar   ======================//
 		
@@ -1475,6 +1497,26 @@ public class PanelPrincipal extends JPanel{
 		panelC.getTextFieldTrabajo().setText(null);
 		panelC.getTextFieldTelTrabajo().setText(null);
 		
+	}
+	
+	private void switchCategoria(int i){
+		
+		switch(i){
+		
+			case 1:
+				// aparece campo alturaSobreSuelo
+				break;
+				
+			case 2:
+				// aparece combobox tipo
+				// aparececampo espesor
+				break;
+			
+			case 3:
+				//aparece campo acabado
+				break;
+	
+		}
 	}
 	
 }

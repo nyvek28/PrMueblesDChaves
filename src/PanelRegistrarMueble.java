@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.TreeMap;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,18 +13,22 @@ import javax.swing.JTextField;
 
 public class PanelRegistrarMueble extends PanelFormaMueble {
 
-	private JTextField textFieldID;
-	private JTextField textFieldLinea;
-	private JTextField textFieldAncho;
-	private JTextField textFieldAlto;
-	private JTextField textFieldLargo;
-	private JTextField textFieldCategoria;
-	private JTextField textFieldPrecio;
-	
-	
 	public PanelRegistrarMueble(){
 		
 		super();
+		this.getLblAlturaSobreSuelo().setVisible(false);
+		this.getLblespesor().setVisible(false);
+		this.getLblTipo().setVisible(false);
+		this.getLblAcabado().setVisible(false);
+		this.getLblCategoria().setVisible(false);
+		
+		this.getTextFieldalturaSobreSuelo().setVisible(false);
+		this.getTextFieldEspesor().setVisible(false);
+		
+		this.getComboBoxTipo().setVisible(false);
+		this.getComboBoxAcabado().setVisible(false);
+		this.getComboBoxCategoria().setVisible(false);
 		
 	}
+	
 }
