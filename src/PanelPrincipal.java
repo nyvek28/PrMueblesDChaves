@@ -547,11 +547,28 @@ public class PanelPrincipal extends JPanel{
 				
 			}
 				
+		});
+
+		darMuebleaDistribuidor.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				darMuebleaDistribuidor.setVisible(false);
+				menu.setVisible(true);
 			}
 			
+		});
+		
+		darMuebleaDistribuidor.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
 			
-			
-		);
+		});
+		
 		
 		
 		
@@ -600,6 +617,19 @@ public class PanelPrincipal extends JPanel{
 					}
 					
 				});
+				
+				modificarDistribuidor.getBtnAceptar().addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						modificarDistribuidor.setVisible(false);
+						
+						menu.setVisible(true);
+					}
+					
+				});
+				
+				
 				
 				//======================= Menu   ======================//
 				

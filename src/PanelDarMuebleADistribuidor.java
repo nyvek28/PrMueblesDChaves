@@ -21,8 +21,6 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 	
 	private JButton btnAgregar;
 	private JButton btnDarMuebles;
-
-	
 	private JButton btnQuitar;
 	private JButton btnAceptar;
 	private JButton btnCancelar;
@@ -130,6 +128,8 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 			}
 			
 		});
+		
+		
 		
 	
 		//Revisar este metodo
@@ -266,6 +266,29 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 	private void seleccionarDistribuidor() throws Exception{
 		
 		mSeleccionado = (new Gestor()).listarMontadores().get(this.getDistribuidor().getSelectedIndex());
+		
+	}
+	public TreeMap<String, String> entregarMuebles(){
+		TreeMap j;
+		ArrayList<Integer> indices = new ArrayList<Integer>();
+		boolean registro;
+		
+		for(int i = 0; i < this.getTbSeleccionados().getRowCount(); i++){
+			
+			indices.add(Integer.parseInt((String) this.getTbSeleccionados().getValueAt(i, 0)));
+		}
+		if(indices.size() > 0){
+			);
+			JOptionPane.showMessageDialog(null, "Se registro el juego de id " + j.get("id") + " con " + this.getTbSeleccionados().getRowCount() + " muebles");
+			registro = true;
+		}else{
+			JOptionPane.showMessageDialog(null, "No se logro registrar el juego");
+			registro = false;
+		}
+		
+		return registro;
+		
+		
 		
 	}
 
