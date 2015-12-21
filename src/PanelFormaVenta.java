@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 public class PanelFormaVenta extends JPanel {
 
-	private JTextField textFieldID;
+	private JTextField textFieldId;
 	private JTextField textFieldJuego;
 	private JTextField textFieldIdDistribuidor;
 	private JTextField textFieldMonto;
@@ -53,11 +53,11 @@ public class PanelFormaVenta extends JPanel {
 		c.gridy++;
 		this.add(lblPrecio,c);
 		
-		textFieldID = new JTextField(8);
+		textFieldId = new JTextField(8);
 		c.gridy = 1;
 		c.gridx = 2;
 		c.anchor = GridBagConstraints.LINE_START;
-		this.add(textFieldID,c);
+		this.add(textFieldId,c);
 		//textFieldNombre.setColumns(10);
 		
 		textFieldJuego = new JTextField(8);
@@ -91,12 +91,12 @@ public class PanelFormaVenta extends JPanel {
 		
 	}
 
-	public JTextField getTextFieldID() {
-		return textFieldID;
+	public JTextField getTextFieldId() {
+		return textFieldId;
 	}
 
-	public void setTextFieldID(JTextField textFieldID) {
-		this.textFieldID = textFieldID;
+	public void setTextFieldID(JTextField textFieldId) {
+		this.textFieldId = textFieldId;
 	}
 
 
