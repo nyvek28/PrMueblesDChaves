@@ -25,6 +25,7 @@ public class PanelPrincipal extends JPanel{
 	private PanelFormaVenta consultarVenta;
 	private PanelRealizarVenta registrarVenta;
 	private PanelArmarJuego armarJuego;
+	private PanelDarMuebleADistribuidor darMueble;
 	
 	
 	public PanelPrincipal() throws Exception{
@@ -156,9 +157,9 @@ public class PanelPrincipal extends JPanel{
 		this.add(armarJuego);
 		armarJuego.setVisible(false);
 		
-		darMuebleaDistribuidor= new PanelDarMuebleADistribuidor();
-		this.add(darMuebleaDistribuidor);
-		darMuebleaDistribuidor.setVisible(false);
+		darMueble= new PanelDarMuebleADistribuidor();
+		this.add(darMueble);
+		darMueble.setVisible(false);
 		
 		//this.registrarFabricante.setVisible(false);
 		
@@ -534,12 +535,12 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				menuDistribuidor.setVisible(false);
 				try {
-					((PanelDarMuebleADistribuidor) darMuebleaDistribuidor).llenarSelect();
+					darMueble.iniciarPanel();
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				modificarDistribuidor.setVisible(true);
+				darMuebleaDistribuidor.setVisible(true);
 				
 			}
 				
