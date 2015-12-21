@@ -120,6 +120,20 @@ public class PanelArmarJuego extends JPanel {
 			
 		});
 		
+		this.getMontador().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					mSeleccionado = (new Gestor()).listarMontadores().get(montador.getSelectedIndex());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+		});
+		
 		
 		
 	}
@@ -214,11 +228,15 @@ public class PanelArmarJuego extends JPanel {
 		boolean registro;
 		
 		for(int i = 0; i < this.getTbSeleccionados().getRowCount(); i++){
+			
 			indices.add(Integer.parseInt((String) this.getTbSeleccionados().getValueAt(i, 0)));
 		}
 		
 		if(indices.size() > 0){
-			j = (new Gestor()).armarJuego(indices, Integer.parseInt((String) this.mSeleccionado.get("id")), Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id")));
+			j = (new Gestor()).armarJuego(indices, 
+					Integer.parseInt((String) this.mSeleccionado.get("id")), 
+					Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id"))
+					);
 			JOptionPane.showMessageDialog(null, "Se registro el juego de id " + j.get("id") + " con " + this.getTbSeleccionados().getRowCount() + " muebles");
 			registro = true;
 		}else{

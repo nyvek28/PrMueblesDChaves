@@ -28,7 +28,7 @@ public class MultiJuego {
 		sql="INSERT INTO TbJuego (id,idMontador,consecutivo,switCh,idDistribuidor) "+
 		" VALUES ("
 				+juego.getId() + ","
-				+pidMontador + ","
+				+juego.getIdMontador() + ","
 				+Juego.getConsecutivo() + ","
 				+juego.getSwitCh() + ","
 				+juego.getIdDistribuidor() + " "
@@ -56,9 +56,9 @@ public class MultiJuego {
 		Juego juego;
 		java.sql.ResultSet rs;
 		String sql;
-		sql = "SELECT id,idMontador, switCh "+
+		sql = "SELECT * "+
 		"FROM TbJuego "+
-		"WHERE Id = '"+pid+"'";
+		"WHERE id = "+pid+"";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			juego = new Juego(
