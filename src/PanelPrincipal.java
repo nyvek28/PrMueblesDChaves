@@ -131,6 +131,10 @@ public class PanelPrincipal extends JPanel{
 		this.add(menuDistribuidor);
 		menuDistribuidor.setVisible(false);
 		
+		darMuebleaDistribuidor=new PanelDarMuebleADistribuidor();
+		this.add(darMuebleaDistribuidor);
+		darMuebleaDistribuidor.setVisible(false);
+		
 		registrarDistribuidor = new PanelRegistrarDistribuidor();
 		this.add(registrarDistribuidor);
 		registrarDistribuidor.setVisible(false);
@@ -166,6 +170,7 @@ public class PanelPrincipal extends JPanel{
 		this.inicializarPanelesMontador();
 		this.inicializarPanelesVenta();
 		this.inicializarPanelesMueble();
+	
 			
 	}
 
@@ -518,8 +523,9 @@ public class PanelPrincipal extends JPanel{
 		
 		//======================DarMuebles==========================//
 		
-		JButton BtnDarMueble= new JButton();
+		JButton BtnDarMueble= new JButton("Dar Mueble");
 		GridBagConstraints c = new GridBagConstraints();
+		
 		
 		this.menuDistribuidor.add(BtnDarMueble,c);
 		BtnDarMueble.addActionListener(new ActionListener(){
@@ -542,11 +548,6 @@ public class PanelPrincipal extends JPanel{
 			
 			
 		);
-		
-		
-		
-		
-		
 		
 		
 		
@@ -1497,7 +1498,6 @@ public class PanelPrincipal extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 		
 				registrarMueble.setVisible(false);
-				reiniciarPanelMueble(registrarMueble);
 				menu.setVisible(true);
 				
 			}

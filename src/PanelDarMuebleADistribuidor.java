@@ -20,8 +20,9 @@ import javax.swing.table.DefaultTableModel;
 public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 	
 	private JButton btnAgregar;
-	
+	private JButton btnDarMuebles;
 
+	
 	private JButton btnQuitar;
 	private JButton btnAceptar;
 	private JButton btnCancelar;
@@ -62,6 +63,10 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 		c.gridy = 2;
 		c.gridx = 2;
 		this.add(p1, c);
+		btnDarMuebles= new JButton("Dar Muebles");
+		btnDarMuebles.setVisible(true);
+		c.gridx++;
+		this.add(btnDarMuebles, c);
 		
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.setVisible(true);
@@ -126,13 +131,14 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 			
 		});
 		
+	
 		//Revisar este metodo
 		this.getDistribuidor().addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					mSeleccionado = (new Gestor()).listarMontadores().get(distribuidor.getSelectedIndex());
+					mSeleccionado = (new Gestor()).listarDistribuidores().get(distribuidor.getSelectedIndex());
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -140,6 +146,7 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 			}
 			
 		});
+		
 
 		
 		
@@ -357,6 +364,12 @@ public DefaultComboBoxModel getDm4() {
 }
 public void setDm4(DefaultComboBoxModel dm4) {
 	this.dm4 = dm4;
+}
+public JButton getBtnDarMuebles() {
+	return btnDarMuebles;
+}
+public void setBtnDarMuebles(JButton btnDarMuebles) {
+	this.btnDarMuebles = btnDarMuebles;
 }
 	
 	
