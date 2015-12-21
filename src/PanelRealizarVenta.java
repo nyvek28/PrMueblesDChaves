@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -101,8 +103,12 @@ public class PanelRealizarVenta extends JPanel {
 		this.add(this.getTxtPrecio(), c);
 		
 		this.setTbMuebles(new JTable());
-		c.gridy++;
-		this.add(this.getTbMuebles(), c);
+		this.getTbMuebles().setVisible(true);
+		this.getTbMuebles().setPreferredScrollableViewportSize(new Dimension(300, 200));
+		JScrollPane p1 = new JScrollPane(this.getTbMuebles());
+		c.gridy = 2;
+		c.gridx = 2;
+		this.add(p1, c);
 		
 		this.getTxtNombre().setEditable(false);
 		this.getTxtTelefono().setEditable(false);
