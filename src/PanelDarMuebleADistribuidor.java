@@ -17,7 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
-public class PanelDarMuebleADistribuidor extends JPanel {
+public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 	
 	private JButton btnAgregar;
 	
@@ -144,7 +144,7 @@ public class PanelDarMuebleADistribuidor extends JPanel {
 		
 		
 	}
-private void agregarASeleccionados(){
+	private void agregarASeleccionados(){
 		
 		if(this.getTbLibres().getSelectedRow() >= 0){
 			String[] datos = {(String) this.getTbLibres().getValueAt(this.getTbLibres().getSelectedRow(), 0),
@@ -161,7 +161,7 @@ private void agregarASeleccionados(){
 		}
 		
 	}
-private void quitarDeSeleccionados(){
+	private void quitarDeSeleccionados(){
 	
 	if(this.getTbSeleccionados().getSelectedRow() >= 0){
 		String[] datos = {(String) this.getTbSeleccionados().getValueAt(this.getTbSeleccionados().getSelectedRow(), 0),
@@ -176,10 +176,9 @@ private void quitarDeSeleccionados(){
 	}else{
 		JOptionPane.showMessageDialog(null, "Porfavor, seleccione una fila");
 	}
+	}
 	
-}
-	
-public void construirTablas(){
+	public void construirTablas(){
 		
 		this.setDm1(new DefaultTableModel());
 		this.getDm1().addColumn("Id");
@@ -207,7 +206,7 @@ public void construirTablas(){
 		JOptionPane.showMessageDialog( null, this.getDistribuidor(), "Elija un Distribuidor", JOptionPane.QUESTION_MESSAGE);
 	
 	}
-	private void llenarSelect() throws Exception{
+	public void llenarSelect() throws Exception{
 		
 		this.setDm3(new DefaultComboBoxModel());
 		

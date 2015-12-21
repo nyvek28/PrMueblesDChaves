@@ -1,10 +1,12 @@
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.TreeMap;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,7 +14,7 @@ import javax.swing.JScrollPane;
 public class PanelPrincipal extends JPanel{
 	
 	private PanelFormaFabricante modificarFabricante, registrarFabricante, consultarFabricante, eliminarFabricante;// = new PanelRegistrarFabricante();
-	private PanelFormaDistribuidor modificarDistribuidor, registrarDistribuidor, consultarDistribuidor, eliminarDistribuidor;
+	private PanelFormaDistribuidor modificarDistribuidor, registrarDistribuidor, consultarDistribuidor, eliminarDistribuidor, darMuebleaDistribuidor;
 	private muestra m;
 	private PanelMenuPrincipal menu;
 	private PanelPlantillaCRUD menuFabricante, menuMontador, menuCliente, menuDistribuidor, menuVenta, menuMueble, menuJuego;
@@ -148,6 +150,10 @@ public class PanelPrincipal extends JPanel{
 		armarJuego = new PanelArmarJuego();
 		this.add(armarJuego);
 		armarJuego.setVisible(false);
+		
+		darMuebleaDistribuidor= new PanelDarMuebleADistribuidor();
+		this.add(darMuebleaDistribuidor);
+		darMuebleaDistribuidor.setVisible(false);
 		
 		//this.registrarFabricante.setVisible(false);
 		
@@ -508,7 +514,43 @@ public class PanelPrincipal extends JPanel{
 	
 	private void inicializarPanelesDistribuidor(){
 		
+		
+		//======================DarMuebles==========================//
+		
+		JButton BtnDarMueble= new JButton();
+		GridBagConstraints c = new GridBagConstraints();
+		
+		this.menuDistribuidor.add(BtnDarMueble,c);
+		BtnDarMueble.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				menuDistribuidor.setVisible(false);
+				try {
+					((PanelDarMuebleADistribuidor) darMuebleaDistribuidor).llenarSelect();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				modificarDistribuidor.setVisible(true);
+				
+			}
+				
+			}
+			
+			
+			
+		);
+		
+		
+		
+		
+		
+		
+		
+		
 		//======================= Modificar   ======================//
+		
 		
 				modificarDistribuidor.getBtnAceptar().addActionListener(new ActionListener(){
 
@@ -554,6 +596,9 @@ public class PanelPrincipal extends JPanel{
 				});
 				
 				//======================= Menu   ======================//
+				
+				
+				
 				
 				this.menuDistribuidor.getBtnModificar().addActionListener(new ActionListener(){
 					@Override
