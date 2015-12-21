@@ -14,6 +14,7 @@ public class Distribuidor {
 	private int switCh;
 	private ArrayList<Fabricante> fabricantes;
 	private ArrayList<Juego> juegos;
+	private ArrayList<Venta> ventas;
 	
 	
 	/*
@@ -35,6 +36,7 @@ public class Distribuidor {
 		this.setSwitCh(1);
 		this.setFabricantes(null);
 		this.setJuegos(null);
+		this.setVentas(null);
 		
 	}
 	
@@ -56,6 +58,7 @@ public class Distribuidor {
 		this.setSwitCh(switCh);
 		this.setFabricantes(null);
 		this.setJuegos(null);
+		this.setVentas(null);
 		
 	}
 	/*
@@ -64,17 +67,40 @@ public class Distribuidor {
 	Version: v.1.0
 	Fecha: Dic 5, 2015
 	Ediciones:
+	
+		Kevyn, Dic 21 2015, Se validaron los datos de entrada
+	
 	 */
 	
 	
 	public Venta registrarVenta(int idJuego, int idCliente)throws Exception{
 		
-		Juego juego =(new MultiJuego().buscarid(idJuego));
+		Venta venta;
+		Juego j;
+		Cliente c;
 		
-		Venta venta =(new MultiVenta().crear(this.getId(),idJuego, idCliente));
-		venta.setMonto(this.calcularCostoJuego(idJuego));
+		j = this.buscarJuego(idJuego);
+		c = new MultiCliente().buscar(idCliente);
+		if(j != null){
+			if((c != null)){
+				venta = (new MultiVenta().crear(this, j, c));
+			}else{
+				venta = null;
+			}
+		}else{
+			venta = null;
+		}
+		
 		return venta;
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo calcular el costo de un juego
+	Version: v.1.0
+	Fecha: Dic 19, 2015
+	Ediciones:
+	 */
 	
 	public double calcularCostoJuego(int idJuego) throws SQLException, Exception{
 		
@@ -90,6 +116,14 @@ public class Distribuidor {
 		return costoTotal;
 		
 	}
+	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo buscar un juego de la lista de juegos
+	Version: v.1.0
+	Fecha: Dic 20, 2015
+	Ediciones:
+	 */
 	
 	public Juego buscarJuego(int idJuego) throws SQLException, Exception{
 		
@@ -185,6 +219,18 @@ public class Distribuidor {
 		this.juegos = juegos;
 	}
 	
+	public ArrayList<Venta> getVentas() throws SQLException, Exception {
+		ArrayList<Venta> lista;
+		
+		lista = (new MultiVenta()).buscarD(this.getId());
+		
+		return lista;
+	}
+
+	public void setVentas(ArrayList<Venta> ventas) {
+		this.ventas = ventas;
+	}
+
 	/*
 	Autor: Kevyn Quiros
 	Descripcion: Metodo para convertir un distribuidor en un treemap

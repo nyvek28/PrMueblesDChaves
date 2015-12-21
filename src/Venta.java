@@ -18,27 +18,33 @@ public class Venta {
 	private Date fecha;
 	private int id=0;
 	private static int consecutivo = 0;
-	private String msj;
 	private int idCliente;
 	private int switCh;
 	private int IdDistribuidor;
 	private double monto;
+	private Juego juego;
+	private Cliente cliente;
+	private Distribuidor distribuidor;
 	
 	
 	
-	
-	public Venta(int pidDistribuidor,int pidJuego,int pidCliente ) throws SQLException, Exception{
-		this.setIdCliente(pidCliente);
-		this.setIdDistribuidor(pidDistribuidor);
-		this.setIdJuego(pidJuego);
+	public Venta(Distribuidor d, Juego j, Cliente c ) throws SQLException, Exception{
+		
+		this.setIdCliente(c.getId());
+		this.setIdDistribuidor(d.getId());
+		this.setIdJuego(j.getId());
 		this.setFecha((new SimpleDateFormat()).parse((new SimpleDateFormat()).format(new Date())));
 		Venta.setConsecutivo(consecutivo++);
 		this.setId(Venta.getConsecutivo());
-		this.setMonto((new MultiDistribuidor()).buscar(pidDistribuidor).calcularCostoJuego((new MultiJuego()).buscarid(pidJuego)));
+		this.setMonto(d.calcularCostoJuego(this.getIdJuego()));
 		this.setSwitCh(1);
+		this.setCliente(null);
+		this.setDistribuidor(null);
+		this.setJuego(null);
 		
 	}
 	public Venta ( int pid,Date pfecha, int pidCliente,int pidDistribuidor, int pidJuego, int pconsecutivo, int pswitch, double monto ){
+		
 		this.setId(pid);
 		this.setFecha(pfecha);
 		this.setIdCliente(pidCliente);
@@ -47,6 +53,9 @@ public class Venta {
 		this.setConsecutivo(pconsecutivo);
 		this.setSwitCh(pswitch);
 		this.setMonto(monto);
+		this.setCliente(null);
+		this.setDistribuidor(null);
+		this.setJuego(null);
 		
 	}
 	public double getMonto() {
@@ -90,13 +99,7 @@ public class Venta {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
-	public String getInfoMuebles() {
-		return msj;
-	}
-	public void setMsj(String msj) {
-		this.msj = msj;
-	}
+	
 	public int getIdJuego() {
 		return idJuego;
 	}
@@ -116,6 +119,36 @@ public class Venta {
 		this.idCliente = idCliente;
 	}
 	
+	public Juego getJuego() throws SQLException, Exception {
+		Juego j;
+		
+		j = (new MultiJuego()).buscarid(this.getIdJuego());
+		
+		return j;
+	}
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+	public Cliente getCliente() throws SQLException, Exception {
+		Cliente c;
+		
+		c = (new MultiCliente()).buscar(this.getIdCliente());
+		
+		return c;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Distribuidor getDistribuidor() throws SQLException, Exception {
+		Distribuidor d;
+		
+		d = (new MultiDistribuidor()).buscar(this.getIdDistribuidor());
+		
+		return d;
+	}
+	public void setDistribuidor(Distribuidor distribuidor) {
+		this.distribuidor = distribuidor;
+	}
 	/*Autor: Daniel Chaves
 	Descripcion: Metodo que convierte los datos de venta en treemap
 	Version: v.1.0

@@ -22,7 +22,8 @@ public class PanelPrincipal extends JPanel{
 	private PanelFormaCliente registrarCliente, modificarCliente, consultarCliente, eliminarCliente;
 	private PanelFormaJuego registrarJuego, consultarJuego;
 	private PanelFormaMueble registrarMueble, consultarMueble;
-	private PanelFormaVenta registrarVenta, consultarVenta;
+	private PanelFormaVenta consultarVenta;
+	private PanelRealizarVenta registrarVenta;
 	private PanelArmarJuego armarJuego;
 	
 	
@@ -36,11 +37,11 @@ public class PanelPrincipal extends JPanel{
 		this.consultarMueble.setVisible(false);
 		this.add(consultarMueble);
 		
-		consultarVenta= new PanelRegistrarVenta();
+		consultarVenta= new PanelConsultarVenta();
 		this.consultarVenta.setVisible(false);
 		this.add(consultarVenta);
 		
-		registrarVenta= new PanelRegistrarVenta();
+		registrarVenta= new PanelRealizarVenta();
 		this.registrarVenta.setVisible(false);
 		this.add(registrarVenta);
 		
