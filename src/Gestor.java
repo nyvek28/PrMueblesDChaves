@@ -389,7 +389,6 @@ public class Gestor {
 			Juego juego = m.crearJuego(idDistribuidor);
 			if(juego != null){
 				for(int i=0;i < pidMuebles.size(); i++){
-					System.out.println("Se esta mandando: " + pidMuebles.get(i));
 					m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
 				}
 				datos=juego.toTreeMap();
