@@ -75,6 +75,37 @@ public class MultiJuego {
 	}
 	
 	/*
+	Autor: Daniel Chaves
+	Descripcion: Metodo que busca juego en BD
+	Version: v.1.0
+	Fecha: Dic 7, 2015
+	Ediciones:
+	 */
+	public  Juego buscarid(int pid, int idDistribuidor) throws java.sql.SQLException,Exception{
+		
+		Juego juego;
+		java.sql.ResultSet rs;
+		String sql;
+		sql = "SELECT * "+
+		"FROM TbJuego "+
+		"WHERE id = "+pid+" "
+		+ "AND idDistribuidor = " + idDistribuidor;
+		rs = Conector.getConector().ejecutarSQL(sql,true);
+		if (rs.next()){
+			juego = new Juego(
+					rs.getInt("id"),
+					rs.getInt("idMontador"),
+					rs.getInt("switCh"),
+					rs.getInt("idDistribuidor")
+					);
+		} else {
+			juego = null;
+		}
+		rs.close();
+		return juego; 
+	}
+	
+	/*
 	Autor: Kevyn Quiros
 	Descripcion: Metodo para buscar los juegos de un montador
 	Version: v.1.0

@@ -1,7 +1,10 @@
 import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class PanelConsultarJuego extends PanelFormaJuego{
@@ -29,9 +32,27 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		this.add(this.getBtnBuscar(), c);
 		
 		this.getTextFieldID().setEditable(false);
-		this.getTextFieldMuebles().setEditable(false);
 		this.getTextFieldMontador().setEditable(false);
 		this.getTextFieldEstado().setEditable(false);
+		
+		this.getBtnBuscar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(getTxtId().getText() != null || getTxtId().getText() != ""){
+					llenarCampos();
+				}else{
+					JOptionPane.showMessageDialog(null, "Digite un Id valido");
+				}
+			}
+			
+		});
+		
+	}
+	
+	private void llenarCampos(){
+		
+		
 		
 	}
 	
