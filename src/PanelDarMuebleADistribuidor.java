@@ -265,7 +265,7 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 	}
 	private void seleccionarDistribuidor() throws Exception{
 		
-		mSeleccionado = (new Gestor()).listarMontadores().get(this.getDistribuidor().getSelectedIndex());
+		mSeleccionado = (new Gestor()).listarDistribuidores().get(this.getDistribuidor().getSelectedIndex());
 		
 	}
 	public TreeMap<String, String> entregarMuebles(){
@@ -278,9 +278,10 @@ public class PanelDarMuebleADistribuidor extends PanelFormaDistribuidor {
 			indices.add(Integer.parseInt((String) this.getTbSeleccionados().getValueAt(i, 0)));
 		}
 		if(indices.size() > 0){
-			);
-			JOptionPane.showMessageDialog(null, "Se registro el juego de id " + j.get("id") + " con " + this.getTbSeleccionados().getRowCount() + " muebles");
-			registro = true;
+			j = (new Gestor()).armarJuego(indices, 
+					Integer.parseInt((String) this.mSeleccionado.get("id")), 
+					Integer.parseInt((new Gestor()).listarDistribuidores().get(this.distribuidor.getSelectedIndex()).get("id"))
+					);
 		}else{
 			JOptionPane.showMessageDialog(null, "No se logro registrar el juego");
 			registro = false;
