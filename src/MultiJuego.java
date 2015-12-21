@@ -144,7 +144,7 @@ public class MultiJuego {
 					rs.getInt("id"),
 					rs.getInt("idMontador"),
 					rs.getInt("switCh"),
-					rs.getInt("idDisitribuidor")
+					rs.getInt("idDistribuidor")
 					);
 			tabla.add(f);
 		}
