@@ -1,6 +1,8 @@
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,18 +19,11 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		
 		super();
 		GridBagConstraints c = new GridBagConstraints();
-		
-		this.setLblID(new JLabel("Digite un Id:"));
-		c.gridx = 1;
-		c.gridy = 0;
-		this.add(this.getLblID(), c);
-		
-		this.setTxtId(new JTextField(8));
-		c.gridx++;
-		this.add(this.getTxtId(), c);
+
 		
 		this.setBtnBuscar(new JButton("Buscar"));
-		c.gridx++;
+		c.gridx = 3;
+		c.gridy = 1;
 		this.add(this.getBtnBuscar(), c);
 		
 		this.getTextFieldID().setEditable(false);
@@ -40,7 +35,12 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(getTxtId().getText() != null || getTxtId().getText() != ""){
-					llenarCampos();
+					try {
+						llenarCampos();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}else{
 					JOptionPane.showMessageDialog(null, "Digite un Id valido");
 				}
@@ -50,9 +50,28 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		
 	}
 	
-	private void llenarCampos(){
+	private void llenarCampos() throws NumberFormatException, Exception{
 		
+		TreeMap<String,String> j;
+		ArrayList<TreeMap<String,String>> muebles;
 		
+		j = (new Gestor()).consultarJuego(Integer.parseInt(this.getTxtId().getText()), Integer.parseInt((String) this.getdSeleccionado().get("id")));
+		if(j != null){
+			this.getTextFieldMontador().setText(j.get("montador"));
+			this.getTextFieldEstado().setText(j.get("vendido"));
+			muebles = (new Gestor()).consultarMueblePorJuego(Integer.parseInt(j.get("id")));
+			if(muebles != null){
+				this.llenarTabla(muebles);
+			}else{
+				JOptionPane.showMessageDialog(null, "Este juego no tiene muebles");
+			}
+		}else{
+			JOptionPane.showMessageDialog(null, "Revise el id");
+		}
+		
+	}
+	
+	private void llenarTabla(ArrayList muebles){
 		
 	}
 	

@@ -507,6 +507,31 @@ public class Gestor {
 		
 	}
 	
+	/*
+	Autor: Kevyn Quiros
+	Descripcion: Metodo que consulta muebles por su juego
+	Version: v.1.0
+	Fecha: Dic 19, 2015
+	Ediciones:
+
+	*/
+	public ArrayList<TreeMap<String, String>> consultarMueblePorJuego(int idJuego)throws Exception{
+		
+		ArrayList<TreeMap<String, String>> info = new ArrayList<TreeMap<String, String>>();
+		ArrayList<Mueble> muebles = (new MultiMueble()).buscaridJ(idJuego);
+		
+		if(muebles != null){
+			for(int i = 0; i < muebles.size(); i++){
+				info.add(muebles.get(i).toTreeMap());
+			}
+		}else{
+			info = null;
+		}
+		
+		return info;
+		
+	}
+	
 	
 	/*
 	Autor: Daniel Chaves
@@ -518,12 +543,25 @@ public class Gestor {
 	 */
 
 
-	public TreeMap<String, String> consultarJuego(int idJuego)throws Exception{
-		Juego juego=Empresa.consultarJuego(idJuego);
-		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
-		datosJuego=(new MultiJuego().buscarid(idJuego)).toTreeMap();
+	public TreeMap<String, String> consultarJuego(int idJuego, int idDistribuidor)throws Exception{
+		Juego j;
+		Distribuidor d;
+		TreeMap datos = new TreeMap();
 		
-		return datosJuego;
+		d = (new MultiDistribuidor()).buscar(idDistribuidor);
+		if(d != null){
+			j = d.buscarJuego(idJuego);
+			if(j != null){
+				datos = j.toTreeMap();
+			}else{
+				datos = null;
+			}
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
 	}
 	/*
 	Autor: Daniel Chaves

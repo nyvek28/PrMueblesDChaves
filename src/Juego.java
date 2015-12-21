@@ -57,6 +57,18 @@ public class Juego {
 		
 	}
 	
+	private String vendidoToString(){
+		String estado;
+		
+		if(this.getVendido() != 0){
+			estado = "Si";
+		}else{
+			estado = "No";
+		}
+		
+		return estado;
+	}
+	
 	public int getVendido() {
 		return vendido;
 	}
@@ -131,15 +143,9 @@ public class Juego {
 		
 		TreeMap<String,String> datosJuego = new TreeMap<String,String>();
 		
-		String info="";
-		ArrayList<Mueble> listaMuebles=(new MultiMueble().buscaridJ(this.getId()));
-		for(int i=0;i<listaMuebles.size();i++){
-			Mueble m=listaMuebles.get(i);
-			info+="\n Mueble"+i+": "+ m.toString();
-		}
 		datosJuego.put("id", String.valueOf(this.getId()));
-		datosJuego.put("montador", String.valueOf(this.getIdMontador()));
-		datosJuego.put("info", info);
+		datosJuego.put("montador", this.getMontador().getNombre() + " " + this.getMontador().getApellido());
+		datosJuego.put("vendido", this.vendidoToString());
 		
 		return datosJuego;
 	}

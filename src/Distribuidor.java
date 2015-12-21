@@ -91,7 +91,7 @@ public class Distribuidor {
 		
 	}
 	
-	public Juego buscarJuego(int idJuego){
+	public Juego buscarJuego(int idJuego) throws SQLException, Exception{
 		
 		ArrayList<Juego> lista;
 		Juego j = null;
@@ -173,8 +173,12 @@ public class Distribuidor {
 		this.fabricantes = fabricantes;
 	}
 
-	public ArrayList<Juego> getJuegos() {
-		return juegos;
+	public ArrayList<Juego> getJuegos() throws SQLException, Exception {
+		ArrayList<Juego> lista;
+		
+		lista = (new MultiJuego()).buscarD(this.getId());
+		
+		return lista;
 	}
 
 	public void setJuegos(ArrayList<Juego> juegos) {
