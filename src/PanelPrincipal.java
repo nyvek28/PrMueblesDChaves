@@ -46,10 +46,6 @@ public class PanelPrincipal extends JPanel{
 		this.consultarJuego.setVisible(false);
 		this.add(consultarJuego);
 		
-		this.consultarJuego = new PanelFormaJuego();
-		this.consultarJuego.setVisible(false);
-		this.add(consultarJuego);
-		
 		menu = new PanelMenuPrincipal();
 		this.add(menu);
 		this.menu.setVisible(true);
@@ -763,6 +759,12 @@ public class PanelPrincipal extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				menuJuego.setVisible(false);
+				try {
+					consultarJuego.iniciarPanel();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				consultarJuego.setVisible(true);
 				// TODO Auto-generated method stub
 				
@@ -770,6 +772,7 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
+		menuJuego.getBtnRegistrar().setText("Armar Juego");
 		menuJuego.getBtnRegistrar().addActionListener(new ActionListener(){
 
 			@Override
@@ -787,6 +790,9 @@ public class PanelPrincipal extends JPanel{
 			}
 			
 		});
+		
+		menuJuego.getBtnEliminar().setVisible(false);
+		menuJuego.getBtnModificar().setVisible(false);
 		
 		//======================= Registrar   ======================//
 		

@@ -179,7 +179,8 @@ public class MultiMontador {
 		ArrayList<Montador> tabla = new ArrayList<Montador>();
 		
 		sql = "SELECT * "
-			+ "FROM TbMontador ";
+			+ "FROM TbMontador "
+			+ "WHERE switCh != " + 0;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			m = new Montador(

@@ -385,16 +385,21 @@ public class Gestor {
 		TreeMap<String,String> datos = new TreeMap<String,String>();
 		Montador m;
 		m = Empresa.consultarMontador(pidMontador);
-		Juego juego = m.crearJuego(idDistribuidor);
-		if(juego != null){
-			for(int i=0;i < pidMuebles.size(); i++){
-				System.out.println("Se esta mandando: " + pidMuebles.get(i));
-				m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
+			if(m != null){
+			Juego juego = m.crearJuego(idDistribuidor);
+			if(juego != null){
+				for(int i=0;i < pidMuebles.size(); i++){
+					System.out.println("Se esta mandando: " + pidMuebles.get(i));
+					m.agregarMuebleAJuego(juego.getId(), pidMuebles.get(i));
+				}
+				datos=juego.toTreeMap();
+			}else{
+				System.out.println("Error: El juego viene null");
 			}
 		}else{
-			System.out.println("Error: El juego viene null");
+			System.out.println("Error: El montador viene null");
 		}
-		datos=juego.toTreeMap();
+		
 		return datos;
 	}
 	

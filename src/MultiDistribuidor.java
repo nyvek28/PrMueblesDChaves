@@ -170,7 +170,8 @@ public class MultiDistribuidor {
 		ArrayList<Distribuidor> tabla = new ArrayList<Distribuidor>();
 		
 		sql = "SELECT * "
-			+ "FROM TbDistribuidor ";
+			+ "FROM TbDistribuidor "
+			+ "WHERE switCh != " + 0;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			d = new Distribuidor(

@@ -11,7 +11,6 @@ import javax.swing.JTextField;
 
 public class PanelConsultarJuego extends PanelFormaJuego{
 	
-	private JTextField txtId;
 	private JButton btnBuscar;
 	private JLabel lblID;
 	
@@ -26,7 +25,7 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		c.gridy = 1;
 		this.add(this.getBtnBuscar(), c);
 		
-		this.getTextFieldID().setEditable(false);
+		
 		this.getTextFieldMontador().setEditable(false);
 		this.getTextFieldEstado().setEditable(false);
 		
@@ -34,15 +33,11 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(getTxtId().getText() != null || getTxtId().getText() != ""){
-					try {
-						llenarCampos();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}else{
-					JOptionPane.showMessageDialog(null, "Digite un Id valido");
+				try {
+					llenarCampos();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 			
@@ -55,7 +50,12 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 		TreeMap<String,String> j;
 		ArrayList<TreeMap<String,String>> muebles;
 		
-		j = (new Gestor()).consultarJuego(Integer.parseInt(this.getTxtId().getText()), Integer.parseInt((String) this.getdSeleccionado().get("id")));
+		System.out.println("Id: "+this.getTextFieldId().getText());
+		System.out.println("Id distribuidor: "+(String) this.getdSeleccionado().get("id"));
+		
+		j = (new Gestor()).consultarJuego(Integer.parseInt(this.getTextFieldId().getText()), 
+				Integer.parseInt((String) this.getdSeleccionado().get("id"))
+				);
 		if(j != null){
 			this.getTextFieldMontador().setText(j.get("montador"));
 			this.getTextFieldEstado().setText(j.get("vendido"));
@@ -73,14 +73,6 @@ public class PanelConsultarJuego extends PanelFormaJuego{
 	
 	private void llenarTabla(ArrayList muebles){
 		
-	}
-	
-	public JTextField getTxtId() {
-		return txtId;
-	}
-
-	public void setTxtId(JTextField txtId) {
-		this.txtId = txtId;
 	}
 
 	public JButton getBtnBuscar() {

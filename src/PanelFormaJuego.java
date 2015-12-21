@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -39,7 +41,7 @@ public class PanelFormaJuego extends JPanel {
 		c.anchor = GridBagConstraints.LINE_END;
 		this.add(lblID,c);
 		
-		JLabel lblMuebles = new JLabel("Muebles:");
+		JLabel lblMuebles = new JLabel("Vendido:");
 		c.gridy++;
 		this.add(lblMuebles,c);
 		
@@ -61,19 +63,17 @@ public class PanelFormaJuego extends JPanel {
 		this.add(textFieldEstado,c);
 		//textFieldApellido.setColumns(10);
 		
-		textFieldEstado = new JTextField(8);
-		c.gridy++;
-		this.add(textFieldEstado,c);
-		//textFieldTelefono.setColumns(10);
-		
 		textFieldMontador = new JTextField(8);
 		c.gridy++;
 		this.add(textFieldMontador,c);
 		//textFieldTelefono.setColumns(10)
 		
 		this.tbMuebles = new JTable();
+		this.tbMuebles.setVisible(true);
+		this.tbMuebles.setPreferredScrollableViewportSize(new Dimension(300, 200));
+		JScrollPane p1 = new JScrollPane(this.tbMuebles);
 		c.gridy++;
-		this.add(tbMuebles, c);
+		this.add(p1, c);
 		
 		btnAceptar = new JButton("Aceptar");
 		c.gridy = 8;
@@ -129,7 +129,7 @@ public class PanelFormaJuego extends JPanel {
 		this.setDm2(new DefaultComboBoxModel());
 		
 		for(int i = 0; i < (new Gestor()).listarDistribuidores().size(); i++){
-			this.getDm2().addElement((new Gestor()).listarDistribuidores().get(i).get("nombre") + " " + (new Gestor()).listarDistribuidores().get(i).get("apellido"));
+			this.getDm2().addElement((new Gestor()).listarDistribuidores().get(i).get("nombre"));
 			//this.getComboBoxDistribuidores().addItem(this.getLista().get(i).get("nombre"));	
 		}
 		
@@ -143,14 +143,6 @@ public class PanelFormaJuego extends JPanel {
 
 	public void setTextFieldEstado(JTextField textFieldEstado) {
 		this.textFieldEstado = textFieldEstado;
-	}
-
-	public JTextField getTextFieldID() {
-		return textFieldId;
-	}
-
-	public void setTextFieldID(JTextField textFieldID) {
-		this.textFieldId = textFieldID;
 	}
 	public JTextField getTextFieldMontador() {
 		return textFieldMontador;
