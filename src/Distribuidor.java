@@ -15,6 +15,7 @@ public class Distribuidor {
 	private ArrayList<Fabricante> fabricantes;
 	private ArrayList<Juego> juegos;
 	private ArrayList<Venta> ventas;
+	private ArrayList<Mueble> muebles;
 	
 	
 	/*
@@ -142,6 +143,12 @@ public class Distribuidor {
 		return j;
 		
 	}
+	
+	public void agregarMueble(Mueble m){
+		
+		m.setIdDistribuidor(this.getId());
+		
+	}
 
 	public int getId() {
 		return id;
@@ -229,6 +236,18 @@ public class Distribuidor {
 
 	public void setVentas(ArrayList<Venta> ventas) {
 		this.ventas = ventas;
+	}
+
+	public ArrayList<Mueble> getMuebles() throws SQLException, Exception {
+		ArrayList<Mueble> lista;
+		
+		lista = (new MultiMueble()).buscarD(this.getId());
+		
+		return lista;
+	}
+
+	public void setMuebles(ArrayList<Mueble> muebles) {
+		this.muebles = muebles;
 	}
 
 	/*
