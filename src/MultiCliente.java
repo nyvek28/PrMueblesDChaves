@@ -148,7 +148,8 @@ public class MultiCliente {
 		ArrayList<Cliente> tabla = new ArrayList<Cliente>();
 		
 		sql = "SELECT * "
-			+ "FROM TbCliente ";
+			+ "FROM TbCliente "
+			+ "WHERE switCh != " + 0;
 		rs = Conector.getConector().ejecutarSQL(sql, true);
 		while(rs.next()){
 			c = new Cliente(

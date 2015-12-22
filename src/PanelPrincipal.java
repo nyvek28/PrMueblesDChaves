@@ -1469,6 +1469,12 @@ public class PanelPrincipal extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				menuVenta.setVisible(false);
+				try {
+					registrarVenta.iniciarPanel();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				registrarVenta.setVisible(true);
 				// TODO Auto-generated method stub
 				
@@ -1478,7 +1484,33 @@ public class PanelPrincipal extends JPanel{
 		
 		//======================= Registrar   ======================//
 		
+		registrarVenta.getBtnAceptar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					registrarVenta.realizarVenta();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				registrarVenta.setVisible(false);
+				menu.setVisible(true);
+				
+			}
+			
+		});
 		
+		registrarVenta.getBtnCancelar().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				registrarVenta.setVisible(false);
+				menu.setVisible(true);
+			}
+			
+		});
 		
 		//======================= Consultar   ======================//
 		
