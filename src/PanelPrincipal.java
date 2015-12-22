@@ -1482,6 +1482,9 @@ public class PanelPrincipal extends JPanel{
 			
 		});
 		
+		menuVenta.getBtnModificar().setVisible(false);
+		menuVenta.getBtnEliminar().setVisible(false);
+		
 		//======================= Registrar   ======================//
 		
 		registrarVenta.getBtnAceptar().addActionListener(new ActionListener(){
@@ -1541,6 +1544,9 @@ public class PanelPrincipal extends JPanel{
 					}
 					
 				});
+				
+				menuMueble.getBtnModificar().setVisible(false);
+				menuMueble.getBtnEliminar().setVisible(false);
 				
 				menuMueble.getBtnRegistrar().addActionListener(new ActionListener(){
 

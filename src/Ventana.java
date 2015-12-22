@@ -11,7 +11,7 @@ public class Ventana extends JFrame {
 		super("Programa de Muebles");
 		setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(850,500); 
+		this.setSize(850,550); 
 		this.setLocationRelativeTo(null);
 		try {
 			panel = new PanelPrincipal();
