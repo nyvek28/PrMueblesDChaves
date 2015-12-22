@@ -91,4 +91,22 @@ public class MultiVenta {
 		
 	}
 	
+	public ArrayList<Venta> listar() throws SQLException, Exception{
+		ArrayList<Venta> ventas = new ArrayList<Venta>();
+		ResultSet rs;
+		String sql;
+		
+		sql = "SELECT * "
+			+ "FROM TbVenta ";
+		rs = Conector.getConector().ejecutarSQL(sql, true);
+		while(rs.next()){
+			ventas.add(this.buscar(rs.getInt("id")));
+		}
+		if(ventas.isEmpty()){
+			ventas = null;
+		}
+		
+		return ventas;
+	}
+	
 }

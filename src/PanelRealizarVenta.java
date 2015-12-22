@@ -75,6 +75,7 @@ public class PanelRealizarVenta extends JPanel {
 		this.add(lblPrecio, c);
 		
 		JLabel lblMueble = new JLabel("Muebles:");
+		c.anchor = GridBagConstraints.NORTH;
 		c.gridy++;
 		this.add(lblMueble, c);
 		
@@ -115,6 +116,7 @@ public class PanelRealizarVenta extends JPanel {
 		this.add(p1, c);
 		
 		this.setLblTotal(new JLabel("Total: "));
+		c.anchor = GridBagConstraints.SOUTH;
 		c.gridx++;
 		this.add(this.getLblTotal(), c);
 		
@@ -129,13 +131,15 @@ public class PanelRealizarVenta extends JPanel {
 		this.add(this.getBtnBuscar2(), c);
 		
 		this.setBtnCancelar(new JButton("Cancelar"));
+		c.anchor = GridBagConstraints.SOUTH;
 		c.gridx = 4;
-		c.gridy = 8;
+		c.gridy = 9;
 		this.add(this.getBtnCancelar(), c);
 		
 		this.setBtnAceptar(new JButton("Aceptar"));
+		c.anchor = GridBagConstraints.SOUTH;
 		c.gridx = 5;
-		c.gridy = 8;
+		c.gridy = 9;
 		this.add(this.getBtnAceptar(), c);
 		
 		this.getTxtNombre().setEditable(false);

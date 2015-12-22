@@ -18,11 +18,13 @@ public class Gestor {
 		ArrayList<Distribuidor> distribuidores;
 		ArrayList<Mueble> muebles;
 		ArrayList<Juego> juegos;
+		ArrayList<Venta> ventas;
 		
 		fabricantes = (new MultiFabricante()).listar();
 		distribuidores = (new MultiDistribuidor()).listar();
 		muebles = (new MultiMueble()).listar();
 		juegos = (new MultiJuego()).listar();
+		ventas = (new MultiVenta()).listar();
 
 		if(fabricantes != null && distribuidores != null && muebles != null){
 			
@@ -30,6 +32,7 @@ public class Gestor {
 			Distribuidor.setConsecutivo(distribuidores.get(distribuidores.size()-1).getId());
 			Mueble.setConsecutivo(muebles.get((muebles.size()-1)).getId());
 			Juego.setConsecutivo(juegos.get((juegos.size()-1)).getId());
+			Venta.setConsecutivo(ventas.get((ventas.size()-1)).getId());
 			
 		}else{
 			System.out.println("No se inicio correctamente el sistema");

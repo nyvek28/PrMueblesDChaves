@@ -146,6 +146,7 @@ public class Juego {
 		datosJuego.put("id", String.valueOf(this.getId()));
 		datosJuego.put("montador", this.getMontador().getNombre() + " " + this.getMontador().getApellido());
 		datosJuego.put("vendido", this.vendidoToString());
+		datosJuego.put("precio", String.valueOf(this.calcularCosto()));
 		
 		return datosJuego;
 	}

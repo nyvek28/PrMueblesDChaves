@@ -34,7 +34,7 @@ public class Venta {
 		this.setIdDistribuidor(d.getId());
 		this.setIdJuego(j.getId());
 		this.setFecha((new SimpleDateFormat()).parse((new SimpleDateFormat()).format(new Date())));
-		Venta.setConsecutivo(consecutivo++);
+		Venta.setConsecutivo(Venta.getConsecutivo()+1);
 		this.setId(Venta.getConsecutivo());
 		this.setMonto(d.calcularCostoJuego(this.getIdJuego()));
 		this.setSwitCh(1);
@@ -162,7 +162,7 @@ public class Venta {
 		datos.put("cliente", (new MultiCliente()).buscar(this.getIdCliente()).getNombre()+" "+(new MultiCliente()).buscar(this.getIdCliente()).getApellido());
 		datos.put("idJuego", String.valueOf(this.getIdJuego()));
 		datos.put("distribuidor", (new MultiDistribuidor().buscar(this.getIdDistribuidor()).getNombre()));
-		datos.put("monto", String.valueOf(this.getMonto()));
+		datos.put("id", String.valueOf(this.getId()));
 		datos.put("monto", String.valueOf(this.getMonto()));
 		
 		return datos;
