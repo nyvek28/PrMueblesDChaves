@@ -16,18 +16,20 @@ public class PanelRegistrarMueble extends PanelFormaMueble {
 	public PanelRegistrarMueble(){
 		
 		super();
+		this.getLblID().setVisible(false);
+		this.getTextFieldID().setVisible(false);
 		this.getLblAlturaSobreSuelo().setVisible(false);
 		this.getLblespesor().setVisible(false);
 		this.getLblTipo().setVisible(false);
 		this.getLblAcabado().setVisible(false);
-		this.getLblCategoria().setVisible(false);
+		//this.getLblCategoria().setVisible(false);
 		
 		this.getTextFieldalturaSobreSuelo().setVisible(false);
 		this.getTextFieldEspesor().setVisible(false);
 		
 		this.getComboBoxTipo().setVisible(false);
 		this.getComboBoxAcabado().setVisible(false);
-		this.getComboBoxCategoria().setVisible(false);
+		//this.getComboBoxCategoria().setVisible(false);
 		
 	}
 	

@@ -13,18 +13,23 @@ public class PanelFormaMueble extends JPanel {
 
 	private JTextField textFieldID;
 	private JTextField textFieldLinea;
+	private JTextField textFieldColor;
 	private JTextField textFieldAncho;
 	private JTextField textFieldAlto;
 	private JTextField textFieldLargo;
 	private JTextField textFieldCategoria;
 	private JTextField textFieldPrecio;
+	private JTextField textFieldalturaSobreSuelo;
+	private JTextField textFieldEspesor;
+	
 	private JLabel lblPrecio;
 	private JLabel lblAlturaSobreSuelo;
 	private JLabel lblespesor;
 	private JLabel lblTipo;
 	private JLabel lblAcabado;
 	private JLabel lblCategoria;
-	
+	private JLabel lblID;
+
 	private JComboBox comboBoxCategoria;
 	private JComboBox comboBoxAcabado;
 	private JComboBox comboBoxTipo;
@@ -33,8 +38,6 @@ public class PanelFormaMueble extends JPanel {
 	private String[] listaTipos;
 	private String[] listaAcabados;
 
-	private JTextField textFieldalturaSobreSuelo;
-	private JTextField textFieldEspesor;
 	private JButton btnAceptar;
 	private JButton btnCancelar;
 	
@@ -48,7 +51,7 @@ public class PanelFormaMueble extends JPanel {
 		listaTipos = new String[]{"Marmol","Aglomerado"};
 		listaAcabados = new String[]{"Regular","Normal","Fino","Muy Fino"};
 		
-		JLabel lblID = new JLabel("ID:");
+		lblID = new JLabel("ID:");
 		c.gridy = 1;
 		c.gridx = 1;
 		c.anchor = GridBagConstraints.LINE_END;
@@ -57,6 +60,10 @@ public class PanelFormaMueble extends JPanel {
 		JLabel lblLinea = new JLabel("Linea:");
 		c.gridy++;
 		this.add(lblLinea,c);
+		
+		JLabel lblColor = new JLabel("Color:");
+		c.gridy++;
+		this.add(lblColor,c);
 		
 		JLabel lblAncho = new JLabel("Ancho:");
 		c.gridy++;
@@ -104,6 +111,10 @@ public class PanelFormaMueble extends JPanel {
 		textFieldLinea = new JTextField(8);
 		c.gridy++;
 		this.add(textFieldLinea,c);
+		
+		textFieldColor = new JTextField(8);
+		c.gridy++;
+		this.add(textFieldColor,c);
 		//textFieldApellido.setColumns(10);
 		
 		textFieldAncho = new JTextField(8);
@@ -162,6 +173,7 @@ public class PanelFormaMueble extends JPanel {
 		
 		llenarComboBoxTipo();
 		llenarComboBoxCategoria();
+		llenarComboBoxAcabados();
 		
 		this.setVisible(true);
 		
@@ -417,6 +429,21 @@ public class PanelFormaMueble extends JPanel {
 	public void setLblCategoria(JLabel lblCategoria) {
 		this.lblCategoria = lblCategoria;
 	}
+	
+	/**
+	 * @return the textFieldColor
+	 */
+	public JTextField getTextFieldColor() {
+		return textFieldColor;
+	}
+
+	/**
+	 * @param textFieldColor the textFieldColor to set
+	 */
+	public void setTextFieldColor(JTextField textFieldColor) {
+		this.textFieldColor = textFieldColor;
+	}
+
 
 	
 	private void llenarComboBoxTipo(){
@@ -433,4 +460,25 @@ public class PanelFormaMueble extends JPanel {
 		}
 	}
 	
+private void llenarComboBoxAcabados(){
+		
+		for(int i = 0; i < listaAcabados.length; i++){	
+			this.getComboBoxAcabado().addItem(this.getListaAcabados()[i]);	
+		}
+	}
+	
+
+	/**
+	 * @return the lblID
+	 */
+	public JLabel getLblID() {
+		return lblID;
+	}
+
+	/**
+	 * @param lblID the lblID to set
+	 */
+	public void setLblID(JLabel lblID) {
+		this.lblID = lblID;
+	}
 }
